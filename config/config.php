@@ -26,40 +26,24 @@ $plugin_pix_url=$website_url.'/all-images/plugin';
 <script>
 	////// for javascript /////
 
-
-//// For all API's /////////
-
-
 	//// connect to local Website or local IP  ///
 	//var website_url="http://alwaysonlineclasses.com";
-	var website_url="http://localhost/alwaysonlineclasses.com";
 	//var website_url="http://192.168.43.204/sowapp.com";
+
+	
+	var website_url="http://localhost/alwaysonlineclasses.com"; /// website url
+
+	var admin_local_url=website_url+"/admin/config/code" /// admin url
+
+	var index_local_url=website_url+"/config/code"	/// For index local_url ///
 
 
 	//// connect to local api or IP ///
 	//var api="http://alwaysonlineclasses.com/sowapp_api/";
 	//var api="http://localhost/sowapp_api/";
-	//var api="http://192.168.43.204/sowapp_api"; 
+	//var api="http://192.168.43.204/sowapp_api";
 
-
-	var index_local_url=website_url+"/config/code"	/// For index local_url ///
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//// For all API's /////////
 
 
 

@@ -56,30 +56,19 @@
 		});
 
 
-        // $(".hide").on('click', function() {
-        //         $(this).toggleClass("bi bi-eye-slash-fill");
-        //         var input = $($(this).attr("password"));
-        //         if (input.attr("type") == "password") {
-        //             input.attr("type", "text");
-        //         } else {
-        //             input.attr("type", "password");
-        //         }
-        //     });
+  
 
     </script>
 <?php }?>
 
 
 
-
-
-
 <?php if ($page=='reset_password'){?>
 <div class="overlay-off-div">
-        <div class="slide-back-div sb-container animated fadeInUp">
+        <div class="slide-back-div sb-container">
             <div class="header-top"><h2>RESET PASSWORD</h2> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
             <div class="slide-in ">
-                <div class="fill-form-div container-div" >
+                <div class="fill-form-div container-div animated fadeIn" >
                     <div class="notification-div"><i class="bi-person"></i> Dear <span id="username"></span>, an <span>OTP</span> has been sent to your email address (<span id="useremail"></span>) to reset your password.</div>
                         
                     <div class="title-div"> ENTER OTP: <span>*</span> <div id="otp_info" style="float:right;font-size:12px;display:none;color:#f00"><span>OTP not accepted!</span></div></div>
@@ -96,22 +85,41 @@
                         
                 
                     <div class="pswd_info">At least 8 charaters required including upper & lower cases and special characters and numbers.</div>
-                    <button class="btn" type="button"  title-div="Reset" id="comfirmed_reset_btn" onclick="_comfirmed_reset_password('<?php echo $staff_id?>')"><i class="bi-check"></i> RESET PASSWORD </button>
+                    <button class="btn" type="button"  title-div="Reset" id="comfirmed_reset_btn" onclick="_comfirmed_reset_password('<?php echo $staff_id?>')"><i class="bi-check"></i> Reset Password </button>
                 </div>
             </div>
         </div>
-</div>
-    
+</div>  
  <?php } ?>
 
 
 
+
  <?php if($page=='password_reset_successful'){?>
-        <div class="reg-successful-div animated bounceInDown">
-            <div class="gif">
-                <img src="<?php echo $website_url?>/all-images/images/successful.gif" alt="successful gif">
-            </div>
-            <h3>PASSWORD RESET SUCCESSFUL </h3>
-            <button onClick="window.location.reload();" type="button">OKAY, LOGIN</button> 
+    <div class="overlay-off-div">
+        <div class="successful-div animated bounceInDown">
+            <div class="success-in">
+                <div class="gif">
+                    <img src="<?php echo $images_pix_url?>/success.gif" alt="successful gif">
+                </div>
+                <h3>PASSWORD RESET SUCCESSFUL </h3>
+                <button onClick="window.location.reload();" type="button">OKAY</button> <br>
+            </div> 
         </div>
+    </div>
+<?php }?>
+
+
+<?php if($page=='registration_successful'){?>
+    <div class="overlay-off-div">
+        <div class="successful-div animated bounceInDown">
+            <div class="success-in">
+                <div class="gif">
+                    <img src="<?php echo $images_pix_url?>/success.gif" alt="successful gif">
+                </div>
+                <h3 >REGISTRATION SUCCESSFUL </h3>
+                <button onClick="window.location.reload();" type="button">OKAY</button> <br>
+            </div> 
+        </div>
+    </div> 
 <?php }?>

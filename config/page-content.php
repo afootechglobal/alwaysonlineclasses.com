@@ -75,7 +75,7 @@
 
 <?php if($page=='signup'){?>
     <div class="overlay-off-div">
-    <div class="slide-back-div sb-container animated fadeInUp">
+    <div class="slide-back-div sb-container">
              <div class="header-top"><h2>SIGN-UP</h2> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
 
             <div class="slide-in ">
@@ -138,7 +138,7 @@
 <?php if ($page=='reset_password'){?>
 <div class="overlay-off-div">
         <div class="slide-back-div sb-container">
-            <div class="header-top"><h1>RESET PASSWORD</h1> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
+            <div class="header-top"><h2>RESET PASSWORD</h2> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
             <div class="slide-in ">
                 <div class="fill-form-div container-div animated fadeIn" >
                     <div class="notification-div"><i class="bi-person"></i> Dear <span id="username"></span>, an <span>OTP</span> has been sent to your email address (<span id="useremail"></span>) to reset your password.</div>
@@ -161,8 +161,7 @@
                 </div>
             </div>
         </div>
-</div>
-    
+</div>  
  <?php } ?>
 
 

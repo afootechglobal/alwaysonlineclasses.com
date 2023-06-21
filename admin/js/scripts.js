@@ -18,7 +18,7 @@ function _get_page(page){
 	   var dataString = 'action='+action+'&page='+page;
 		  $.ajax({
 		  type: "POST",
-		  url: index_local_url,
+		  url: admin_local_url,
 		  data: dataString,
 		  cache: false,
 		  success: function(html){

@@ -8,9 +8,8 @@
 <div id="back2Top" title="Back to top"  onclick="_back_to_top();"><i class="bi-box-arrow-up"></i></div>
 
 
-<script src="<?php echo $website_url?>/js/jquery-v3.6.1.min.js"></script>
-<script src="<?php echo $website_url?>/js/scripts.js"></script>   
-<script src="<?php echo $website_url?>/js/aos.js"></script>
+
+
 <script type="text/javascript">
 $(".sb-container").scrollBox();
 </script>
