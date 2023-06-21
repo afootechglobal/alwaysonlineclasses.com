@@ -42,7 +42,7 @@ $plugin_pix_url=$website_url.'/all-images/plugin';
 	//var api="http://192.168.43.204/sowapp_api"; 
 
 
-	var index_local_url=website_url+"/config/code.php"	/// For index local_url ///
+	var index_local_url=website_url+"/config/code"	/// For index local_url ///
 
 
 	

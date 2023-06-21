@@ -1,5 +1,18 @@
 
 
+///// for FAQs
+function _collapse(div_id){
+	var x = document.getElementById(div_id+"num");
+	  if (x.innerHTML === '&nbsp;<i class="bi-plus"></i>&nbsp;') {
+		  x.innerHTML = '&nbsp;<i class="bi-dash"></i>&nbsp;';
+		  $('#'+div_id).addClass('active-faq');
+	  }else{
+		x.innerHTML = '&nbsp;<i class="bi-plus"></i>&nbsp;';
+		  $('#'+div_id).removeClass('active-faq');
+	  }
+	$('#'+div_id+'answer').slideToggle('slow');
+}
+
 $(window).scroll(function() { 
   var scrollheight = $(window).scrollTop();
   	if (scrollheight >= 100) {

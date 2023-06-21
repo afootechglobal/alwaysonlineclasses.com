@@ -51,21 +51,22 @@
 
 <div class="live-chat-back-div"> 
 
-    <a href="tel:+18888173755" title="Call Customer Care">
+   <a href="tel:+2348083533750" title="Call Customer Care">
         <div class="chat-div">
             <div class="icon-div" style="background:#008040;"><i class="bi-telephone-outbound"></i></div>
-            <div class="text">+1(888)817-3755</div>
+            <div class="text">+234 808 353 3750 </div>
           <br clear="all" />
         </div>
     </a>
-    <a href="https://api.whatsapp.com/send?text=Hello 4-Seasons Limos&phone=+14159371660" target="_blank" title="Whatsapp">
+    
+       <a href="https://api.whatsapp.com/send?text=Hello Always Online Classes &phone=+2348083533750" title="Whatsapp" target="_blank">
         <div class="chat-div">
             <div class="icon-div" style="background:#25D366;"><i class="bi-whatsapp"></i></div>
-            <div class="text">+1 (415) 937-1660</div>
+            <div class="text">+234 808 353 3750 </div>
           <br clear="all" />
         </div>
     </a>
-
+    
     <a href="https://web.facebook.com/" target="_blank" title="Facebook">
         <div class="chat-div">
             <div class="icon-div" style="background:#2980b9;"><i class="bi-facebook"></i></div>

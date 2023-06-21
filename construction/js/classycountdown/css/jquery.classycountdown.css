@@ -1,0 +1,19 @@
+
+.ClassyCountdown-wrapper > div {
+    display: inline-block;
+    position: relative;
+    width: calc(25% - 20px);
+    margin: 10px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.ClassyCountdown-wrapper .ClassyCountdown-value {
+    width: 100%;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    left: 0;
+    display: block;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}

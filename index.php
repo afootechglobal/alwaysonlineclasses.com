@@ -3,18 +3,18 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include 'meta.php'?>
-<title> Embrace Learning Anytime with Always Online Classes | WAEC, NECO, GCE | <?php echo $thename?></title>
-<meta name="keywords" content="<?php echo $thename?>, Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB" />
-<meta name="description" content="Other Description goes here"/>
+<title> Embrace Learning Anytime with Always Online Classes | SSCE, UTME | <?php echo $thename?></title>
+<meta name="keywords" content="<?php echo $thename?>, SSCE Online Classes, WAEC Online Classes, NECO Online Classes, NABTEB Online Classes, GCE Online Classes, Online education, Virtual learning, Remote learning, Digital classrooms, Online courses, E-learning, Distance education, Web-based classes, Internet-based learning, Continuous online education, LMS, Learning Management System" />
+<meta name="description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
-<meta property="og:title" content="<?php echo $thename?> |  Other Title goes here" />
-<meta property="og:image" content="<?php echo $website_url?>/all-images/plugin-pix/connect-global-logistics.jpg"/>
-<meta property="og:description" content="Other Description goes here"/>
+<meta property="og:title" content="Embrace Learning Anytime with <?php echo $thename?> | SSCE, UTME" />
+<meta property="og:image" content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/>
+<meta property="og:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
-<meta name="twitter:title" content="<?php echo $thename?> |  Other Title goes here"/> 
+<meta name="twitter:title" content="Embrace Learning Anytime with <?php echo $thename?> | SSCE, UTME"/> 
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
-<meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/connect-global-logistics.jpg"/> 
-<meta name="twitter:description" content="Other Description goes here"/>
+<meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
+<meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
@@ -170,7 +170,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>SSCE EXAM</h3>
+                                        <h3>WAEC EXAM</h3>
                                     </div>
                                 </div>                       
                             </div> 
@@ -214,7 +214,7 @@
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 <div class="categories-div">
                                     <div class="image-div">
-                                        <img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
+                                        <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
@@ -226,11 +226,11 @@
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 <div class="categories-div">
                                     <div class="image-div">
-                                        <img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/>
+                                        <img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>SSCE EXAM</h3>
+                                        <h3>NECO EXAM</h3>
                                     </div>
                                 </div>                       
                             </div> 
@@ -266,21 +266,27 @@
 
                   
     <script>
-	const carousel_options_2= {
-	loop: true,
-	slidesPerView: 1,
-	spacing: 10,
-	transitionSpeed: 5000,
-	autoplay: true,
-	breakpoints: {
+	const carousel_options_2= ({
+	 items:4,
+            margin: 30,
+            loop:true,
+            dots: true,
+            autoplayHoverPause: true,
+            smartSpeed:650,         
+            autoplay:true,      
+            breakpoints: {
 		768: {
 		slidesPerView: 2,
 		},
-		1024: {
+        1230: {
+		slidesPerView: 3,
+		},
+		1300: {
 		slidesPerView: 4,
 		}
-	}
-	};
+	
+        }
+    });
 	// INIT CAROUSEL
 	const carousel_2 = new CgCarousel('#js-carousel_2', carousel_options_2, {});
 	// Navigation
@@ -320,8 +326,7 @@
                                     </div>
                                   
                                     <div class="text-div">
-                                        <h3>MATHEMATICS</h3>
-                                        <P>Topics:  MTH 101, MTH 102, MTH 103</P>
+                                        <h3>MATHEMATICS</h3> 
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 599</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -343,7 +348,6 @@
 
                                     <div class="text-div">
                                         <h3>USE OF ENGLISH</h3>
-                                        <P>Topics: GES 101</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -365,7 +369,6 @@
 
                                     <div class="text-div">
                                         <h3>CHEMISTRY</h3>
-                                        <P>Topics: CHM 101, CHM 102, CHM 103</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -387,7 +390,6 @@
 
                                     <div class="text-div">
                                         <h3>PHYSICS</h3>
-                                        <P>Topics: PHY 101, PHY 102, PHY 103</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -409,7 +411,6 @@
                                        
                                     <div class="text-div">
                                         <h3>ACCOUNTING</h3>
-                                        <P>Topics: ACT 101, ACT 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -431,7 +432,6 @@
 
                                     <div class="text-div">
                                         <h3>ECONOMICS</h3>
-                                        <P>Topics: ECO 101, ECO 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -453,7 +453,6 @@
 
                                     <div class="text-div">
                                         <h3>BIOLOGY</h3>
-                                        <P>Topics: BIO 101, BIO 102, BIO 103</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -475,7 +474,6 @@
 
                                     <div class="text-div">
                                         <h3>AGRICULTURE</h3>
-                                        <P>Topics: AGY 101, AGY 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -497,7 +495,6 @@
 
                                     <div class="text-div">
                                         <h3>GEOGRAPHY</h3>
-                                        <P>Topics: GEO 101, GEO 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -519,7 +516,6 @@
 
                                     <div class="text-div">
                                         <h3>COMMERCE</h3>
-                                        <P>Topics: COM 101, COM 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -541,7 +537,6 @@
 
                                     <div class="text-div">
                                         <h3>GOVERNMENT</h3>
-                                        <P>Topics: GOV 101, GOV 102, GOV 103</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -563,7 +558,6 @@
 
                                     <div class="text-div">
                                         <h3>CHRISTIAN RELIGIOUS STUDIES</h3>
-                                        <P>Topics: CRS 101, CRS 102, CRS 103</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -585,7 +579,6 @@
 
                                     <div class="text-div">
                                         <h3>ISLAMIC RELIGIOUS STUDIES</h3>
-                                        <P>Topics: IRK 101, IRK 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -607,7 +600,6 @@
 
                                     <div class="text-div">
                                         <h3>LITERATURE IN ENGLISH</h3>
-                                        <P>Topics: LIT 101, LIT 102</P>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
@@ -668,60 +660,65 @@
                     <div class="div-in">
                         <h1><span>MOTION</span></h1>
                         <h3>Introduction To Motion</h3>
-                        <p>Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB.</p>
-                        <a href="<?php echo $website_url ?>/login" title="WATCH VIDEO">
+                        <p>At the end of the study in this video, students should be able to understand the following objectives,<br/>
+                          i. The meaning of Motion.<br/>
+                          ii. Different typres of Motion.<br/>
+                          iii. The fundamental principles that govern the movement of objects.<br/>
+                          iv. Predicting and discribing the behaviour of objects.<br/>  
+                        </p>
+                        <a href="<?php echo $website_url ?>/#" title="WATCH VIDEO">
                         <button class="btn" title="WATCH VIDEO">PLAY VIDEO</button></a>
                     </div>
                 </div>
 
                 <div class="content-div image-video-div">
                     <div class="video-btn">
-                        <img src="<?php echo $website_url?>/all-images/body-pix/play.gif" alt="literature"/>
+                        <img src="<?php echo $website_url?>/all-images/body-pix/play.png" alt="motion"/>
                     </div>
                 </div>
 
                 <div class="content-div topic-details-div">
                     <div class="inner-topic-details-div" data-aos="zoom-in" data-aos-duration="900">
-                        <div class="img-div">
+                        <div class="icons-div">
                             <i class="bi-camera-reels"></i>
                         </div>
 
                         <div class="text-div">
-                            <h3>00:05:30</h3>
                             Durations
+                            <h3>00:05:30</h3>                          
                         </div>               
                     </div>
 
                     <div class="inner-topic-details-div" data-aos="zoom-in" data-aos-duration="900">
-                        <div class="img-div">
+                        <div class="icons-div">
                         <i class="bi-camera-video"></i>
                         </div>
 
                         <div class="text-div">
-                            <h3>1st Series</h3>
-                            Series
+                        Volume
+                            <h3>Volume 1</h3>                          
                         </div>
                     </div>
 
                     <div class="inner-topic-details-div" data-aos="zoom-in" data-aos-duration="900">
-                        <div class="img-div">
+                        <div class="icons-div">
                         <i class="bi-credit-card"></i>
                         </div>
                         
                         <div class="text-div">
-                            <h3>#2,000:00</h3>
                             Pricing
+                            <h3>Free</h3>                         
                         </div>
                     </div>
 
                     <div class="inner-topic-details-div" data-aos="zoom-in" data-aos-duration="900">
-                        <div class="img-div">
+                        <div class="icons-div">
                         <i class="bi-clock-history"></i>
                         </div>
                         
                         <div class="text-div">
-                            <h3>12:10:50</h3>
                             Updated Time
+                            <h3>12:10:50</h3>                         
                         </div>
                     </div>
                 </div>
@@ -732,19 +729,132 @@
     <br clear="all">
 
     <section class="body-div">
-        <div class="body-div-in categories-back-div">
+        <div class="body-div-in categories-back-div blog-back-div">
             <div class="title-div" data-aos="zoom-in" data-aos-duration="1000">
                 <p>--Blog Post--</p>
                 <h3>Our Latest Blog</h3>
             </div> 
 
-            <div class="blog-div">
-                
+            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+                <div class="image-div">
+                    <img src="<?php echo $website_url?>/all-images/body-pix/blog1.webp" alt="blog"/>
+                </div>
+
+                <div class="text-div">
+                    <a href="<?php echo $website_url ?>/#" title="">
+                    <h3>Group Of Students Sharing Their Ideas</h3></a>
+                    <p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
+                    <div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
+                </div>
+            </div> 
+
+            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+                <div class="image-div">            
+                    <img src="<?php echo $website_url?>/all-images/body-pix/blog2.jpg" alt="blog"/>
+                </div>
+
+                <div class="text-div">
+                    <a href="<?php echo $website_url ?>/#" title="">
+                    <h3>Creative Class Library For Students</h3></a>
+                    <p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
+                    <div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
+                </div>
+            </div> 
+
+            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+                <div class="image-div">
+                    <img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
+                </div>
+
+                <div class="text-div">
+                    <a href="<?php echo $website_url ?>/#" title="">
+                    <h3>College Seminar “Leadership & Works”</h3></a>
+                    <p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
+                    <div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
+                </div>
             </div>     
         </div>	
         <br clear="all">
         <br clear="all">
     </section>
+
+    <section class="body-div faq-body">
+        <div class="body-div-in">
+            <div class="title-div" data-aos="zoom-in" data-aos-duration="1000">
+                <p>--Offline Support--</p>
+                <h3>Frequently Asked Questions</h3>
+            </div> 
+			<div class="faq-back-div" data-aos="fade-up" data-aos-duration="900">
+				<div class="faq-text-div">
+					<div class="faq-inner-div">
+						<div class="quest-faq-div active-faq" id="faq10">
+							<div class="faq-title-text" onclick="_collapse('faq243')">
+							 	<h2>Who We Are</h2>
+								<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
+							</div>
+
+							<div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">
+								<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
+							</div>
+						</div>	
+
+						<div class="quest-faq-div active-faq" id="faq244">
+							<div class="faq-title-text" onclick="_collapse('faq244')">
+							 	<h2>How Do I Subcribe For A Video?</h2>
+								<div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
+							
+							</div>
+							<div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
+                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
+							</div>
+
+						</div>
+
+						<div class="quest-faq-div active-faq" id="faq246">
+							<div class="faq-title-text" onclick="_collapse('faq246')">
+							 	<h2>Are we affordable for your courses?</h2>
+								<div class="expand-div" id="faq246num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
+							</div>
+
+							<div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
+                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+							</div>
+
+						</div>
+
+                        <div class="quest-faq-div active-faq" id="faq247">
+							<div class="faq-title-text" onclick="_collapse('faq247')">
+                                <h2>How much is video per series?</h2>
+								<div class="expand-div" id="faq247num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
+							</div>
+
+							<div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
+                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+							</div>
+
+						</div>
+
+                        <div class="quest-faq-div active-faq" id="faq248">
+							<div class="faq-title-text" onclick="_collapse('faq248')">
+							 	<h2>Are we affordable for your courses?</h2>
+								<div class="expand-div" id="faq248num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
+							</div>
+
+							<div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
+                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+							</div>
+
+						</div>
+					</div>
+					<button class="btn" title=" Book Now">READ MORE</i></button>
+				</div>	
+			</div>
+		</div>
+        <br clear="all">
+        <br clear="all">
+	</section>
+    <br clear="all">
+    <br clear="all">
     <?php include 'footer.php'?>
 </div>
 

@@ -1,6 +1,27 @@
 <?php  include 'alert.php'?>
 
-<header class="animated fadeInDown animated">   
+<header class="animated fadeInDown animated"> 
+    <div class="header-top-div">
+        <div class="div-in">
+            <div class="contact"><i class="bi-envelope"></i> alwaysonlineclasses@gmail.com</div>
+                <div class="contact"><i class="bi-telephone"></i> +234 808 353 3750</div>
+
+                <ul>
+                    <a href="#" target="_blank" title="linkedin">
+                    <li class="li"><i class="bi-linkedin"></i></li></a>
+                    <a href="#" target="_blank" title="instagram">
+                    <li class="li"><i class="bi-instagram"></i></li></a>
+                    <a href="#" target="_blank" title="facebook">
+                    <li class="li"><i class="bi-facebook"></i></li></a>
+                    <a href="#" target="_blank" title="Whatsapp">
+                    <li><i class="bi-whatsapp"></i></li></a>
+                    <a href="#" title="Call Customer Care">
+                    <li><i class="bi-telephone"></i></li></a>
+                </ul>
+            </div>
+        </div>   
+    </div>  
+    
     <div class="header-div-in">
         <div class="inner-div">
             <div class="logo-div">

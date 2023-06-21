@@ -4,11 +4,11 @@
     
     <div class="fill-form-div animated fadeIn" id="view_login">
 
-        <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS: <span>*</span></div> 
+        <div class="title-div"> EMAIL ADDRESS: <span>*</span></div> 
         <input type="email" class="text-field" placeholder="ENTER YOUR EMAIL ADDRESS" id="email" />
 
 
-        <div class="title-div"><i class="bi-lock"></i> PASSWORD: <span>*</span></div> 
+        <div class="title-div"> PASSWORD: <span>*</span></div> 
         <input type="password" class="text-field" placeholder="ENTER YOUR PASSWORD" id="password" /><br/>
         <i class="bi-eye bi-field" id="hide" onclick="myFunction()"></i>
 
@@ -28,7 +28,7 @@
         <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS: <span>*</span></div> 
         <input type="email" id="reset_pass_email" class="text-field" placeholder="ENTER YOUR EMAIL ADDRESS" />
     
-        <button class="btn" type="button" id="reset_password_btn" onclick="_proceed_reset_password()"> PROCEED <i class="bi-arrow-right"></i></button>
+        <button class="btn" type="button" id="reset_password_btn" onclick="_proceed_reset_password();"> PROCEED <i class="bi-arrow-right"></i></button>
         
         <div class="notification-div login-footer-div">
            Have you already have an account? <span class="footer-in"  id="flogin" onclick="_next_page('view_login','flogin');">Log-In</span>
@@ -76,7 +76,7 @@
 <?php if($page=='signup'){?>
     <div class="overlay-off-div">
     <div class="slide-back-div sb-container animated fadeInUp">
-             <div class="header-top"><h1>SIGN-UP</h1> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
+             <div class="header-top"><h2>SIGN-UP</h2> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
 
             <div class="slide-in ">
 
