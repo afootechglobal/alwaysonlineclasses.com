@@ -33,10 +33,6 @@ $(document).ready(function() {
 
 
 
-<!-- Go to www.addthis.com/dashboard to customize your tools--> 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5930550f7bd6701f"></script>
-
-
 <div class="media-link-div">
     <a href="tel:+14154944044" title="Call Customer Care">
     <li style="background:#008040;"><i class="bi-telephone-outbound-fill"></i></li></a>
@@ -49,3 +45,5 @@ $(document).ready(function() {
     <a href="https://api.whatsapp.com/send?text=Hello CityOne Limo&amp;phone=+14158699686" target="_blank" title="Whatsapp">
       <li style="background:#25D366;"><i class="bi-whatsapp"></i></li></a>
 </div>
+
+

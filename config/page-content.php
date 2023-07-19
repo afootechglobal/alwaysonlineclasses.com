@@ -1,6 +1,7 @@
 <script type="text/javascript" src="js/scrollBar.js"></script>
 <script type="text/javascript">$(".sb-container").scrollBox();</script>
-<?php if($page=='login'){?>
+
+<?php if ($page=='login'){?>
     
     <div class="fill-form-div animated fadeIn" id="view_login">
 
@@ -9,8 +10,8 @@
 
 
         <div class="title-div"> PASSWORD: <span>*</span></div> 
-        <input type="password" class="text-field" placeholder="ENTER YOUR PASSWORD" id="password" /><br/>
-        <i class="bi-eye bi-field" id="hide" onclick="myFunction()"></i>
+        <input type="password" class="text-field pass-text-field" placeholder="ENTER YOUR PASSWORD" id="password" /><br/>
+      
 
         <span class="title-in"> <input type="checkbox"/> Keep me login</span>
         <span class="title-in reset-password" id="reset" onclick="_next_page('reset_password_info','reset');">Forgot Password? </span>
@@ -69,7 +70,7 @@
         //     });
 
     </script>
-<?php }?>
+<?php } ?>
 
 
 
@@ -194,3 +195,5 @@
         </div>
     </div> 
 <?php }?>
+
+

@@ -13,14 +13,22 @@ function _collapse(div_id){
 	$('#'+div_id+'answer').slideToggle('slow');
 }
 
+
 $(window).scroll(function() { 
   var scrollheight = $(window).scrollTop();
   	if (scrollheight >= 100) {
+		$("header").css("background", "#fff");
 		$("#back2Top").fadeIn(1000);
 	} else {
 		$('#back2Top').fadeOut(1000);
 	}
+	if (scrollheight >= 400) {
+		$("header").css("position", "fixed");
+	} else {
+		$("header").css("position", "absolute");
+	}
 });
+
 
 function _back_to_top(){
 		event.preventDefault();
@@ -45,10 +53,11 @@ function _close_side_nav(){
 
 
 function _next_page(next_id,divid) {
-	$('#view_login,#reset_password_info,#confirm_password_info').hide();
+	$('#view_login,#reset_password_info').hide();
 	 $('#'+next_id).fadeIn(1000);
 	$('#page-title').html($('#'+ divid).html());
  }
+
 
  function _alert_close(){
 	$('#get-more-div').fadeOut(300);
@@ -65,12 +74,10 @@ function _next_page(next_id,divid) {
 	}
 }
 
-// function _get_active_link(divid){
-// 	$('#signup, #login').removeClass('active-li');
-// 	$('#fsignup, #flogin').removeClass('active-li');
-// 	$('#'+divid).addClass('active-li');
-// 	$('#f'+divid).addClass('active-li');
-// }
+
+function _open_li(ids){
+	$('#'+ids+'-sub-li').toggle('slow');
+}
 
 function _get_page(page){
 	   $('#get-more-div').html('<div class="ajax-loader"><img src="'+website_url+'/all-images/images/ajax-loader.gif"/></div>').fadeIn('fast');
@@ -87,6 +94,27 @@ function _get_page(page){
 	});
  }
 
+ function _get_form(page){
+	$('#get-more-div').html('<div class="ajax-loader"><img src="'+website_url+'/all-images/images/ajax-loader.gif"/></div>').fadeIn('fast');
+		var action='get-form';
+		var dataString ='action='+ action+'&page='+ page;
+		$.ajax({
+		type: "POST",
+		url: index_local_url,
+		data: dataString,
+		cache: false,
+		success: function(html){$('#get-more-div').html(html);}
+		});
+}
+
+ function _switch_cookies(id){
+	var x = document.getElementById(id);
+	  if (x.innerHTML === '<img src="'+website_url+'/all-images/images/switch-off.jpg">') {
+		x.innerHTML = '<img src="'+website_url+'/all-images/images/switch-on.jpg">';
+	  }else{
+		x.innerHTML = '<img src="'+website_url+'/all-images/images/switch-off.jpg">';
+	  }
+}
 
 
 

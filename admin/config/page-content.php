@@ -4,14 +4,15 @@
     
     <div class="fill-form-div animated fadeIn" id="view_login">
 
-        <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS: <span>*</span></div> 
+        <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS:<span>*</span></div> 
         <input type="email" class="text-field" placeholder="ENTER YOUR EMAIL ADDRESS" id="email" />
 
         <div class="title-div"><i class="bi-lock"></i> PASSWORD: <span>*</span></div> 
         <input type="password" class="text-field" placeholder="ENTER YOUR PASSWORD" id="password" /><br/>
 
-        <span class="title-in"> <input type="checkbox"/> Keep me login</span>
-        <button class="btn" type="button" id="login_btn" onclick="_log_in();"><i class="bi-check"></i> Log-In</button> 
+        <span class="title-in"> <input type="checkbox"/>Keep me login</span>
+        <a href="<?php echo $website_url ?>/admin/a">
+        <button class="btn" type="button" id="login_btn" onclick="_log_in();"><i class="bi-check"></i> Log-In</button></a> 
 
         <div class="notification-div footer-div">
         Forget Password? <span class="footer-in" id="reset" onclick="_next_page('reset_password_info','reset');">RESET PASSWORD</span>

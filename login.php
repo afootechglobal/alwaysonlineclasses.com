@@ -34,7 +34,9 @@
                 </div>
 
                 <div class="log-in-div">
-                    <div class="form-div animated fadeInRightss" >
+                    <div class="form-div animated fadeInRight">
+                    <a href="<?php echo $website_url ?>"><div class="logo-div"><img src="<?php echo $images_pix_url?>/logo.png" alt=""></div></a>
+                    <br clear="all"/>
                             <ul class="form-header">
                                 <h1 id="page-title">Log-In</h1>
                             </ul>

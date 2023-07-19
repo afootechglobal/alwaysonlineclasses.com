@@ -96,16 +96,54 @@
 
 <div class="index-menu-back-div"> 
 
-   <div class="div">
-    <a href="<?php echo $website_url;?>" title="Home Page">
-      <li <?php if ($page=='index.php') {?> id="active-li"<?php }?>><i class="bi-house"></i> Home Page</li></a>
+    <div class="div">
+        <a href="<?php echo $website_url;?>" title="Home Page">
+        <li <?php if ($page=='index.php') {?> id="active-li"<?php }?>><i class="bi-house"></i> Home page</li></a>
     </div>
         
     <div class="div">
-    <li onclick="_open_li('services')"><i class="bi-activity"></i> Other Links <i class="bi-plus" id="side-expand"></i></li>
-    <div class="sub-li" id="services-sub-li">
-                <li>Sub Links</li></a>
+        <a href="<?php echo $website_url ?>/about" title="About Us">
+        <li <?php if ($page=='about.php') {?> id="active-li"<?php }?>><i class="bi-building-check"></i> About</li></a>
     </div>
+    
+    <div class="div">
+        <li onclick="_open_li('exams')"><i class="bi-activity"></i> Exams Categories <i class="bi-plus" id="side-expand"></i></li>
+        <div class="sub-li" id="exams-sub-li">
+            <a href="<?php echo $website_url ?>/exams/waec" title="WAEC">
+            <li>WAEC</li></a>
+            <a href="<?php echo $website_url ?>/exams/neco" title="NECO">
+            <li>NECO</li></a>
+            <a href="<?php echo $website_url ?>/exams/jamb" title="JAMB">
+            <li>JAMB</li></a>
+            <a href="<?php echo $website_url ?>/exams/utme" title="UTME">
+            <li>UTME</li></a>
+            <a href="<?php echo $website_url ?>/exams/putme" title="PUTME">
+            <li>PUTME</li></a>
+            <a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB">
+            <li>IJMB</li></a>
+            <a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB">
+            <li>JUPEB</li></a>
+        </div>
+    </div>
+
+    <div class="div">
+        <a href="<?php echo $website_url;?>/blog" title="Blog">
+        <li <?php if ($page=='blog/index.php') {?> id="active-li"<?php }?>><i class="bi-building"></i> Blog</li></a>
+    </div>
+
+    <div class="div">
+        <a href="<?php echo $website_url;?>/faq" title="FAQ">
+        <li <?php if ($page=='faq.php') {?> id="active-li"<?php }?>><i class="bi-question-circle"></i> FAQ's</li></a>
+    </div>
+
+    <div class="div">
+        <a href="<?php echo $website_url;?>/contact" title="Contact Us">
+        <li <?php if ($page=='contact.php') {?> id="active-li"<?php }?>><i class="bi-person-lines-fill"></i> Contact Us</li></a>
+    </div>
+
+    <div class="div">
+        <a href="<?php echo $website_url;?>/login" title="Sign Up/Login">
+        <li <?php if ($page=='login.php') {?> id="active-li"<?php }?>><i class="bi-box-arrow-in-right"></i> Sign Up/Login</li></a>
     </div>
     
     <div class="menu-title" style="height:100px;"> &nbsp;</div>

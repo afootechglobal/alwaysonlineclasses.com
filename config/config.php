@@ -13,6 +13,7 @@ $thename='alwaysonlineclasses.com';
 $website_auto_url =(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $website_url='http://localhost/alwaysonlineclasses.com';
 //$website_url='https://alwaysonlineclasses.com';
+//$website_url='http://192.168.43.51/alwaysonlineclasses.com';
 
 
 $body_pix_url=$website_url.'/all-images/body-pix';
@@ -32,6 +33,7 @@ $plugin_pix_url=$website_url.'/all-images/plugin';
 
 	
 	var website_url="http://localhost/alwaysonlineclasses.com"; /// website url
+	//var $website_url='http:/192.168.43.51/alwaysonlineclasses.com';
 
 	var admin_local_url=website_url+"/admin/config/code" /// admin url
 

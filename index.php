@@ -151,7 +151,7 @@
 
 
 
-<div class="index-content-div">
+<section class="index-content-div">
     <section class="body-div">
         <div class="body-div-in categories-back-div">
             <div class="title-div" data-aos="zoom-in" data-aos-duration="1000">
@@ -164,16 +164,30 @@
                         <div class="cg-carousel__track js-carousel__track" style="calc(33.3333% - 13.3333px); gap: 20px; left: calc(-100% - 20px);">
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                                
                                 <div class="categories-div">
+                                <a href="<?php echo $website_url ?>/exams/waec" title="WAEC EXAM">
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>WAEC EXAM</h3>
-                                    </div>
-                                </div>                       
+                                    </div></a> 
+                                </div>                      
                             </div> 
+
+                            <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                                <div class="categories-div">
+                                    <div class="image-div">
+                                        <img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
+                                    </div>
+
+                                    <div class="text-div">
+                                        <h3>NECO EXAM</h3>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 <div class="categories-div">
@@ -182,7 +196,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>UTME EXAM</h3>
+                                        <h3>JAMB EXAM</h3>
                                     </div>
                                 </div>
                             </div>
@@ -218,22 +232,10 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>PUTME EXAM</h3>
+                                        <h3>UTME EXAM</h3>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
-                                <div class="categories-div">
-                                    <div class="image-div">
-                                        <img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
-                                    </div>
-
-                                    <div class="text-div">
-                                        <h3>NECO EXAM</h3>
-                                    </div>
-                                </div>                       
-                            </div> 
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 <div class="categories-div">
@@ -242,10 +244,10 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>UTME EXAM</h3>
+                                        <h3>PUTME EXAM</h3>
                                     </div>
-                                </div>
-                            </div>
+                                </div>                       
+                            </div> 
                         
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 <div class="categories-div">
@@ -275,7 +277,7 @@
             smartSpeed:650,         
             autoplay:true,      
             breakpoints: {
-		768: {
+		450: {
 		slidesPerView: 2,
 		},
         1230: {
@@ -297,8 +299,8 @@
     </script>
           
         </div>	
-        <br clear="all">
-        <br clear="all">
+        <br clear="all"/>
+        <br clear="all"/>
     </section>
 
     <section class="body-div">
@@ -328,8 +330,9 @@
                                     <div class="text-div">
                                         <h3>MATHEMATICS</h3> 
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 599</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 599</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/mathematics/" title="Mathematics">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>                               
                                 </div>                       
                             </div> 
@@ -349,8 +352,9 @@
                                     <div class="text-div">
                                         <h3>USE OF ENGLISH</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/english/" title="english">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -370,8 +374,9 @@
                                     <div class="text-div">
                                         <h3>CHEMISTRY</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/chemistry/" title="chemistry">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -391,8 +396,9 @@
                                     <div class="text-div">
                                         <h3>PHYSICS</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/physics/" title="physics">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -412,8 +418,9 @@
                                     <div class="text-div">
                                         <h3>ACCOUNTING</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/accounting/" title="accounting">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -433,8 +440,9 @@
                                     <div class="text-div">
                                         <h3>ECONOMICS</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/economics/" title="economics">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -454,8 +462,9 @@
                                     <div class="text-div">
                                         <h3>BIOLOGY</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/biology/" title="biology">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -475,8 +484,9 @@
                                     <div class="text-div">
                                         <h3>AGRICULTURE</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/agric/" title="agric">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -496,8 +506,9 @@
                                     <div class="text-div">
                                         <h3>GEOGRAPHY</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/geography/" title="geography">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -517,8 +528,9 @@
                                     <div class="text-div">
                                         <h3>COMMERCE</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/commerce/" title="commerce">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -538,8 +550,9 @@
                                     <div class="text-div">
                                         <h3>GOVERNMENT</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/government/" title="government">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -548,7 +561,7 @@
                                 <div class="subject-div">
                                     <div class="image-div">
                                         <div class="img-in">
-                                            <img src="<?php echo $website_url?>/all-images/body-pix/christian.jpg" alt="government"/>
+                                            <img src="<?php echo $website_url?>/all-images/body-pix/christian.jpg" alt="christian"/>
                                         </div>
                                     </div>
 
@@ -559,8 +572,9 @@
                                     <div class="text-div">
                                         <h3>CHRISTIAN RELIGIOUS STUDIES</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/christian-religious-knowledge/" title="christian">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -569,7 +583,7 @@
                                 <div class="subject-div">
                                     <div class="image-div">
                                         <div class="img-in">
-                                            <img src="<?php echo $website_url?>/all-images/body-pix/islamic.jpg" alt="government"/>
+                                            <img src="<?php echo $website_url?>/all-images/body-pix/islamic.jpg" alt="islamic"/>
                                         </div>
                                     </div>
 
@@ -580,8 +594,9 @@
                                     <div class="text-div">
                                         <h3>ISLAMIC RELIGIOUS STUDIES</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/islamic-religious-knowledge/" title="islamic">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -601,8 +616,9 @@
                                     <div class="text-div">
                                         <h3>LITERATURE IN ENGLISH</h3>
                                         <hr></hr>
-                                        <P class="text"><i class="bi-book"></i> Sub-Topics: 20</P>
-                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button>
+                                        <P class="text"><i class="bi-book"></i> Topics: 20</P>
+                                        <a href="<?php echo $website_url ?>/exams/waec/literature-in-english/" title="literature">
+                                        <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
                             </div>
@@ -649,14 +665,22 @@
     </script>
           
         </div>	
-        <br clear="all">
-        <br clear="all">
+        <br clear="all"/>
+        <br clear="all"/>
     </section>
 
     <section class="body-div topics-body-div">
         <div class="body-div-in topics-body-div-in">
-           <div class="topics-back-div">
-                <div class="content-div" data-aos="fade-up" data-aos-duration="900">
+            <div class="topics-back-div">
+                <div class="image-video-div" data-aos="fade-up" data-aos-duration="1200">
+                    <video autoplay="" muted="" loop="" class="video-slide">
+                        <source src="<?php echo $website_url?>/all-images/images/video.mp4" type="video/mp4">
+                    </video>
+                    
+                    
+                </div>
+
+                <div class="content-div" data-aos="fade-up" data-aos-duration="1200">
                     <div class="div-in">
                         <h1><span>MOTION</span></h1>
                         <h3>Introduction To Motion</h3>
@@ -671,11 +695,7 @@
                     </div>
                 </div>
 
-                <div class="content-div image-video-div">
-                    <div class="video-btn">
-                        <img src="<?php echo $website_url?>/all-images/body-pix/play.png" alt="motion"/>
-                    </div>
-                </div>
+                
 
                 <div class="content-div topic-details-div">
                     <div class="inner-topic-details-div" data-aos="zoom-in" data-aos-duration="900">
@@ -684,7 +704,7 @@
                         </div>
 
                         <div class="text-div">
-                            Durations
+                            Duration
                             <h3>00:05:30</h3>                          
                         </div>               
                     </div>
@@ -725,13 +745,13 @@
            </div>
         </div>
     </section>
-    <br clear="all">
-    <br clear="all">
+    <br clear="all"/>
+    <br clear="all"/>
 
     <section class="body-div">
         <div class="body-div-in categories-back-div blog-back-div">
             <div class="title-div" data-aos="zoom-in" data-aos-duration="1000">
-                <p>--Blog Post--</p>
+                <p>--Latest Insight--</p>
                 <h3>Our Latest Blog</h3>
             </div> 
 
@@ -741,7 +761,7 @@
                 </div>
 
                 <div class="text-div">
-                    <a href="<?php echo $website_url ?>/#" title="">
+                    <a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
                     <h3>Group Of Students Sharing Their Ideas</h3></a>
                     <p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
                     <div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
@@ -754,7 +774,7 @@
                 </div>
 
                 <div class="text-div">
-                    <a href="<?php echo $website_url ?>/#" title="">
+                    <a href="<?php echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
                     <h3>Creative Class Library For Students</h3></a>
                     <p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
                     <div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
@@ -774,16 +794,18 @@
                 </div>
             </div>     
         </div>	
-        <br clear="all">
-        <br clear="all">
+        <br clear="all"/>
+        <br clear="all"/>
     </section>
 
     <section class="body-div faq-body">
         <div class="body-div-in">
+            <br clear="all"/>
             <div class="title-div" data-aos="zoom-in" data-aos-duration="1000">
                 <p>--Offline Support--</p>
                 <h3>Frequently Asked Questions</h3>
             </div> 
+            
 			<div class="faq-back-div" data-aos="fade-up" data-aos-duration="900">
 				<div class="faq-text-div">
 					<div class="faq-inner-div">
@@ -846,17 +868,19 @@
 
 						</div>
 					</div>
-					<button class="btn" title=" Book Now">READ MORE</i></button>
+                    <a href="<?php echo $website_url ?>/faq" title="Frequently Asked Questions">
+					<button class="btn" title="Frequently Asked Questions">READ MORE</i></button></a>
 				</div>	
 			</div>
 		</div>
-        <br clear="all">
-        <br clear="all">
+        <br clear="all"/>
+        <br clear="all"/>
 	</section>
-    <br clear="all">
-    <br clear="all">
+    <br clear="all"/>
+    <br clear="all"/>
     <?php include 'footer.php'?>
-</div>
+</section>
+
 
 
 <?php include 'bottom-scripts.php'?>

@@ -1,7 +1,7 @@
 
 
 function _next_page(next_id,divid) {
-	$('#view_login,#reset_password_info,#confirm_password_info').hide();
+	$('#view_login,#reset_password_info').hide();
 	 $('#'+next_id).fadeIn(1000);
 	$('#page-title').html($('#'+ divid).html());
  }

@@ -23,6 +23,26 @@
 }
 
 
+@media all and (max-width:1015px) {
+
+	.login-section .div-in{
+		width: 80vw;
+    margin: auto auto auto 7vw;
+	}
+
+}	
+
+
+@media all and (max-width:1015px) {
+
+	.login-section .div-in{
+		width: 80vw;
+    margin: auto auto auto 7vw;
+	}
+
+}	
+
+
 
 
 
@@ -38,8 +58,8 @@
 
 .div-in .log-in-div .form-div .logo-div{
     width: 200px;
-    margin: 0px auto 10px auto;
     padding: 10px;
+    float: left;
 }
 
 
@@ -263,6 +283,28 @@ background-color: var(--white-color);
 } 
 
 
+@media all and (max-width:900px) {
+
+	.div-in .side-in-div{
+		display: none;
+	}
+
+  .login-section .div-in{
+		width: 90vw;
+    margin: auto;
+	}
+
+  .div-in .log-in-div{
+		width: 100%;
+    
+	}
+  .div-in .log-in-div .form-div{
+    padding: 5% 10%;
+  }
+
+}	
+
+
 
 
 
@@ -338,3 +380,11 @@ background-color: var(--white-color);
   padding: 60px 0px 30px 0px;
 }
 
+
+@media all and (max-width:600px) {
+
+	.overlay-off-div .slide-back-div{
+		width: 90vw;
+	}
+
+}	

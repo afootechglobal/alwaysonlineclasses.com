@@ -1,9 +1,8 @@
 
 <div class="index-content-div footer-content-div">
 
-    <section class="footer-section">
-        <footer>           
-                                             
+    <footer>           
+        <div class="footer-div-in">                         
             <div class="newsletter-back-div" data-aos="fade-up" data-aos-duration="1800">                        
                 <div class="div-in">
                     <div class="inner-div">
@@ -17,16 +16,15 @@
                         </div>
                         <button class="btn" title="Subscribe">SUBSCRIBE</button>
                     </div>
-                </div>
-                        
+                </div>                      
             </div>
-            <br clear="all">
-            <br clear="all"> 
+            <br clear="all"/>
+            <br clear="all"/>
 
             <div class="segment-back-div">
                 <div class="segment-div" data-aos="fade-up" data-aos-duration="1200">
                     <div class="logo-div">
-                        <a href="<?php echo $website_url ?>"><img src="<?php echo $website_url?>/all-images/images/logo2.jpg" alt="<?php echo $thename?> Logo"  class="animated zoomIn"/></a> 
+                        <a href="<?php echo $website_url ?>"><img src="<?php echo $website_url?>/all-images/images/logo.png" alt="<?php echo $thename?> Logo"  class="animated zoomIn"/></a> 
                     </div>
                     <p>There are many variations of passages of lorem ipsum available but Sign up to recieve the best offers on promotion...</p>  
                     
@@ -41,14 +39,14 @@
                 <div class="segment-div service-div" data-aos="fade-up" data-aos-duration="1200">
                     <h3>Quick Link</h3>
                     <ul>                     
-                        <a href="<?php echo $website_url?>/#" title="About Us">
+                        <a href="<?php echo $website_url?>/about" title="About Us">
                         <li><i class="bi-caret-right"></i>About Us</li></a>                       
-                        <a href="<?php echo $website_url?>#" title="Contact Us">
+                        <a href="<?php echo $website_url?>/contact" title="Contact Us">
                         <li><i class="bi-caret-right"></i>Contact Us</li></a>
-                        <a href="<?php echo $website_url?>#" title="Latest Blog">
+                        <a href="<?php echo $website_url?>/blog" title="Latest Blog">
                         <li><i class="bi-caret-right"></i>Latest Blog</li></a>
-                        <a href="<?php echo $website_url?>/#" title="Careers">
-                        <li><i class="bi-caret-right"></i>Careers</li></a>
+                        <a href="<?php echo $website_url?>/exams" title="Careers">
+                        <li><i class="bi-caret-right"></i>Exams</li></a>
                         <a href="#" title="Cookies Policy">   
                         <li><i class="bi-caret-right"></i>Cookies Policy</li></a>                                                                           
                     </ul>
@@ -57,15 +55,17 @@
                 <div class="segment-div service-div" data-aos="fade-up" data-aos-duration="1200">
                     <h3>Our Services</h3>
                     <ul>                     
-                        <a href="<?php echo $website_url?>/#" title="SSCE Exam">
-                        <li><i class="bi-caret-right"></i>SSCE Exam</li></a>
-                        <a href="#" title="UTME Exam">
+                        <a href="<?php echo $website_url?>/exams/waec" title="WAEC Exam">
+                        <li><i class="bi-caret-right"></i>WAEC Exam</li></a>
+                        <a href="<?php echo $website_url?>/exams/neco" title="NECO Exam">
+                        <li><i class="bi-caret-right"></i>NECO Exam</li></a>
+                        <a href="<?php echo $website_url?>/exams/utme" title="UTME Exam">
                         <li><i class="bi-caret-right"></i>UTME Exam</li></a>                 
-                        <a href="#" title="PUTME Exam">
+                        <a href="<?php echo $website_url?>/exams/putme" title="PUTME Exam">
                         <li><i class="bi-caret-right"></i>PUTME Exam</li></a>
-                        <a href="#" title="JUPEB Exam">
+                        <a href="<?php echo $website_url?>/exams/jupeb" title="JUPEB Exam">
                         <li><i class="bi-caret-right"></i>JUPEB Exam</li></a>
-                        <a href="#" title="IJMB Exam">
+                        <a href="<?php echo $website_url?>/exams/ijmb" title="IJMB Exam">
                         <li><i class="bi-caret-right"></i>IJMB Exam</li></a>                            
                     </ul>
                 </div>
@@ -106,26 +106,16 @@
                     </div>
                 </div>     
             </div>            
-           
+            
 
-            <div class="footer-bottom-div">
-                <div class="div-in">
-                    <div class="back-bottom-div">
-                        <div class="footer-bottom-inner-div">
-                            <span> © 2022 - 2023 Always Online Classes. All Rights Reserved.</span><br/>
-                        </div> 
 
-                        <div class="footer-bottom-inner-div">
-                            Developed By: <span class="text">AfooTECH IT Solution</span>
-                        </div>
+            <div class="copyright-div">
+            	<div class="text">© 2022 - 2023 Always Online Classes. All Rights Reserved. <br>Developed By: <span>AfooTECH IT Solution</span></div>
+                
+                <div class="text privacy-div"><span>Terms & Condition | Privacy Policy</span></div>
+            </div>
 
-                        <div class="footer-bottom-inner-div">
-                            <span>Terms & Condition | Privacy Policy</span>
-                        </div>
-                    </div>       
-                </div>  
-            </div> 
+        </div> 
                     
-        </footer>
-    </section>
+    </footer>
 </div> 
