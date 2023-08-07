@@ -501,52 +501,67 @@ transition:all 0.2s ease-in 0.2s;
 }
 
 /*--------------------------------------------------------------------------------------------------*/
-.success-div, #not-success-div, #warning-div{
-	width:300px;
-	height:50px;
-	padding-top:10px;
-	position:fixed;
-	right:0px;
-	top:100px;
-	z-index:1000;
-	font-size:14px;
-	color:#FFF;
-	cursor:pointer;
-	display:none;
-}
-.success-div div, #not-success-div div, #warning-div div{
-	background:rgba(255,255,255,.8);
-	text-align:center;
-	width:60px;
-	height:50px;
-	font-size:40px;
-	float:left;
-	padding-top:10px;
-	margin-right:5px;
-	margin-top:-10px;
-}
-.success-div span, #not-success-div span, #warning-div span{
-	font-size:12px;
-}
-#success-div{
-	background:rgba(0,202,101,1);
-}
-#success-div div{
-	color:rgba(0,202,101,1);
-}
-#not-success-div{
-	background: rgba(255,0,0,1);
-}
-#not-success-div div{
-	color:rgba(255,0,0,1);
-}
-#warning-div{
-	background: rgba(255,128,0,1);
-}
-#warning-div div{
-	color:rgba(255,128,0,1);
-}
 
+/* ALERT CSS */
+
+#success-div{
+    background: #33CC99 ;opacity: .9;
+    }
+    
+    #warning-div{
+    background: rgba(252, 148, 30, 0.822);
+    }
+    
+    #invalid-div{
+    background: hsla(0, 57%, 42%, 0.774);opacity: .85;
+    }
+    
+    .alert-div {
+    margin-top: 85px;
+    height: 70px;
+    width: 300px;
+    z-index: 1000;
+    font-size: 12px;
+    float: right;
+    position: fixed;
+    margin-left: calc(100% - 330px);
+    color: #fff;
+    padding: 5px 10px 5px 5px;
+    display: none;
+    }
+    
+    .alert-div .alert-logo{
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin-top:5px;
+    margin-right: 10px;
+    background: #fff;
+    border-radius: 100%;
+    text-align: center;
+    }
+    
+    .alert-div h3{
+    padding-top: 10px;
+    margin: 0px;
+	font-family: body-font;
+    }
+    
+    .alert-div .alert-logo i{
+    margin-top: 13px;
+    font-size: 33px;
+    color: hsla(0, 100%, 40%, 0.774);
+    }
+    
+    
+    .alert-div .alert-logo img{
+    height: 60px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+    }
+    
+/* END ALERT CSS */
 /*--------------------------------------------------------------------------------------------------*/
 .alert{
 	border:rgba(231,107,46,.4) 1px solid;

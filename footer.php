@@ -3,7 +3,7 @@
 
     <footer>           
         <div class="footer-div-in">                         
-            <div class="newsletter-back-div" data-aos="fade-up" data-aos-duration="1800">                        
+            <div class="newsletter-back-div">                        
                 <div class="div-in">
                     <div class="inner-div">
                         <h2>Subsrcibe Our Newsletter !</h2>
@@ -22,7 +22,7 @@
             <br clear="all"/>
 
             <div class="segment-back-div">
-                <div class="segment-div" data-aos="fade-up" data-aos-duration="1200">
+                <div class="segment-div">
                     <div class="logo-div">
                         <a href="<?php echo $website_url ?>"><img src="<?php echo $website_url?>/all-images/images/logo.png" alt="<?php echo $thename?> Logo"  class="animated zoomIn"/></a> 
                     </div>
@@ -36,7 +36,7 @@
                 
                 </div>
 
-                <div class="segment-div service-div" data-aos="fade-up" data-aos-duration="1200">
+                <div class="segment-div service-div">
                     <h3>Quick Link</h3>
                     <ul>                     
                         <a href="<?php echo $website_url?>/about" title="About Us">
@@ -47,12 +47,12 @@
                         <li><i class="bi-caret-right"></i>Latest Blog</li></a>
                         <a href="<?php echo $website_url?>/exams" title="Careers">
                         <li><i class="bi-caret-right"></i>Exams</li></a>
-                        <a href="#" title="Cookies Policy">   
+                        <a href="<?php echo $website_url?>/#" title="Cookies Policy">   
                         <li><i class="bi-caret-right"></i>Cookies Policy</li></a>                                                                           
                     </ul>
                 </div>
 
-                <div class="segment-div service-div" data-aos="fade-up" data-aos-duration="1200">
+                <div class="segment-div service-div">
                     <h3>Our Services</h3>
                     <ul>                     
                         <a href="<?php echo $website_url?>/exams/waec" title="WAEC Exam">
@@ -70,7 +70,7 @@
                     </ul>
                 </div>
 
-                <div class="segment-div service-div" data-aos="fade-up" data-aos-duration="1200">
+                <div class="segment-div service-div">
                     <h3>Quick Contact</h3>
                     <div class="contact-back-div">
                         <div class="contact-icons">

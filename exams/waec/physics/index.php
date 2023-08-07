@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include '../../../meta.php'?>
-<title> Mathematics | <?php echo $thename?></title>
+<title> Physics | <?php echo $thename?></title>
 <meta name="keywords" content="<?php echo $thename?>, SSCE Online Classes, WAEC Online Classes, NECO Online Classes, NABTEB Online Classes, GCE Online Classes, Online education, Virtual learning, Remote learning, Digital classrooms, Online courses, E-learning, Distance education, Web-based classes, Internet-based learning, Continuous online education, LMS, Learning Management System" />
 <meta name="description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
@@ -30,13 +30,13 @@
 					<a href="<?php echo $website_url?>"><li>Home <i class="bi-caret-right-fill"></i></li></a>
 					<a href="<?php echo $website_url?>/exams"><li>Exams <i class="bi-caret-right-fill"></i></li></a>
 					<a href="<?php echo $website_url?>/exams/waec"><li>Waec <i class="bi-caret-right-fill"></i></li></a>
-					<a href="<?php echo $website_url?>/exams/waec/mathematics"><li>Mathematics</li></a>
+					<a href="<?php echo $website_url?>/exams/waec/mathematics"><li>Physics</li></a>
 				</ul>
 			</div>			
 		</div>
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
-    		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Mathematics</span></h1>
-			<p>Mathematics is a field of study that deals with the properties, relationships, and operations of numbers, quantities, shapes, and patterns etc... </p>
+    		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Physics</span></h1>
+			<p>Physics is a fundamental branch of science that seeks to understand the fundamental principles governing the behavior of the universe.</p>
 		</div>		
     </div>
 	
@@ -51,10 +51,9 @@
                 <div class="search-segment-div">
                     <select id="cat_id" class="text_field">
                         <option value="" selected="selected">All Topics Categories</option>
-                        <option value="">NUMBER & NUMERATION</option>
-                        <option value="">ALGEBRA</option>
-                        <option value="">GEOMETRICS AND TRYGONOMETRY</option>
-                        <option value="">STATISTICS</option>
+                        <option value="">MECHANICS</option>
+                        <option value="">WAVES, LIGHT AND OPTICS</option>
+                        <option value="">ELECTROSTATICS, ELECTRICITY, MAGNETISM & ELECTRONICS</option>               
                     </select>     
                 </div>
             
@@ -74,23 +73,37 @@
 							<div class="faq-inner-div  main-topics-inner-div">
 								<div class="quest-faq-div active-faq quest-topics-div" id="faq10">
 									<div class="faq-title-text">
-										<h2>NUMBER & NUMERATION</h2>
+										<h2>MECHANICS</h2>
 									</div>
 									
 									<div class="faq-answer-div faq-answer-display topics-answer-div" onclick="_collapse('faq243')">
-										<p>Sub-Topics  <i class="bi-chevron-down"></i> <span class="count">40</span></p> 
+										<p>Sub-Topics  <i class="bi-chevron-down"></i> <span class="count">9</span></p> 
 										<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
 									</div>
 						       
 									<div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">  
+										
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/base-number.webp" alt="base-number"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/motion.jpg" alt="motion"/>
 											</div>
 
 											<div class="text">
-												<h3>Number Bases</h3>
-												<p>Number bases, also known as numeral systems, are systems used to represent numbers. They provide a way to express the quantity of a number.</p>
+												<h3>Motion</h3>
+												<p>Motion is a fundamental concept in physics that describes the change in position of an object over time. </p>
+												<a href="<?php echo $website_url ?>/exams/waec/physics/motion" title="Number Bases">
+												<button class="topics-btn" title="Read More">Read More </button></a>
+											</div>
+										</div>
+
+										<div class="topics-content-div">
+											<div class="image-div">
+												<img src="<?php echo $website_url?>/all-images/body-pix/unit.jpg" alt="unit"/>
+											</div>
+
+											<div class="text">
+												<h3>Measurement, Units and Dimension </h3>
+												<p>Measurement, Units, and Dimensions are essential concepts in physics and other scientific disciplines.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -98,12 +111,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/fraction.jpg" alt="fraction"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/scalar.jpg" alt="scalar"/>
 											</div>
 
 											<div class="text">
-												<h3>Fractions, Decimals, Approximations and Percentages</h3>
-												<p>Fractions, decimals, approximations, and percentages are all ways to represent numbers or quantities.</p>
+												<h3>Scalars And Vectors</h3>
+												<p>Scalars and vectors are fundamental concepts in physics and mathematics that are used to describe quantities with magnitude and direction.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -111,12 +124,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/indices.jpg" alt="indices"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/gravitational.jpg" alt="gravitational"/>
 											</div>
 
 											<div class="text">
-												<h3>Indexes, Logrithms and Surds</h3>
-												<p>Indexes, logarithms, and surds are mathematical concepts that involve the manipulation and representation of numbers and their relationships.</p>
+												<h3>Gravitational Field</h3>
+												<p>The gravitational field is a fundamental concept in physics that describes the influence of mass on the space around it.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -124,12 +137,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/Polynomials.png" alt="Polynomials"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/work.jpg" alt="work"/>
 											</div>
 
 											<div class="text">
-												<h3>Polynomial</h3>
-												<p>A polynomial is a mathematical expression consisting of variables, coefficients, and exponents, combined using addition, subtraction, and multiplication operations.</p>
+												<h3>Work, Energy And Power</h3>
+												<p>Work, energy, and power are fundamental concepts in physics that describe the relationship between forces, motion, and the ability to do work.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -137,12 +150,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/Inequality.png" alt="Inequality"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/friction.jpg" alt="friction"/>
 											</div>
 
 											<div class="text">
-												<h3>Iniqualities</h3>
-												<p>Inequalities are mathematical expressions that describe a relationship between two values, indicating that one value is greater than, less than, or not equal to another value. </p>
+												<h3>Friction</h3>
+												<p>Friction is a force that opposes the relative motion or tendency of motion between two surfaces in contact.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -150,12 +163,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/progression.webp" alt="progression"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/machine.jpg" alt="machine"/>
 											</div>
 
 											<div class="text">
-												<h3>Progression</h3>
-												<p>A progression, in mathematics, refers to a sequence of numbers that follow a specific pattern or rule. Progressions are studied in various branches of mathematics, including algebra...</p>
+												<h3>Simple Machines</h3>
+												<p>Simple machines are basic mechanical devices that provide a mechanical advantage, allowing us to perform work more easily.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -163,12 +176,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/binary.jpg" alt="binary"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/Elasticity.webp" alt="Elasticity"/>
 											</div>
 
 											<div class="text">
-												<h3>Binary Operation</h3>
-												<p>A binary operation, in mathematics, is an operation that combines two elements to produce a third element. The term "binary" refers to the fact that the operation involves exactly...</p>
+												<h3>Elasticity</h3>
+												<p>Elasticity is a property of materials that describes their ability to deform when subjected to external forces and return to their original shape once the forces are removed.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -176,12 +189,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/matrics.jpg" alt="matrics"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/pressure.webp" alt="pressure"/>
 											</div>
 
 											<div class="text">
-												<h3>Matrics and Determinants</h3>
-												<p>Matrices and determinants are mathematical concepts used to represent and manipulate data and equations in various fields, such as linear algebra, physics, computer science....</p>
+												<h3>Pressure</h3>
+												<p>Pressure is a fundamental concept in physics and fluid mechanics that describes the force exerted on a surface per unit area.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -194,11 +207,11 @@
 							<div class="faq-inner-div  main-topics-inner-div">
 								<div class="quest-faq-div active-faq quest-topics-div" id="faq10">
 									<div class="faq-title-text">
-										<h2>GEOMETRIC AND TRYGONOMETRY</h2>
+										<h2>WAVES, LIGHT AND OPTICS</h2>
 									</div>
 									
 									<div class="faq-answer-div faq-answer-display topics-answer-div" onclick="_collapse('faq244')">
-										<p>Sub-Topics <i class="bi-chevron-down"></i> <span class="count">40</span></p> 
+										<p>Sub-Topics <i class="bi-chevron-down"></i> <span class="count">2</span></p> 
 										<div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                          
 									</div>
 						
@@ -206,12 +219,12 @@
 									
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/waves.webp" alt="waves"/>
 											</div>
 
 											<div class="text">
-												<h3>Euclidean Geometry</h3>
-												<p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+												<h3>Waves</h3>
+												<p>Waves are a fundamental concept in physics that describe the transfer of energy through a medium or empty space.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -219,12 +232,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/matrics.jpg" alt="matrics"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/propagation.webp" alt="propagation"/>
 											</div>
 
 											<div class="text">
-												<h3>Mensuration</h3>
-												<p>Mensuration is a branch of mathematics that deals with the measurement of geometric figures in terms of length, area, volume, and other related quantities....</p>
+												<h3>Propagation of sound waves</h3>
+												<p>Propagation of sound waves refers to the transmission of mechanical energy in the form of sound through a medium, such as air, water, or solids.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -237,11 +250,11 @@
 							<div class="faq-inner-div  main-topics-inner-div">
 								<div class="quest-faq-div active-faq quest-topics-div" id="faq10">
 									<div class="faq-title-text">
-										<h2>STATISTICS</h2>
+										<h2>ELECTROSTATICS, ELECTRICITY, MAGNETISM & ELECTRONICS</h2>
 									</div>
 									
 									<div class="faq-answer-div faq-answer-display topics-answer-div" onclick="_collapse('faq245')">
-										<p>Sub-Topics <i class="bi-chevron-down"></i> <span class="count">40</span></p> 
+										<p>Sub-Topics <i class="bi-chevron-down"></i> <span class="count">2</span></p> 
 										<div class="expand-div" id="faq245num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                          
 									</div>
 						
@@ -249,12 +262,12 @@
 										
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/data.jpg" alt="data"/>
 											</div>
 
 											<div class="text">
 												<h3>Representation Of Data</h3>
-												<p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+												<p>The representation of data is the process of presenting information in a structured and meaningful way.</p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>
@@ -262,12 +275,12 @@
 
 										<div class="topics-content-div">
 											<div class="image-div">
-												<img src="<?php echo $website_url?>/all-images/body-pix/matrics.jpg" alt="matrics"/>
+												<img src="<?php echo $website_url?>/all-images/body-pix/measures.jpg" alt="measures"/>
 											</div>
 
 											<div class="text">
 												<h3>Measures Of Location</h3>
-												<p>Mensuration is a branch of mathematics that deals with the measurement of geometric figures in terms of length, area, volume, and other related quantities....</p>
+												<p>Measures of location, also known as measures of central tendency, are statistical values used to describe the center or typical value of a data set. </p>
 												<a href="<?php echo $website_url ?>/#" title="Number Bases">
 												<button class="topics-btn" title="Read More">Read More </button></a>
 											</div>

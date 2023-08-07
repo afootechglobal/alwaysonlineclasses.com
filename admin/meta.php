@@ -6,6 +6,7 @@
 
 <link href="<?php echo $website_url?>/admin/all-images/images/icon.png" rel="shortcut icon" type="image-png"/>
 
+<link href="<?php echo $website_url?>/admin/style/awesome-font/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/style/icons-1.10.2/font/bootstrap-icons.css" type="text/css" rel="stylesheet" >
 <link href="<?php echo $website_url?>/admin/style/animate.css" type="text/css" rel="stylesheet" media="all">
 <link href="<?php echo $website_url?>/admin/style/aos.css" type="text/css" rel="stylesheet" />

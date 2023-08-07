@@ -22,7 +22,6 @@
 
 <?php include 'header.php'?>
 
-
 <div class="slide-div">
 	<div class="image-bg">
         <div class="content-back-div">
@@ -172,7 +171,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>WAEC EXAM</h3>
+                                        <h3>WAEC</h3>
                                     </div></a> 
                                 </div>                      
                             </div> 
@@ -184,7 +183,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>NECO EXAM</h3>
+                                        <h3>NECO</h3>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +195,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>JAMB EXAM</h3>
+                                        <h3>JAMB</h3>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +207,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>JUPEB EXAM</h3>
+                                        <h3>JUPEB</h3>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +219,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>IJMB EXAM</h3>
+                                        <h3>IJMB</h3>
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +231,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>UTME EXAM</h3>
+                                        <h3>UTME</h3>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +243,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>PUTME EXAM</h3>
+                                        <h3>PUTME</h3>
                                     </div>
                                 </div>                       
                             </div> 
@@ -256,7 +255,7 @@
                                     </div>
 
                                     <div class="text-div">
-                                        <h3>JUPEB EXAM</h3>
+                                        <h3>JUPEB</h3>
                                     </div>
                                 </div>
                             </div>
@@ -673,11 +672,10 @@
         <div class="body-div-in topics-body-div-in">
             <div class="topics-back-div">
                 <div class="image-video-div" data-aos="fade-up" data-aos-duration="1200">
-                    <video autoplay="" muted="" loop="" class="video-slide">
-                        <source src="<?php echo $website_url?>/all-images/images/video.mp4" type="video/mp4">
+                    <video class="video-slide">
+                        <source src="<?php echo $website_url?>/uploaded_files/videos/motion.mp4" type="video/mp4">
                     </video>
-                    
-                    
+
                 </div>
 
                 <div class="content-div" data-aos="fade-up" data-aos-duration="1200">
@@ -690,7 +688,7 @@
                           iii. The fundamental principles that govern the movement of objects.<br/>
                           iv. Predicting and discribing the behaviour of objects.<br/>  
                         </p>
-                        <a href="<?php echo $website_url ?>/#" title="WATCH VIDEO">
+                        <a href="<?php echo $website_url ?>/exams/waec/physics/motion" title="WATCH VIDEO">
                         <button class="btn" title="WATCH VIDEO">PLAY VIDEO</button></a>
                     </div>
                 </div>
@@ -755,7 +753,7 @@
                 <h3>Our Latest Blog</h3>
             </div> 
 
-            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+            <div class="blog-div" data-aos="fade-up" data-aos-duration="1000">
                 <div class="image-div">
                     <img src="<?php echo $website_url?>/all-images/body-pix/blog1.webp" alt="blog"/>
                 </div>
@@ -768,7 +766,7 @@
                 </div>
             </div> 
 
-            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+            <div class="blog-div" data-aos="fade-up" data-aos-duration="1000">
                 <div class="image-div">            
                     <img src="<?php echo $website_url?>/all-images/body-pix/blog2.jpg" alt="blog"/>
                 </div>
@@ -781,7 +779,7 @@
                 </div>
             </div> 
 
-            <div class="blog-div" data-aos="flip-left" data-aos-duration="1000">
+            <div class="blog-div" data-aos="fade-up" data-aos-duration="1000">
                 <div class="image-div">
                     <img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
                 </div>
@@ -813,59 +811,58 @@
 							<div class="faq-title-text" onclick="_collapse('faq243')">
 							 	<h2>Who We Are</h2>
 								<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
-							</div>
-
-							<div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">
-								<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
-							</div>
+							
+                                <div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">
+                                    <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
+                                </div>
+                            </div>
 						</div>	
 
 						<div class="quest-faq-div active-faq" id="faq244">
 							<div class="faq-title-text" onclick="_collapse('faq244')">
 							 	<h2>How Do I Subcribe For A Video?</h2>
 								<div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
-							
-							</div>
-							<div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
-							</div>
-
+													
+                                <div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
+                                    <p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
+                                </div>
+                            </div>
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq246">
 							<div class="faq-title-text" onclick="_collapse('faq246')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq246num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
+							
 
-							<div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-							</div>
-
+                                <div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
+                                    <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+                                </div>
+                            </div>
 						</div>
 
                         <div class="quest-faq-div active-faq" id="faq247">
 							<div class="faq-title-text" onclick="_collapse('faq247')">
                                 <h2>How much is video per series?</h2>
 								<div class="expand-div" id="faq247num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
+							
 
-							<div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-							</div>
-
+                                <div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
+                                    <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+                                </div>
+                            </div>
 						</div>
 
                         <div class="quest-faq-div active-faq" id="faq248">
 							<div class="faq-title-text" onclick="_collapse('faq248')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq248num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
+							
 
-							<div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-							</div>
-
+                                <div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
+                                    <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+                                </div>
+                            </div>
 						</div>
 					</div>
                     <a href="<?php echo $website_url ?>/faq" title="Frequently Asked Questions">

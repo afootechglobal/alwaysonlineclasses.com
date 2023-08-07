@@ -19,7 +19,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-
+<script>
+   _disabled_inspect();
+</script>
 <?php include '../../../../header.php'?>
 
 <div class="other-pages-title maths-other-pages-title" data-aos="fade-down" data-aos-duration="1200">
@@ -52,8 +54,8 @@
 		
 				<div class="right-div left-div">
 					<div class="page-video-div">
-						<video autoplay="" muted="" loop="" class="video-slide">
-							<source src="<?php echo $website_url?>/all-images/images/video.mp4" type="video/mp4">
+						<video class="video-slide" controls="">					
+							<source src="<?php echo $website_url?>/uploaded_files/videos/n-bases.mp4" type="video/mp4">
 						</video>					             	
 					</div>
 
@@ -65,7 +67,7 @@
 
 							<div class="text-div">
 								Duration
-								<h3>00:05:30</h3>                          
+								<h3>00:02:26</h3>                          
 							</div>               
 						</div>
 
@@ -106,7 +108,11 @@
 
 				
 					<div class="text-div">
-						<h3>At the end of the study in this video, students should be able to understand the following objectives;</h3>
+						<h2>NUMBER BASES</h2>
+						<p>This free tutorial video lesson on this page would help you with easy to learn tricks to guide your study, and your preparations for your exams including the UTME/JAMB (Unified Tertiary Matriculation Exams), POST-UTME, WASSCE / WAEC (West African Senior School Certificate Examination), NECO (The National Examinations Council), and GCE. </p>	
+						<h3>Introduction to Number Bases</h3>
+						<p>In mathematics and computer science, number bases (also known as numeral systems) are a way of representing numeric values using different symbols or digits. The most familiar number base is the decimal system, also called base-10, which uses ten distinct symbols (0, 1, 2, 3, 4, 5, 6, 7, 8, and 9) to represent all numeric values.</p>
+						<h4>At the end of the study in this video, students should be able to understand the following objectives;</h4>
 						<p>1. Binary (base-2): which uses only two symbols, 0 and 1. It is extensively used in computer systems to represent and manipulate data using binary digits (bits).</p>
 						<p>2. Octal (base-8): This number base uses eight symbols (0-7). Octal numbers are commonly used in computer programming, particularly when dealing with groups of bits or byte representations.</p>
 						<p>3. Hexadecimal (base-16): This number base uses sixteen symbols (0-9 and A-F), where A represents 10, B represents 11, and so on up to F representing 15. Hexadecimal numbers are widely used in computer systems to represent binary data more compactly and conveniently.</p>
@@ -253,22 +259,26 @@
 
 				<div class="right-div">
 					<div class="inner-div">						
-						<p>RELATED TOPICS VOLUME</p>
+						<p>RELATED VOLUMES</p>
 
-						<div class="content-div">
+						<a href="<?php echo $website_url ?>/exams/waec/mathematics/number-bases" title="">
+						<div class="content-div no-hover">
 							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/base-number.webp" alt="base-number"/>
+								<img src="<?php echo $website_url?>/all-images/body-pix/num-bases.jpg" controls="controls" alt="num-bases" />
+									
+								<div class="playicon">
+									<div class="triangle"></div>
+								</div>
 							</div>
 
 							<div class="image-div text-div video-text">
-								<a href="<?php echo $website_url ?>/#" title="">
-								<h4>Number Bases</h4></a>
+								<h4>Number Bases</h4>
 								<p>Volume: <span>Volume 1</span></p>							
 								<p>Pricing: <span>FREE</span></p>
 							</div>
-						</div>
+						</div></a>
 
-						<div class="content-div">
+						<div class="content-div no-hover">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/fraction.jpg" alt="fraction"/>
 							</div>
@@ -276,7 +286,7 @@
 						
 
 							<div class="image-div text-div video-text">
-								<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+								<a href="<?php echo $website_url ?>/#" title="">
 								<h4>Fraction, decimals, appromximations and percentages</h4></a>
 								<p>Volume: <span>Volume 2</span></p>
 								<p>Pricing: <span>PREMIUM</span></p>
@@ -284,12 +294,12 @@
 							
 						</div> 	
 						
-						<div class="content-div">
+						<div class="content-div no-hover">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/indices.jpeg" alt="indices"/>
 							</div>
 							<div class="image-div text-div video-text">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php echo $website_url ?>/#" title="">
 								<h4>Indexes, Logrithms and Surds</h4></a>
 								<p>Volume: <span>Volume 3</span></p>
 								<p>Pricing: <span>PREMIUM</span></p>
@@ -297,36 +307,36 @@
 						
 						</div> 	
 
-						<div class="content-div">
+						<div class="content-div no-hover">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/Polynomials.png" alt="Polynomials"/>
 							</div>
 							<div class="image-div text-div video-text">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php echo $website_url ?>/#" title="">
 								<h4>Polynomial</h4></a>
 								<p>Volume: <span>Volume 4</span></p>
 								<p>Pricing: <span>PREMIUM</span></p>
 							</div>
 						</div> 	
 
-						<div class="content-div">
+						<div class="content-div no-hover">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/Inequality.png" alt="Inequality"/>
 							</div>
 							<div class="image-div text-div video-text">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php echo $website_url ?>/#" title="">
 								<h4>Iniqualities</h4></a>
 								<p>Volume: <span>Volume 5</span></p>
 								<p>Pricing: <span>PREMIUM</span></p>
 							</div>
 						</div> 	
 
-						<div class="content-div">
+						<div class="content-div no-hover">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/progression.webp" alt="progression"/>
 							</div>
 							<div class="image-div text-div video-text">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php echo $website_url ?>/#" title="">
 								<h4>Progression</h4></a>
 								<p>Volume: <span>Volume 6</span></p>
 								<p>Pricing: <span>PREMIUM</span></p>

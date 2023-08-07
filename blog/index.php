@@ -34,6 +34,8 @@
 		</div>
     	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Blogs & Articles</span></h1>	
     </div>
+	<br clear="all"/>  
+	<br clear="all"/>  
 </div> 
 
 <section class="faq-content-div">
@@ -59,7 +61,7 @@
 	
 			<div class="blog-back-div">
 				<div class="right-div left-div blog-left-div">
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog1.webp" alt="blog"/>
 						</div>
@@ -72,7 +74,7 @@
 						</div>
             		</div> 
 
-            		<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+            		<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">            
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog2.jpg" alt="blog"/>
 						</div>
@@ -85,7 +87,7 @@
 						</div>
             		</div> 
 
-            		<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+            		<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -98,7 +100,7 @@
 						</div>
             		</div> 
 					
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -111,7 +113,7 @@
 						</div>
             		</div>  
 
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -124,7 +126,7 @@
 						</div>
             		</div>
 
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -137,7 +139,7 @@
 						</div>
             		</div>
 
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -149,7 +151,7 @@
 							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
 						</div>
             		</div>
-					<div class="blog-div main-blog-div" data-aos="flip-left" data-aos-duration="1000">
+					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
 							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
 						</div>
@@ -166,64 +168,64 @@
 
 				<div class="right-div">
 					<div class="inner-div">
-						<p>OUR EXAMS</p>
+						<p>AVAILABLE EXAMS</p>
 
 						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/#" title="WAEC EXAM">
+							<a href="<?php echo $website_url ?>/exams/waec" title="WAEC EXAM">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/> 
 							</div>
 
 							<div class="image-div text-div">								
-								<h4>WAEC EXAM</h4>
+								<h4>WAEC</h4>
 								<span>Subjects: 15</span>
 							</div>
 						</div></a>
 
 						<div class="exam-blog-content-div">
-						<a href="<?php echo $website_url ?>/#" title="NECO EXAM">
+						<a href="<?php echo $website_url ?>/exams/neco" title="NECO EXAM">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
 							</div>
 							
 							<div class="image-div text-div">							
-								<h4>NECO EXAM</h4>
+								<h4>NECO</h4>
 								<span>Subjects: 15</span>
 							</div>
 						</div></a>
 
 						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/#" title="JAMB EXAM">
+							<a href="<?php echo $website_url ?>/exams/jamb" title="JAMB EXAM">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
 							</div>
 
 							<div class="image-div text-div">
-								<h4>JAMB EXAM</h4>
+								<h4>JAMB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>
 
 						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/#" title="JUPEB EXAM">
+							<a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB EXAM">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
 							</div>
 
 							<div class="image-div text-div">
-								<h4>JUPEB EXAM</h4>
+								<h4>JUPEB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>
 
 						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/#" title="IJMB EXAM">
+							<a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB EXAM">
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
 							</div>
 
 							<div class="image-div text-div">
-								<h4>IJMB EXAM</h4>
+								<h4>IJMB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>

@@ -32,8 +32,9 @@
 				</ul>
 			</div>			
 		</div>
+		
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
-    	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Frequently Asked Questions</span></h1>
+    		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Frequently Asked Questions</span></h1>
 			<p>AlwaysOnline Classes provides frequently asked questions and offline support to guide you on Online Classes, How to subscribe for a video and many more.</p>
 		</div>		
     </div>
@@ -44,8 +45,8 @@
 <div class="faq-content-div">
 
     <section class="body-div main-faq-div">
-		<div class="body-div-in">       
-		<div class="search-text-div blog-search" data-aos="zoom-in" data-aos-duration="800">
+		<div class="body-div-in"> 
+		<div class="search-text-div" data-aos="zoom-in" data-aos-duration="800">
                 <div class="search-segment-div">
                     <select id="cat_id" class="text_field">
                         <option value="" selected="selected">All FAQ Categories</option>
@@ -74,11 +75,11 @@
 						<div class="quest-faq-div active-faq" id="faq10">
 							<div class="faq-title-text" onclick="_collapse('faq243')">
 							 	<h2>Who We Are</h2>
-								<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
-							</div>
+								<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>					
 
-							<div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">
-								<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
+								<div class="faq-answer-div faq-answer-display" id="faq243answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
+								</div>
 							</div>
 						</div>	
 
@@ -87,95 +88,88 @@
 							 	<h2>How Do I Subcribe For A Video?</h2>
 								<div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
 							
+							
+								<div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
+								</div>
 							</div>
-							<div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
-							</div>
-
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq246">
 							<div class="faq-title-text" onclick="_collapse('faq246')">
 							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq246num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
+								<div class="expand-div" id="faq246num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>												
 
-							<div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								<div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
 						</div>
 
                         <div class="quest-faq-div active-faq" id="faq247">
 							<div class="faq-title-text" onclick="_collapse('faq247')">
                                 <h2>How much is video per series?</h2>
-								<div class="expand-div" id="faq247num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
+								<div class="expand-div" id="faq247num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>													
 
-							<div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								<div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
 						</div>
 
                         <div class="quest-faq-div active-faq" id="faq248">
 							<div class="faq-title-text" onclick="_collapse('faq248')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq248num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
+							
+								<div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
-							<div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-							</div>
-
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq249">
 							<div class="faq-title-text" onclick="_collapse('faq249')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq249num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
 
-							<div class="faq-answer-div faq-answer-display" id="faq249answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								<div class="faq-answer-div faq-answer-display" id="faq249answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq250">
 							<div class="faq-title-text" onclick="_collapse('faq250')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq250num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
+						
+								<div class="faq-answer-div faq-answer-display" id="faq250answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
-							<div class="faq-answer-div faq-answer-display" id="faq250answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-							</div>
-
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq251">
 							<div class="faq-title-text" onclick="_collapse('faq251')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq251num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
 
-							<div class="faq-answer-div faq-answer-display" id="faq251answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								<div class="faq-answer-div faq-answer-display" id="faq251answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
 						</div>
 
 						<div class="quest-faq-div active-faq" id="faq252">
 							<div class="faq-title-text" onclick="_collapse('faq252')">
 							 	<h2>Are we affordable for your courses?</h2>
 								<div class="expand-div" id="faq252num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							</div>
 
-							<div class="faq-answer-div faq-answer-display" id="faq252answer" style="display: none;">
-                            <p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								<div class="faq-answer-div faq-answer-display" id="faq252answer" style="display: none;">
+									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
+								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>	

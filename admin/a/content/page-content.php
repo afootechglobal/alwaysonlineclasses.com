@@ -1,11 +1,9 @@
-
-
-
-
+<script type="text/javascript" src="js/scrollBar.js"></script>
+<script type="text/javascript">$(".sb-container").scrollBox();</script>
 
 <?php if ($page=='dashboard'){?>
-        <div class="statistics-back-div ">
-            <div class="statistics-div bg1">
+        <div class="statistics-back-div" >
+            <div class="statistics-div bg1" onClick="_get_page('view_staff', 'admin')" id="admin">
                 <div class="inner-div">                    
                 Adminstrator <br>
                     <span class="number">10</span>
@@ -13,14 +11,14 @@
             </div>
 
 
-            <div class="statistics-div bg2">
+            <div class="statistics-div bg2" onClick="_get_page('active_users', 'user')" id="user">
                 <div class="inner-div">                    
                     Active Users <br>
                     <span class="number">10</span>
                 </div>
             </div>
 
-            <div class="statistics-div bg3">
+            <div class="statistics-div bg3" onClick="_get_page('exam_category', 'exam')" id="exam">
                 <div class="inner-div">
                     Exams <br>
                     <span class="number">10</span>
@@ -28,28 +26,22 @@
             </div>
 
 
-            <div class="statistics-div bg4">
+            <div class="statistics-div bg4"  onClick="_get_page('all_subject', 'subject')" id="subject">
                 <div class="inner-div">
                 Subject <br>
                     <span class="number">10</span>
                 </div>
             </div>
 
-            <div class="statistics-div bg2">
-                <div class="inner-div">                    
-                Video <br>
-                    <span class="number">10</span>
-                </div>
-            </div>
 
-            <div class="statistics-div bg5">
+            <div class="statistics-div bg5" onClick="_get_page('blogs', 'blogs')" id="blogs">
                 <div class="inner-div">
                     Blogs  <br>
                     <span class="number">10</span>
                 </div>
             </div>
 
-            <div class="statistics-div bg1">
+            <div class="statistics-div bg1"  onClick="_get_page('faqs', 'faqs')" id="faqs">
                 <div class="inner-div">                    
                 FAQ's <br>
                     <span class="number">10</span>
@@ -215,7 +207,7 @@
         indexLabel: "{label} ({y})",
         yValueFormatString:"#,##0.#"%"",
         dataPoints: [
-            { label: "Wrought Nickel", y: 789},
+        { label: "Wrought Nickel", y: 789},
         { label: "Nickel Chromium", y: 693},
         { label: "Nickel Molybdenum ", y: 389},
         // { label: "Companies", y: <?php //echo $total_active_companies;?>},
@@ -334,15 +326,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <?php if ($page=='view_staff'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
@@ -353,12 +336,12 @@
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="fa fa-users"></i></span> ADMINISTRATOR'S LIST <button class="btn" onClick="_get_form('create-user-form')"><i class="fa fa-plus"></i> CREATE A NEW ADMIN</button></div>
+         <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> ADMINISTRATOR'S LIST <button class="btn" onClick="_get_form('staff_reg')"><i class="bi-plus-square"></i> CREATE A NEW ADMIN</button></div>
             <div class="animated fadeIn" id="search-content">
             
-            <div class="search-content-in">			
-                <div class="user-div" onclick="_get_users_profile('<?php echo $users_id; ?>','users');">
-                    <div class="pix-div"><img src="uploaded_files/staff_pix/friends.png"/></div>
+            <div class="fetch-div">			
+                <div class="user-div" onclick="_get_form('staff_profile','users');">
+                    <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
                     <div class="detail">
                         <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
                         <div class="text">ID: STF0000</div>
@@ -369,8 +352,8 @@
                 </div>
 
 
-                <div class="user-div" onclick="_get_users_profile('<?php echo $users_id; ?>','users');">
-                    <div class="pix-div"><img src="uploaded_files/staff_pix/friends.png"/></div>
+                <div class="user-div" onclick="_get_form('staff_profile','users');">
+                    <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
                     <div class="detail">
                         <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
                         <div class="text">ID: STF0000</div>
@@ -380,7 +363,9 @@
                     <br clear="all" />
                 </div>
 
-    
+             <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_staff('','','');</script>
+                </div> -->
             </div> 
             
 
@@ -402,35 +387,61 @@
 
 
 
-<?php if ($page=='view_all_member'){?>
 
-<div class="main-dashboard-div" >
-         <div class="search-div animated fadeIn">
-             <!--------------------------------all search select------------------------->
-             <!-- <select id="status_id" class="text_field status_text" onchange="_get_status()" title="SELECT STATUS">
-                <option value="" >SELECT STATUS </option>
-                <script>_get_fetch_staff_status('status');</script>
-            </select>  -->
-           
-           
-             <input id="search_txt"  type="text" class="text_field full" onkeyup="_get_search('view_search_member')" placeholder="Type here to search..." title="Type here to search" />
-         </div>
-         <div class="add-alert-div">
-             <i class="bi-list"></i><span id="">MEMBERSHIP LIST</span>
-             <button class="btn"  onclick="_get_form_page('member_registration');"><i class="bi-person-plus"></i>ADD NEW MEMBER</button>
-         </div>
 
-             <div class="back-div " id="fetch_staff" >
-             <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_member('','','');</script>
+
+
+
+
+
+
+<?php if ($page=='active_users'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL USER STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+
+         <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> USER'S LIST <button class="btn" onClick="_get_form('user_reg')"><i class="bi-plus-square"></i> CREATE A NEW USER</button></div>
+            <div class="animated fadeIn" id="search-content">
+
+            <div class="fetch-div">			
+                    <div class="user-div" onclick="_get_form('user_profile','users');">
+                        <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
+                        <div class="detail">
+                            <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
+                            <div class="text">ID: STF0000</div>
+                            <div class="text">07055066744</div>
+                            <div class="active">ACTIVE</div>
+                        </div>
+                        <br clear="all" />
+                    </div>
+
+                    <div class="user-div" onclick="_get_form('user_profile','users');">
+                        <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
+                        <div class="detail">
+                            <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
+                            <div class="text">ID: STF0000</div>
+                            <div class="text">07055066744</div>
+                            <div class="active">ACTIVE</div>
+                        </div>
+                        <br clear="all" />
+                    </div>
+                    <!-- <div class="fetch animated fadeIn" id="fetch">
+                    <script> _get_fetch_all_users('','','');</script>
+                    </div> -->
+            </div> 
+            
+
+            <br clear="all" />
             </div>
-                   
-             </div>    
-     </div> 
-
      <script>
         superplaceholder({el: search_txt,
-            sentences: ['Type here to search...', 'Mobile number e.g 08131252996','Fullname e.g Afootech Global'],
+            sentences: ['Type here to search...', 'User ID e.g STF000765976964','Mobile number e.g 09021947874','E-mail e.g afootechglobal@gmail.com'],
             options: {
             letterDelay: 80,
             loop: true,
@@ -438,291 +449,7 @@
         }
     });
     </script>
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
-<?php if ($page=='staff_registration'){ ?>
-<div class="reg-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-        <span id="panel-title"><i class="fa fa-plus"></i> ADD NEW ADMIN/STAFF</span>
-        <div class="close" title="Close" onclick="_alert_close();">X</div>
-        </div>
-     </div>
-
-    <div class="container-back-div" >
-         <div class="inner-div">
-
-                <div class="alert">Kindly fill the form below to <span>ADD A ADMIN/STAFF</span></div>
-
-                <div class="title">FULL NAME: <span>*</span></div>
-                <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="reg_fullname"/>
-
-                <div class="title">EMAIL ADDRESS: <span>*</span></div>
-                <input type="email"  class="text_field" placeholder="EMAIL ADDRESS" title="EMAIL ADDRESS" id="reg_email" />
-
-                <div class="title">PHONE NUMBER: <span>*</span></div>
-                <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="reg_mobile" />
-
-                <div class="title">SELECT COUNTRY: <span>*</span></div>
-                <select id="reg_country_id" class="text_field select_field" title="SELECT COUNTRY">
-                <script>_get_select_country();</script>
-                </select>
-
-                <div class="title">HOME ADDRESS: <span>*</span></div>
-                <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="reg_address" />
-
-                <div class="title">SELECT POSITION: <span>*</span></div>
-                <select id="reg_position_id" class="text_field select_field" title="SELECT POSTION" >
-                  <script>_get_select_position();</script>
-                </select>
-
-                <div class="title">SELECT ROLE: <span>*</span></div>
-                <select id="reg_role_id" class="text_field select_field" title="SELECT ROLE">
-                
-                    <script>_get_select_role('1,2');</script>
-                </select>
-
-                <div class="title">SELECT STATUS: <span>*</span></div>
-                <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                    <script>_get_select_status('1,2');</script>
-                </select> 
-                    <button class="action-btn" type="button" title="Submit" id="submit_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
-        </div>
-    </div> 
-</div>
-<?php } ?>
-
-
-
-
-
-<?php if ($page=='staff_login_profile'){?>
-
-<div class="main-dashboard-div animated fadeIn" >
-   <div class="info_div">
-       
-             <legend style="text-align:left;font-weight: bold;padding:15px 0px 15px 10px">ADMIN/STAFF PROFILE</legend>
-           <div class="individual-input">     
-                   <div class="title">STAFF ID: <span>*</span></div>
-                   <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="updt_staff_id" readonly="" require=""/>
-               </div>
-
-               <div class="individual-input">     
-                   <div class="title">FULL NAME: <span>*</span></div>
-                   <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="updt_fullname"/>
-               </div>
-
-               <div class="individual-input">     
-                   <div class="title">EMAIL ADDRESS: <span>*</span></div>
-                   <input type="email"  class="text_field" placeholder="EMAIL ADDRESS" title="EMAIL ADDRESS" id="updt_email" />
-               </div>
-
-               <div class="individual-input"> 
-                   <div class="title">PHONE NUMBER: <span>*</span></div>
-                   <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="updt_mobile" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT COUNTRY: <span>*</span></div>
-                   <select id="updt_country_id" class="text_field select_field" title="SELECT COUNTRY">
-                   <script>_get_select_country();</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">HOME ADDRESS: <span>*</span></div>
-                   <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="updt_address" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT POSITION: <span>*</span></div>
-                   <select id="updt_position_id" class="text_field select_field" title="SELECT POSTION" >
-                   <script>_get_select_position();</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT ROLE: <span>*</span></div>
-                   <select id="updt_role_id" class="text_field select_field" title="SELECT ROLE">
-                   <script>_get_select_role('1,2,3');</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT STATUS: <span>*</span></div>
-                        <select id="updt_status_id" class="text_field select_field" title="SELECT STATUS">
-                                <script>_get_select_status('1,2');</script>     
-                        </select>
-               </div> 
-              
-            <legend style="text-align:center;padding:15px 0px 15px 10px">Click to Upload Pix <i class="bi-upload" ></i></legend>
-           
-            <label>
-                <div class="pix-div">
-                    <div class="pix-in">
-                        <div id="profile_login_pix"><img id="passport-one" src="all-images/images/friends.png" alt="Profile pix"  /></div>
-                        <input type="file" id="passport"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG" onchange="staff_login_profile_pix.UpdatePreview(this);"/>
-                    </div>
-                </div>
-            </label>
-           <script> _upload_pix_('<?php echo $staff_id?>');</script>
-
-       </div>
-       <button class="update_btn"  type="button" id="update_btn"  onClick="_reg_and_updt_staff('<?php echo $page?>','<?php echo $staff_id?>')" title="UPDATE PROFILE"><i class="bi-check"></i> UPDATE PROFILE</button>
-  
-
-    </div> 
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-<?php if ($page=='staff_profile'){?>
-
-<div class="main-dashboard-div animated fadeIn" >
-   <div class="info_div">
-       
-             <legend style="text-align:left;font-weight: bold;padding:15px 0px 15px 10px">ADMIN/STAFF PROFILE</legend>
-           <div class="individual-input">     
-                   <div class="title">STAFF ID: <span>*</span></div>
-                   <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="updt_staff_id" readonly="" require=""/>
-               </div>
-
-               <div class="individual-input">     
-                   <div class="title">FULL NAME: <span>*</span></div>
-                   <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="updt_fullname"/>
-               </div>
-
-               <div class="individual-input">     
-                   <div class="title">EMAIL ADDRESS: <span>*</span></div>
-                   <input type="email"  class="text_field" placeholder="EMAIL ADDRESS" title="EMAIL ADDRESS" id="updt_email" />
-               </div>
-
-               <div class="individual-input"> 
-                   <div class="title">PHONE NUMBER: <span>*</span></div>
-                   <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="updt_mobile" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT COUNTRY: <span>*</span></div>
-                   <select id="updt_country_id" class="text_field select_field" title="SELECT COUNTRY">
-                   <script>_get_select_country();</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">HOME ADDRESS: <span>*</span></div>
-                   <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="updt_address" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT POSITION: <span>*</span></div>
-                   <select id="updt_position_id" class="text_field select_field" title="SELECT POSTION" >
-                   <script>_get_select_position();</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT ROLE: <span>*</span></div>
-                   <select id="updt_role_id" class="text_field select_field" title="SELECT ROLE">
-                   <script>_get_select_role('1,2,3');</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT STATUS: <span>*</span></div>
-                   <select id="updt_status_id" class="text_field select_field" title="SELECT STATUS">
-                   <script>_get_select_status('1,2');</script>
-                   </select>
-               </div> 
-              
-            <legend style="text-align:center;padding:15px 0px 15px 10px">Click to Upload Pix <i class="bi-upload" ></i></legend>
-           
-            <label>
-                <div class="pix-div">
-                    <div class="pix-in">
-                        <div id="profile_pix"><img id="passport-four" src="all-images/images/friends.png"  /></div>
-                        <input type="file" id="passport"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG" onchange="staff_profile_pix.UpdatePreview(this);"/>
-                    </div>
-                </div>
-            </label>
-           <script> _upload_staff_pix_('<?php echo $staff_id?>'); </script>
-
-       </div>
-       <button class="update_btn"  type="button" id="update_btn"  onClick="_reg_and_updt_staff('<?php echo $page?>','<?php echo $staff_id?>')" title="UPDATE PROFILE"><i class="bi-check"></i> UPDATE PROFILE</button>
-  
-
-    </div> 
-<?php } ?>
-
-
-
-<?php if ($page=='member_registration'){ 
     
-    ?>
-<div class="reg-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-        <span id="panel-title"><i class="fa fa-plus"></i> ADD NEW MEMBER</span>
-        <div class="close" title="Close" onclick="_alert_close();">X</div>
-        </div>
-     </div>
-
-    <div class="container-back-div" >
-         <div class="inner-div">
-
-                <div class="alert">Kindly fill the form below to <span>ADD A ADMIN/STAFF</span></div>
-
-                <div class="title">FULL NAME: <span>*</span></div>
-                <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="reg_fullname"/>
-
-                <div class="title">PHONE NUMBER: <span>*</span></div>
-                <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="reg_mobile" />
-
-                <div class="title">SELECT COUNTRY: <span>*</span></div>
-                <select id="reg_country_id" class="text_field select_field" title="SELECT COUNTRY">
-                   <script>_get_select_country();</script>
-                </select>
-
-                <div class="title">HOME ADDRESS: <span>*</span></div>
-                <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="reg_address" />
-
-                <div class="title">SELECT POSITION: <span>*</span></div>
-                <select id="reg_position_id" class="text_field select_field" title="SELECT POSTION" >
-                  <script>_get_select_position();</script>
-                </select>
-
-                <div class="individual-input">
-                   <div class="title">SELECT MEMBERSHIP TYPE: <span>*</span></div>
-                   <select id="reg_mem_type_id" class="text_field select_field" title="SELECT MEMBERSHIP TYPE">
-                   <script>_get_select_membership_type();</script>
-                   </select>
-               </div>
-
-                <div class="title">SELECT STATUS: <span>*</span></div>
-                <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                    <script>_get_select_status('1,2');</script>
-                </select> 
-                    <button class="action-btn" type="button" title="Submit" id="submit_btn" onclick="_reg_and_updt_mem('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
-        </div>
-    </div> 
-</div>
 <?php } ?>
 
 
@@ -730,81 +457,626 @@
 
 
 
-<?php if ($page=='member_profile'){   ?>
-
-<div class="main-dashboard-div animated fadeIn" >
-   <div class="info_div">
-       
-             <legend style="text-align:left;font-weight: bold;padding:15px 0px 15px 10px">MEMBER PROFILE</legend>
-           <div class="individual-input">     
-                   <div class="title">MEMBERSHIP ID:</div>
-                   <input  type="text" class="text_field"  title="MEMBERSHIP ID" id="updt_membership_id" require="" readonly=""/>
-               </div>
-
-               <div class="individual-input">     
-                   <div class="title">FULL NAME: <span>*</span></div>
-                   <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="updt_fullname"/>
-               </div>
-
-               <div class="individual-input"> 
-                   <div class="title">PHONE NUMBER: <span>*</span></div>
-                   <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="updt_mobile" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">HOME ADDRESS: <span>*</span></div>
-                   <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="updt_address" />
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT COUNTRY: <span>*</span></div>
-                   <select id="updt_country_id" class="text_field select_field" title="SELECT COUNTRY">
-                     <script>_get_select_country();</script>
-                   </select>
-               </div>
-
-               <div class="individual-input">
-                   <div class="title">SELECT POSITION:</div>
-                   <select id="updt_position_id" class="text_field select_field" title="SELECT POSTION" >
-                   <script>_get_select_position();</script>
-                   </select>
-               </div>
 
 
-               <div class="individual-input">
-                   <div class="title">SELECT MEMBERSHIP TYPE: <span>*</span></div>
-                   <select id="updt_mem_type_id" class="text_field select_field" title="SELECT MEMBERSHIP TYPE">
-                   <script>_get_select_membership_type();</script>
-                   </select>
-               </div>
 
 
-               <div class="individual-input">
-                    <div class="title">SELECT STATUS: <span>*</span></div>
-                    <select id="updt_status_id" class="text_field select_field" title="SELECT STATUS">
-                    <script>_get_select_status('1,2');</script>
-                    </select>
-                </div> 
+<?php if ($page=='exam_category'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL EXAM STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+         <div class="alert alert-success"> <span><i class="bi-pencil-square"></i></span> EXAM'S LIST <button class="btn" onClick="_get_form('exam_reg')"><i class="bi-plus-square"></i> CREATE A NEW EXAM</button></div>
+            <div class="animated fadeIn" id="search-content">
+            
+            <div class="fetch-div">			
 
-                
-               <div class="individual-input">
-                   <div class="title">REGISTERED BY:</div>
-                   <input type="text"  class="text_field" id="updt_registered_by" require="" readonly="" />
-               </div>
+					<div class="record-content-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/ssce.png" alt="topics"/>
+                            </div>
+
+                             <div class="text-div">
+                                <h2>WAEC</h2>
+                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
+                                <div class="count-div">
+                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
+                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
+                                </div>
+                            </div>
+                        </div> 
+					</div>
 
 
-               <!-- <div class="individual-input">
-                   <div class="title">UPDATED BY:</div>
-                   <input type="text"  class="text_field" id="updt_updated_by" require="" readonly="" />
-               </div> -->
-          
-             
-       </div>
-       <button class="update_btn"  type="button" id="update_btn"  onClick="_reg_and_updt_mem('<?php echo $page?>','<?php echo $mem_id?>')" title="UPDATE PROFILE"><i class="bi-check"></i> UPDATE PROFILE</button>
-  
+                    <div class="record-content-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/neco.png" alt="topics"/>
+                            </div>
 
-    </div> 
+                             <div class="text-div">
+                                <h2>NECO</h2>
+                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
+                                <div class="count-div">
+                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
+                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
+                                </div>
+                            </div>
+                        </div> 
+					</div>
+
+
+
+
+                    <div class="record-content-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/utme.png" alt="topics"/>
+                            </div>
+
+                             <div class="text-div">
+                                <h2>UTME</h2>
+                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
+                                <div class="count-div">
+                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
+                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
+                                </div>
+                            </div>
+                        </div> 
+					</div>
+
+      
+
+                <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_users('','','');</script>
+                </div> -->
+    
+            </div> 
+            
+
+            <br clear="all" />
+            </div>
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Exam ID e.g EXM00000','Exam Name e.g WAEC, NECO, JUPEB, JAMB, UTME, PUTME','IJMB'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if ($page=='all_subject'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL SUBJECT STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+         <div class="alert alert-success"> <span><i class="bi-book"></i></span> SUBJECT'S LIST <button class="btn" onClick="_get_form('subject_reg')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
+            <div class="animated fadeIn" id="search-content">
+            
+            <div class="fetch-div">			
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/maths.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>MATHEMATICS</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/chemistry.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>CHEMISTRY</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/economics.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>ECONOMICS</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_users('','','');</script>
+                </div> -->
+            </div> 
+            
+                 <br clear="all" />
+            </div>
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Subject ID e.g SUB00000','Subject Name e.g Maths, English, Physics'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    
+<?php } ?>
+
+
+
+
+
+<?php if ($page=='subject'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL SUBJECT STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+         <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span id="">WAEC</span> / SUBJECT'S LIST <button class="btn" onClick="_get_form('subject_reg')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
+            <div class="animated fadeIn" id="search-content">
+            
+            <div class="fetch-div">			
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/maths.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>MATHEMATICS</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/chemistry.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>CHEMISTRY</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                    <div class="subject-div">
+                        <div class="div-in">
+                            <div class="image-div">
+                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/economics.jpg" alt="maths"/>                        
+                            </div>
+                            <div class="ACTIVE">ACTIVE</div>
+                            <div class="info-div">
+                                <h2>ECONOMICS</h2> 
+                                <hr></hr>
+                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
+                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
+                            </div>     
+                        </div>	                          
+					</div> 
+
+                <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_users('','','');</script>
+                </div> -->
+            </div> 
+            
+                 <br clear="all" />
+            </div>
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Subject ID e.g SUB00000','Subject Name e.g Maths, English, Physics'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    
+<?php } ?>
+
+
+
+
+
+
+
+
+<?php if ($page=='topics'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL TOPIC STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+         <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span>WAEC</span> / <span>MATHEMATICS</span> / TOPIC'S LIST <button class="btn" onClick="_get_form('topics_reg')"><i class="bi-plus-square"></i> ADD NEW TOPIC</button></div>
+            <div class="animated fadeIn" id="search-content">
+            
+            <div class="fetch-div">			
+                    
+                <div class="faq-back-div " >
+                    <div class="faq-text-div ">
+
+                        <div class="quest-faq-div ">
+                            <div class="faq-title-text">
+                                <h3>NUMBER & NUMERATION <button class="btn" onClick="_get_form('sub_topics_reg')"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button></h3>
+                            </div>
+                            
+                            <div class="faq-answer-div" onclick="_collapse('faq1')">
+                                <span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;
+                                <span>Status: </span>&nbsp;&nbsp;<span class="count-div status">ACTIVE</span>
+                                <div class="expand-div" id="faq1num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
+                            </div>
+
+                            <div class="faq-answer-div" id="faq1answer" style="display: none;">  
+                                <div class="topics-content-div">
+                                    <div class="image-div">
+                                        <img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
+                                    </div>
+
+                                    <div class="text">
+                                        <h4>Euclidean Geometry</h4>
+                                        <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                                        <button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="quest-faq-div ">
+                            <div class="faq-title-text">
+                                <h3>STATTISTICS <button class="btn" onClick="_get_form('sub_topics_reg')"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button></h3>
+                            </div>
+                            
+                            <div class="faq-answer-div" onclick="_collapse('faq2')">
+                                <span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;
+                                <span>Status: </span>&nbsp;&nbsp;<span class="count-div status">ACTIVE</span>
+                                <div class="expand-div" id="faq2num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
+                            </div>
+
+                           
+                            <div class="faq-answer-div" id="faq2answer" style="display: none;">  
+                                <div class="topics-content-div">
+                                    <div class="image-div">
+                                        <img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
+                                    </div>
+
+                                    <div class="text">
+                                        <h4>Euclidean Geometry</h4>
+                                        <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                                        <button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                      
+
+
+
+                    </div>
+                </div>
+
+                    
+                <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_users('','','');</script>
+                </div> -->
+            </div> 
+            
+                 <br clear="all" />
+            </div>
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Top ID e.g TOP00000','Top Name e.g Statistic, Geometry'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    
+<?php } ?>
+
+
+
+
+<?php if ($page=='blogs'){?>
+
+        <div class="search-div">
+            <!--------------------------------network search select------------------------->
+            <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+            <option value="" selected="selected">ALL BLOG STATUS</option>
+                <option value=""><?php echo $status_name;?></option> 
+            </select>
+            <!--------------------------------all search select------------------------->
+            <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        </div>
+         <div class="alert alert-success"> <span><i class="bi-book"></i></span> BLOG'S LIST <button class="btn" onClick="_get_form('blog_reg')"><i class="bi-plus-square"></i> ADD NEW BLOG</button></div>
+     <div class="animated fadeIn" id="search-content"> 
+            <div class="fetch-div">			
+                    
+                    <div class="blog-div " id="">
+                        <div class="btn-div">
+                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
+                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
+                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
+                            <br clear="all">
+                        </div>
+                            <div class="status-div" id="">ACTIVATED</div>
+                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
+                            <div class="text-div">
+                                <div class="text-in">
+                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
+                                </div>
+                                <h2>Group Of Students Sharing Their Ideas</h2>
+                                <div class="text-in">
+                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
+                                    <div class="text"><span>486</span> VIEWS</div>
+                                </div>
+                            <br>
+                            </div>
+                    </div>
+
+
+                    <div class="blog-div " id="">
+                        <div class="btn-div">
+                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
+                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
+                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
+                            <br clear="all">
+                        </div>
+                            <div class="status-div" id="">ACTIVATED</div>
+                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
+                            <div class="text-div">
+                                <div class="text-in">
+                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
+                                </div>
+                                <h2>Group Of Students Sharing Their Ideas</h2>
+                                <div class="text-in">
+                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
+                                    <div class="text"><span>486</span> VIEWS</div>
+                                </div>
+                            <br>
+                            </div>
+                    </div>
+
+
+
+                    <div class="blog-div " id="">
+                        <div class="btn-div">
+                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
+                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
+                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
+                            <br clear="all">
+                        </div>
+                            <div class="status-div" id="">ACTIVATED</div>
+                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
+                            <div class="text-div">
+                                <div class="text-in">
+                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
+                                </div>
+                                <h2>Group Of Students Sharing Their Ideas</h2>
+                                <div class="text-in">
+                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
+                                    <div class="text"><span>486</span> VIEWS</div>
+                                </div>
+                            <br>
+                            </div>
+                    </div>
+
+
+
+
+
+            </div>
+            <br clear="all" />
+        </div>
+
+    <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Blog ID e.g BLOG00000','Blog Name e.g Statistic, Geometry'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php if ($page=='faqs'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <option value="" selected="selected">ALL FAQ's STATUS</option>
+            <option value=""><?php echo $status_name;?></option> 
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+         <div class="alert alert-success"> <span><i class="bi-newspaper"></i></span> FAQ's LIST <button class="btn" onClick="_get_form('faqs_reg')"><i class="bi-plus-square"></i> ADD NEW FAQ's</button></div>
+        <div class="animated fadeIn" id="search-content">
+                    
+                <div class="faq-back-div faqs-back" >
+                    <div class="faq-text-div ">
+
+                        <div class="quest-faq-div main-faqs">
+                            <div class="faq-title-text main-faqs-title-div">
+                               <span>1</span>
+                            </div>
+
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                               <i class="bi-pencil-square"></i> <span>Who we are</span>
+                            </div>
+                            
+                            <div class="faq-answer-div faq-answer-div2">  
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                            </div>
+                            
+                        </div>
+
+                        <div class="quest-faq-div main-faqs">
+                            <div class="faq-title-text main-faqs-title-div">
+                               <span>2</span>
+                            </div>
+
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                            <i class="bi-pencil-square"></i> <span>Who we are</span>
+                            </div>
+                            
+                            <div class="faq-answer-div faq-answer-div2">  
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                            </div>
+                            
+                        </div>
+
+
+                        <div class="quest-faq-div main-faqs">
+                            <div class="faq-title-text main-faqs-title-div">
+                               <span>3</span>
+                            </div>
+
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                            <i class="bi-pencil-square"></i> <span>Who we are</span>
+                            </div>
+                            
+                            <div class="faq-answer-div faq-answer-div2">  
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
+                            </div>
+                            
+                        </div>
+
+
+                    </div>
+                </div>
+    
+                <!-- <div class="fetch animated fadeIn" id="fetch">
+                <script> _get_fetch_all_users('','','');</script>
+                </div> -->
+
+            
+                 <br clear="all" />
+        </div>
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Top ID e.g TOP00000','Top Name e.g Statistic, Geometry'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -828,7 +1100,7 @@
          </div>
          <div class="add-alert-div">
              <i class="bi-list"></i><span id="">PAYMENT REPORT LIST</span>
-             <button class="btn"  onclick="_get_form_page('staff_registration');"><i class="bi-person-plus"></i>ADD NEW ADMIN/STAFF</button>
+             <button class="btn"  onclick="_get_form('');"><i class="bi-person-plus"></i>ADD NEW ADMIN/STAFF</button>
          </div>
 
              <div class="back-div payment-back-div">
@@ -856,76 +1128,6 @@
 
 
 
-<?php if ($page=='view_paymwent'){ ?>
-<div class="reg-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-        <span id="panel-title"><i class="fa fa-plus"></i> PAYMENT REPORT </span>
-        <div class="close" title="Close" onclick="_alert_close();">X</div>
-        </div>
-     </div>
-
-    <div class="container-back-div" >
-         <div class="inner-div">
-                <div class="title">TRANSACTION ID:</div>
-                <input  type="text" class="text_field" placeholder="PAYMENT ID" title="PAYMENT ID" id="pay_id" require="" readonly=""/>
-
-                <div class="title">MEMBER NAME: </div>
-                <input type="email"  class="text_field" placeholder="MEMBER NAME" title="MEMBER NAME" id="pay_name" require="" readonly=""/>
-
-                <div class="title">PHONE NUMBER:</div>
-                <input type="text"  class="text_field"  placeholder="PHONE NUMBER" title="PHONE NUMBER" id="pay_mobile" require="" readonly=""/>
-
-                <div class="title">PAYMENT PURPOSE: <span>*</span></div>
-                <input type="text"  class="text_field" placeholder="PAYMENT PURPOSE" title="PAYMENT PURPOSE" id="pay_purpose" require="" readonly=""/>
-
-                <div class="title">AMOUNT PAID:</div>
-                <input type="text"  class="text_field" placeholder="AMOUNT PAID" title="AMOUNT PAID" id="amount_paid" require="" readonly=""/>
-                
-                <div class="title">PAYMENT STATUS: </div>
-                <input type="text"  class="text_field" placeholder="PAYMENT STATUS" title="PAYMENT STATUS" id="pay_status" require="" readonly=""/>
-              
-                <div class="title">PAYMENT DATE:</div>
-                <input type="text"  class="text_field" placeholder="PAYMENT DATE" title="PAYMENT DATE" id="pay_date" require="" readonly=""/>
-                <script>_get_payment_detail('<?php echo $id?>','<?php echo $status_id?>');</script>
-        </div>
-    </div> 
-</div>
-<?php } ?>
-
-
-
-
-
-
-<?php if ($page=='change_password'){ ?>
-<div class="reg-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-        <span id="panel-title"><i class="bi-lock"></i> CHANGE PASSWORD </span>
-        <div class="close" title="Close" onclick="_alert_close();">X</div>
-        </div>
-     </div>
-
-    <div class="container-back-div" >
-         <div class="inner-div">
-         <div class="alert">Enter <span>Old Password</span> and create <span>New Password <i class="fa fa-lock"></i></span> </div>
-
-            <div class="title">OLD PASSWORD: <span>*</span></div>
-            <input type="password" id="old_password" name="old_password" class="text_field"  placeholder="ENTER OLD PASSWORD" title="ENTER YOUR OLD PASSWORD">
-
-            <div class="title">CREATE NEW PASSWORD: <span>*</span></div>
-            <input type="password" id="new_password" name="new_password" onkeyup="_check_password2()" required class="text_field"  placeholder="CREATE NEW PASSWORD" title="CREATE NEW PASSWORD">
-
-            <div class="title" style="float:left;">COMFIRMED NEW PASSWORD:<span >*</span>  <div id='message' style="float:right;margin-left:10px"></div></div>
-            <input type="password"  id="comfirmed_password" onkeyup="_check_password3()" name="comfirmed_password" required class="text_field" placeholder="COMFIRMED NEW PASSWORD" title="COMFIRMED NEW PASSWORD">
-           
-            <div class="pswd_info" style="color:#8c8d8d">At least 8 charaters required including upper & lower cases and special characters and numbers.</div>
-            <button class="action-btn" id="update_btn" type="button" style="float:left;" onClick="_update_password('<?php echo $staff_id ?>')" title="CHANGE PASSWORD"><i class="fa fa-exchange"></i> CHANGE PASSWORD</button>
-        </div>
-    </div> 
-</div>
-<?php } ?>
 
 
 
@@ -942,3 +1144,52 @@
         </div>
     </div>
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

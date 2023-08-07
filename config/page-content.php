@@ -97,6 +97,44 @@
                     </div>
 
                     <div class="input-div">
+                        <div class="title-div">SELECT EXAM: <span>*</span></div>
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>WAEC</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>NECO</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>JAMB</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>UTME</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>PUTME</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>IJMB</span>
+                        </label>
+
+                        <label for="">
+                            <div class="radio"><input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"><div class="border"></div></div>
+                            <span>JUPEB</span>
+                        </label>
+                    </div>
+                    
+                    <div class="input-div">
                         <div class="title-div"> CREATE PASSWORD: <span>*</span></div>
                         <input type="text" id="reset_password" class="text-field" placeholder="CREATE PASSWORD" title="CREATE PASSWORD"  />
                     </div>

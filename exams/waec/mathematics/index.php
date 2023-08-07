@@ -104,7 +104,7 @@
 											<div class="text">
 												<h3>Fractions, Decimals, Approximations and Percentages</h3>
 												<p>Fractions, decimals, approximations, and percentages are all ways to represent numbers or quantities.</p>
-												<a href="<?php echo $website_url ?>/#" title="Number Bases">
+												<a href="<?php echo $website_url ?>/exams/waec/mathematics/fraction-decimals-appromximations-and-percentages" title="Number Bases">
 												<button class="topics-btn" title="Play Video">Play Video </button></a>
 											</div>
 										</div>

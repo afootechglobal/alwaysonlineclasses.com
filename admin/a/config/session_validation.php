@@ -8,7 +8,7 @@ class allClass{
     <div class="page-title-div dashbord-title animated fadeInDown animated animated">
         <div class="div-in">
             <div class="title-side-div">
-                <span id="page-title"><i class="fa fa-dashboard"></i> Dashboard Overview</span>
+                <span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span>
                 <div class="user-name" id="user_name">Hi, Afolabi Taiwo</div>
             </div>  
         </div>

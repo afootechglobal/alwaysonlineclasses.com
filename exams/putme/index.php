@@ -27,7 +27,9 @@
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
     	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>PUTME Exam</span></h1>		
 			<p>Post Unified Tertiary Matriculation Examination (PUTME) is a Nigerian entrance examination board for tertiary-level institutions.</p>
-		</div>	
+		</div>
+		<a href="<?php echo $website_url ?>/login">		
+		<button class="btn apply" title="GET STARTED">CREATE AN ACCOUNT</button></a>	
     </div>
 </div> 
 
@@ -337,7 +339,7 @@
 
 				<div class="right-div">
 					<div class="inner-div">
-						<p>OUR EXAMS</p>
+						<p>AVAILABLE EXAMS</p>
 
 						<div class="exam-blog-content-div">
 							<a href="<?php echo $website_url ?>/exams/waec" title="WAEC EXAM">
@@ -346,7 +348,7 @@
 							</div>
 
 							<div class="image-div text-div">								
-								<h4>WAEC EXAM</h4>
+								<h4>WAEC</h4>
 								<span>Subjects: 15</span>
 							</div>
 						</div></a>
@@ -358,7 +360,7 @@
 							</div>
 							
 							<div class="image-div text-div">							
-								<h4>NECO EXAM</h4>
+								<h4>NECO</h4>
 								<span>Subjects: 15</span>
 							</div>
 						</div></a>
@@ -370,7 +372,7 @@
 							</div>
 
 							<div class="image-div text-div">
-								<h4>JAMB EXAM</h4>
+								<h4>JAMB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>
@@ -382,7 +384,7 @@
 							</div>
 
 							<div class="image-div text-div">
-								<h4>JUPEB EXAM</h4>
+								<h4>JUPEB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>
@@ -394,7 +396,7 @@
 							</div>
 
 							<div class="image-div text-div">
-								<h4>IJMB EXAM</h4>
+								<h4>IJMB</h4>
 								<span>Subjects: 5</span>
 							</div></a>
 						</div>

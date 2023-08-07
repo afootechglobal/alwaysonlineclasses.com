@@ -26,7 +26,7 @@
 	<div class="inner-div">
     	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Contact Us</span></h1>
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
-			<p>Call +(234) 808 353 3750 or email at info@alwaysonlineclasses.com for your Online Video  Clasees, WAEC EXAM, NECO EXAM, JAMB EXAM, PUTME EXAM, IJMB EXAM, UTME EXAM.</p>
+			<p>Call +(234) 808 353 3750 or email at info@alwaysonlineclasses.com for your Online Video  Clasees, WAEC, NECO, JAMB, PUTME, IJMB AND UTME.</p>
 		</div>
         <a href="<?php echo $website_url ?>/login">		
 		<button class="btn" title="GET STARTED">GET STARTED</button></a>

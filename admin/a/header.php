@@ -2,7 +2,7 @@
 <div class="header-div animated fadeInDown animated animated">
 	<div class="header-div-in">
         <div class="menu-div" title="Open Menu" onclick="_open_menu()" id="menu-div"><i class="fa fa-navicon (alias)"></i></div>
-    	<div class="logo-div"><img src="all-images/images/logo.jpg" alt="Dilaac logo" /></div>
+    	<div class="logo-div"><img src="all-images/images/logo.png" alt="<?php echo $thename?> logo" /></div>
         
     
         
@@ -27,7 +27,7 @@
                         <input type="hidden" name="action" value="logout"/>
                         <button class="logout-btn" type="submit"><i class="fa fa-sign-out"></i> Log-Out</button>
                     </form>
-                    <button class="logout-btn" type="button" onclick="_get_users_profile()"><i class="fa fa-user"></i> Profile</button>
+                    <button class="logout-btn" type="button" onclick="_get_form('staff_profile','users');"><i class="fa fa-user"></i> Profile</button>
                     <div class="hidden" id="_myprofile"><i class="fa fa-user-circle"></i> User Profile</div>
                 <br clear="all" />
                 </div>

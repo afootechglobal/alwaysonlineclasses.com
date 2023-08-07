@@ -35,8 +35,7 @@
 		</div>
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
     		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Group Of Students Sharing Their Ideas</span></h1>		
-			<br clear="all"/>
-			<div class="count"><i class="bi-person"></i> By: Phylum Olugbenga | <i class="bi-calendar3"></i> DATE: 02 July, 2023 <span>|</span> <i class="bi-eye"></i>VIEWS: 420</div>
+			<div class="count"><i class="bi-person"></i> By: <span> Phylum Olugbenga </span> | <i class="bi-calendar3"></i> DATE: <span> 02 July, 2023 </span> | <i class="bi-eye"></i> VIEWS: <span> 420 </span></div>
 			<p>A study group is a group of people in the same program who get together to study or work on class material.</p>
 		</div>		
     </div>
@@ -64,23 +63,12 @@
 						<p>4. Helping each other understand class material</p>
 						<p>4. Sharing ideas and study tips</p>
 
-						<a href="#" target="_blank" title="facebook">
-						<button class="icons facebook"><i class="bi-facebook"></i>Facebook</button></a>
-						<a href="#" target="_blank" title="twitter">
-						<button class="icons twitter"><i class="bi-twitter"></i>Twitter</button></a>
-						<a href="#" target="_blank" title="linkedin">
-						<button class="icons linkedin"><i class="bi-linkedin"></i>Linkedin</button></a>
-						<a href="#" target="_blank" title="pinterest">
-						<button class="icons pinterest"><i class="bi-pinterest"></i>Pinterest</button></a>
-						<a href="#" target="_blank" title="whatsapp">
-						<button class="icons whatsapp"><i class="bi-whatsapp"></i>Whatsapp</button></a>
 					</div>
 					<br clear="all"/>
 
 
 					<div class="comment-back-div">
-					<br clear="all"/>
-					<br clear="all"/>
+
 						<div id="disqus_thread"><iframe id="dsq-app7267" name="dsq-app7267" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="https://disqus.com/embed/comments/?base=default&amp;f=cityone-limo&amp;t_u=https%3A%2F%2Fwww.cityonelimo.com%2Fblog%2Fchild-safety-seat%2F&amp;t_d=Child%20car%20seat%20safety%20negligence&amp;t_t=Child%20car%20seat%20safety%20negligence&amp;s_o=default#version=3c00c65811f2cec80a8903c739975872" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 890px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe>
 							<iframe id="dsq-app7267" name="dsq-app7267" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="https://disqus.com/embed/comments/?base=default&amp;f=cityone-limo&amp;t_u=https%3A%2F%2Fwww.cityonelimo.com%2Fblog%2Fchild-safety-seat%2F&amp;t_d=Child%20car%20seat%20safety%20negligence&amp;t_t=Child%20car%20seat%20safety%20negligence&amp;s_o=default#version=3c00c65811f2cec80a8903c739975872" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 890px !important;" horizontalscrolling="no" verticalscrolling="no">
 								<html lang="en" dir="ltr" class="js no-touch localstorage sessionstorage contenteditable use-opacity-transitions embed-refresh embed-refresh-v2" style="--publisher-color: rgb(0,0,0);"><!--<![endif]--><head>
@@ -213,14 +201,24 @@
 							})();
 						</script>
 					</div>
+					<br clear="all"/>
+					
+					<a href="#" target="_blank" title="facebook">
+					<button class="icons facebook"><i class="bi-facebook"></i>Facebook</button></a>
+					<a href="#" target="_blank" title="twitter">
+					<button class="icons twitter"><i class="bi-twitter"></i>Twitter</button></a>
+					<a href="#" target="_blank" title="linkedin">
+					<button class="icons linkedin"><i class="bi-linkedin"></i>Linkedin</button></a>
+					<a href="#" target="_blank" title="pinterest">
+					<button class="icons pinterest"><i class="bi-pinterest"></i>Pinterest</button></a>
+					<a href="#" target="_blank" title="whatsapp">
+					<button class="icons whatsapp"><i class="bi-whatsapp"></i>Whatsapp</button></a>
 				</div>	
 
 				<div class="right-div">
 					<div class="inner-div">
-						<div class="title-div">
-							<p>Recent Post</p>
-						</div>
-						<br clear="all"/>
+						
+						<p>RELATED BLOG</p>
 
 						<div class="content-div" data-aos="fade-in" data-aos-duration="1200">
 							<div class="image-div">

@@ -11,6 +11,10 @@ switch ($action){
 		include '../content/page-content.php';
 	break;
 
+	case 'get_form':
+		$page=$_POST['page'];
+		include '../content/form.php';
+	break;
 
 
 }

@@ -60,7 +60,7 @@
 							<p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
 							
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -76,7 +76,7 @@
 							<p>(NECO) is an examination body in Nigeria that conducts the Senior Secondary Certificate Examination and the General Certificate in Education.</p>
 						
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -92,7 +92,7 @@
 							<p>The Joint Admissions and Matriculation Board (JAMB) is a Nigerian entrance examination board for tertiary-level institutions.</p>
 							
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -108,7 +108,7 @@
 							<p>(JUPEB) is a new Advanced Level examination body recently established and coordinated by the University of Lagos.</p>
 							
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -124,7 +124,7 @@
 							<p>(IJMB) is a programme designed to help you get admission into the University without writing JAMB and Post UTME, directly into 200Level.</p>
 						
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -140,7 +140,7 @@
 							<p>Post Unified Tertiary Matriculation Examination (PUTME) is a Nigerian entrance examination board for tertiary-level institutions.</p>
 							
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>
@@ -156,7 +156,7 @@
 							<p>Unified Tertiary Matriculation Examination (UTME) is a Nigerian entrance examination board for tertiary-level institutions.</p>
 							
 							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> | <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
+								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
 					</div></a>

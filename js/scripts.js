@@ -1,3 +1,9 @@
+///// Right Click Disabled Function ////////
+function _disabled_inspect(){
+	document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+    });      
+}
 
 
 ///// for FAQs

@@ -18,13 +18,11 @@
                 <div class="log-in-div">
                     <div class="form-div animated fadeInRight" >
                             <div class="logo-div"><img src="<?php echo $website_url?>/all-images/images/logo.png" alt="Logo"></div>
-                            <br clear="all/"/>
-                            <br clear="all/"/>
-                            <br clear="all/"/>
-                            <br clear="all/"/>
+                           
+                         
         
                             <h1 id="page-title">LOG-IN</h1>
-
+                           
                           <div  id="more-info">
                             <?php $page='login';?>
                             <?php include 'config/page-content.php';?>

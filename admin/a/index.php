@@ -16,6 +16,7 @@
     <?php $callclass->_admin_title_info();?>
 
 
+    
     <div id="page-content">
 		<?php $page='dashboard';?>
         <?php require_once 'content/page-content.php'?>
