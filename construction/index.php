@@ -1,7 +1,7 @@
 <?php
 $website_auto_url =(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//$website_url='http://localhost/projects/phylum/alwaysonlineclasses.com/construction';
-$website_url='https://alwaysonlineclasses.com';
+$website_url='http://localhost/alwaysonlineclasses.com/construction';
+//$website_url='https://alwaysonlineclasses.com';
 $thename='Always Online Classes'; 
 /////////////////////////////////////////////////////////////////
 ?>

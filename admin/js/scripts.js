@@ -51,24 +51,25 @@ function _next_page(next_id,divid) {
 		 user_login(email,password);
 		 }else{
 			 $('#email,#password').addClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>Login Error</h3>  <span>Check your email or span</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>Login Error</h3>  <span>Check your email or span</span>').fadeIn(500).delay(3000).fadeOut(100);
 	 }
 	 };
  
 	 ///////////////////////////////////// 
  
 	 ///////////////////// user login /////////////////////
-	 function user_login(email,password){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	 function user_login(email,password){           
+		var action = 'login_api';
 	   /////////////// get btn text ////////////////
 	   var btn_text=$('#login_btn').html();
 	   $('#login_btn').html('Authenticating <i class="fa fa-spinner fa-spin"></i>');
 	   document.getElementById('login_btn').disabled=true;
 	   ////////////////////////////////////////////////	
-	   var dataString ='email='+email+'&password='+password;
+	   var dataString ='action='+action+'&email='+email+'&password='+password;
    
 	   $.ajax({
 	   type: "POST",
-	   url: admin_local_url,
+	   url: api,
 	   dataType: 'json',
 	   data: dataString,
 	   cache: false,
@@ -82,9 +83,9 @@ function _next_page(next_id,divid) {
 			var access_key =data.access_key;
 			var role_id =data.role_id;
 		   $('#success-div').html('<div class="alert-logo"><img src="'+website_url+'/admin/all-images/images/success.gif" alt="success" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(5000).fadeOut(100);
-			//_proceed_to_login(staff_id,access_key,role_id);   
+			_proceed_to_login(staff_id,access_key,role_id);   
 			}else{
-			   $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/admin/all-images/images/warning.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			   $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/admin/all-images/images/warning.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(3000).fadeOut(100);
 		   }
 		   $('#login_btn').html(btn_text);
 		   document.getElementById('login_btn').disabled=false;
@@ -100,12 +101,12 @@ function _next_page(next_id,divid) {
 	  var dataString ='action='+ action+'&staff_id='+ staff_id+'&access_key='+ access_key+'&role_id='+ role_id;
 	   $.ajax({
 	   type: "POST",
-	   url: admin_local_url,
+	   url: admin_login_local_url,
 	   data: dataString,
 	   cache: false,
 	   success: function(html){
 		 window.parent(location=admin_portal_url);
- 
+
 	  }
 	   });
    }
@@ -115,6 +116,7 @@ function _next_page(next_id,divid) {
  
   
   function _proceed_reset_password(){
+	var action = 'reset_password_api';
 	 var email = $('#reset_pass_email').val();
 	 
 	 //////////////// get btn text ////////////////
@@ -123,10 +125,10 @@ function _next_page(next_id,divid) {
 	 document.getElementById('reset_password_btn').disabled=true;
 	 ////////////////////////////////////////////////	
 	
-   var dataString ='email='+ email;
+   var dataString ='action='+ action+'&email='+ email;
    $.ajax({
 	 type: "POST",
-	 url: reset_password_api,
+	 url: api,
 	 data: dataString,
 	 cache: false,
 	 dataType: 'json',
@@ -162,7 +164,7 @@ function _next_page(next_id,divid) {
 	 var dataString ='action='+ action+'&staff_id='+ staff_id+'&fullname='+ fullname+'&email='+ email;
 	 $.ajax({
 	 type: "POST",
-	 url: admin_local_url,
+	 url: admin_login_local_url,
 	 data: dataString,
 	 cache: false,
 	 success: function(html){
@@ -177,12 +179,13 @@ function _next_page(next_id,divid) {
   
   
   function _resend_otp(ids,staff_id){
+	var action = 'resend_otp_api';
 	var btn_text=$('#'+ids).html();
 	$('#'+ids).html('SENDING <i class="fa fa-spinner fa-spin"></i>');
-	var dataString ='staff_id='+ staff_id;
+	var dataString ='action='+ action+'&staff_id='+ staff_id;
 	   $.ajax({
 	   type: "POST",
-	   url: resend_otp_api,
+	   url: api,
 	   data: dataString,
 	   cache: false,
 	   success: function(data){
@@ -263,6 +266,7 @@ function _next_page(next_id,divid) {
  
  
 	function _comfirmed_reset_password(staff_id){
+		var action = 'confirm_otp_api';
 	   var otp = $('#reset_password_otp').val();
 	   var password = $('#create_reset_password').val();
 	   var confirmed_reset_password = $('#confirmed_reset_password').val();
@@ -292,10 +296,10 @@ function _next_page(next_id,divid) {
 				   document.getElementById('comfirmed_reset_btn').disabled=true;
 			 ////////////////////////////////////////////////	
 			 
-				var dataString ='staff_id='+ staff_id+'&otp='+otp+'&password='+ password;
+				var dataString ='action='+ action+'&staff_id='+ staff_id+'&otp='+otp+'&password='+ password;
 				   $.ajax({
 				   type: "POST",
-				   url: confirm_otp_api,
+				   url: api,
 				   data: dataString,
 				   cache: false,
 				   dataType: 'json',
@@ -328,7 +332,7 @@ function _next_page(next_id,divid) {
 	var dataString = 'action='+action+'&page='+page;
 	   $.ajax({
 	   type: "POST",
-	   url: admin_local_url,
+	   url: admin_login_local_url,
 	   data: dataString,
 	   cache: false,
 	   success: function(html){

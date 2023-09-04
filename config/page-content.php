@@ -15,7 +15,8 @@
 
         <span class="title-in"> <input type="checkbox"/> Keep me login</span>
         <span class="title-in reset-password" id="reset" onclick="_next_page('reset_password_info','reset');">Forgot Password? </span>
-        <button class="btn" type="button" id="login_btn" onclick="_log_in();"><i class="bi-check"></i> Log-In</button> 
+        <a href="<?php echo $website_url ?>/user" title="">
+        <button class="btn" type="button" id="login_btn" onclick="_log_in();"><i class="bi-check"></i> Log-In</button> </a>
 
         <div class="notification-div login-footer-div">
            Don't have an account? <span class="footer-in" onclick="_get_page('signup');" >Sign-Up </span>

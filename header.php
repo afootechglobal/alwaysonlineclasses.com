@@ -1,9 +1,9 @@
 <?php  include 'alert.php'?>
 
-<header class="animated fadeInDown animated"> 
+<header class="fadeInDown animated"> 
     <div class="header-top-div">
         <div class="div-in">
-            <div class="contact"><i class="bi-envelope"></i> alwaysonlineclasses@gmail.com</div>
+            <div class="contact"><i class="bi-envelope"></i> Info@alwaysonlineclasses@gmail.com</div>
             <div class="contact phone"><i class="bi-telephone"></i> +234 808 353 3750</div>
 
             <ul>

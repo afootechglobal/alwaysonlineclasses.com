@@ -125,6 +125,8 @@ cursor:pointer;
 
 
 
+
+
 /*--------------------------------------------------------------------------------------------------*/
 
 #get-more-div{
@@ -483,10 +485,11 @@ transition:all 0.2s ease-in 0.2s;
 	padding-top:10px;
 	position:fixed;
 	right:0px;
-	top:100px;
+	top:90px;
 	z-index:1000;
 	font-size:14px;
-	color:#FFF;
+	color:var(--white-color);
+	margin-right: 20px;
 	cursor:pointer;
 	display:none;
 }
@@ -503,6 +506,7 @@ transition:all 0.2s ease-in 0.2s;
 }
 .success-div span, #not-success-div span, #warning-div span{
 	font-size:12px;
+	font-family: body-font;
 }
 #success-div{
 	background:rgba(0,202,101,1);
@@ -796,6 +800,8 @@ transition:all 0.2s ease-in 0.2s;
 	background-image: linear-gradient(to right, #002F45 , #002F45);
 }
 
+
+
 .caption-success-div{
 	margin-top:120px;
 	width:30%;
@@ -867,5 +873,6 @@ float:right;
 .media-link-div li:hover{
 	padding-right:5px;
 }
+
 
 

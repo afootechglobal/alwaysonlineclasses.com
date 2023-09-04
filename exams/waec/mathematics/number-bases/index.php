@@ -19,6 +19,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
+<div id="loading">
+    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
+</div>
+
 <script>
    _disabled_inspect();
 </script>
@@ -263,6 +267,7 @@
 
 						<a href="<?php echo $website_url ?>/exams/waec/mathematics/number-bases" title="">
 						<div class="content-div no-hover">
+							
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/num-bases.jpg" controls="controls" alt="num-bases" />
 									
@@ -279,6 +284,9 @@
 						</div></a>
 
 						<div class="content-div no-hover">
+							<a href="<?php echo $website_url ?>/login" title="Subscribe">
+							<div class="status-div">Subscribe <i class="bi bi-box-arrow-in-up-right"></i></div></a>
+							<div class="overlay-div"></div>
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/fraction.jpg" alt="fraction"/>
 							</div>
@@ -295,6 +303,9 @@
 						</div> 	
 						
 						<div class="content-div no-hover">
+						<a href="<?php echo $website_url ?>/login" title="Subscribe">
+							<div class="status-div">Subscribe <i class="bi bi-box-arrow-in-up-right"></i></div></a>
+							<div class="overlay-div"></div>
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/indices.jpeg" alt="indices"/>
 							</div>
@@ -308,6 +319,9 @@
 						</div> 	
 
 						<div class="content-div no-hover">
+							<a href="<?php echo $website_url ?>/login" title="Subscribe">
+							<div class="status-div">Subscribe <i class="bi bi-box-arrow-in-up-right"></i></div></a>
+							<div class="overlay-div"></div>
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/Polynomials.png" alt="Polynomials"/>
 							</div>
@@ -320,6 +334,9 @@
 						</div> 	
 
 						<div class="content-div no-hover">
+							<a href="<?php echo $website_url ?>/login" title="Subscribe">
+							<div class="status-div">Subscribe <i class="bi bi-box-arrow-in-up-right"></i></div></a>
+							<div class="overlay-div"></div>
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/Inequality.png" alt="Inequality"/>
 							</div>
@@ -332,6 +349,9 @@
 						</div> 	
 
 						<div class="content-div no-hover">
+						<a href="<?php echo $website_url ?>/login" title="Subscribe">
+							<div class="status-div">Subscribe <i class="bi bi-box-arrow-in-up-right"></i></div></a>
+							<div class="overlay-div"></div>
 							<div class="image-div">
 								<img src="<?php echo $website_url?>/all-images/body-pix/progression.webp" alt="progression"/>
 							</div>

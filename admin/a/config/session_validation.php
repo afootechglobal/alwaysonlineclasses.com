@@ -1,6 +1,15 @@
 <?php require_once '../../config/config.php';?>
+<?php
 
-
+	//$role_id=$_SESSION['role_id'];
+?>
+<?php if(empty($login_staff_id)){
+    session_destroy();
+    ?>
+<script>
+window.parent(location="../../admin/");
+</script>
+<?php } ?>
 
 <?php
 class allClass{
@@ -9,7 +18,7 @@ class allClass{
         <div class="div-in">
             <div class="title-side-div">
                 <span id="page-title"><i class="bi-speedometer2"></i> Admin Dashboard Overview</span>
-                <div class="user-name" id="user_name">Hi, Afolabi Taiwo</div>
+                <div class="user-name" >Hi, <span id="login_user_fullname"></span></div>
             </div>  
         </div>
     </div>

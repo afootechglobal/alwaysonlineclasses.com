@@ -1,15 +1,28 @@
 <script type="text/javascript" src="js/scrollBar.js"></script>
 <script type="text/javascript">$(".sb-container").scrollBox();</script>
 
+<?php if ($page=='access_key_authentication'){?>
+	<div class="caption-div caption-success-div animated zoomIn">
+        <div class="div-in animated fadeInRight">
+				<div class="img"><img src="all-images/images/warning.gif" /></div>
+            <h2>INVALID ACCESS KEY</h2>
+            
+            <a href="wallet" title="My Wallet">
+             <button class="btn" type="button"><i class="fa fa-eye"></i> Go to My Wallet </button></a>
+        </div>
+    </div>
+<?php } ?>
+
 <?php if ($page=='dashboard'){?>
         <div class="statistics-back-div" >
+            <?php if($role_id>1){?>
             <div class="statistics-div bg1" onClick="_get_page('view_staff', 'admin')" id="admin">
                 <div class="inner-div">                    
                 Adminstrator <br>
                     <span class="number">10</span>
                 </div>
             </div>
-
+            <?php }?>
 
             <div class="statistics-div bg2" onClick="_get_page('active_users', 'user')" id="user">
                 <div class="inner-div">                    
@@ -326,51 +339,26 @@
 
 
 
-<?php if ($page=='view_staff'){ ?>
+<?php if ($page=='view_staff'){?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL USER STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+        <select id="status_id" class="text_field select" onchange="_get_fetch_all_staff()">
+            <option value="" selected="selected"> SELECT STATUS</option>
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_all_staff();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> ADMINISTRATOR'S LIST <button class="btn" onClick="_get_form('staff_reg')"><i class="bi-plus-square"></i> CREATE A NEW ADMIN</button></div>
-            <div class="animated fadeIn" id="search-content">
-            
-            <div class="fetch-div">			
-                <div class="user-div" onclick="_get_form('staff_profile','users');">
-                    <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
-                    <div class="detail">
-                        <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
-                        <div class="text">ID: STF0000</div>
-                        <div class="text">07055066744</div>
-                        <div class="active">ACTIVE</div>
-                    </div>
-                    <br clear="all"/>
-                </div>
-
-
-                <div class="user-div" onclick="_get_form('staff_profile','users');">
-                    <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
-                    <div class="detail">
-                        <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
-                        <div class="text">ID: STF0000</div>
-                        <div class="text">07055066744</div>
-                        <div class="active">ACTIVE</div>
-                    </div>
-                    <br clear="all" />
-                </div>
-
-             <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_staff('','','');</script>
-                </div> -->
-            </div> 
-            
-
-            <br clear="all" />
+    
+    <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> ADMINISTRATOR'S LIST <button class="btn" onClick="_get_form('staff_reg')"><i class="bi-plus-square"></i> CREATE A NEW ADMIN</button></div>
+       
+        <div class="fetch-div animated fadeIn">			
+            <div class="fetch" id="fetch">
+                <script> _get_fetch_all_staff('');</script>
             </div>
+        </div> 
+        <br clear="all" />
+    
+
      <script>
         superplaceholder({el: search_txt,
             sentences: ['Type here to search...', 'Staff ID e.g STF000765976964','Mobile number e.g 09021947874','E-mail e.g afootechglobal@gmail.com'],
@@ -381,7 +369,7 @@
         }
     });
     </script>
-    
+     <script>_get_select_status('status_id','1,2');</script>
 <?php } ?>
 
 
@@ -390,55 +378,29 @@
 
 
 
-
-
+ 
 
 
 
 <?php if ($page=='active_users'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL USER STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_all_user()">
+            <option value="" selected="selected">ALL USER STATUS</option>
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_all_user();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
 
-         <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> USER'S LIST <button class="btn" onClick="_get_form('user_reg')"><i class="bi-plus-square"></i> CREATE A NEW USER</button></div>
-            <div class="animated fadeIn" id="search-content">
-
-            <div class="fetch-div">			
-                    <div class="user-div" onclick="_get_form('user_profile','users');">
-                        <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
-                        <div class="detail">
-                            <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
-                            <div class="text">ID: STF0000</div>
-                            <div class="text">07055066744</div>
-                            <div class="active">ACTIVE</div>
-                        </div>
-                        <br clear="all" />
-                    </div>
-
-                    <div class="user-div" onclick="_get_form('user_profile','users');">
-                        <div class="pix-div"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png"/></div>
-                        <div class="detail">
-                            <div class="name-div"><div class="name"> Afolabi Taiwo</div><hr /><br/></div>
-                            <div class="text">ID: STF0000</div>
-                            <div class="text">07055066744</div>
-                            <div class="active">ACTIVE</div>
-                        </div>
-                        <br clear="all" />
-                    </div>
-                    <!-- <div class="fetch animated fadeIn" id="fetch">
-                    <script> _get_fetch_all_users('','','');</script>
-                    </div> -->
-            </div> 
-            
-
-            <br clear="all" />
+    <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> USER'S LIST <button class="btn" onClick="_get_form('user_reg')"><i class="bi-plus-square"></i> CREATE A NEW USER</button></div>
+        
+        <div class="fetch-div animated fadeIn">			
+            <div class="fetch" id="fetch_user">
+                <script> _get_fetch_all_user('');</script>
             </div>
+        </div> 
+        <br clear="all" />
+        
      <script>
         superplaceholder({el: search_txt,
             sentences: ['Type here to search...', 'User ID e.g STF000765976964','Mobile number e.g 09021947874','E-mail e.g afootechglobal@gmail.com'],
@@ -449,7 +411,7 @@
         }
     });
     </script>
-    
+    <script>_get_select_status('status_id','1,2');</script>
 <?php } ?>
 
 
@@ -465,8 +427,8 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL EXAM STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+            <option value="" selected="selected">ALL EXAM STATUS</option>      
+            <script>_get_select_status('1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -572,69 +534,21 @@
 <?php if ($page=='all_subject'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL SUBJECT STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_all_subject()">
+            <option value="" selected="selected">ALL SUBJECT STATUS</option>     
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_all_subject();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-book"></i></span> SUBJECT'S LIST <button class="btn" onClick="_get_form('subject_reg')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
-            <div class="animated fadeIn" id="search-content">
-            
-            <div class="fetch-div">			
-                    <div class="subject-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/maths.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>MATHEMATICS</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                    <div class="subject-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/chemistry.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>CHEMISTRY</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                    <div class="subject-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/economics.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>ECONOMICS</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_users('','','');</script>
-                </div> -->
-            </div> 
-            
-                 <br clear="all" />
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> SUBJECT'S LIST <button class="btn" onClick="_get_form_with_id('add_and_update_subject', '')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
+        
+        <div class="fetch-div animated fadeIn">			
+            <div class="fetch" id="fetch_subject">
+                <script> _get_fetch_all_subject('');</script>
             </div>
+        </div> 
+        <br clear="all" />
+
      <script>
         superplaceholder({el: search_txt,
             sentences: ['Type here to search...', 'Subject ID e.g SUB00000','Subject Name e.g Maths, English, Physics'],
@@ -645,7 +559,7 @@
         }
     });
     </script>
-    
+      <script>_get_select_status('status_id','1,2');</script>
 <?php } ?>
 
 
@@ -656,8 +570,7 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL SUBJECT STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+            <option value="" selected="selected">SUBJECT STATUS</option>     
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -666,7 +579,7 @@
             <div class="animated fadeIn" id="search-content">
             
             <div class="fetch-div">			
-                    <div class="subject-div">
+                    <div class="grid-div">
                         <div class="div-in">
                             <div class="image-div">
                                 <img src="<?php echo $website_url?>/uploaded_files/subject_pix/maths.jpg" alt="maths"/>                        
@@ -682,7 +595,7 @@
                         </div>	                          
 					</div> 
 
-                    <div class="subject-div">
+                    <div class="grid-div">
                         <div class="div-in">
                             <div class="image-div">
                                 <img src="<?php echo $website_url?>/uploaded_files/subject_pix/chemistry.jpg" alt="maths"/>                        
@@ -698,7 +611,7 @@
                         </div>	                          
 					</div> 
 
-                    <div class="subject-div">
+                    <div class="grid-div">
                         <div class="div-in">
                             <div class="image-div">
                                 <img src="<?php echo $website_url?>/uploaded_files/subject_pix/economics.jpg" alt="maths"/>                        
@@ -731,7 +644,7 @@
         }
     });
     </script>
-    
+    <script>_get_select_status('status_id','1,2');</script>
 <?php } ?>
 
 
@@ -745,8 +658,8 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL TOPIC STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+            <option value="" selected="selected">TOPICS STATUS</option>     
+            <script>_get_select_status('1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -852,8 +765,8 @@
         <div class="search-div">
             <!--------------------------------network search select------------------------->
             <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-            <option value="" selected="selected">ALL BLOG STATUS</option>
-                <option value=""><?php echo $status_name;?></option> 
+                <option value="" selected="selected">ALL BLOG STATUS</option>
+                <script>_get_select_status('1,2');</script>
             </select>
             <!--------------------------------all search select------------------------->
             <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -978,8 +891,8 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-        <option value="" selected="selected">ALL FAQ's STATUS</option>
-            <option value=""><?php echo $status_name;?></option> 
+            <option value="" selected="selected">ALL FAQ's STATUS</option>   
+            <script>_get_select_status('1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -1092,8 +1005,8 @@
 <div class="main-dashboard-div" >
          <div class="search-div animated fadeIn">
              <!--------------------------------all search select------------------------->
-             <select id="status_id" class="text_field status_text" onchange="_get_status('view_search_payment')" title="SELECT STATUS">
-              
+            <select id="status_id" class="text_field status_text" onchange="_get_status('view_search_payment')" title="SELECT STATUS">
+                <option value="" selected="selected">PAYMENT STATUS</option>     
                 <script>_get_select_status('3,4');</script>
             </select>
              <input id="search_txt"  type="text" class="text_field " onkeyup="_get_search('view_search_payment')" placeholder="Type here to search..." title="Type here to search" />

@@ -5,19 +5,13 @@
 }
 </style>
 
-<div class="header-div animated fadeInDown animated animated">
+<div class="header-div ">
 	<div class="header-div-in">
-        <div class="menu-div" title="Open Menu" onclick="_open_menu()" id="menu-div"><i class="fa fa-navicon (alias)"></i></div>
-    	<div class="logo-div"><img src="all-images/images/logo.png" alt="<?php echo $thename?> logo" /></div>
-        
-        <div class="nav-div" data-aos="fade-right" data-aos-duration="1500">
-        <li class="active-li" onClick="_get_page('dashboard', 'dashboard','');" id="dashboard"><i class="fa fa-dashboard"></i> Dashboard</li>
-        <?php if ($user_role_id==3){?>
-        <li onClick="_get_page('active-user-list', 'active-users')" id="active-users"><i class="fa fa-users"></i> Administrators</li>
-        <?php } ?>
-        <li onclick="_get_users_profile('<?php echo $user_id; ?>','myprofile');" id="myprofile"><i class="fa fa-user-circle-o"></i> My Profile</li>
+        <h1>USER PORTAL</h1>
+         <div class="nav-div" data-aos="fade-right" data-aos-duration="1500">
+            <li class="active-li" onClick="_get_page('dashboard', 'dashboard','');" id="_dashboard"><i class="bi-speedometer2"></i> Dashboard</li>
+            <li onClick="_get_page('user_profile','myprofile')" id="myprofile"><i class="bi bi-person-square"></i> My Profile</li>
         </div>
-        
         
             <div class="header-profile-pix-div" title="User Account" onclick="_toggle_profile_pix_div()">
          

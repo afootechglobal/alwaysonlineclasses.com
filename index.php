@@ -20,6 +20,10 @@
 </head>
 <body>
 
+<div id="loading">
+    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
+</div>
+
 <?php include 'header.php'?>
 
 <div class="slide-div">
@@ -96,8 +100,8 @@
                     </div>
                 </div>
 
-                <div class="image-content-div records-div">
-                    <div class="inner-records-div" data-aos="fade-up" data-aos-duration="1200">
+                <div class="image-content-div count-div">
+                    <div class="count-div-in" data-aos="fade-up" data-aos-duration="1200">
                         <div class="img-div">
                             <img src="<?php echo $website_url?>/all-images/images/students.png" alt="student"/>
                         </div>
@@ -108,7 +112,7 @@
                         </div>               
                     </div>
 
-                    <div class="inner-records-div" data-aos="fade-up" data-aos-duration="900">
+                    <div class="count-div-in" data-aos="fade-up" data-aos-duration="900">
                         <div class="img-div">
                             <img src="<?php echo $website_url?>/all-images/images/exams.png" alt="exams"/>
                         </div>
@@ -119,7 +123,7 @@
                         </div>
                     </div>
 
-                    <div class="inner-records-div" data-aos="fade-up" data-aos-duration="700">
+                    <div class="count-div-in" data-aos="fade-up" data-aos-duration="700">
                         <div class="img-div">
                             <img src="<?php echo $website_url?>/all-images/images/topics.png" alt="topics"/>
                         </div>
@@ -130,7 +134,7 @@
                         </div>
                     </div>
 
-                    <div class="inner-records-div" data-aos="fade-up" data-aos-duration="600">
+                    <div class="count-div-in" data-aos="fade-up" data-aos-duration="600">
                         <div class="img-div">
                             <img src="<?php echo $website_url?>/all-images/images/award.png" alt="award"/>
                         </div>
@@ -142,13 +146,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-       
-       
+        </div>       
     </div>
 </div>
-
-
 
 <section class="index-content-div">
     <section class="body-div">
@@ -165,98 +165,112 @@
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
                                 
                                 <div class="categories-div">
-                                <a href="<?php echo $website_url ?>/exams/waec" title="WAEC EXAM">
+                                <a href="<?php echo $website_url ?>/exams/waec" title="WAEC">
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>WAEC</h3>
-                                    </div></a> 
-                                </div>                      
+                                    </div></a>  
+                                </div>                    
                             </div> 
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                            
                                 <div class="categories-div">
+                                <a href="<?php echo $website_url ?>/exams/neco" title="NECO">                            
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>NECO</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                           
                                 <div class="categories-div">
+                                <a href="<?php echo $website_url ?>/exams/jamb" title="JAMB">                               
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>JAMB</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
                         
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                               
                                 <div class="categories-div">
+                                <a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB">                               
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>JUPEB</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                               
                                 <div class="categories-div">
+                                <a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB">                                 
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>IJMB</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                               
                                 <div class="categories-div">
+                                    <a href="<?php echo $website_url ?>/exams/utme" title="UTME">  
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>UTME</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
 
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                               
                                 <div class="categories-div">
+                                    <a href="<?php echo $website_url ?>/exams/putme" title="PUTME"> 
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>PUTME</h3>
-                                    </div>
+                                    </div></a>
                                 </div>                       
                             </div> 
                         
                             <div class="cg-carousel__slide js-carousel__slide"  data-aos="fade-left" data-aos-duration="1200">
+                                 
                                 <div class="categories-div">
+                                    <a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB">  
                                     <div class="image-div">
                                         <img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
                                     </div>
 
                                     <div class="text-div">
                                         <h3>JUPEB</h3>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
 
@@ -484,7 +498,7 @@
                                         <h3>AGRICULTURE</h3>
                                         <hr></hr>
                                         <P class="text"><i class="bi-book"></i> Topics: 20</P>
-                                        <a href="<?php echo $website_url ?>/exams/waec/agric/" title="agric">
+                                        <a href="<?php echo $website_url ?>/exams/waec/agriculture" title="agriculture">
                                         <button class="btn" title="Read More">Read More<i class="bi-arrow-right"></i></button></a>
                                     </div>
                                 </div>
@@ -877,8 +891,6 @@
     <br clear="all"/>
     <?php include 'footer.php'?>
 </section>
-
-
 
 <?php include 'bottom-scripts.php'?>
 <script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 

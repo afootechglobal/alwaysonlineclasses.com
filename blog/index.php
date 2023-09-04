@@ -19,7 +19,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-
+<div id="loading">
+    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
+</div>
 <?php include '../header.php'?>
 
 <div class="other-pages-title blog-other-page" data-aos="fade-down" data-aos-duration="1200">
@@ -301,7 +303,11 @@
 
 	<?php include '../footer.php'?>
 </section>
-
+<script>
+  $(window).on('load', function (){
+    $('#loading').hide();
+  }) 
+</script>
 <?php include '../bottom-scripts.php'?>
 <script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
 <script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>

@@ -10,6 +10,7 @@
 </head>
 <body>
 <?php include 'header.php'?>
+<?php  include 'alert.php'?>
 <?php include 'side-bar.php'?>
 
 <div class="content-div">
@@ -90,7 +91,10 @@
         easing: 'ease-in-out-sine'
       });
     </script>
-
+   
+<script>
+_get_staff_login('<?php echo $login_staff_id?>');
+ </script>
 
 </body>
 </html>

@@ -30,8 +30,8 @@ $(window).scroll(function() {
 	}
 	if (scrollheight >= 400) {
 		$("header").css("position", "fixed");
-	} else {
-		$("header").css("position", "absolute");
+	}else{
+		$("header").css("position", "absolute");	
 	}
 });
 

@@ -25,13 +25,19 @@ $(document).ready(function() {
   $(".loader-wrapper").delay(4000).fadeOut(800); 
 });
 
+
+
 <?php if ($scookies_check==''){?>
 	//_get_form('accept-cookies');
 <?php }?>
 </script>
 <script src="<?php echo $website_url?>/slide-property/carousel/product-slide.js" type="text/javascript" ></script>
 
-
+<script>
+  $(window).on('load', function (){
+    $('#loading').hide();
+  }) 
+</script>
 
 <div class="media-link-div">
     <a href="tel:+14154944044" title="Call Customer Care">

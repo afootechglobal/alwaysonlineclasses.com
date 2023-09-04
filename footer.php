@@ -55,18 +55,18 @@
                 <div class="segment-div service-div">
                     <h3>Our Services</h3>
                     <ul>                     
-                        <a href="<?php echo $website_url?>/exams/waec" title="WAEC Exam">
-                        <li><i class="bi-caret-right"></i>WAEC Exam</li></a>
-                        <a href="<?php echo $website_url?>/exams/neco" title="NECO Exam">
-                        <li><i class="bi-caret-right"></i>NECO Exam</li></a>
-                        <a href="<?php echo $website_url?>/exams/utme" title="UTME Exam">
-                        <li><i class="bi-caret-right"></i>UTME Exam</li></a>                 
-                        <a href="<?php echo $website_url?>/exams/putme" title="PUTME Exam">
-                        <li><i class="bi-caret-right"></i>PUTME Exam</li></a>
-                        <a href="<?php echo $website_url?>/exams/jupeb" title="JUPEB Exam">
-                        <li><i class="bi-caret-right"></i>JUPEB Exam</li></a>
-                        <a href="<?php echo $website_url?>/exams/ijmb" title="IJMB Exam">
-                        <li><i class="bi-caret-right"></i>IJMB Exam</li></a>                            
+                        <a href="<?php echo $website_url?>/exams/waec" title="WAEC">
+                        <li><i class="bi-caret-right"></i>WAEC </li></a>
+                        <a href="<?php echo $website_url?>/exams/neco" title="NECO">
+                        <li><i class="bi-caret-right"></i>NECO </li></a>
+                        <a href="<?php echo $website_url?>/exams/utme" title="UTME">
+                        <li><i class="bi-caret-right"></i>UTME </li></a>                 
+                        <a href="<?php echo $website_url?>/exams/putme" title="PUTME">
+                        <li><i class="bi-caret-right"></i>PUTME </li></a>
+                        <a href="<?php echo $website_url?>/exams/jupeb" title="JUPEB">
+                        <li><i class="bi-caret-right"></i>JUPEB </li></a>
+                        <a href="<?php echo $website_url?>/exams/ijmb" title="IJMB">
+                        <li><i class="bi-caret-right"></i>IJMB </li></a>                            
                     </ul>
                 </div>
 

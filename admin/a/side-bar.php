@@ -75,11 +75,13 @@
         <div class="hidden" id="_dashboard"><i class="bi-speedometer2"></i> Admin Dashboard Overview</div>
     </div>
     
- 
+ <?php if($role_id>1){?>
 	<div class="nav-div" onClick="_get_page('view_staff', 'admin')" id="admin">
     	<div class="icon"><i class="bi-people-fill"></i></div> Staff
         <div class="hidden" id="_admin"><i class="bi-people-fill"></i> Staff / Adminstrator</div>
     </div>
+ <?php }?>
+
 
 	<div class="nav-div" onClick="_get_page('active_users', 'user')" id="user">
     	<div class="icon"><i class="bi-people-fill"></i></div> Users
@@ -87,17 +89,15 @@
     </div>
     
 
-	<div class="nav-div" onClick="_get_page('exam_category', 'exam')" id="exam">
-    	<div class="icon" ><i class="bi-pencil-square"></i></div> Exams
-        <div class="hidden" id="_exam"><i class="bi-pencil-square"></i> Exams Categories</div>
-    </div>
-   
-    
  	<div class="nav-div" onClick="_get_page('all_subject', 'subject')" id="subject">
     	<div class="icon"><i class="bi-book"></i></div> Subject
         <div class="hidden" id="_subject"><i class="bi-book"></i> All Subjects</div>
     </div>
     
+    <div class="nav-div" onClick="_get_page('exam_category', 'exam')" id="exam">
+    	<div class="icon" ><i class="bi-pencil-square"></i></div> Exams
+        <div class="hidden" id="_exam"><i class="bi-pencil-square"></i> Exams Categories</div>
+    </div>
 
 	<div class="nav-div" onClick="_get_page('blogs', 'blogs')" id="blogs">
     	<div class="icon"><i class="bi-newspaper"></i></div> Blog

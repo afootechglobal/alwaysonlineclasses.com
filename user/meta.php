@@ -17,7 +17,6 @@
 
 
 
-
 <script src="<?php echo $website_url?>/user/js/superplaceholder.js"></script>
 <script src="<?php echo $website_url?>/user/js/jquery-v3.6.1.min.js"></script>
 <script src="<?php echo $website_url?>/user/js/scripts.js"></script>
