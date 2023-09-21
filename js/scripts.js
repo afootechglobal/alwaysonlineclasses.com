@@ -124,6 +124,144 @@ function _get_page(page){
 
 
 
+function _get_staff_login(staff_id) {
+	var action = 'fetch_staff_api';
+	$('#login_user_fullname,#login_user_login_time').html('XXXXX');
+	var dataString = 'action=' + action + '&staff_id=' + staff_id;
+	$.ajax({
+		type: "POST",
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function (info) {
+			var fetch = info.data;
+			var fullname = fetch.fullname.toLowerCase();
+			var mobile = fetch.mobile;
+			var role_name = fetch.role_name;
+			var updated_time = fetch.updated_time;
+			var passport = fetch.passport;
+			$('#login_user_fullname,#profile_name,#header_profile_name').html(fullname);
+			$('#user_id').html(staff_id);
+			$('#header_role_name').html(role_name);
+			$('#user_mobile').html(mobile);
+			$('#login_user_login_time').html(updated_time);
+			_get_header_pix(passport);
+		}
+	});
+}
+
+function _get_header_pix(passport) {
+	var header_pix = '';
+	if (passport == '') {
+		header_pix = '<img src="' + website_url + '/uploaded_files/staff_pix/friends.png" id="passportimg1" alt="profile picture" />' +
+			'<img src="' + website_url + '/uploaded_files/staff_pix/friends.png" id="passportimg2" alt="profile picture" />'
+	} else {
+		header_pix = '<img src="' + website_url + '/uploaded_files/staff_pix/' + passport + '" id="passportimg1" alt="profile picture" />'
+		'<img src="' + website_url + '/uploaded_files/staff_pix/' + passport + '" id="passportimg2" alt="profile picture" />'
+	}
+	$('#header_pix,#toggle_header_pix').html(header_pix);
+}
+
+
+
+function _get_select_status(select_id, status_id) {
+	var action = 'fetch_status_api';
+	var dataString = 'action=' + action + '&status_id=' + status_id;
+	$.ajax({
+		type: "POST",
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function (info) {
+			var result = info.result;
+			var message = info.message;
+			var fetch = info.data;
+			var text = '';
+
+			if (result == true) {
+				for (var i = 0; i < fetch.length; i++) {
+					var status_id = fetch[i].status_id;
+					var status_name = fetch[i].status_name;
+					/// for status update profile loop option ////
+					text += '<option value="' + status_id + '" >' + status_name.toUpperCase() + '</option>';
+				}
+			} else {
+				text = '<option>' + message + '</option>';
+			}
+			$('#' + select_id).append(text);
+
+		}
+	});
+}
+
+
+
+function _get_fetch_all_index_exam(status_id) {
+	var action = 'fetch_index_exam_api';
+	var dataString = 'action=' + action+'&status_id=' + status_id;
+		$.ajax({
+			type: "POST",
+			url: api,
+			data: dataString,
+			dataType: 'json',
+			cache: false,
+			success: function (info) {
+				var fetch = info.data;
+				var result = info.result;
+				var message = info.message;
+
+				var text = '';
+
+				if (result == true) {
+					for (var i = 0; i < fetch.length; i++) {
+						var abbreviation = fetch[i].abbreviation;
+						var exam_name = fetch[i].exam_name;
+						var exam_summary = fetch[i].exam_summary;
+						var exam_url = fetch[i].exam_url;
+						var exam_passport = fetch[i].exam_passport;
+						if (exam_passport=='') {
+							exam_passport ='defaults.jpg';
+						}
+		
+						text +=
+							'<a href="'+ website_url +'/exams/'+ exam_url +'" title="'+ exam_name +'">'+
+							'<div class="exam-cat-content-div">'+
+								'<div class="image-div">'+
+									'<img src="'+ website_url +'/uploaded_files/exam_pix/'+ exam_passport +'" alt="'+ abbreviation +'"/>'+
+								'</div>'+
+		
+								'<div class="content-div">'+
+									'<h2>'+ exam_name +'</h2>'+
+									'<p>'+ exam_summary +'</p>'+
+									
+									'<div class="topics">'+
+										'<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>'+
+									'</div>'+
+								'</div>'+
+							'</div></a>';
+						}
+
+
+						$('#fetch_index_exam').html(text);
+					
+				} else {
+					
+					text +=
+						'<div class="false-notification-div">' +
+							'<p> ' + message + ' </p>' +
+						'</div>';
+					$('#fetch_index_exam').html(text);
+				}
+
+			}
+		});
+}
+
+
+
+
 
 
 

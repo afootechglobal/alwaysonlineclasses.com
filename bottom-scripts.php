@@ -2,7 +2,7 @@
     <div class="pix-div">
     	<img src="<?php echo $website_url?>/all-images/images/cutomercare.jpg" alt="Customer Care"/>
     </div>
-    <i class="fa fa-question"></i> Live Help
+    <i class="bi-question"></i>Live Help
 </div>
 
 <div id="back2Top" title="Back to top"  onclick="_back_to_top();"><i class="bi-box-arrow-up"></i></div>

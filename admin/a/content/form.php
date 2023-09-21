@@ -360,149 +360,6 @@
 
 
 
-
-
-
-
-
-<?php if ($page=='exam_reg'){ ?>
-
-<div class="overlay-off-div">
-    <div class="slide-form-div center-form-div animated fadeInUp">
-        <div class="fly-title-div">
-            <div class="in">
-                <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW EXAM</span>
-                <div class="close" title="Close" onclick="_alert_close();">X</div>
-            </div>
-        </div>
-
-        <div class="img-back-div">
-            <legend >Click to Upload Exam Logo <i class="bi-upload" ></i></legend>
-            <label>
-                <div class="img-div" title="Click To Upload Exam Pix">
-                    <div class="img-in">
-                        <div id="profile_login_pix"><img id="exam-pix" src="<?php echo $website_url?>/uploaded_files/exam_pix/default.png" alt="Exam pix"  /></div>
-                        <input type="file" id="exam-pix"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG" onchange="exam_pix.UpdatePreview(this);"/>
-                    </div>
-                </div>
-            </label>
-        </div>
-           
-        <div class="container-back-div container-back-div2  sb-container" >
-            <div class="inner-div">
-
-                    <div class="alert">Kindly fill the form below to <span>ADD NEW EXAM</span></div>
-
-                    <div class="title">EXAM ABBREVIATION: <span>*</span></div>
-                    <input id="abbreviation" type="text" class="text_field" placeholder="ABBREVIATION" title="EXAM ABBREVIATION" />
-
-                    <div class="title">EXAM FULLNAME: <span>*</span></div>
-                    <input id="exam_fullname" type="text"  class="text_field" placeholder="FULLNAME" title="EXAM FULLNAME"  />
-
-                    <div class="title">EXAM SUMMARY: <span>*</span></div>
-                    <textarea id="exam_summ" class="text_field textarea" rows="2"   maxlength="160" title="EXAM SUMMARY" placeholder="SUMMARY"></textarea>
-                    
-                  
-                    <div class="title">SELECT SUBJECT: <span>*</span></div>
-                        <div class="subject-info-div">
-                            <div class="div-in" id="subject_name">
-                                <label for="" >
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>MATHEMATICS</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>ENGLISH</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>ECONOMICS</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>ACCOUNTING</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>BIOLOGY</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>PHYSICS</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>CHEMISTRY</span>
-                                </label>
-
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>LIT IN ENGLISH</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>GOVERNMENT</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>COMMERCE</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>CHRISTIAN RELIGIOUS STUDIES</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>ISLAMIC RELIGIOUS STUDENTS</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>AGRICULTURE</span>
-                                </label>
-
-                                <label for="">
-                                    <input type="checkbox" class="child" name="endorsement_id[]" data-value="DE004" onclick="_driver_endorsement_check(this,'DE004')"/>
-                                    <span>GEOGRAPHY</span>
-                                </label>
-
-                            </div>
-                        </div>
-                   
-                
-                    <div class="title">SELECT STATUS: <span>*</span></div>
-                    <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                        <option value=""> SELECT STATUS</option>
-                    </select> 
-                        <button class="action-btn" type="button" title="SUBMIT" id="update_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
-            </div>
-        </div> 
-    </div>
-</div>
-<script>_get_select_status('1,2');</script>
-<script>_fetch_each_subject('<?php echo $ids?>');</script>
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
 <?php if ($page=='add_and_update_subject'){ ?>
 
 <div class="overlay-off-div">
@@ -542,11 +399,20 @@
                 <div class="title">SUBJECT SUMMARY: <span>*</span></div>
                 <textarea id="subject_summary" class="text_field textarea" rows="2"   maxlength="160" title="SUBJECT SUMMARY" placeholder="SUMMARY"></textarea>
                 
+                <div class="title">SUBJECT URL: <span>*</span></div>
+                <input id="subject_url" type="text"  class="text_field" placeholder="SUBJECT URL" title="SUBJECT URL"  />
+                  
+                <div class="title">SEO KEYWORDS: <span>*</span></div>
+                <textarea id="seo_keywords" class="text_field textarea" rows="2" maxlength="160" title="SEO KEYWORDS" placeholder="SEO KEYWORDS"></textarea>
+
+                <div class="title">SEO DESCRIPTION: <span>*</span></div>
+                <textarea id="seo_description" class="text_field textarea" rows="2" maxlength="160" title="SEO DESCRIPTION" placeholder="SEO DESCRIPTION"></textarea>
+
                 <div class="title">SELECT STATUS: <span>*</span></div>
                 <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
                     <option value=""> SELECT STATUS</option>
                 </select> 
-                <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_subject('<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
+                <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_subject('<?php echo $page?>', '<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
             </div>
         </div> 
     </div>
@@ -556,6 +422,99 @@
 <script>_fetch_each_subject('<?php echo $ids?>');</script>
 <?php }?>
 <?php } ?>
+
+
+
+
+
+<?php if ($page=='add_and_update_exam'){ ?>
+
+<div class="overlay-off-div">
+    <div class="slide-form-div center-form-div animated fadeInUp">
+        <div class="fly-title-div">
+            <div class="in">
+                <?php if($ids==''){?>
+                    <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW EXAM</span>
+                <?php  }else{?>
+                <span id="panel-title"><i class="bi-pencil-square"></i> UPDATE EXAM</span>
+                <?php }?>
+                <div class="close" title="Close" onclick="_alert_close();">X</div>
+            </div>
+        </div>
+
+        <div class="img-back-div">
+            <legend >Click to Upload Exam Logo <i class="bi-upload" ></i></legend>
+            <label>
+                <div class="img-div" title="Click To Upload Exam Pix">
+                    <div class="img-in">
+                        <div id="view_exam"><img id="exam-pix" src="<?php echo $website_url?>/uploaded_files/exam_pix/default.png" alt="Exam pix"  /></div>
+                        <input type="file" id="exam_passport"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG" onchange="exam_pix.UpdatePreview(this);"/>
+                    </div>
+                </div>
+            </label>
+        </div>
+           
+        <div class="container-back-div container-back-div2  sb-container" >
+            <div class="inner-div">
+
+                    <div class="alert">Kindly fill the form below to <span>ADD NEW EXAM</span></div>
+
+                    <div class="title">EXAM ABBREVIATION: <span>*</span></div>
+                    <input id="abbreviation" type="text" class="text_field" placeholder="EXAM ABBREVIATION" title="EXAM ABBREVIATION" />
+
+                    <div class="title">EXAM NAME: <span>*</span></div>
+                    <input id="exam_name" type="text"  class="text_field" placeholder="EXAM NAME" title="EXAM NAME"  />
+
+                    <div class="title">EXAM SUMMARY: <span>*</span></div>
+                    <textarea id="exam_summary" class="text_field textarea" rows="2" maxlength="160" title="EXAM SUMMARY" placeholder="SUMMARY"></textarea>
+                    
+                    <div class="title">EXAM URL: <span>*</span></div>
+                    <input id="exam_url" type="text"  class="text_field" placeholder="EXAM URL" title="EXAM URL"  />
+                  
+                    <div class="title">SEO KEYWORDS: <span>*</span></div>
+                    <textarea id="seo_keywords" class="text_field textarea" rows="2" maxlength="160" title="SEO KEYWORDS" placeholder="SEO KEYWORDS"></textarea>
+
+                    <div class="title">SEO DESCRIPTION: <span>*</span></div>
+                    <textarea id="seo_description" class="text_field textarea" rows="2" maxlength="160" title="SEO DESCRIPTION" placeholder="SEO DESCRIPTION"></textarea>
+
+                    <div class="title">SELECT SUBJECT: <span>*</span></div>
+                        <div class="subject-info-div">
+                            <div class="div-in" id="subject_name">
+
+                                <!-- <label for="">
+                                    <input type="checkbox" class="child" name="subject_id[]" data-value="GEOGRAPHY"/>
+                                    <span>GEOGRAPHY</span>
+                                </label> -->
+                                
+                            </div>
+                        </div>
+                   
+                
+                    <div class="title">SELECT STATUS: <span>*</span></div>
+                    <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
+                        <option value=""> SELECT STATUS</option>
+                    </select> 
+                        <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_exam('<?php echo $page?>', '<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
+            </div>
+        </div> 
+    </div>
+</div>
+<script>_get_select_status('reg_status_id','1,2');</script>
+<script> _get_fetch_all_subject('subject_name');</script>
+<?php if($ids!=''){?>
+<script>_fetch_each_exam('<?php echo $ids?>');</script>
+<?php }?>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
 
 
 <?php if ($page=='topics_reg'){ ?>

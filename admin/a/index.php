@@ -9,14 +9,18 @@
 <title>Administrative Portal | <?php echo $thename;?></title>
 </head>
 <body>
+   
 <?php include 'header.php'?>
 <?php  include 'alert.php'?>
 <?php include 'side-bar.php'?>
 
+
+    
+
 <div class="content-div">
     <?php $callclass->_admin_title_info();?>
 
-
+    
     
     <div id="page-content">
 		<?php $page='dashboard';?>

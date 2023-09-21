@@ -2,6 +2,7 @@
 <meta name="ROBOTS" content="ALL">
 <meta name="Engine" content="all">
 <meta name="distribution" content="global">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="<?php echo $website_url?>/admin/a/all-images/images/icon.png" rel="shortcut icon" type="image-png"/>
 
@@ -26,6 +27,7 @@
 <script src="<?php echo $website_url?>/admin/a/js/canvasjs.min.js"></script>
 <script src="<?php echo $website_url?>/admin/a/js/jquery.datetimepicker.js"></script>
 <script src="<?php echo $website_url?>/admin/a/js/digitalclock.js"></script>
+
 
 <script type="text/javascript" src="js/canvasjs.min.js"></script>
 

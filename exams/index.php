@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include '../meta.php'?>
-<title> Exams Categories | <?php echo $thename?></title>
+<title> Exam Categories | <?php echo $thename?></title>
 <meta name="keywords" content="<?php echo $thename?>, SSCE Online Classes, WAEC Online Classes, NECO Online Classes, NABTEB Online Classes, GCE Online Classes, Online education, Virtual learning, Remote learning, Digital classrooms, Online courses, E-learning, Distance education, Web-based classes, Internet-based learning, Continuous online education, LMS, Learning Management System" />
 <meta name="description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
@@ -51,10 +51,16 @@
 			<div class="blog-back-div">
 		
 				<div class="right-div left-div  exam-content-back-div">
-					<a href="<?php echo $website_url ?>/exams/waec" title="West African Examinations Council (WAEC)">
+			
+					<div class="fetch" id="fetch_index_exam">
+						<script> _get_fetch_all_index_exam('1,2');</script>
+					</div>
+					<br clear="all" />
+
+					<!-- <a href="#/exams/waec" title="West African Examinations Council (WAEC)">
 					<div class="exam-cat-content-div">
 						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/>
+							<img src="#/all-images/images/ssce.png" alt="topics"/>
 						</div>
 
 						<div class="content-div">
@@ -65,103 +71,7 @@
 								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
 							</div>
 						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/neco" title="National Examination Council (NECO)">
-					<div class="exam-cat-content-div">						
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>National Examination Council (NECO)</h2>
-							<p>(NECO) is an examination body in Nigeria that conducts the Senior Secondary Certificate Examination and the General Certificate in Education.</p>
-						
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/jamb" title="Joint Admissions and Matriculation Board (JAMB)">
-					<div class="exam-cat-content-div">					
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>Joint Admissions and Matriculation Board (JAMB) </h2>
-							<p>The Joint Admissions and Matriculation Board (JAMB) is a Nigerian entrance examination board for tertiary-level institutions.</p>
-							
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/jupeb" title="Joint Universities Preliminary Examination Board (JUPEB)">
-					<div class="exam-cat-content-div">					
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>Joint Universities Preliminary Examination Board (JUPEB)</h2>
-							<p>(JUPEB) is a new Advanced Level examination body recently established and coordinated by the University of Lagos.</p>
-							
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/ijmb" title="Interim Joint Matriculation Board Examination (IJMB)">
-					<div class="exam-cat-content-div">						
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>Interim Joint Matriculation Board Examination (IJMB)</h2>
-							<p>(IJMB) is a programme designed to help you get admission into the University without writing JAMB and Post UTME, directly into 200Level.</p>
-						
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/putme" title="Post Unified Tertiary Matriculation Examination (PUTME)">
-					<div class="exam-cat-content-div">					
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>Post Unified Tertiary Matriculation Examination (PUTME)</h2>
-							<p>Post Unified Tertiary Matriculation Examination (PUTME) is a Nigerian entrance examination board for tertiary-level institutions.</p>
-							
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
-
-					<a href="<?php echo $website_url ?>/exams/utme" title="Unified Tertiary Matriculation Examination (UTME)">
-					<div class="exam-cat-content-div">					
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-						</div>
-
-						<div class="content-div">
-							<h2>Unified Tertiary Matriculation Examination (UTME)</h2>
-							<p>Unified Tertiary Matriculation Examination (UTME) is a Nigerian entrance examination board for tertiary-level institutions.</p>
-							
-							<div class="topics">
-								<p><i class="bi-book"></i> TOPICS: <span>100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span>100</span></p>
-							</div>
-						</div>
-					</div></a>
+					</div></a> -->
 				</div>
 
 

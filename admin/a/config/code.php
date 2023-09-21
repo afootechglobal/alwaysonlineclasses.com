@@ -16,6 +16,7 @@ switch ($action){
 
 	case 'get_page':
 		$page=$_POST['page'];
+		$ids=$_POST['ids'];
 		include '../content/page-content.php';
 	break;
 
@@ -38,6 +39,7 @@ switch ($action){
 		}else{
 		 unlink("../../../uploaded_files/staff_pix/".$db_passport);
 		}
+		
 	break;
 
 	case 'upload_pix_file':
@@ -45,15 +47,38 @@ switch ($action){
 		move_uploaded_file($_FILES["passport"]["tmp_name"], "../../../uploaded_files/staff_pix/".$passport);
 	break;
 
-	case 'upload_pix':
+	case 'upload_subject_pix':
 		$subject_picture=$_POST['subject_picture'];
-	
+		$old_passport=$_POST['old_passport'];
+		if($db_passport== 'default_pix.jpg'){
+			/// do nothing
+		}else{
+		unlink("../../../uploaded_files/subject_pix/".$old_passport);
+
 		$allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png", "webp");
 		$extension = pathinfo($subject_picture, PATHINFO_EXTENSION);
 		if (in_array($extension, $allowedExts)){				 //////////array 
 			move_uploaded_file($_FILES["subject_picture"]["tmp_name"], "../../../uploaded_files/subject_pix/".$subject_picture);
 		}
+		}
+		
 	break;
 
+	case 'upload_exam_pix':
+		$exam_logo=$_POST['exam_logo'];
+		$old_passport=$_POST['old_passport'];
+		if($db_passport== 'default_pix.jpg'){
+			/// do nothing
+		}else{
+		unlink("../../../uploaded_files/exam_pix/".$old_passport);
+		
+		$allowedExts = array("jpg", "jpeg", "JPEG", "JPG", "gif", "png", "PNG", "webp");
+		$extension = pathinfo($exam_logo, PATHINFO_EXTENSION);
+		if (in_array($extension, $allowedExts)){				 //////////array 
+			move_uploaded_file($_FILES["exam_logo"]["tmp_name"], "../../../uploaded_files/exam_pix/".$exam_logo);
+		}
+		}
+		
+	break;
 }
 ?>

@@ -418,133 +418,20 @@
 
 
 
-
-
-
-
-
-<?php if ($page=='exam_category'){ ?>
-    <div class="search-div">
-        <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-            <option value="" selected="selected">ALL EXAM STATUS</option>      
-            <script>_get_select_status('1,2');</script>
-        </select>
-        <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
-    </div>
-         <div class="alert alert-success"> <span><i class="bi-pencil-square"></i></span> EXAM'S LIST <button class="btn" onClick="_get_form('exam_reg')"><i class="bi-plus-square"></i> CREATE A NEW EXAM</button></div>
-            <div class="animated fadeIn" id="search-content">
-            
-            <div class="fetch-div">			
-
-					<div class="record-content-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/ssce.png" alt="topics"/>
-                            </div>
-
-                             <div class="text-div">
-                                <h2>WAEC</h2>
-                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
-                                <div class="count-div">
-                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
-                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
-                                </div>
-                            </div>
-                        </div> 
-					</div>
-
-
-                    <div class="record-content-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/neco.png" alt="topics"/>
-                            </div>
-
-                             <div class="text-div">
-                                <h2>NECO</h2>
-                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
-                                <div class="count-div">
-                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
-                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
-                                </div>
-                            </div>
-                        </div> 
-					</div>
-
-
-
-
-                    <div class="record-content-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/exam_pix/utme.png" alt="topics"/>
-                            </div>
-
-                             <div class="text-div">
-                                <h2>UTME</h2>
-                                    <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
-                                <div class="count-div">
-                                    <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
-                                   <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                   <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
-                                </div>
-                            </div>
-                        </div> 
-					</div>
-
-      
-
-                <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_users('','','');</script>
-                </div> -->
-    
-            </div> 
-            
-
-            <br clear="all" />
-            </div>
-     <script>
-        superplaceholder({el: search_txt,
-            sentences: ['Type here to search...', 'Exam ID e.g EXM00000','Exam Name e.g WAEC, NECO, JUPEB, JAMB, UTME, PUTME','IJMB'],
-            options: {
-            letterDelay: 80,
-            loop: true,
-            startOnFocus: false
-        }
-    });
-    </script>
-    
-<?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-
 <?php if ($page=='all_subject'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_get_fetch_all_subject()">
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_all_subject('fetch_subject')">
             <option value="" selected="selected">ALL SUBJECT STATUS</option>     
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_get_fetch_all_subject();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_all_subject('fetch_subject');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
         <div class="alert alert-success"> <span><i class="bi-book"></i></span> SUBJECT'S LIST <button class="btn" onClick="_get_form_with_id('add_and_update_subject', '')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
         
         <div class="fetch-div animated fadeIn">			
             <div class="fetch" id="fetch_subject">
-                <script> _get_fetch_all_subject('');</script>
+                <script> _get_fetch_all_subject('fetch_subject');</script>
             </div>
         </div> 
         <br clear="all" />
@@ -566,74 +453,82 @@
 
 
 
+
+
+
+<?php if ($page=='exam_category'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_all_exam()">
+            <option value="" selected="selected">ALL EXAM STATUS</option>      
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_get_fetch_all_exam()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+        <div class="alert alert-success"> <span><i class="bi-pencil-square"></i></span> EXAM'S LIST <button class="btn" onClick="_get_form_with_id('add_and_update_exam', '')"><i class="bi-plus-square"></i> CREATE A NEW EXAM</button></div>
+		
+        <div class="fetch-div animated fadeIn">			
+            <div class="fetch" id="fetch_exam">
+                <script> _get_fetch_all_exam();</script>
+            </div>
+        </div> 
+        <br clear="all" />
+
+        <!-- <div class="record-content-div">
+            <div class="div-in">
+                <div class="image-div">
+                    <img src="<?php //echo //$website_url?>/uploaded_files/exam_pix/ssce.png" alt="topics"/>
+                </div>
+
+                    <div class="text-div">
+                    <h2>WAEC</h2>
+                        <p>(WAEC) is an examination board established by law to determine the examinations required in West African countries.</p>
+                    <div class="count-div">
+                        <div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE" id="" >ACTIVE</span></div>
+                        <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
+                        <button class="btn btn2" title="EDIT" onClick="_get_page('subject', 'exam')"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>
+                    </div>
+                </div>
+            </div> 
+        </div> -->
+
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Exam ID e.g EXM00000','Exam Name e.g WAEC, NECO, JUPEB, JAMB, UTME, PUTME','IJMB'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+    <script>_get_select_status('status_id','1,2');</script>
+<?php } ?>
+
+
+
+
+
+
+
 <?php if ($page=='subject'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_exam_subject('<?php echo $ids?>');">
             <option value="" selected="selected">SUBJECT STATUS</option>     
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_exam_subject('<?php echo $ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span id="">WAEC</span> / SUBJECT'S LIST <button class="btn" onClick="_get_form('subject_reg')"><i class="bi-plus-square"></i> ADD NEW SUBJECT</button></div>
-            <div class="animated fadeIn" id="search-content">
-            
-            <div class="fetch-div">			
-                    <div class="grid-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/maths.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>MATHEMATICS</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                    <div class="grid-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/chemistry.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>CHEMISTRY</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                    <div class="grid-div">
-                        <div class="div-in">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/uploaded_files/subject_pix/economics.jpg" alt="maths"/>                        
-                            </div>
-                            <div class="ACTIVE">ACTIVE</div>
-                            <div class="info-div">
-                                <h2>ECONOMICS</h2> 
-                                <hr></hr>
-                                <div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>
-                                <button class="btn" title="EDIT"><i class="bi-pencil-square"></i> EDIT</button>
-                                <button class="btn btn2" title="EDIT" onClick="_get_page('topics', 'exam')"><i class="bi-book"></i> VIEW TOPICS</button>
-                            </div>     
-                        </div>	                          
-					</div> 
-
-                <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_users('','','');</script>
-                </div> -->
-            </div> 
-            
-                 <br clear="all" />
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span id="">WAEC</span> / SUBJECT'S LIST </div>
+        
+        <div class="fetch-div animated fadeIn">			
+            <div class="fetch" id="fetch_exam_subject">
+                <script> _get_fetch_exam_subject('<?php echo $ids?>');</script>
             </div>
+        </div> 
+        <br clear="all" />
+
      <script>
         superplaceholder({el: search_txt,
             sentences: ['Type here to search...', 'Subject ID e.g SUB00000','Subject Name e.g Maths, English, Physics'],
@@ -644,7 +539,7 @@
         }
     });
     </script>
-    <script>_get_select_status('status_id','1,2');</script>
+    <script>_get_select_status('status_id','1,2');</script>    
 <?php } ?>
 
 

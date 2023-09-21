@@ -3,18 +3,16 @@
 	<div class="header-div-in">
         <div class="menu-div" title="Open Menu" onclick="_open_menu()" id="menu-div"><i class="fa fa-navicon (alias)"></i></div>
     	<div class="logo-div"><img src="all-images/images/logo.png" alt="<?php echo $thename?> logo" /></div>
-        
-    
-        
-        
-            <div class="header-profile-pix-div" title="User Account" onclick="_toggle_profile_pix_div()">
-                <div class="div-in">
-                <div class="info">
-                        <div class="name" id="header_profile_name"><strong>xxxx</strong></div>
-                        <div class="role" id="header_role_name">xxxx</div>
-                    </div>
-                    <div class="img-div" id="header_pix"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png" id="passportimg1" alt="Profile image"></div>
-                </div>   
+       
+
+        <div class="header-profile-pix-div" title="User Account" onclick="_toggle_profile_pix_div()">
+            <div class="div-in">
+            <div class="info">
+                    <div class="name" id="header_profile_name"><strong>xxxx</strong></div>
+                    <div class="role" id="header_role_name">xxxx</div>
+                </div>
+                <div class="img-div" id="header_pix"><img src="<?php echo $website_url?>/uploaded_files/staff_pix/friends.png" id="passportimg1" alt="Profile image"></div>
+            </div>   
 
             <div class="toggle-profile-div">
                 <div class="toggle-profile-pix-div" id="toggle_header_pix">
@@ -53,4 +51,6 @@
 <script>
     _get_staff_login('<?php echo $login_staff_id?>');
  </script>
+
+
 </div>

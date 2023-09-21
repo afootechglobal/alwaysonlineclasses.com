@@ -76,36 +76,36 @@
     </div>
     
  <?php if($role_id>1){?>
-	<div class="nav-div" onClick="_get_page('view_staff', 'admin')" id="admin">
+	<div class="nav-div" onClick="_get_page('view_staff', '', 'admin')" id="admin">
     	<div class="icon"><i class="bi-people-fill"></i></div> Staff
         <div class="hidden" id="_admin"><i class="bi-people-fill"></i> Staff / Adminstrator</div>
     </div>
  <?php }?>
 
 
-	<div class="nav-div" onClick="_get_page('active_users', 'user')" id="user">
+	<div class="nav-div" onClick="_get_page('active_users', '', 'user')" id="user">
     	<div class="icon"><i class="bi-people-fill"></i></div> Users
         <div class="hidden" id="_user"><i class="bi-people-fill"></i> Active Users</div>
     </div>
     
 
- 	<div class="nav-div" onClick="_get_page('all_subject', 'subject')" id="subject">
+ 	<div class="nav-div" onClick="_get_page('all_subject', '', 'subject')" id="subject">
     	<div class="icon"><i class="bi-book"></i></div> Subject
         <div class="hidden" id="_subject"><i class="bi-book"></i> All Subjects</div>
     </div>
     
-    <div class="nav-div" onClick="_get_page('exam_category', 'exam')" id="exam">
+    <div class="nav-div" onClick="_get_page('exam_category', '', 'exam')" id="exam">
     	<div class="icon" ><i class="bi-pencil-square"></i></div> Exams
         <div class="hidden" id="_exam"><i class="bi-pencil-square"></i> Exams Categories</div>
     </div>
 
-	<div class="nav-div" onClick="_get_page('blogs', 'blogs')" id="blogs">
+	<div class="nav-div" onClick="_get_page('blogs', '', 'blogs')" id="blogs">
     	<div class="icon"><i class="bi-newspaper"></i></div> Blog
         <div class="hidden" id="_blogs"><i class="bi-newspaper"></i> Blogs</div>
     </div>
     
 
-	<div class="nav-div" onClick="_get_page('faqs', 'faqs')" id="faqs">
+	<div class="nav-div" onClick="_get_page('faqs', '', 'faqs')" id="faqs">
     	<div class="icon"><i class="bi-question-square"></i></div> FAQ's
         <div class="hidden" id="_faqs"><i class="bi-newspaper"></i> FAQ's</div>
     </div>
@@ -114,6 +114,7 @@
     	<div class="icon"><i class="bi-gear"></i></div> Settings
     </div>
 
+   
 	</div>
     
 </div> 
