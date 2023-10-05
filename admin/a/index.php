@@ -15,8 +15,6 @@
 <?php include 'side-bar.php'?>
 
 
-    
-
 <div class="content-div">
     <?php $callclass->_admin_title_info();?>
 

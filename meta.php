@@ -13,7 +13,7 @@
 <link href="<?php echo $website_url?>/style/main-style.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/style/scrollbar.css" type="text/css" rel="stylesheet" />
 
-<link   href="<?php echo $website_url?>/slide-property/carousel/product-slide.css" type="text/css" rel="stylesheet"/>
+<link href="<?php echo $website_url?>/slide-property/carousel/product-slide.css" type="text/css" rel="stylesheet"/>
 <script src="<?php echo $website_url?>/slide-property/carousel/product-slide.js" type="text/javascript" ></script>
 
 
@@ -25,12 +25,3 @@
 <meta property="og:type" content="Website" />
 <meta property="og:site_name" content="<?php echo $thename?>">
 <meta property="og:url" content="<?php echo $website_url?>" />
-
-
-
-<?php
-//$scookies_check=$_SESSION['cookies_check'];
-//if($scookies_check==''){
-//	$_SESSION['cookies_check']='no';
-//}
-?>

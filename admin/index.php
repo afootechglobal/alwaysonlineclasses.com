@@ -17,7 +17,7 @@ if($login_staff_id!=''){
 <meta name="description" content="Adminstrative Login <?php echo $thename?>"/>
 </head>
 <body>
-<?php include 'alert.php'?>
+<?php  include 'alert.php'?>
 
     <section class="login-section">
 
@@ -63,7 +63,8 @@ if($login_staff_id!=''){
        
 
 
-
+<script type="text/javascript" src="js/scrollBar.js"></script>
+<script type="text/javascript">$(".sb-container").scrollBox();</script>
 </body>
 </html>
 

@@ -1,5 +1,3 @@
-``<script type="text/javascript" src="js/scrollBar.js"></script>
-<script type="text/javascript">$(".sb-container").scrollBox();</script>
 
 
 
@@ -32,23 +30,22 @@
                 <div class="title">SELECT ROLE: <span>*</span></div>
                 <select id="reg_role_id" class="text_field select_field" title="SELECT ROLE">
                     <option value="" selected="selected">SELECT ROLE</option>
+                    <?php if($role_id>2){?>
+                        <script>_get_select_role('reg_role_id','1,2,3');</script>
+                        <?php }else{?>
+                        <script>_get_select_role('reg_role_id','1,2');</script>
+                    <?php }?>
                 </select>
             
                 <div class="title">SELECT STATUS: <span>*</span></div>
                 <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
                     <option value="" selected="selected">SELECT STATUS</option>
+                    <script>_get_select_status('reg_status_id','1,2');</script>
                 </select> 
                 <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_staff('');"> <i class="bi-check"></i> SUBMIT </button>
         </div>
     </div> 
 </div>
-<?php if($role_id>2){?>
-    <script>_get_select_role('reg_role_id','1,2,3');</script>
-<?php }else{?>
-    <script>_get_select_role('reg_role_id','1,2');</script>
-<?php }?>
-
-<script>_get_select_status('reg_status_id','1,2');</script>
 <?php } ?>
 
 
@@ -167,6 +164,7 @@
                     <div class="text-field-div no-border">
                         <select class="text_field text_field2"  id="updt_role_id" style="background:#fff;">                                       
                         <option value="" >SELECT ROLE </option>
+                            <script>_get_select_role('updt_role_id','1,2,3');</script>
                       </select>
                     </div>
                 </div> 
@@ -177,6 +175,7 @@
                     <div class="text-field-div no-border">
                         <select class="text_field text_field2" readonly="readonly" id="updt_status_id" style="background:#fff;" >                       
                         <option value="" >SELECT STATUS </option>
+                        <script> _get_select_status('updt_status_id','1,2');</script>
                      </select>
                     </div>
                 </div>
@@ -188,55 +187,8 @@
 </div> 
 
 <script> _upload_staff_pix_('<?php echo $ids?>');</script>
-<script>
-    _get_staff_profile('<?php echo $ids?>');
-    _get_select_status('updt_status_id','1,2');
-    _get_select_role('updt_role_id','1,2,3');
-</script>
+<script>_get_staff_profile('<?php echo $ids?>');</script>
 <?php } ?>
-
-
-<?php if ($page=='user_reg'){ ?>
-<div class="slide-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-            <span id="panel-title"><i class="bi-plus-square"></i> ADD NEW USER</span>
-            <div class="close" title="Close" onclick="_alert_close();">X</div>
-        </div>
-     </div>
-
-    <div class="container-back-div sb-container" >
-        <div class="inner-div">
-            <div class="alert">Kindly fill the form below to <span>ADD NEW USER</span></div>
-
-            <div class="title">FULL NAME: <span>*</span></div>
-            <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="reg_fullname"/>
-
-            <div class="title">EMAIL ADDRESS: <span>*</span></div>
-            <input type="email"  class="text_field" placeholder="EMAIL ADDRESS" title="EMAIL ADDRESS" id="reg_email" />
-
-            <div class="title">PHONE NUMBER: <span>*</span><div id="mobile_info" style="float:right;font-size:12px;display:none;color:#f00"><span>Mobile not accepted!</span></div></div>
-            <input type="tel"  class="text_field" onkeypress="isNumber_Check()" placeholder="PHONE NUMBER" title="PHONE NUMBER" id="reg_mobile" />
-            
-            <div class="title">HOME ADDRESS: <span>*</span></div>
-            <input type="text"  class="text_field" placeholder="HOME ADDRESS" title="HOME ADDRESS" id="reg_address" />
-
-            <div class="title">SELECT STATUS: <span>*</span></div>
-            <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                <option value="" selected="selected">SELECT STATUS</option>
-            </select> 
-            <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_user('');"> <i class="bi-check"></i> SUBMIT </button>
-        </div>
-    </div> 
-</div>
-<script>_get_select_status('reg_status_id','1,2');</script>
-<?php } ?>
-
-
-
-
-
-
 
 
 
@@ -340,7 +292,8 @@
                     <div class="segment-title">USER STATUS:</div>
                     <div class="text-field-div no-border">
                         <select class="text_field text_field2" readonly="readonly" id="updt_status_id" style="background:#fff;width:100%" >                       
-                                <option value="">SELECT STATUS</option>
+                            <option value="">SELECT STATUS</option>
+                            <script> _get_select_status('updt_status_id','1,2');</script>
                         </select>
                     </div>
                 </div>
@@ -353,8 +306,7 @@
 </div> 
 <script> _upload_user_pix_('<?php echo $ids?>');</script>
 <script>_get_user_profile('<?php echo $ids?>');</script>
-<script> _get_select_status('updt_status_id','1,2');</script>
- <?php }?>
+<?php }?>
 
 
 
@@ -393,14 +345,10 @@
                 <div class="alert">Kindly fill the form below to <span>ADD NEW SUBJECT</span></div>
 
                 <div class="title">SUBJECT NAME: <span>*</span></div>
-                <input id="subject_name" type="text"  class="text_field" placeholder="SUBJECT NAME" title="SUBJECT NAME"  />
-
-
-                <div class="title">SUBJECT SUMMARY: <span>*</span></div>
-                <textarea id="subject_summary" class="text_field textarea" rows="2"   maxlength="160" title="SUBJECT SUMMARY" placeholder="SUMMARY"></textarea>
+                <input id="subject_name" type="text"  class="text_field" placeholder="SUBJECT NAME" title="SUBJECT NAME"/>
                 
                 <div class="title">SUBJECT URL: <span>*</span></div>
-                <input id="subject_url" type="text"  class="text_field" placeholder="SUBJECT URL" title="SUBJECT URL"  />
+                <input id="subject_url" type="text"  class="text_field" placeholder="SUBJECT URL" title="SUBJECT URL"/>
                   
                 <div class="title">SEO KEYWORDS: <span>*</span></div>
                 <textarea id="seo_keywords" class="text_field textarea" rows="2" maxlength="160" title="SEO KEYWORDS" placeholder="SEO KEYWORDS"></textarea>
@@ -411,13 +359,13 @@
                 <div class="title">SELECT STATUS: <span>*</span></div>
                 <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
                     <option value=""> SELECT STATUS</option>
+                    <script>_get_select_status('reg_status_id','1,2');</script>
                 </select> 
                 <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_subject('<?php echo $page?>', '<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
             </div>
         </div> 
     </div>
 </div>
-<script>_get_select_status('reg_status_id','1,2');</script>
 <?php if($ids!=''){?>
 <script>_fetch_each_subject('<?php echo $ids?>');</script>
 <?php }?>
@@ -464,9 +412,6 @@
 
                     <div class="title">EXAM NAME: <span>*</span></div>
                     <input id="exam_name" type="text"  class="text_field" placeholder="EXAM NAME" title="EXAM NAME"  />
-
-                    <div class="title">EXAM SUMMARY: <span>*</span></div>
-                    <textarea id="exam_summary" class="text_field textarea" rows="2" maxlength="160" title="EXAM SUMMARY" placeholder="SUMMARY"></textarea>
                     
                     <div class="title">EXAM URL: <span>*</span></div>
                     <input id="exam_url" type="text"  class="text_field" placeholder="EXAM URL" title="EXAM URL"  />
@@ -479,7 +424,7 @@
 
                     <div class="title">SELECT SUBJECT: <span>*</span></div>
                         <div class="subject-info-div">
-                            <div class="div-in" id="subject_name">
+                            <div class="div-in" id="subject_name_with_check">
 
                                 <!-- <label for="">
                                     <input type="checkbox" class="child" name="subject_id[]" data-value="GEOGRAPHY"/>
@@ -487,23 +432,25 @@
                                 </label> -->
                                 
                             </div>
+                           
                         </div>
                    
                 
                     <div class="title">SELECT STATUS: <span>*</span></div>
                     <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
                         <option value=""> SELECT STATUS</option>
+                        <script>_get_select_status('reg_status_id','1,2');</script>
                     </select> 
-                        <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_exam('<?php echo $page?>', '<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
+                    <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_exam('<?php echo $page?>', '<?php echo $ids?>');"> <i class="bi-check"></i> SUBMIT </button>
             </div>
         </div> 
     </div>
 </div>
-<script>_get_select_status('reg_status_id','1,2');</script>
-<script> _get_fetch_all_subject('subject_name');</script>
 <?php if($ids!=''){?>
 <script>_fetch_each_exam('<?php echo $ids?>');</script>
-<?php }?>
+<?php }else{ ?>
+    <script> _get_fetch_all_subject('subject_name_with_check');</script>
+<?php } ?>
 <?php } ?>
 
 
@@ -521,28 +468,35 @@
 <div class="slide-form-div animated fadeInRight">
     <div class="fly-title-div">
         <div class="in">
-            <span id="panel-title"><i class="bi-plus-square"></i> ADD NEW TOPIC</span>
+            <?php if($ids==''){?>
+                <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW TOPIC</span>
+            <?php  }else{?>
+            <span id="panel-title"><i class="bi-pencil-square"></i> UPDATE TOPIC</span>
+            <?php }?>
             <div class="close" title="Close" onclick="_alert_close();">X</div>
         </div>
      </div>
 
-    <div class="container-back-div sb-container" >
+    <div class="container-back-div sb-container">
          <div class="inner-div">
 
                 <div class="alert">Kindly fill the form below to <span>ADD NEW TOPIC</span></div>
 
                 <div class="title">TOPIC NAME: <span>*</span></div>
-                <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="reg_fullname"/>
+                <input  type="text" class="text_field" placeholder="TOPIC NAME" title="TOPIC NAME" id="topic_name"/>
 
                 <div class="title">SELECT STATUS: <span>*</span></div>
                 <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                    <option value="`"> SELECT STATUS</option>
+                    <option value=""> SELECT STATUS</option>
+                    <script>_get_select_status('reg_status_id','1,2');</script>
                  </select> 
-                <button class="action-btn" type="button" title="SUBMIT" id="SUBMIT_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
+                <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_topic('<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>');"> <i class="bi-check"></i> SUBMIT </button>
         </div>
     </div> 
 </div>
-    <script>_get_select_status('1,2');</script>
+<?php if($ids!=''){?>
+<script>_get_fetch_each_topic('<?php echo $ids?>','<?php echo $other_ids1?>');</script>
+<?php }?>
 <?php } ?>
 
 
@@ -557,48 +511,164 @@
 <?php if ($page=='sub_topics_reg'){ ?>
 
 <div class="overlay-off-div">
-    <div class="slide-form-div center-form-div animated fadeInUp">
+    <div class="slide-form-div center-form-div animated fadeInUp ">
         <div class="fly-title-div">
             <div class="in">
-                <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW SUB-TOPIC</span>
+                <?php if($ids==''){?>
+                    <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW SUB TOPIC</span>
+                <?php  }else{?>
+                    <span id="panel-title"><i class="bi-pencil-square"></i> UPDATE SUB TOPIC</span>
+                <?php }?>
                 <div class="close" title="Close" onclick="_alert_close();">X</div>
             </div>
         </div>
 
         <div class="img-back-div">
-            <legend >Click to Upload Sub Topic Video <i class="bi-upload" ></i></legend>
+            <legend >Click to Upload Sub Topic Image <i class="bi-upload"></i></legend>
             <label>
                 <div class="img-div" title="Click To Sub Topic Video">
                     <div class="img-in">
-                        <div id="profile_login_pix"><img id="exam-pix" src="<?php echo $website_url?>/uploaded_files/exam_pix/default.png" alt="Exam pix"  /></div>
-                        <input type="file" id="exam-pix"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG" onchange="exam_pix.UpdatePreview(this);"/>
+                        <div id="view_sub_topic"><img id="exam-pix" src="<?php echo $website_url?>/uploaded_files/sub_topic_pix/default.png" alt="Exam pix"/></div>
+                        <input type="file" id="sub_topic_passport"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG," onchange="exam_pix.UpdatePreview(this);"/>
                     </div>
                 </div>
-            </label>
+            </label> 
         </div>
-           
-        <div class="container-back-div container-back-div2  sb-container" >
+        
+
+        <div class="container-back-div container-back-div2 sb-container">
             <div class="inner-div">
 
-                    <div class="alert">Kindly fill the form below to <span>ADD NEW SUB-TOPIC</span></div>
+                <div class="alert">Kindly fill the form below to <span>ADD NEW SUB-TOPIC</span></div>
 
-                    <div class="title">SUB-TOPIC NAME: <span>*</span></div>
-                    <input id="subjec_name" type="text"  class="text_field" placeholder="SUB-TOPIC NAME" title="SUB-TOPIC NAME"  />
+                <div class="title">SUB-TOPIC NAME: <span>*</span></div>
+                <input id="sub_topic_name" type="text"  class="text_field" placeholder="SUB-TOPIC NAME" title="SUB-TOPIC NAME"  />
 
-                    <div class="title">SUB-TOPIC SUMMARY: <span>*</span></div>
-                    <textarea id="sub_topic_summ" class="text_field textarea" rows="2"   maxlength="160" title="SUB-TOPIC SUMMARY" placeholder="SUMMARY"></textarea>
-                    
-                    <div class="title">SELECT STATUS: <span>*</span></div>
-                    <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
-                        <option value="`"> SELECT STATUS</option>
+                <div class="title">SUB-TOPIC URL: <span>*</span></div>
+                <input id="sub_topic_url" type="text"  class="text_field" placeholder="SUB-TOPIC URL" title="SUB-TOPIC URL"/>
+
+                <div class="title">SUBSCRIPTION PRICE (N): <span>*</span><div id="mobile_info" style="float:right;font-size:12px;display:none;color:#f00"><span>Subsription Price not accepted!</span></div></div>
+                <input  type="number" class="text_field" placeholder="SUBSCRIPTION PRICE" onkeypress="isNumber_Check()" title="SUBSCRIPTION PRICE" id="subscription_price"/>
+
+                <div class="title">SEO KEYWORDS: <span>*</span></div>
+                <textarea id="seo_keywords" class="text_field textarea" rows="2" maxlength="160" title="SEO KEYWORDS" placeholder="SEO KEYWORDS"></textarea>
+
+                <div class="title">SEO DESCRIPTION: <span>*</span></div>
+                <textarea id="seo_description" class="text_field textarea" rows="2" maxlength="160" title="SEO DESCRIPTION" placeholder="SEO DESCRIPTION"></textarea>
+
+                <div class="right-div">
+                    <div class="sub-title">SUBSCRIPTION DURATION: <span>*</span></div> 
+                     <select id="subscription_duration_id" name="dropdown" class="drop_down">
+                        <option value="">SELECT SUBSCRIPTION DURATION</option>
+                        <script>_get_select_duration('subscription_duration_id');</script>
                     </select> 
-                        <button class="action-btn" type="button" title="SUBMIT" id="update_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
+                </div>
+
+                <div class="left-div">
+                        <div class="status-title">SELECT STATUS: <span>*</span></div>
+                        <select id="reg_status_id" class="text_field select_field status_text_field" title="SELECT STATUS">
+                            <option value=""> SELECT STATUS</option>
+                            <script>_get_select_status('reg_status_id','1,2');</script>
+                        </select> 
+                </div>
+
+                <br clear="all"/>
+                <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_sub_topic('<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>');"> <i class="bi-check"></i> SUBMIT </button>
+               <br clear="all"/>
             </div>
         </div> 
     </div>
 </div>
-    <script>_get_select_status('1,2');</script>
+<?php if($ids!=''){?>
+<script>_get_fetch_each_sub_topic('<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>');</script>
+<?php }?>
 <?php } ?>
+
+
+
+
+
+
+<?php if ($page=='video_reg'){ ?>
+
+<div class="overlay-off-div">
+    <div class="slide-form-div center-form-div animated fadeInUp ">
+        <div class="fly-title-div">
+            <div class="in">
+                <?php if($ids==''){?>
+                    <span id="panel-title"><i class="bi-pencil-square"></i> ADD NEW VIDEO</span>
+                <?php  }else{?>
+                    <span id="panel-title"><i class="bi-pencil-square"></i> UPDATE VIDEO</span>
+                <?php }?>
+                <div class="close" title="Close" onclick="_alert_close();">X</div>
+            </div>
+        </div>
+
+        <div class="img-back-div">
+            <legend >Click to Upload Video <i class="bi-upload"></i></legend><br/><br/><br/>
+            <label>
+                <div class="img-div video-div" title="Click To Sub Topic Video">
+                    <div id="view_sub_topic_video"><video src="" id="videoDisplay" name="sub_video" autoplay="" muted="" loop="" class="video-slide"></video></div>
+                    <input class="" name="sub_video" id="video" onchange="showVideo(this)" type="file" style="display:none;">                 
+                </div>
+               
+            </label> 
+      
+            <legend >Click to Upload Video Image <i class="bi-upload"></i></legend>
+            <label>
+                <div class="img-div bottom-image-div" title="Click To Sub Topic Video">
+                    <div class="img-in">
+                        <div id="view_sub_topic_video_view"><img id="exam-pix" src="<?php echo $website_url?>/uploaded_files/sub_topic_pix/default.png" alt="Exam pix"/></div>
+                        <input type="file" id="video_passport"  style="display:none" accept=".jpg,.png,.jpeg,.PNG,.JPG,.JPEG," onchange="exam_pix.UpdatePreview(this);"/>
+                    </div>
+                </div>
+            </label> 
+        </div>
+        
+
+        <div class="container-back-div container-back-div2 sb-container">
+            <div class="inner-div">
+
+                <div class="alert">Kindly fill the form below to <span>ADD NEW VIDEO</span></div>
+
+                <div class="title">VIDEO TITILE: <span>*</span></div>
+                <input id="video_title" type="text"  class="text_field" placeholder="VIDEO TITILE" title="VIDEO TITILE"/>
+
+                <div class="title">VIDEO OBJECTIVE: <span>*</span></div>
+                <textarea id="video_objective" class="text_field textarea" rows="2"   maxlength="160" title="VIDEO OBJECTIVE" placeholder="VIDEO OBJECTIVE"></textarea>
+
+                <div class="title">VIDEO DURATION: <span>*</span></div>
+                <input id="video_duration_id" type="text"  class="text_field" placeholder="VIDEO DURATION" title="VIDEO DURATION"/>
+               
+                <div class="title">SELECT VIDEO VOLUME: <span>*</span></div>
+                <select id="video_volume_id" class="text_field select_field" title="SELECT STATUS">
+                    <option value="">SELECT VIDEO VOLUME</option>
+                    <script>_get_select_video_volume('video_volume_id');</script>
+                </select> 
+
+                <div class="title">SELECT PRICING: <span>*</span></div>
+                <select id="subscription_pricing_id" class="text_field select_field" title="SELECT STATUS">
+                    <option value="">SELECT PRICING</option>
+                    <script>_get_select_video_pricing('subscription_pricing_id');</script>
+                </select> 
+
+                <div class="title">SELECT STATUS: <span>*</span></div>
+                <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
+                    <option value=""> SELECT STATUS</option>
+                    <script>_get_select_status('reg_status_id','1,2');</script>
+                </select> 
+             
+                <button class="action-btn" type="button" title="SUBMIT" id="submit_btn" onclick="_add_and_update_sub_topic_video('<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>');"> <i class="bi-check"></i> SUBMIT </button>
+            </div>
+        </div> 
+    </div>
+</div>
+<?php if($ids!=''){?>
+<script>_get_fetch_each_sub_video_topic('<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>');</script>
+<?php }?>
+<?php } ?> 
+
+
 
 
 
@@ -666,11 +736,9 @@
                         <div class="page-title">FULL PAGE CONTENT</div>
                         <div class="form-div">
                             <script src="js/TextEditor.js" referrerpolicy="origin"></script>
-                            <script>
-                                tinymce.init({selector:'#page_content_text',  // change this value according to your HTML
-                                plugins: "link"
-                                });
-                            </script>
+                            <script>tinymce.init({selector:'#page_content_text',  // change this value according to your HTML
+                            plugins: "link"
+                            });</script>
                             <textarea class="text_field" style="width: 100%; display: none;" rows="27" id="page_content_text" title="TYPE FULL PAGE CONTENT HERE" placeholder="TYPE FULL PAGE CONTENT HERE" aria-hidden="true">5teiuguihgiuihgtertwetefr</textarea>
                          
                         </div>
@@ -730,15 +798,14 @@
                     
                     <div class="title">SELECT STATUS: <span>*</span></div>
                     <select id="status_id" class="text_field select_field" title="SELECT STATUS">
-                      <option value="`"> SELECT STATUS</option>
+                      <option value=""> SELECT STATUS</option>
+                      <script>_get_select_status('1,2');</script>
                     </select> 
                         <button class="action-btn" type="button" title="SUBMIT" id="update_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
             </div>
         </div> 
     </div>
 </div>
-
-<script>_get_select_status('1,2');</script>
 
 <?php } ?>
 
@@ -747,56 +814,51 @@
 
 
 <?php if ($page=='faqs_reg'){ ?>
-<div class="slide-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-            <span id="panel-title"><i class="bi-plus-square"></i> ADD NEW FAQ's</span>
-            <div class="close" title="Close" onclick="_alert_close();">X</div>
+
+<div class="overlay-off-div">
+    <div class="slide-form-div animated fadeInRight">
+        <div class="fly-title-div">
+            <div class="in">
+                <span id="panel-title"><i class="bi-plus-square"></i> ADD NEW FAQ</span>
+                <div class="close" title="Close" onclick="_alert_close();">X</div>
+            </div>
         </div>
-     </div>
 
-    <div class="container-back-div sb-container" >
-         <div class="inner-div">
 
-                <div class="alert">Kindly fill the form below to <span>ADD NEW FAQ's</span></div>
+        <div class="container-back-div sb-container">
+            <div class="inner-div">
 
-                <div class="title">SELECT FAQ's CATEGORY: <span>*</span></div>
-                <select id="faqs_cat" class="text_field select_field" title="SELECT FAQ's CATEGORY">
-                    <script>_get_select_status('1,2');</script>
-                </select>
+            <div class="alert">Kindly fill the form below to <span>ADD NEW FAQ</span></div>
 
-                <div class="title">FAQ's QUESTION: <span>*</span></div>
-                <input  type="text" class="text_field" placeholder="FULL NAME" title="FULL NAME" id="reg_fullname"/>
+            <div class="title">SELECT FAQ CATEGORY: <span>*</span></div>
+            <select id="cat_id" class="text_field select_field" title="SELECT FAQ's CATEGORY">
+                <option value=""> SELECT FAQ CATEGORY</option>
+                <script>_get_faq_cat('cat_id');</script>
+            </select>
 
-                <div class="title">FAQ's ANSWER: <span>*</span></div>
-                    <script src="js/TextEditor.js" referrerpolicy="origin"></script>
-                    <script>
-                        tinymce.init({selector:'#faqs_text',  // change this value according to your HTML
-                        plugins: "link"
-                        });
-                    </script>
-                <textarea class="text_field" style="width: 100%;  display: block;" rows="27" id="faqs_text" title="TYPE FULL PAGE CONTENT HERE" placeholder="TYPE FULL PAGE CONTENT HERE" aria-hidden="true"></textarea>
-                         
-                <div class="title">SELECT STATUS: <span>*</span></div>
-                <select id="status_id" class="text_field select_field" title="SELECT STATUS">
-                        <option value="">SELECT STATUS</option>
-                </select> 
+            <div class="title">FAQ QUESTION: <span>*</span></div>
+            <input  type="text" class="text_field" placeholder="Type Question Here" title="Question" id="question" title="FULL NAME"/>
+                        
+            <div class="title">FAQ ANSWER: <span>*</span></div>
+                <script src="js/TextEditor.js" referrerpolicy="origin"></script>
+                <script>tinymce.init({selector:'#answer',  // change this value according to your HTML
+                    plugins: "link"
+                });</script>
+                <textarea class="text_field" style="width:100%;" rows="20" id="answer" title="Type Answer Here" placeholder="Type Answer Here"></textarea>
 
-                <button class="action-btn" type="button" title="SUBMIT" id="SUBMIT_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
-        </div>
-    </div> 
+            <div class="title">SELECT STATUS: <span>*</span></div>
+            <select id="reg_status_id" class="text_field select_field" title="SELECT STATUS">
+                    <option value="">SELECT STATUS</option>
+                    <script>_get_select_status('reg_status_id','1,2');</script>
+            </select> 
+
+            <button class="action-btn" type="button" title="SUBMIT" id="SUBMIT_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> SUBMIT </button>
+               
+            </div>
+        </div> 
+    </div>
 </div>
-<script>_get_select_status('1,2');</script>
-
-<?php } ?>
-
-
-
-
-
-
-
-
+<?php } ?> 
 
 
 
@@ -868,15 +930,22 @@
                 <button class="action-btn" type="button" title="SUBMIT" id="SUBMIT_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> UPDATE ACCOUNT </button>
             </div>
 
+
+
+
             <div class="setting_detail" id="channge_password">   
                  <div class="alert">Fill all fields to change your <span>PASSWORD</span>  </div>
-                    <div class="title"> OLD PASSWORD: <span>*</span></div>
-                    <input id="bank_name" type="text" class="text_field" placeholder="OLD PASSWORD" title="OLD PASSWORD" value="<?php echo $bank_name; ?>" />
-                    <div class="title"> CREATE PASSWORD: <span>*</span></div>
-                    <input id="account_name" type="text" class="text_field" placeholder="CREATE PASSWORD" title="CREATE PASSWORD" value="<?php echo $account_name; ?>" />
-                    <div class="title"> CONFIRMED PASSWORD: <span>*</span></div>
-                    <input id="account_number" type="text" class="text_field" placeholder="CONFIRMED PASSWORD" title=" CONFIRMED PASSWORD" value="<?php echo $account_number; ?>" />
-                    <button class="action-btn" type="button" title="SUBMIT" id="SUBMIT_btn" onclick="_reg_and_updt_staff('<?php echo $page?>','');"> <i class="bi-check"></i> UPDATE PASSWORD </button>
+                 <div class="title">OLD PASSWORD: <span>*</span></div>
+                <input type="password" id="old_password" name="old_password" class="text_field"  placeholder="ENTER OLD PASSWORD" title="ENTER YOUR OLD PASSWORD">
+
+                <div class="title">CREATE NEW PASSWORD: <span>*</span></div>
+                <input type="password" id="new_password" name="new_password" onkeyup="_check_password2()" required class="text_field"  placeholder="CREATE NEW PASSWORD" title="CREATE NEW PASSWORD">
+
+                <div class="title" style="float:left;">COMFIRMED NEW PASSWORD:<span >*</span>  <div id='message' style="float:right;margin-left:10px"></div></div>
+                <input type="password"  id="confirmed_password" onkeyup="_check_password3()" name="confirmed_password" required class="text_field" placeholder="COMFIRMED NEW PASSWORD" title="COMFIRMED NEW PASSWORD">
+            
+                <div class="pswd_info" style="color:#8c8d8d">At least 8 charaters required including upper & lower cases and special characters and numbers.</div>
+                <button class="action-btn" id="update_btn" type="button" style="float:left;" onclick="_update_user_password('<?php echo $staff_id ?>');" title="CHANGE PASSWORD"><i class="fa fa-exchange"></i> CHANGE PASSWORD</button>
                 
             </div>
 
@@ -931,35 +1000,19 @@
 
 
 
-
-
-
-<?php if ($page=='change_password'){ ?>
-<div class="reg-form-div animated fadeInRight">
-    <div class="fly-title-div">
-        <div class="in">
-        <span id="panel-title"><i class="bi-lock"></i> CHANGE PASSWORD </span>
-        <div class="close" title="Close" onclick="_alert_close();">X</div>
+<?php if ($page=='access_key_validation_info'){ ?>
+    <div class="validation-div animated ZoomIn">
+        <div class="div-in">
+            <div class="img-div"><img src="<?php echo $website_url?>/all-images/images/warning.gif" alt="Profile image"></div>
+            <h4>Invalid AccessToken. Please LogIn Again</h4>
+            <form method="post" action="config/code" name="logoutform">
+            <input type="hidden" name="action" value="logout"/>
+            <button class="btn">Okay, Log-In</button>
+            </form>
         </div>
-     </div>
-
-    <div class="container-back-div" >
-         <div class="inner-div">
-         <div class="alert">Enter <span>Old Password</span> and create <span>New Password <i class="fa fa-lock"></i></span> </div>
-
-            <div class="title">OLD PASSWORD: <span>*</span></div>
-            <input type="password" id="old_password" name="old_password" class="text_field"  placeholder="ENTER OLD PASSWORD" title="ENTER YOUR OLD PASSWORD">
-
-            <div class="title">CREATE NEW PASSWORD: <span>*</span></div>
-            <input type="password" id="new_password" name="new_password" onkeyup="_check_password2()" required class="text_field"  placeholder="CREATE NEW PASSWORD" title="CREATE NEW PASSWORD">
-
-            <div class="title" style="float:left;">COMFIRMED NEW PASSWORD:<span >*</span>  <div id='message' style="float:right;margin-left:10px"></div></div>
-            <input type="password"  id="comfirmed_password" onkeyup="_check_password3()" name="comfirmed_password" required class="text_field" placeholder="COMFIRMED NEW PASSWORD" title="COMFIRMED NEW PASSWORD">
-           
-            <div class="pswd_info" style="color:#8c8d8d">At least 8 charaters required including upper & lower cases and special characters and numbers.</div>
-            <button class="action-btn" id="update_btn" type="button" style="float:left;" onClick="_update_password('<?php echo $staff_id ?>')" title="CHANGE PASSWORD"><i class="fa fa-exchange"></i> CHANGE PASSWORD</button>
-        </div>
-    </div> 
-</div>
+    </div>
 <?php } ?>
 
+
+<script type="text/javascript" src="js/scrollBar.js"></script>
+<script type="text/javascript">$(".sb-container").scrollBox();</script>

@@ -51,7 +51,7 @@ function _next_page(next_id,divid) {
 		 user_login(email,password);
 		 }else{
 			 $('#email,#password').addClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>Login Error</h3>  <span>Check your email or span</span>').fadeIn(500).delay(3000).fadeOut(100);
+			 $('#warning-div').fadeIn(500).delay(5000).fadeOut(100);
 	 }
 	 };
  
@@ -82,10 +82,10 @@ function _next_page(next_id,divid) {
 			var staff_id =data.staff_id;
 			var access_key =data.access_key;
 			var role_id =data.role_id;
-		   $('#success-div').html('<div class="alert-logo"><img src="'+website_url+'/admin/all-images/images/success.gif" alt="success" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(5000).fadeOut(100);
+			 $("#success-div").html('<div><i class="bi-check"></i></div> ' +message1 +" <br/> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
 			_proceed_to_login(staff_id,access_key,role_id);   
 			}else{
-			   $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/admin/all-images/images/warning.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(3000).fadeOut(100);
+				$("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br/><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		   }
 		   $('#login_btn').html(btn_text);
 		   document.getElementById('login_btn').disabled=false;
@@ -143,10 +143,10 @@ function _next_page(next_id,divid) {
 			 var fullname = info.fullname;
 			 var email = info.email;
 			 $('#reset_pass_email').removeClass('complain');
-			 $('#success-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/success.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(5000).fadeOut(100);
+			 $("#success-div").html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
 			  _reset_password(staff_id,fullname,email);   
 		   }else{
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(3000).fadeOut(100);
+			$("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 			 $('#reset_pass_email').addClass('complain');
 		   }
 		   $('#reset_password_btn').html(btn_text);
@@ -191,7 +191,7 @@ function _next_page(next_id,divid) {
 	   success: function(data){
 		  var message1 = data.message1;
 		  var message2 = data.message2;
-		  $('#success-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/success.gif" alt="Success" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(5000).fadeOut(100);
+		  $("#success-div").html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
 		  $('#'+ids).html(btn_text);
 	}
  });
@@ -274,19 +274,19 @@ function _next_page(next_id,divid) {
 	   $('#reset_password_otp,#create_reset_password,#confirmed_reset_password').removeClass('complain');
 		  if((otp=='') && (password=='') && (confirmed_reset_password=='')){
 			 $('#reset_password_otp,#create_reset_password,#confirmed_reset_password').addClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>ERROR!</h3> <span>Fill all fields to continue.</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			 $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		  }else if (otp==''){
 			 $('#reset_password_otp').addClass('complain');
 			 $('#create_reset_password,#confirmed_reset_password').removeClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>OTP ERROR!</h3> <span>Field cannot be empty.</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			 $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		   }else if (password==''){
 			 $('#create_reset_password').addClass('complain');
 			 $('#reset_password_otp,#confirmed_reset_password').removeClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>PASSWORD ERROR!</h3> <span>Field cannot be empty.</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			 $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		  }else if (password!=confirmed_reset_password){
 			 $('#create_reset_password,#confirmed_reset_password').addClass('complain');
 			 $('reset_password_otp').removeClass('complain');
-			 $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>PASSWORD ERROR!</h3> <span>Password not match.</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			 $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		  }else{
 		  if ((password.match(/^(?=[^A-Z]*[A-Z])(?=[^!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~]*[!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~])(?=\D*\d).{8,}$/))&&(password.length>=8)) {
 				$('#reset_password_otp,#create_reset_password,#confirmed_reset_password').removeClass('complain');
@@ -311,7 +311,7 @@ function _next_page(next_id,divid) {
 					  if(result==true){
 						 _get_page('password_reset_successful');
 				   }else{
-					  $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>'+message1+'</h3> <span>'+message2+'</span></div>').fadeIn(500).delay(3000).fadeOut(100);
+					$("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 					  $('#reset_password_otp').addClass('complain');
 				   }
 				   $('#comfirmed_reset_btn').html(btn_text);
@@ -319,7 +319,7 @@ function _next_page(next_id,divid) {
 				   }
 				});  
 		}else{
-		  $('#warning-div').html('<div class="alert-logo"><img src="'+website_url+'/all-images/images/warning.gif" alt="Warning" /></div><h3>PASSWORD ERROR!</h3> <span>Password not accepted!.</span></div').fadeIn(500).delay(3000).fadeOut(100);
+			$("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
 		}
 			   
 	}

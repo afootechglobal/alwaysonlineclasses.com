@@ -14,9 +14,8 @@
 <link href="<?php echo $website_url?>/admin/style/main-style.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/style/scrollbar.css" type="text/css" rel="stylesheet" />
 
-
-<script src="<?php echo $website_url?>/admin/js/superplaceholder.js"></script>
 <script src="<?php echo $website_url?>/admin/js/jquery-v3.6.1.min.js"></script>
+<script src="<?php echo $website_url?>/admin/js/superplaceholder.js"></script>
 <script src="<?php echo $website_url?>/admin/js/scripts.js"></script> 
 
 <meta property="og:type" content="Website" />

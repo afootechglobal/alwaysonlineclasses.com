@@ -27,9 +27,9 @@ $(document).ready(function() {
 
 
 
-<?php if ($scookies_check==''){?>
-	//_get_form('accept-cookies');
-<?php }?>
+// <?php //if ($scookies_check==''){?>
+// _get_form('accept-cookies');
+// <?php //}?>
 </script>
 <script src="<?php echo $website_url?>/slide-property/carousel/product-slide.js" type="text/javascript" ></script>
 

@@ -117,7 +117,7 @@
                     </select>
                     </div>
                 </div>
-                <button class="btn" type="button" id="update_btn" onclick="_update_user_profile('<?php echo $login_staff_id?>');"> UPDATE PROFILE <i class="bi-check"></i></button>     
+                <button class="btn" type="button" id="update_btn" onclick="_update_staff_profile('<?php echo $login_staff_id?>');"> UPDATE PROFILE <i class="bi-check"></i></button>     
             </div> 
         </div>  
         

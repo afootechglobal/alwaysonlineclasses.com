@@ -15,20 +15,15 @@
 <link href="<?php echo $website_url?>/admin/a/style/nav-style.css" type="text/css" rel="stylesheet" />
 
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/admin/a/style/jquery.datetimepicker.css"/>
-
-<script src="js/jquery.backstretch.min.js"></script>
-
-
-<script src="<?php echo $website_url?>/admin/a/js/superplaceholder.js"></script>
 <script src="<?php echo $website_url?>/admin/a/js/jquery-v3.6.1.min.js"></script>
-<script src="<?php echo $website_url?>/admin/a/js/scripts.js"></script> 
+<script src="js/jquery.backstretch.min.js"></script>
+<script src="<?php echo $website_url?>/admin/a/js/scripts.js"></script>
+<script src="<?php echo $website_url?>/admin/a/js/superplaceholder.js"></script>
 
-<script src="<?php echo $website_url?>/admin/a/js/aos.js"></script>
+ 
+
+
 <script src="<?php echo $website_url?>/admin/a/js/canvasjs.min.js"></script>
-<script src="<?php echo $website_url?>/admin/a/js/jquery.datetimepicker.js"></script>
-<script src="<?php echo $website_url?>/admin/a/js/digitalclock.js"></script>
 
-
-<script type="text/javascript" src="js/canvasjs.min.js"></script>
 
 <meta property="og:type" content="Website" />

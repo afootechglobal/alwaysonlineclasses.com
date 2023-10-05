@@ -1,5 +1,4 @@
-<script type="text/javascript" src="js/scrollBar.js"></script>
-<script type="text/javascript">$(".sb-container").scrollBox();</script>
+
 <?php if($page=='login'){?>
     
     <div class="fill-form-div animated fadeIn" id="view_login">

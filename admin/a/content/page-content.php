@@ -1,5 +1,3 @@
-<script type="text/javascript" src="js/scrollBar.js"></script>
-<script type="text/javascript">$(".sb-container").scrollBox();</script>
 
 <?php if ($page=='access_key_authentication'){?>
 	<div class="caption-div caption-success-div animated zoomIn">
@@ -19,15 +17,17 @@
             <div class="statistics-div bg1" onClick="_get_page('view_staff', 'admin')" id="admin">
                 <div class="inner-div">                    
                 Adminstrator <br>
-                    <span class="number">10</span>
+                    <span class="number" id="staff_count">10</span>
                 </div>
             </div>
+           
             <?php }?>
 
             <div class="statistics-div bg2" onClick="_get_page('active_users', 'user')" id="user">
                 <div class="inner-div">                    
                     Active Users <br>
                     <span class="number">10</span>
+                    
                 </div>
             </div>
 
@@ -192,6 +192,7 @@
              </div>
 
   </div>
+
 <?php }?>
 
 
@@ -344,6 +345,7 @@
         <!--------------------------------network search select------------------------->
         <select id="status_id" class="text_field select" onchange="_get_fetch_all_staff()">
             <option value="" selected="selected"> SELECT STATUS</option>
+            <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_all_staff();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -369,7 +371,7 @@
         }
     });
     </script>
-     <script>_get_select_status('status_id','1,2');</script>
+   
 <?php } ?>
 
 
@@ -387,12 +389,13 @@
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_user()">
             <option value="" selected="selected">ALL USER STATUS</option>
+            <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_all_user();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
 
-    <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> USER'S LIST <button class="btn" onClick="_get_form('user_reg')"><i class="bi-plus-square"></i> CREATE A NEW USER</button></div>
+    <div class="alert alert-success"> <span><i class="bi-people-fill"></i></span> USER'S LIST</div>
         
         <div class="fetch-div animated fadeIn">			
             <div class="fetch" id="fetch_user">
@@ -411,7 +414,7 @@
         }
     });
     </script>
-    <script>_get_select_status('status_id','1,2');</script>
+  
 <?php } ?>
 
 
@@ -422,7 +425,8 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_subject('fetch_subject')">
-            <option value="" selected="selected">ALL SUBJECT STATUS</option>     
+            <option value="" selected="selected">ALL SUBJECT STATUS</option>  
+            <script>_get_select_status('status_id','1,2');</script>   
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_all_subject('fetch_subject');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -446,7 +450,7 @@
         }
     });
     </script>
-      <script>_get_select_status('status_id','1,2');</script>
+ 
 <?php } ?>
 
 
@@ -460,7 +464,8 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_exam()">
-            <option value="" selected="selected">ALL EXAM STATUS</option>      
+            <option value="" selected="selected">ALL EXAM STATUS</option>   
+             <script>_get_select_status('status_id','1,2');</script>   
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_all_exam()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -502,7 +507,7 @@
         }
     });
     </script>
-    <script>_get_select_status('status_id','1,2');</script>
+   
 <?php } ?>
 
 
@@ -515,12 +520,13 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_exam_subject('<?php echo $ids?>');">
-            <option value="" selected="selected">SUBJECT STATUS</option>     
+            <option value="" selected="selected">SUBJECT STATUS</option>   
+               <script>_get_select_status('status_id','1,2');</script>    
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_exam_subject('<?php echo $ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span id="">WAEC</span> / SUBJECT'S LIST </div>
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> <span class="" onClick="_get_page('exam_category');">EXAM / </span> <span id="">WAEC</span> / SUBJECT'S LIST </div>
         
         <div class="fetch-div animated fadeIn">			
             <div class="fetch" id="fetch_exam_subject">
@@ -539,7 +545,7 @@
         }
     });
     </script>
-    <script>_get_select_status('status_id','1,2');</script>    
+   
 <?php } ?>
 
 
@@ -552,93 +558,45 @@
 <?php if ($page=='topics'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-            <option value="" selected="selected">TOPICS STATUS</option>     
-            <script>_get_select_status('1,2');</script>
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_topic('','<?php echo $other_ids1?>','<?php echo $other_ids?>');">
+            <option value="" selected="selected">TOPICS STATUS</option>
+            <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup="_get_fetch_topic('','<?php echo $other_ids1?>','<?php echo $other_ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span>WAEC</span> / <span>MATHEMATICS</span> / TOPIC'S LIST <button class="btn" onClick="_get_form('topics_reg')"><i class="bi-plus-square"></i> ADD NEW TOPIC</button></div>
-            <div class="animated fadeIn" id="search-content">
-            
-            <div class="fetch-div">			
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span class="" onClick="_get_page('exam_category');">EXAM / </span> <span>MATHEMATICS</span> / TOPIC'S LIST <button class="btn" title="ADD NEW TOPIC" onClick="_get_form_with_id('topics_reg','','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW TOPIC</button></div>
+           	
+        <div class="fetch-div">	
+
+            <div class="faq-back-div">
+                <div class="faq-text-div">
+  
+                    <div class="fetch" id="fetch_topic">
+                        <script> _get_fetch_topic('','<?php echo $other_ids1?>','<?php echo $other_ids?>');</script>
+                    </div>
                     
-                <div class="faq-back-div " >
-                    <div class="faq-text-div ">
-
-                        <div class="quest-faq-div ">
-                            <div class="faq-title-text">
-                                <h3>NUMBER & NUMERATION <button class="btn" onClick="_get_form('sub_topics_reg')"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button></h3>
-                            </div>
-                            
-                            <div class="faq-answer-div" onclick="_collapse('faq1')">
-                                <span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;
-                                <span>Status: </span>&nbsp;&nbsp;<span class="count-div status">ACTIVE</span>
-                                <div class="expand-div" id="faq1num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
-                            </div>
-
-                            <div class="faq-answer-div" id="faq1answer" style="display: none;">  
-                                <div class="topics-content-div">
-                                    <div class="image-div">
-                                        <img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
-                                    </div>
-
-                                    <div class="text">
-                                        <h4>Euclidean Geometry</h4>
-                                        <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                                        <button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <br clear="all" />
+                    <!-- <div class="quest-faq-div ">
+                        <div class="faq-title-text">
+                            <h3>NUMBER & NUMERATION <button class="btn" title="ADD NEW SUB TOPIC" onClick="_get_form_with_id('topics_reg','','<?php //echo $ids?>')"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button> <button class="btn btn-2" title="EDIT TOPIC" onClick="_get_form_with_id('topics_reg','<?php //echo $ids?>','<?php //echo $other_ids?>')"><i class="bi-pencil-square"></i> EDIT</button></h3>
+                        </div>
+                        
+                        <div class="faq-answer-div" onclick="_collapse('faq1')">
+                            <span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;
+                            <span>Status: </span>&nbsp;&nbsp;<span class="count-div status">ACTIVE</span>
+                            <div class="expand-div" id="faq1num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
                         </div>
 
-
-
-
-
-                        <div class="quest-faq-div ">
-                            <div class="faq-title-text">
-                                <h3>STATTISTICS <button class="btn" onClick="_get_form('sub_topics_reg')"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button></h3>
-                            </div>
+                        <div class="faq-answer-div" id="faq1answer" style="display: none;">  
                             
-                            <div class="faq-answer-div" onclick="_collapse('faq2')">
-                                <span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;
-                                <span>Status: </span>&nbsp;&nbsp;<span class="count-div status">ACTIVE</span>
-                                <div class="expand-div" id="faq2num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>                         
-                            </div>
-
-                           
-                            <div class="faq-answer-div" id="faq2answer" style="display: none;">  
-                                <div class="topics-content-div">
-                                    <div class="image-div">
-                                        <img src="<?php echo $website_url?>/all-images/body-pix/geometry.jpg" alt="geometry"/>
-                                    </div>
-
-                                    <div class="text">
-                                        <h4>Euclidean Geometry</h4>
-                                        <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                                        <button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                      
-
-
-
-                    </div>
+                        </div>
+                    </div> -->
                 </div>
-
-                    
-                <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_users('','','');</script>
-                </div> -->
-            </div> 
-            
-                 <br clear="all" />
             </div>
+        </div> 
+                    
+          
      <script>
         superplaceholder({el: search_txt,
             sentences: ['Type here to search...', 'Top ID e.g TOP00000','Top Name e.g Statistic, Geometry'],
@@ -649,7 +607,69 @@
         }
     });
     </script>
-    
+ 
+<?php } ?>
+
+
+
+
+<?php if ($page=='videos'){ ?>
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_topic('','<?php echo $other_ids?>','<?php echo $other_ids1?>');">
+            <option value="" selected="selected">VIDEO STATUS</option>
+            <script>_get_select_status('status_id','1,2');</script>     
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span >WAEC </span> / <span>MATHEMATICS</span> / <span> NUMBER BASES / </span> VIDEOS LIST <button class="btn" title="ADD NEW VIDEO" onClick="_get_form_with_id('video_reg','<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW VIDEO</button></div>
+           	
+        <div class="fetch-div">	
+
+            <div class="faq-back-div">
+                <div class="faq-text-div">
+  
+                   
+                  
+
+                    <div class="quest-faq-div animated fadeIn">
+   
+                        <div class="fetch" id="fetch_sub_topic_video">
+                            <script> _get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');</script>
+                        </div>
+                    
+                        <!-- <div class="faq-answer-div" id="faq1answer">  
+                           <div class="topics-content-div">
+                                <div class="image-div video-img">
+                                    <img src="<?php //echo $website_url?>/all-images/body-pix/num-bases.jpg" alt="geometry"/>
+                                </div>
+
+                                <div class="text video-text">
+                                    <h4>Introduction to Number Bases</h4>
+                                    <p>At the end of the study in this video, students should be able to understand Binary (base-2) which uses only two symbols, 0 and 1. And Octal (base-8) which number base uses eight symbols (0-7). And Hexadecimal (base-16): This number base uses sixteen symbols (0-9 and A-F)</p>
+                                    <div class="bottom-div"><button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>&nbsp;<span class="volume">VOLUME 1</span> &nbsp;|<span class="volume">FREE</span> &nbsp;|<span class="volume">VIDEO DURATION : 00:05:30</span></div>
+                                </div>
+                            </div> 
+                        </div>   -->
+ 
+                    </div> 
+                </div>
+            </div>
+        </div> 
+                    
+          
+     <script>
+        superplaceholder({el: search_txt,
+            sentences: ['Type here to search...', 'Top ID e.g TOP00000','Top Name e.g Statistic, Geometry'],
+            options: {
+            letterDelay: 80,
+            loop: true,
+            startOnFocus: false
+        }
+    });
+    </script>
+  
 <?php } ?>
 
 
@@ -661,7 +681,7 @@
             <!--------------------------------network search select------------------------->
             <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
                 <option value="" selected="selected">ALL BLOG STATUS</option>
-                <script>_get_select_status('1,2');</script>
+                <script>_get_select_status('status_id','1,2');</script>
             </select>
             <!--------------------------------all search select------------------------->
             <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
@@ -786,28 +806,29 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-            <option value="" selected="selected">ALL FAQ's STATUS</option>   
-            <script>_get_select_status('1,2');</script>
+            <option value="" selected="selected">ALL FAQ STATUS</option>   
+            <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-newspaper"></i></span> FAQ's LIST <button class="btn" onClick="_get_form('faqs_reg')"><i class="bi-plus-square"></i> ADD NEW FAQ's</button></div>
+         <div class="alert alert-success"> <span><i class="bi-newspaper"></i></span> FAQ's LIST <button class="btn" onClick="_get_form('faqs_reg')"><i class="bi-plus-square"></i> ADD NEW FAQ</button></div>
         <div class="animated fadeIn" id="search-content">
                     
                 <div class="faq-back-div faqs-back" >
                     <div class="faq-text-div ">
 
-                        <div class="quest-faq-div main-faqs">
-                            <div class="faq-title-text main-faqs-title-div">
+                        <div class="quest-faq-div main-faqs active-faq">
+                            <div class="faq-title-text main-faqs-title-div" id="faq12">
                                <span>1</span>
                             </div>
 
-                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('faq243')" style="cursor:pointer;">
                                <i class="bi-pencil-square"></i> <span>Who we are</span>
+                               <div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>	
                             </div>
                             
-                            <div class="faq-answer-div faq-answer-div2">  
+                            <div class="faq-answer-div faq-answer-div2" id="faq243answer" style="display: none;">  
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                             </div>
@@ -819,11 +840,12 @@
                                <span>2</span>
                             </div>
 
-                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('faq244')" style="cursor:pointer;">
                             <i class="bi-pencil-square"></i> <span>Who we are</span>
+                            <div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
                             </div>
                             
-                            <div class="faq-answer-div faq-answer-div2">  
+                            <div class="faq-answer-div faq-answer-div2" id="faq244answer" style="display: none;">  
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                             </div>
@@ -836,11 +858,12 @@
                                <span>3</span>
                             </div>
 
-                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2">
+                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('faq245')" style="cursor:pointer;">
                             <i class="bi-pencil-square"></i> <span>Who we are</span>
+                            <div class="expand-div" id="faq245num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
                             </div>
                             
-                            <div class="faq-answer-div faq-answer-div2">  
+                            <div class="faq-answer-div faq-answer-div2" id="faq245answer" style="display: none;">  
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                             </div>
@@ -868,7 +891,7 @@
         }
     });
     </script>
-    
+
 <?php } ?>
 
 
@@ -938,20 +961,6 @@
 
 
 
-
-
-<?php if ($page=='access_key_validation_info'){ ?>
-    <div class="validation-div animated ZoomIn">
-        <div class="div-in">
-            <div class="img-div"><img src="all-images/images/warning.gif" alt="Profile image"></div>
-            <h4>Invalid AccessToken. Please LogIn Again</h4>
-            <form method="post" action="config/code.php" name="logoutform">
-            <input type="hidden" name="action" value="logout"/>
-            <button class="btn">Okay, Log-In</button>
-            </form>
-        </div>
-    </div>
-<?php } ?>
 
 
 
