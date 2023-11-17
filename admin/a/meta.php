@@ -8,22 +8,14 @@
 
 <link href="<?php echo $website_url?>/admin/a/style/icons-1.10.2/font/bootstrap-icons.css" type="text/css" rel="stylesheet" >
 <link href="<?php echo $website_url?>/admin/a/style/animate.css" type="text/css" rel="stylesheet" media="all">
-<link href="<?php echo $website_url?>/admin/a/style/aos.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/a/style/paramount.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/a/style/main-style.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/a/style/scrollbar.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/admin/a/style/nav-style.css" type="text/css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/admin/a/style/jquery.datetimepicker.css"/>
 <script src="<?php echo $website_url?>/admin/a/js/jquery-v3.6.1.min.js"></script>
-<script src="js/jquery.backstretch.min.js"></script>
+
 <script src="<?php echo $website_url?>/admin/a/js/scripts.js"></script>
 <script src="<?php echo $website_url?>/admin/a/js/superplaceholder.js"></script>
-
- 
-
-
-<script src="<?php echo $website_url?>/admin/a/js/canvasjs.min.js"></script>
-
 
 <meta property="og:type" content="Website" />

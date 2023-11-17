@@ -15,17 +15,12 @@
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
 <meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
 <meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
-
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
-</div>
 <?php include '../header.php'?>
 
 <div class="other-pages-title" data-aos="fade-down" data-aos-duration="1200">
-	<div class="inner-div">
+	<div class="inner-div exam-inner">
 		<div class="top-title-div">
 			<div class="div-in">
 				<ul>
@@ -36,9 +31,10 @@
 		</div>
 
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
-    	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Exam Categories</span></h1>	
+    		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Exam Categories</span></h1>	
 			<p>We are dedicated to providing you with a reliable outstanding online class service that will make your education faster truly memorable.</p>
 		</div>
+
 		<button class="ios-btn" title="Download on Apple Store"></button>	
 		<button class="ios-btn android-btn" title="Download on google play Store"></button>		
     </div>
@@ -52,8 +48,8 @@
 		
 				<div class="right-div left-div  exam-content-back-div">
 			
-					<div class="fetch" id="fetch_index_exam">
-						<script> _get_fetch_all_index_exam('1,2');</script>
+					<div class="fetch" id="fetch_all_exam_cat_exam">
+						<script> _get_fetch_all_cat_exam();</script>
 					</div>
 					<br clear="all" />
 
@@ -75,100 +71,37 @@
 				</div>
 
 
-				<div class="right-div">
+				<div class="right-div sticky-div">
 					<div class="inner-div">						
 						<p>POPULAR SUBJECTS</p>
 
-						<a href="<?php echo $website_url ?>/exams/waec/mathematics/" title="Mathematics">
-						<div class="content-div">
+							<div class="fetch" id="fetch_index_subject">
+								<script> _get_fetch_index_subject();</script>
+							</div>
+							<br clear="all" />
+							
+						<!-- <div class="content-div">
 							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/maths.jpg" alt="maths"/>
+								<img src="<?php //echo $website_url?>/all-images/body-pix/literature.jpg" alt="chemistry"/>
 							</div>
 							<div class="image-div text-div">
-								<h4>Mathematics</h4></a>
-								<span>Sub Topics: 2</span>
-							</div>
-						</div></a>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/english.webp" alt="english"/>
-							</div>
-							<div class="image-div text-div">
-								<a href="<?php echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
-								<h4>Use Of English</h4></a>
-								<span>Sub Topics: 2</span>
-							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/physics.jpg" alt="physics"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Physics</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div> 	
-						
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/chemistry.jpg" alt="chemistry"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Chemistry</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/accounting.webp" alt="chemistry"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Accounting</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/literature.jpg" alt="chemistry"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php //echo //$website_url ?>/blog/group-of-students-sharing-ideals" title="">
 								<h4>Literature In English</h4></a>
 								<span>Sub Topics: 3</span>
 							</div>
 						</div>
-						<br clear="all"/>
-	
-						<button class="btn" title="View All">VIEW ALL SUBJECTS</button>
-									
+						<br clear="all"/> -->			
 					</div>				
 				</div>
-				
+				<br clear="all"/>
 			</div>
 		</div>
     </section>
 	<br clear="all"/>
 	<br clear="all"/>
-	<br clear="all"/>
 	<?php include '../footer.php'?>
-	
 </section>
-<script>
-  $(window).on('load', function (){
-    $('#loading').hide();
-  }) 
-</script>
 <?php include '../bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
-
 </body>
 </html>
 

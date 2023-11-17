@@ -1,5 +1,5 @@
 <div class="overlay-off-div">
-    <div class="user-profile-div animated fadeInUp" >
+    <div class="user-profile-div animated fadeInUp">
         <div class="top-panel-div">
             <i class="bi-person"></i> ADMINISTRATIVE PROFILE</span>
             <div class="close" title="Close" onclick="_alert_close();">X</div>
@@ -113,8 +113,8 @@
                     <div class="segment-title">STAFF STATUS:</div>
                     <div class="text-field-div no-border">
                         <select class="text_field text_field2" id="updt_status_id" style="background:#fff;" >                                                    
-                        <option value="" >SELECT STATUS </option>
-                    </select>
+                            <option value="">SELECT STATUS </option>
+                        </select>
                     </div>
                 </div>
                 <button class="btn" type="button" id="update_btn" onclick="_update_staff_profile('<?php echo $login_staff_id?>');"> UPDATE PROFILE <i class="bi-check"></i></button>     

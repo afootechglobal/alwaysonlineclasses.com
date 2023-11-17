@@ -14,7 +14,7 @@
 
 
 <div class="success-div animated bounceInDown" id="warning-div">
-    <div><i class="bi-exclamation-circle"></i></div> 
+    <div><i class="bi-exclamation-octagon-fill"></i></div> 
     USER ERROR!<br /> 
     <span>Fill The Fields To Continue</span>
 </div>

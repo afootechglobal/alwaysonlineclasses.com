@@ -1,8 +1,7 @@
 .cg-carousel {
   position: relative;
   overflow: hidden;
-  width:100%;
-  border-radius: 25px;
+  border-radius: 15px;
 }
 .cg-carousel__container {
   position: relative;
@@ -16,7 +15,6 @@
 }
 .cg-carousel__slide {
   position: relative;
-  width: 100%;
   display:flex;
 }
 @-webkit-keyframes slideIn {

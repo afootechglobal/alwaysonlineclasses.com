@@ -15,13 +15,8 @@
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
 <meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
 <meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
-
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
-</div>
 <?php include 'header.php'?>
 
 <div class="other-pages-title" data-aos="fade-down" data-aos-duration="1200">
@@ -53,7 +48,7 @@
 				
 				<div class="content-div">
 					<h2>Always Online Classes</h2>
-					<p>Founded in 2016 (part of Emerging Travel Group, est 2010) and created for travel market professionals, First Heriatge has become one of the fastest-growing platforms for B2B industry players. An innovative and reliable partner for tens of thousands of travel agents, tour operators, and corporate clients..</p>
+					<p>Welcome to [Alwaysonlineclasses E-Learning Platform], where learning meets innovation. We are dedicated to transforming education by providing a dynamic and interactive e-learning experience for learners around the globe.Alwaysonlineclasses was Founded in 2016 and created for E-Learning market professionals, Alwaysonlineclasses has become one of the fastest-growing E-Learning platforms for B2B industry players. An innovative and reliable partner for tens of thousands of E-Learning agents, and corporate clients..</p>
 				
 
 					<div class="inner-text-div">
@@ -88,51 +83,40 @@
 				</div>		
 			</div>
 		</div>
-		<br clear="all"/>
-		<br clear="all"/>
-		<br clear="all"/>
+		
     </section>
 
-	<section class="body-div story-back-div">
+	<section class="story-back-div">
 		<div class="img-div" data-aos="fade-down" data-aos-duration="1200"></div>
 		
 		<div class="inner-div">
 			<div class="text-div" data-aos="fade-up" data-aos-duration="1200">	
 				<div class="inner-text-div">
 					<h2>Our Story</h2>
-					<p>Something that makes Welcome to Travel different to a lot of tour companies is, the founders are the same as you. Adam and Darryl are friends from school that came to Australia as backpackers on a working holiday visa. From there, things have taken a few exciting twists and turns along the way, check out the story of Welcome to Travel below.</p>
+					<p>Welcome to Alwaysonlineclasses, where learning meets innovation. We are dedicated to transforming education by providing a dynamic and interactive e-learning experience for learners around the globe. our story begins with a passion for learning and a vision for a more inclusive educational landscape. Our journey started with the belief that education has the power to transform lives.</p>
 				</div>
 			</div>
 		</div>
     </section>
 	
-	<section class="body-div value-back-div">
+	<section class="value-back-div">
 		<div class="img-div" data-aos="fade-down" data-aos-duration="1200"></div>
 
 		<div class="inner-div">
 			<div class="text-div" data-aos="fade-up" data-aos-duration="1200">	
 				<div class="inner-text-div">
 					<h2>Our Top Values</h2>
-					<p>The client is the center of our universe. Everything that we build is aimed at meeting their needs. When taking commercial, operating, and technological decisions, we are driven by our care for our clients. <br/><br/>To meet the demands of the most diverse of travelers, we take into account their individual features and personal preferences.This makes our products and services truly personalized.</p>
+					<p>At Alwaysonlineclasses, we believe that education should be accessible to everyone, regardless of geographical location, background, or socioeconomic status. Our commitment to accessibility ensures that learners from all walks of life have the opportunity to unlock their potential. We strive for excellence in everything we do. From the quality of our course content to the user experience of our platform, excellence is embedded in our DNA. We continuously challenge ourselves to set and surpass high standards in online education.</p>
 				</div>
 			</div>
 		</div>
     </section>
-	
+
 	<br clear="all"/>
 	<?php include 'footer.php'?>
 </section>
 
-<script>
-  $(window).on('load', function (){
-    $('#loading').hide();
-  }) 
-</script>
-
-
 <?php include 'bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
 
 </body>
 </html>

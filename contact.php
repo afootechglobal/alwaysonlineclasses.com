@@ -15,13 +15,8 @@
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
 <meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
 <meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
-
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
-</div>
 <?php include 'header.php'?>
 
 <div class="other-pages-title contact-other-pages-title" data-aos="fade-down" data-aos-duration="1200">
@@ -36,8 +31,8 @@
 	
 </div> 
 
-<section class="index-content-div contact-content-div">
-    <section class="body-div">
+<section class="contact-content-div">
+    <section class="map-body-div">
         <div class="map-back-div"> 
             <iframe allowfullscreen="" class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.195094559419!2d3.876914173998505!3d7.3319735132427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398dc4f67f7edd%3A0x90b9a37872475fff!2sChallenge!5e0!3m2!1sen!2sng!4v1687364725500!5m2!1sen!2sng">
                 <html jstcache="0"><head><style>.LGLeeN-keyboard-shortcuts-view{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.LGLeeN-keyboard-shortcuts-view table,.LGLeeN-keyboard-shortcuts-view tbody,.LGLeeN-keyboard-shortcuts-view td,.LGLeeN-keyboard-shortcuts-view tr{background:inherit;border:none;margin:0;padding:0}.LGLeeN-keyboard-shortcuts-view table{display:table}.LGLeeN-keyboard-shortcuts-view tr{display:table-row}.LGLeeN-keyboard-shortcuts-view td{-moz-box-sizing:border-box;box-sizing:border-box;display:table-cell;color:#000;padding:6px;vertical-align:middle;white-space:nowrap}.LGLeeN-keyboard-shortcuts-view td .VdnQmO-keyboard-shortcuts-view--shortcut-key{background-color:#e8eaed;border-radius:2px;border:none;-moz-box-sizing:border-box;box-sizing:border-box;color:inherit;display:inline-block;font-family:Google Sans Text,Roboto,Arial,sans-serif;line-height:16px;margin:0 2px;min-height:20px;min-width:20px;padding:2px 4px;position:relative;text-align:center}
@@ -113,16 +108,7 @@
         </section>
     <?php include 'footer.php'?>
 </section>
-<script>
-  $(window).on('load', function (){
-    $('#loading').hide();
-  }) 
-</script>
-
 <?php include 'bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
-
 </body>
 </html>
 

@@ -1,18 +1,19 @@
 <div class="live-help-div" title="Chat With Us Now" onclick="_open_live_chat()">
-    <div class="pix-div">
-    	<img src="<?php echo $website_url?>/all-images/images/cutomercare.jpg" alt="Customer Care"/>
-    </div>
-    <i class="bi-question"></i>Live Help
+  <div class="pix-div">
+    <img src="<?php echo $website_url?>/all-images/images/cutomercare.jpg" alt="Customer Care"/>
+  </div>
+  <i class="bi-question"></i>Live Help
 </div>
 
 <div id="back2Top" title="Back to top"  onclick="_back_to_top();"><i class="bi-box-arrow-up"></i></div>
 
 
+<script src="<?php echo $website_url?>/js/aos.js"></script>
 
-
-<script type="text/javascript">
-$(".sb-container").scrollBox();
+<script>
+  _disabled_inspect();
 </script>
+
 <script>
 AOS.init({
   easing: 'ease-in-out-sine'
@@ -26,12 +27,11 @@ $(document).ready(function() {
 });
 
 
-
 // <?php //if ($scookies_check==''){?>
 // _get_form('accept-cookies');
 // <?php //}?>
+
 </script>
-<script src="<?php echo $website_url?>/slide-property/carousel/product-slide.js" type="text/javascript" ></script>
 
 <script>
   $(window).on('load', function (){

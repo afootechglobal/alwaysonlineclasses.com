@@ -85,9 +85,13 @@
  }
 
   .fill-form-div .title-div{
-    padding: 8px;
+    padding: 5px;
     font-size: 12px;
 
+}
+
+.fill-form-div .title-div #message{
+	display:none;
 }
 
  .fill-form-div .title-div i{
@@ -98,13 +102,33 @@
     color: var(--active-color);
 }
 
+
+
+.password-container {
+  position: relative;
+}
+
+.password-container  .password-toggle {
+  position: absolute;
+  top: 45%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#login_pass{
+	display: none;
+}
+
+
+
   .fill-form-div .text-field{
     width: 100%;
     height: 50px;
     border: rgba(0, 0, 0, .1) 1px solid;
     border-radius: 3px;
     padding: 0px 15px;
-    margin: 5px 0px 15px 0px;
+    margin: 5px 0px;
     font-family: body-font;
     color:#1e1e1e;
     -webkit-text-fill-color: #1e1e1e;
@@ -210,7 +234,8 @@ background-color: var(--white-color);
 
 .pswd_info{
     color: #747171;
-    font-size: 14px;
+    font-size: 10px;
+	margin-top:-5px
 }
 
 
@@ -301,10 +326,18 @@ background-color: var(--white-color);
     padding: 5% 10%;
   }
 
+  .password-toggle {
+    right: 90px;
+  }
 }	
 
 
+@media all and (max-width:530px) {
 
+  .password-toggle {
+    right: 55px;
+  }
+}	
 
 
 

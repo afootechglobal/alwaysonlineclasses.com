@@ -3,18 +3,19 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include '../../../meta.php'?>
-<title> Mathematics | <?php echo $thename?></title>
-<meta name="keywords" content="<?php echo $thename?>, SSCE Online Classes, WAEC Online Classes, NECO Online Classes, NABTEB Online Classes, GCE Online Classes, Online education, Virtual learning, Remote learning, Digital classrooms, Online courses, E-learning, Distance education, Web-based classes, Internet-based learning, Continuous online education, LMS, Learning Management System" />
-<meta name="description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
 
-<meta property="og:title" content="Embrace Learning Anytime with <?php echo $thename?> | SSCE, UTME" />
-<meta property="og:image" content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/>
-<meta property="og:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
+<title> Dynamic Title</title>
+<meta name="keywords" content="Dynamic Keywords" />
+<meta name="description" content="Dynamic Description"/>
 
-<meta name="twitter:title" content="Embrace Learning Anytime with <?php echo $thename?> | SSCE, UTME"/> 
+<meta property="og:title" content="Dynamic Og Title"/>
+<meta property="og:image" content="Dynamic Og Image"/>
+<meta property="og:description" content="Dynamic Og Description"/>
+
+<meta name="twitter:title" content="Dynamic Twitter Title"/> 
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
-<meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
-<meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
+<meta name="twitter:image"  content="Dynamic Twitter Image"/> 
+<meta name="twitter:description" content="Dynamic Twitter Description"/>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
@@ -29,17 +30,17 @@
 				<ul>
 					<a href="<?php echo $website_url?>"><li>Home <i class="bi-caret-right-fill"></i></li></a>
 					<a href="<?php echo $website_url?>/exams"><li>Exams <i class="bi-caret-right-fill"></i></li></a>
-					<a href="<?php echo $website_url?>/exams/waec"><li>Waec <i class="bi-caret-right-fill"></i></li></a>
-					<a href="<?php echo $website_url?>/exams/waec/mathematics"><li>Mathematics</li></a>
+					<a href="<?php echo $website_url?>/exams/"><li><span id="exam_url"></span><i class="bi bi-caret-right-fill"></i></li></a>
+					<a href="<?php echo $website_url?>/exams/"><li id="subject_url"></li></a>
 				</ul>
-			</div>			
-		</div>
+			</div>			                                       
+		</div> 
 		<div class="content-div" data-aos="zoom-in" data-aos-duration="1200">
     		<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span id="subject_name"></span></h1>
 			<p id="seo_description"></p>
 		</div>		
     </div>
-	<script> _get_fetch_index_each_subject('<?php echo $subject_id?>','1,2');</script>
+	<script> _get_fetch_index_each_subject('<?php echo $subject_id?>','<?php echo $exam_id?>');</script>
 </div> 
 
 
@@ -49,33 +50,22 @@
 		<div class="body-div-in">       
             <div class="search-text-div" data-aos="zoom-in" data-aos-duration="800">
                 <div class="search-segment-div">
-                    <select id="cat_id" class="text_field">
-                        <option value="" selected="selected">All Topics Categories</option>
-                        <option value="">NUMBER & NUMERATION</option>
-                        <option value="">ALGEBRA</option>
-                        <option value="">GEOMETRICS AND TRYGONOMETRY</option>
-                        <option value="">STATISTICS</option>
-                    </select>     
-                </div>
-            
-                <div class="search-segment-div">
-                    <input id="all_search_txt" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
-                </div>
-				<br clear="all"/>      
+                    <input id="search_txt" onkeyup="_get_fetch_index_topic('','<?php echo $subject_id?>','<?php echo $exam_id?>');" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
+                </div>    
             </div>
-            <br clear="all"/>
-			
-
+      
+			<br clear="all"/>
+			<br clear="all"/>
 			<div class="blog-back-div">
 		
 				<div class="right-div left-div">
-					<div class="faq-back-div  main-topics-back-div" data-aos="fade-up" data-aos-duration="900">
+				
+					<div class="faq-back-div main-topics-back-div">
 						<div class="faq-text-div main-faq-text-div ">
-
 							<div class="fetch" id="fetch_index_topic">
-								<script> _get_fetch_index_topic('<?php echo $exam_id?>','<?php echo $subject_id?>','1,2');</script>
-							</div>
-							<br clear="all" />
+								<script> _get_fetch_index_topic('','<?php echo $subject_id?>','<?php echo $exam_id?>');</script>
+							</div> 
+							<br clear="all" /> 
 							<!-- <div class="faq-inner-div  main-topics-inner-div">
 								<div class="quest-faq-div active-faq quest-topics-div" id="faq10">
 									<div class="faq-title-text">
@@ -111,52 +101,43 @@
 				</div>
 
 
-				<div class="right-div">
+				<div class="right-div sticky-div">
 					<div class="inner-div">						
 						<p>RELATED SUBJECTS</p>
 
-						<div class="content-div">
+						<div class="fetch" id="fetch_index_subject">
+								<script> _get_fetch_index_subject();</script>
+						</div>
+						<br clear="all" />
+
+						<!-- <div class="content-div">
 							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/english.webp" alt="english"/>
+								<img src="<?php //echo $website_url?>/all-images/body-pix/english.webp" alt="english"/>
 							</div>
 							<div class="image-div text-div">
-								<a href="<?php echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
+								<a href="<?php //echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
 								<h4>Use Of English</h4></a>
 								<span>Sub Topics: 2</span>
 							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/physics.jpg" alt="physics"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Physics</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div> 				
-						<br clear="all"/>
-	
-						<button class="btn" title="View All">VIEW ALL SUBJECTS</button>
-									
+						</div> -->
+			
 					</div>				
 				</div>
-				
+				<br clear="all"/>
 			</div>
+			<br clear="all"/>
+			<br clear="all"/>
 		</div>
+			
     </section>
-	<br clear="all"/>
-	<br clear="all"/>
+
+
 	
 	<?php include '../../../footer.php'?>
 </section>
 
 
 <?php include '../../../bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
-
 </body>
 </html>
 

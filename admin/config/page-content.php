@@ -6,17 +6,26 @@
         <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS:<span>*</span></div> 
         <input type="email" id="email" class="text-field" placeholder="ENTER YOUR EMAIL ADDRESS"  />
 
-        <div class="title-div"><i class="bi-lock"></i> PASSWORD: <span>*</span></div> 
-        <input type="password" id="password" class="text-field" placeholder="ENTER YOUR PASSWORD"  /><br/>
+        <div class="title-div"><i class="bi-lock"></i> PASSWORD: <span>*</span></div>
+        <div class="password-container">
+        <input type="password" id="password" onkeyup="_show_password_visibility('password','login_pass')" class="text-field" placeholder="ENTER YOUR PASSWORD" id="password" /><br/>
+            <div id="login_pass" onclick="_togglePasswordVisibility('password','login_pass')">
+                <i class="bi-eye-slash password-toggle"></i>
+            </div>
+        </div>
 
-        <span class="title-in"> <input type="checkbox"/>Keep me login</span>
-       
+        <div class="title-in">
+            <input type="checkbox" id="keep-logged-in" />
+            <label for="keep-logged-in">Keep me logged in</label>
+        </div>
+
         <button class="btn" type="button" id="login_btn" onclick="_log_in();"><i class="bi-check"></i> LOG-IN</button>
 
         <div class="notification-div footer-div">
         Forget Password? <span class="footer-in" id="reset" onclick="_next_page('reset_password_info','reset');">RESET PASSWORD</span>
         </div>
     </div>
+
 
     <div class="fill-form-div" id="reset_password_info">
         <div class="notification-div">
@@ -25,7 +34,6 @@
         <div class="title-div"><i class="bi-envelope"></i> EMAIL ADDRESS: <span>*</span></div> 
         <input type="email" id="reset_pass_email" class="text-field" placeholder="ENTER YOUR EMAIL ADDRESS" />
     
-        <!-- <button class="btn" type="button" id="reset_password_btn" onclick="_proceed_reset_password()"> PROCEED <i class="bi-arrow-right"></i></button> -->
         <button class="btn" type="button" id="reset_password_btn" onclick="_proceed_reset_password();"> PROCEED <i class="bi-arrow-right"></i></button>
         
         <div class="notification-div footer-div">
@@ -34,7 +42,6 @@
     </div>
 
     <script>
-
 		superplaceholder({
 			el: email,
 				sentences: [ 'ENTER YOUR EMAIL ADDRESS', 'e.g afootechglobal@gmail.com', 'info@pec.com.ng', 'alwaysonlineclasses@gmail.com' ],
@@ -54,11 +61,8 @@
 				startOnFocus: false
 			}
 		});
-
-
-  
-
     </script>
+    <script>_keep_me_logged_in();</script>
 <?php }?>
 
 
@@ -69,7 +73,7 @@
             <div class="header-top"><h2>RESET PASSWORD</h2> <button class="close-btn" onclick="_alert_close()"><i class="bi-x-lg"></i></button></div>
             <div class="slide-in ">
                 <div class="fill-form-div container-div animated fadeIn" id="comfirmed_reset_password">
-                    <div class="notification-div"><i class="bi-person"></i> Dear <span id="username">xxx</span>, an <span>OTP</span> has been sent to your email address (<span id="useremail">xxxx</span>) to reset your password.</div>
+                    <div class="notification-div"><i class="bi-person"></i> Dear <span id="username">xxx</span>, an <span>OTP</span> has been sent to your email address (<span id="useremail">xxxx</span>) to reset your password.Kindly check your <strong>INBOX</strong> or <strong>SPAM</strong> to confirm.</div>
                         
                     <div class="title-div"> ENTER OTP: <span>*</span> <div id="otp_info" style="float:right;font-size:12px;display:none;color:#f00"><span>OTP not accepted!</span></div></div>
                     <input id="reset_password_otp" type="tel" class="text-field" onkeypress="isNumber_Check()" placeholder="ENTER OTP" title-div="Enter OTP"/>
@@ -77,14 +81,14 @@
                     <div class="notification-div alert-otp" style="margin-bottom:0px;"><span>OTP</span> not received? <span id="resend" onclick="_resend_otp('resend','<?php echo $staff_id?>')"><i class="bi-send"></i> RESEND OTP</span></div>
 
                     <div class="title-div"> CREATE PASSWORD: <span>*</span></div>
-                    <input type="password" id="create_reset_password" class="text-field" onkeyup="_check_password1()" placeholder="CREATE PASSWORD" title="CREATE PASSWORD"  />
+                    <input type="password" id="create_reset_password" class="text-field" placeholder="CREATE PASSWORD" title="CREATE PASSWORD"  />
+                    <div class="pswd_info"><em>At least 8 charaters required including upper & lower cases and special characters and numbers.</em></div>
 
 
-                    <div class="title-div"> COMFIRMED PASSWORD: <span>*</span> <span id="message"></span></div>
-                    <input type="password" id="confirmed_reset_password" class="text-field" onkeyup="_check_password2()" placeholder="COMFIRMED PASSWORD" title="COMFIRMED PASSWORD" />
+                    <div class="title-div"> COMFIRMED PASSWORD: <span>*</span> <span id="message">Password Not Matched!</span></div>
+                    <input type="password" id="confirmed_reset_password" class="text-field" onkeyup="_check_password_match()" placeholder="COMFIRMED PASSWORD" title="COMFIRMED PASSWORD" />
                         
                 
-                    <div class="pswd_info">At least 8 charaters required including upper & lower cases and special characters and numbers.</div>
                     <button class="btn" type="button"  title-div="Reset" id="comfirmed_reset_btn" onclick="_comfirmed_reset_password('<?php echo $staff_id?>')"><i class="bi-check"></i> Reset Password </button>
                 </div>
             </div>
@@ -110,3 +114,5 @@
 <?php }?>
 
 
+<script type="text/javascript" src="js/scrollBar.js"></script>
+<script type="text/javascript">$(".sb-container").scrollBox();</script>

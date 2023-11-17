@@ -21,7 +21,7 @@
             
                 <div class="toggle-profile-name"><span id="profile_name">xxxx</span></div>
                     <div class="toggle-profile-others">User ID: <span id="user_id">xxxx</span> <br /><span id="user_mobile">xxxx</span> </div>
-                    <form method="post" action="config/code" name="logoutform">
+                    <form method="post" action="config/code" id="logoutform">
                         <input type="hidden" name="action" value="logout"/>
                         <button class="logout-btn" type="submit"><i class="fa fa-sign-out"></i> Log-Out</button>
                     </form>
@@ -31,10 +31,7 @@
                 </div>
             </div>
             
-            
-            
-            
-            
+           
             <div class="notification" onClick="_get_page('system_alert', 'system_alert')" title="System Alert">
                   <i class="bi-bell"></i>
             </div>
@@ -48,9 +45,5 @@
             <!------>  
                        
        </div>
-<script>
-    _get_staff_login('<?php echo $login_staff_id?>');
- </script>
-
 
 </div>
