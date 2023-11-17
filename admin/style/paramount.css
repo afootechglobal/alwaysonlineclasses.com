@@ -231,7 +231,7 @@ cursor:pointer;
  .successful-div .success-in button{
     width: 220px;
     height: 45px;
-    background-image: linear-gradient(to right, var(--main-color) , var(--active-color));
+    background:var(--main-color);
     color: #FFF;
     border: 0px;
     border-radius: 5px;
@@ -248,7 +248,7 @@ cursor:pointer;
 }
 
  .successful-div .success-in button:hover{
-	background-image: linear-gradient(to right, var(--main-color) , var(--main-color));
+	background:var(--hover-color);
 }
 /*--------------------------------------------------------------------------------------------------*/
 

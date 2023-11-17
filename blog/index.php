@@ -15,16 +15,11 @@
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
 <meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
 <meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
-
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
-</div>
 <?php include '../header.php'?>
 
-<div class="other-pages-title blog-other-page" data-aos="fade-down" data-aos-duration="1200">
+<div class="other-pages-title" data-aos="fade-down" data-aos-duration="1200">
 	<div class="inner-div">
 		<div class="top-title-div">
 			<div class="div-in">
@@ -36,8 +31,7 @@
 		</div>
     	<h1 class="border" data-aos="fade-up" data-aos-duration="900"><span>Blogs & Articles</span></h1>	
     </div>
-	<br clear="all"/>  
-	<br clear="all"/>  
+
 </div> 
 
 <section class="faq-content-div">
@@ -46,16 +40,14 @@
 		<div class="body-div-in">
 			<div class="search-text-div blog-search" data-aos="zoom-in" data-aos-duration="800">
                 <div class="search-segment-div">
-                    <select id="cat_id" class="text_field">
+                    <select id="cat_id" onchange=" _get_fetch_blog('');" class="text_field">
                         <option value="" selected="selected">All Blog Categories</option>
-                        <option value="">Group Of Students Sharing Ideas</option>
-                        <option value="">Creative Class Library For Our Students</option>
-                        <option value="">College Seminar “Leadership & Works”</option>
+						<script>_get_cat('cat_id');</script>
                     </select>     
                 </div>
             
                 <div class="search-segment-div">
-                    <input id="all_search_txt" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
+                    <input id="search_txt" onkeyup=" _get_fetch_blog('');" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
                 </div>
 				<br clear="all"/>      
             </div>
@@ -63,237 +55,41 @@
 	
 			<div class="blog-back-div">
 				<div class="right-div left-div blog-left-div">
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
+
+
+				 	<div class="fetch" id="fetch_blog">
+                        <script> _get_fetch_blog('');</script>
+                    </div>
+
+					<!-- <div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
 						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog1.webp" alt="blog"/>
+							<img src="<?php //echo $website_url?>/all-images/body-pix/blog1.webp" alt="blog"/>
 						</div>
 
 						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
+							<a href="<?php //echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
 							<h3>Group Of Students Sharing Their Ideas</h3></a>
 							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
 							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
 						</div>
-            		</div> 
-
-            		<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">            
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog2.jpg" alt="blog"/>
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
-							<h3>Creative Class Library For Our Students</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div> 
-
-            		<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div> 
-					
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div>  
-
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div>
-
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div>
-
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div>
-					<div class="blog-div main-blog-div" data-aos="fade-up" data-aos-duration="1000">
-						<div class="image-div">
-							<img src="<?php echo $website_url?>/all-images/body-pix/blog3.jpg" alt="blog"/> 
-						</div>
-
-						<div class="text-div main-text-div">
-							<a href="<?php echo $website_url ?>/#" title="">
-							<h3>College Seminar “Leadership & Works”</h3></a>
-							<p>Group of students sharing their ideas and study a wide range of subjects and courses delivered through virtual platforms</p>
-							<div class="count"><i class="bi-calendar3"></i> 02 July, 2023 <span>|</span> <i class="bi-eye-fill"></i> 0 VIEWS</div>
-						</div>
-            		</div>
-					
+            		</div>  -->		
 				</div>
 
-				<div class="right-div">
+				<div class="right-div sticky-div">
 					<div class="inner-div">
 						<p>AVAILABLE EXAMS</p>
 
-						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/exams/waec" title="WAEC EXAM">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/> 
-							</div>
-
-							<div class="image-div text-div">								
-								<h4>WAEC</h4>
-								<span>Subjects: 15</span>
-							</div>
-						</div></a>
-
-						<div class="exam-blog-content-div">
-						<a href="<?php echo $website_url ?>/exams/neco" title="NECO EXAM">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
-							</div>
-							
-							<div class="image-div text-div">							
-								<h4>NECO</h4>
-								<span>Subjects: 15</span>
-							</div>
-						</div></a>
-
-						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/exams/jamb" title="JAMB EXAM">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-							</div>
-
-							<div class="image-div text-div">
-								<h4>JAMB</h4>
-								<span>Subjects: 5</span>
-							</div></a>
+						<div class="fetch" id="fetch_avail_exam">
+							<script> _get_fetch_avail_index_exam();</script>
 						</div>
+						<br clear="all" />
 
-						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB EXAM">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
-							</div>
-
-							<div class="image-div text-div">
-								<h4>JUPEB</h4>
-								<span>Subjects: 5</span>
-							</div></a>
-						</div>
-
-						<div class="exam-blog-content-div">
-							<a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB EXAM">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
-							</div>
-
-							<div class="image-div text-div">
-								<h4>IJMB</h4>
-								<span>Subjects: 5</span>
-							</div></a>
-						</div>
-
-						<br clear="all"/>
 						<a href="<?php echo $website_url ?>/exams" title="">
 						<button class="btn" title="Our Exams">VIEW ALL EXAMS</button></a>						
 					</div>													
 				</div>	
 			
-				<div class="right-div">
-					<div class="inner-div">
-
-						<p>POPULAR SUBJECTS</p>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/maths.jpg" alt="maths"/>
-							</div>
-							<div class="image-div text-div">
-								<a href="<?php echo $website_url ?>/#" title="">
-								<h4>Mathematics</h4></a>
-								<span>Sub Topics: 2</span>
-							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/english.webp" alt="english"/>
-							</div>
-							<div class="image-div text-div">
-								<a href="<?php echo $website_url ?>/blog/creative-class-library-for-our-students" title="">
-								<h4>Use Of English</h4></a>
-								<span>Sub Topics: 2</span>
-							</div>
-						</div>
-
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/physics.jpg" alt="physics"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Physics</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div> 	
-						
-						<div class="content-div">
-							<div class="image-div">
-								<img src="<?php echo $website_url?>/all-images/body-pix/chemistry.jpg" alt="chemistry"/>
-							</div>
-							<div class="image-div text-div">
-							<a href="<?php echo $website_url ?>/blog/group-of-students-sharing-ideals" title="">
-								<h4>Chemistry</h4></a>
-								<span>Sub Topics: 3</span>
-							</div>
-						</div>
-						<br clear="all"/>
-	
-						<button class="btn" title="View All">VIEW ALL SUBJECTS</button>
-						
-					</div>
-					
-					
-				</div>
+				<br clear="all" />
 			</div>
 		</div>
     </section>
@@ -303,15 +99,7 @@
 
 	<?php include '../footer.php'?>
 </section>
-<script>
-  $(window).on('load', function (){
-    $('#loading').hide();
-  }) 
-</script>
 <?php include '../bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
-
 </body>
 </html>
 

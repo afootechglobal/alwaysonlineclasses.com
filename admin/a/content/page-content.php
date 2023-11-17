@@ -17,7 +17,7 @@
             <div class="statistics-div bg1" onClick="_get_page('view_staff', 'admin')" id="admin">
                 <div class="inner-div">                    
                 Adminstrator <br>
-                    <span class="number" id="staff_count">10</span>
+                    <span class="number" id="total_active_staff"></span>
                 </div>
             </div>
            
@@ -26,15 +26,14 @@
             <div class="statistics-div bg2" onClick="_get_page('active_users', 'user')" id="user">
                 <div class="inner-div">                    
                     Active Users <br>
-                    <span class="number">10</span>
-                    
+                    <span class="number" id="total_active_user"></span>
                 </div>
             </div>
 
             <div class="statistics-div bg3" onClick="_get_page('exam_category', 'exam')" id="exam">
                 <div class="inner-div">
                     Exams <br>
-                    <span class="number">10</span>
+                    <span class="number" id="total_active_exam"></span>
                 </div>
             </div>
 
@@ -42,7 +41,7 @@
             <div class="statistics-div bg4"  onClick="_get_page('all_subject', 'subject')" id="subject">
                 <div class="inner-div">
                 Subject <br>
-                    <span class="number">10</span>
+                    <span class="number" id="total_active_subject"></span>
                 </div>
             </div>
 
@@ -50,14 +49,14 @@
             <div class="statistics-div bg5" onClick="_get_page('blogs', 'blogs')" id="blogs">
                 <div class="inner-div">
                     Blogs  <br>
-                    <span class="number">10</span>
+                    <span class="number" id="total_active_blog"></span>
                 </div>
             </div>
 
             <div class="statistics-div bg1"  onClick="_get_page('faqs', 'faqs')" id="faqs">
                 <div class="inner-div">                    
                 FAQ's <br>
-                    <span class="number">10</span>
+                    <span class="number" id="total_active_faq"></span>
                 </div>
             </div>
 
@@ -71,9 +70,7 @@
                     </div>
                 </div>
             </div>
-           
 
-         
         </div>
         <div class="chart-back-div">
 
@@ -108,15 +105,13 @@
                 <br clear="all" />
             </div>
     
-<!--      
-        <div class="chart-div">
+        <!-- <div class="chart-div">
             <div id="chart-report-div">
                 <div class="ajax-loader"><img src="all-images/images/ajax-loader.gif"/></div>
             </div>
         </div> -->
-      
-        <script language="javascript">
-            _chart_for_trend1();
+
+        <!-- <script language="javascript">
             $('#datepicker-from').datetimepicker({
             lang:'en',
             timepicker:false,
@@ -133,7 +128,7 @@
             autoclose: true,
             todayHighlight: true,
             });
-        </script>
+        </script> -->
 
 <div class="chart-div">
                 <div class="chart" >
@@ -141,7 +136,7 @@
                     <!-- <div id="chart-report-div">  <div class="ajax-loader "><img src="all-images/images/ajax-loader.gif"/></div></div> -->
                     <div id="chartContainer" style="width:100%; height:250px; margin:auto;"></div>
                  
-                                <script>
+                                <!-- <script>
                                         $(document).ready(function() {
                                         var chart = new CanvasJS.Chart("chartContainer", {
                                             animationEnabled: true,
@@ -187,152 +182,29 @@
                                         });
                                         chart.render();
                                         })
-                                </script>
+                                </script> -->
                     </div>
              </div>
 
   </div>
+<script>_get_dashboard_count();</script> 
+<script>_get_staff_login('<?php echo $login_staff_id?>');</script>
 
 <?php }?>
 
 
 
 
-
-
-
-
-
-
-
-<?php if ($page=='clients_matrix'){?>
-    <div id="chartContainer1" style="width:100%; height:200px; margin:auto;"></div>
-    
-    <script type="text/javascript">
-        var options = {
-        title: {
-        text: "" /*My Performance*/
-        },
-        data: [{
-        type: "pie",
-        startAngle: 45,
-        showInLegend: "False",
-        legendText: "{label}",
-        indexLabel: "{label} ({y})",
-        yValueFormatString:"#,##0.#"%"",
-        dataPoints: [
-        { label: "Wrought Nickel", y: 789},
-        { label: "Nickel Chromium", y: 693},
-        { label: "Nickel Molybdenum ", y: 389},
-        // { label: "Companies", y: <?php //echo $total_active_companies;?>},
-        // { label: "Employee", y: <?php ///echo $total_active_staff;?>},
-        ]
-        }]
-        };
-        $("#chartContainer1").CanvasJSChart(options);
-    </script>
-
-<?php }?>
-
-
-<?php if ($page=='order_matrix'){?>
-
-    <div id="chartContainer2" style="width:100%; height:200px; margin:auto;"></div>      
-    <script type="text/javascript">
-        var options = {
-        title: {
-        text: "" /*My Performance*/
-        },
-        data: [{
-        type: "pie",
-        startAngle: 45,
-        showInLegend: "False",
-        legendText: "{label}",
-        indexLabel: "{label} ({y})",
-        yValueFormatString:"#,##0.#"%"",
-        dataPoints: [
-        // { label: "Active Order", y: <?php //echo $total_active_order;?>},
-        // { label: "Pending Order", y: <?php //echo $total_pending_order;?>},
-        // { label: "Expired Order", y: <?php //echo $total_expired_order;?>},
-        { label: "Wrought Nickel", y: 789},
-        { label: "Nickel Chromium", y: 693},
-        { label: "Nickel Molybdenum ", y: 389},
-        ]
-        }]
-        };
-        $("#chartContainer2").CanvasJSChart(options);
-    </script>
-
-<?php }?>
-
-
-
-
-
-
-
-
-<?php if ($check_code=='alert-list'){ ?>                               
-<?php if ($view_report=='unread'){?>
-    <div class="alert alert-success" style="text-align:left;"> <span><i class="fa fa-bell-o"></i></span> Unread Alerts</div>
-<?php }elseif ($view_report=='random_search'){ ?>
-    <div class="alert alert-success" style="text-align:left;"><span><i class="fa fa-search"></i></span> Search Result For <span><?php echo $all_search_txt; ?></span></div>
-<?php }else{ ?>
-    <div class="alert alert-success" style="text-align:left;"> <span><i class="fa fa-bell-o"></i></span> Notifications Between <span><?php echo $day30; ?></span> - <span><?php echo $today; ?></span></div>
-<?php } ?>
-
-<?php 
-	$search_like="(alert_id like '%$all_search_txt%' OR
-	alert_detail like '%$all_search_txt%' OR
-	user_id like '%$all_search_txt%' OR
-	name like '%$all_search_txt%' OR
-	ipaddress like '%$all_search_txt%' OR
-	computer like '%$all_search_txt%' OR
-	date like '%$all_search_txt%')";
-	
-	$no=0;
-	
-	if ($view_report==''){
-	$query=mysqli_query($conn,"SELECT * FROM alert_tab WHERE date(date) BETWEEN '$db_day30' AND '$db_today'  AND role_id<='$user_role_id' AND seen_status <='$user_role_id'+1  ORDER BY date DESC LIMIT 200");
-	}elseif ($view_report=='unread'){
-	$query=mysqli_query($conn,"SELECT * FROM alert_tab WHERE  role_id<='$user_role_id' AND seen_status <='$user_role_id' ORDER BY date DESC");
-	}elseif ($view_report=='random_search'){
-	$query=mysqli_query($conn,"SELECT * FROM alert_tab WHERE $search_like  AND role_id<='$user_role_id' AND  seen_status <='$user_role_id'+1 ORDER BY date DESC LIMIT 100");
-	}else{
-	$query=mysqli_query($conn,"SELECT * FROM alert_tab WHERE date(date) BETWEEN '$db_day30' AND '$db_today'  AND role_id<='$user_role_id' AND seen_status <='$user_role_id'+1 ORDER BY date DESC");
-	}
-	
-	while($fetch=mysqli_fetch_array($query)){
-		$no++;
-		$alert_id=$fetch['alert_id'];	
-		$alert_detail = substr($fetch['alert_detail'], 0, 80);
-			$fatch_array=$callclass->_get_alert_detail($conn, $alert_id);
-			$array = json_decode($fatch_array, true);
-			$user_id= $array[0]['user_id'];
-			$name= trim(ucwords(strtolower($array[0]['name'])));
-			$ipaddress= $array[0]['ipaddress'];
-			$computer= $array[0]['computer'];
-			$seen_status= $array[0]['seen_status'];
-			$date= $array[0]['date'];
-?>
-	<?php if ($seen_status==0){?>
-        <div class="system-alert" id="<?php echo $alert_id; ?>" onclick="_read_alert('<?php echo $alert_id; ?>')">
-            <div class="alert-name"><i class="fa fa-user-circle"></i> <?php echo $name; ?> <span id="<?php echo $alert_id; ?>viewed"><i class="fa fa-check"></i></span></div>
-            <div class="alert-text"><?php echo $alert_detail; ?>...</div>
-            <div class="alert-time"><i class="fa fa-clock-o"></i> <?php echo $date; ?></div>
-        </div>
-    <?php }else{ ?>
-        <div class="system-alert alert-seen" id="<?php echo $alert_id; ?>" onclick="_read_alert('<?php echo $alert_id; ?>')">
-            <div class="alert-name"><i class="fa fa-user-circle"></i> <?php echo $name; ?> <span id="<?php echo $alert_id; ?>viewed"><i class="fa fa-check"></i><i class="fa fa-check"></i></span></div>
-            <div class="alert-text"><?php echo $alert_detail; ?>...</div>
-            <div class="alert-time"><i class="fa fa-clock-o"></i> <?php echo $date; ?></div>
-        </div>
-    <?php } ?>
-    <?php } ?>
-    
-    <?php if ($no==0){?>
-        <div class="alert"><i class="fa fa-bell-o"></i> No record found</div>
-    <?php } ?>
+<?php if ($page=='system_alert'){ ?>   
+    <div class="search-div">
+        <!--------------------------------network search select------------------------->
+        <select id="status_id" class="text_field select" onchange="_get_fetch_all_staff()">
+            <option value=""> SELECT STATUS</option>
+            <script>_get_select_status('status_id','1,2');</script>
+        </select>
+        <!--------------------------------all search select------------------------->
+        <input id="search_txt" onkeyup="_get_fetch_all_staff();" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+    </div>
 <?php }?>
 
 
@@ -344,7 +216,7 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id" class="text_field select" onchange="_get_fetch_all_staff()">
-            <option value="" selected="selected"> SELECT STATUS</option>
+            <option value=""> SELECT STATUS</option>
             <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
@@ -359,7 +231,6 @@
             </div>
         </div> 
         <br clear="all" />
-    
 
      <script>
         superplaceholder({el: search_txt,
@@ -371,7 +242,7 @@
         }
     });
     </script>
-   
+
 <?php } ?>
 
 
@@ -388,7 +259,7 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_user()">
-            <option value="" selected="selected">ALL USER STATUS</option>
+            <option value="">ALL USER STATUS</option>
             <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
@@ -421,11 +292,12 @@
 
 
 
+
 <?php if ($page=='all_subject'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_subject('fetch_subject')">
-            <option value="" selected="selected">ALL SUBJECT STATUS</option>  
+            <option value="">ALL SUBJECT STATUS</option>  
             <script>_get_select_status('status_id','1,2');</script>   
         </select>
         <!--------------------------------all search select------------------------->
@@ -464,7 +336,7 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_all_exam()">
-            <option value="" selected="selected">ALL EXAM STATUS</option>   
+            <option value="">ALL EXAM STATUS</option>   
              <script>_get_select_status('status_id','1,2');</script>   
         </select>
         <!--------------------------------all search select------------------------->
@@ -520,13 +392,13 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_exam_subject('<?php echo $ids?>');">
-            <option value="" selected="selected">SUBJECT STATUS</option>   
+            <option value="">SUBJECT STATUS</option>   
                <script>_get_select_status('status_id','1,2');</script>    
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_exam_subject('<?php echo $ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-        <div class="alert alert-success"> <span><i class="bi-book"></i></span> <span class="" onClick="_get_page('exam_category');">EXAM / </span> <span id="">WAEC</span> / SUBJECT'S LIST </div>
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> <span class="" onClick="_get_page('exam_category');">EXAM / </span> <span id="exam_abbreviation"></span> / SUBJECT'S LIST </div>
         
         <div class="fetch-div animated fadeIn">			
             <div class="fetch" id="fetch_exam_subject">
@@ -559,13 +431,13 @@
     <div class="search-div">
         <!--------------------------------network search select------------------------->
         <select id="status_id"  class="text_field select" onchange="_get_fetch_topic('','<?php echo $other_ids1?>','<?php echo $other_ids?>');">
-            <option value="" selected="selected">TOPICS STATUS</option>
+            <option value="">TOPICS STATUS</option>
             <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_topic('','<?php echo $other_ids1?>','<?php echo $other_ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span class="" onClick="_get_page('exam_category');">EXAM / </span> <span>MATHEMATICS</span> / TOPIC'S LIST <button class="btn" title="ADD NEW TOPIC" onClick="_get_form_with_id('topics_reg','','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW TOPIC</button></div>
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span id="exam_abbreviation" onClick="_get_page('exam_category');"></span> / <span id="subject_name" onClick="_get_page_with_id('subject','<?php echo $other_ids?>');"></span> / TOPIC'S LIST <button class="btn" title="ADD NEW TOPIC" onClick="_get_form_with_id('topics_reg','','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW TOPIC</button></div>
            	
         <div class="fetch-div">	
 
@@ -616,48 +488,31 @@
 <?php if ($page=='videos'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_get_fetch_topic('','<?php echo $other_ids?>','<?php echo $other_ids1?>');">
-            <option value="" selected="selected">VIDEO STATUS</option>
+        <select id="status_id"  class="text_field select" onchange="_get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');">
+            <option value="">VIDEO STATUS</option>
             <script>_get_select_status('status_id','1,2');</script>     
         </select>
         <!--------------------------------all search select------------------------->
         <input id="search_txt" onkeyup="_get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM / <span >WAEC </span> / <span>MATHEMATICS</span> / <span> NUMBER BASES / </span> VIDEOS LIST <button class="btn" title="ADD NEW VIDEO" onClick="_get_form_with_id('video_reg','<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW VIDEO</button></div>
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> EXAM /<span id="exam_abbreviation" onClick="_get_page('exam_category');"></span> / <span id="v_subject_name"></span> / <span id="v_topic_name"></span> / <span id="v_sub_topic_name"></span> / VIDEOS LIST <button class="btn" title="ADD NEW VIDEO" onClick="_get_form_with_id('video_reg','<?php echo $ids?>','<?php echo $other_ids?>','<?php echo $other_ids1?>')"><i class="bi-plus-square"></i> ADD NEW VIDEO</button></div>
            	
-        <div class="fetch-div">	
-
-            <div class="faq-back-div">
-                <div class="faq-text-div">
-  
-                   
-                  
-
-                    <div class="quest-faq-div animated fadeIn">
    
-                        <div class="fetch" id="fetch_sub_topic_video">
-                            <script> _get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');</script>
-                        </div>
-                    
-                        <!-- <div class="faq-answer-div" id="faq1answer">  
-                           <div class="topics-content-div">
-                                <div class="image-div video-img">
-                                    <img src="<?php //echo $website_url?>/all-images/body-pix/num-bases.jpg" alt="geometry"/>
-                                </div>
-
-                                <div class="text video-text">
-                                    <h4>Introduction to Number Bases</h4>
-                                    <p>At the end of the study in this video, students should be able to understand Binary (base-2) which uses only two symbols, 0 and 1. And Octal (base-8) which number base uses eight symbols (0-7). And Hexadecimal (base-16): This number base uses sixteen symbols (0-9 and A-F)</p>
-                                    <div class="bottom-div"><button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>&nbsp;<span class="volume">VOLUME 1</span> &nbsp;|<span class="volume">FREE</span> &nbsp;|<span class="volume">VIDEO DURATION : 00:05:30</span></div>
-                                </div>
-                            </div> 
-                        </div>   -->
- 
-                    </div> 
+        <div class="fetch animated fadeIn" id="fetch_sub_topic_video">		
+            <script> _get_fetch_sub_topic_video('','<?php echo $other_ids?>','<?php echo $other_ids1?>');</script>
+        </div>
+            
+            <!-- <div class="topics-content-div">
+                <div class="image-div video-img">
+                    <img src="<?php //echo $website_url?>/all-images/body-pix/num-bases.jpg" alt="geometry"/>
                 </div>
-            </div>
-        </div> 
-                    
+
+                <div class="text video-text">
+                    <h4>Introduction to Number Bases</h4>
+                    <p>At the end of the study in this video, students should be able to understand Binary (base-2) which uses only two symbols, 0 and 1. And Octal (base-8) which number base uses eight symbols (0-7). And Hexadecimal (base-16): This number base uses sixteen symbols (0-9 and A-F)</p>
+                    <div class="bottom-div"><button class="btn" title="EDIT SUB-TOPIC"><i class="bi-pencil-square"></i> EDIT</button>&nbsp;<span class="volume">VOLUME 1</span> &nbsp;|<span class="volume">FREE</span> &nbsp;|<span class="volume">VIDEO DURATION : 00:05:30</span></div>
+                </div>
+            </div>  -->
           
      <script>
         superplaceholder({el: search_txt,
@@ -679,90 +534,43 @@
 
         <div class="search-div">
             <!--------------------------------network search select------------------------->
-            <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
-                <option value="" selected="selected">ALL BLOG STATUS</option>
+            <select id="status_id"  class="text_field select" onchange=" _get_fetch_blog('<?php echo $ids?>');">
+                <option value="">ALL BLOG STATUS</option>
                 <script>_get_select_status('status_id','1,2');</script>
             </select>
             <!--------------------------------all search select------------------------->
-            <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+            <input id="search_txt" onkeyup=" _get_fetch_blog('<?php echo $ids?>');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
         </div>
-         <div class="alert alert-success"> <span><i class="bi-book"></i></span> BLOG'S LIST <button class="btn" onClick="_get_form('blog_reg')"><i class="bi-plus-square"></i> ADD NEW BLOG</button></div>
-     <div class="animated fadeIn" id="search-content"> 
+        <div class="alert alert-success"> <span><i class="bi-book"></i></span> BLOG'S LIST <button class="btn" onClick="_get_form('blog_reg')"><i class="bi-plus-square"></i> ADD NEW BLOG</button></div>
+        <div class="animated fadeIn" id="search-content"> 
             <div class="fetch-div">			
                     
-                    <div class="blog-div " id="">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
-                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
-                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
-                            <br clear="all">
-                        </div>
-                            <div class="status-div" id="">ACTIVATED</div>
-                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
-                            <div class="text-div">
-                                <div class="text-in">
-                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
-                                </div>
-                                <h2>Group Of Students Sharing Their Ideas</h2>
-                                <div class="text-in">
-                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
-                                    <div class="text"><span>486</span> VIEWS</div>
-                                </div>
-                            <br>
-                            </div>
+                <div class="fetch animated fadeIn" id="fetch_blog">
+                    <script> _get_fetch_blog('<?php echo $ids?>');</script>
+                </div>
+
+                <!-- <div class="blog-div">
+                    <div class="btn-div">
+                        <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
+                        <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
+                        <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
+                        <br clear="all">
                     </div>
 
-
-                    <div class="blog-div " id="">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
-                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
-                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
-                            <br clear="all">
+                    <div class="status-div">ACTIVATED</div>
+                    <div class="img-div"><img src="<?php //echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
+                    <div class="text-div">
+                        <div class="text-in">
+                            <div class="text"><span>ANNOUNCEMENT</span> </div>
                         </div>
-                            <div class="status-div" id="">ACTIVATED</div>
-                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
-                            <div class="text-div">
-                                <div class="text-in">
-                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
-                                </div>
-                                <h2>Group Of Students Sharing Their Ideas</h2>
-                                <div class="text-in">
-                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
-                                    <div class="text"><span>486</span> VIEWS</div>
-                                </div>
-                            <br>
-                            </div>
-                    </div>
-
-
-
-                    <div class="blog-div " id="">
-                        <div class="btn-div">
-                            <button class="btn active-btn" onclick="_get_form_with_id('create_blog_category_list_form','BLOG074')">EDIT DEAL</button>
-                            <button class="btn" onclick="_get_form('blog_detail')">EDIT PAGE DETAILS</button>
-                            <button class="btn" onclick="_delete_publish('BLOG074')" id="delete-publish-BLOG074"><i class="bi-trash"></i></button>
-                            <br clear="all">
+                        <h2>Group Of Students Sharing Their Ideas</h2>
+                        <div class="text-in">
+                            <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
+                            <div class="text"><span>486</span> VIEWS</div>
                         </div>
-                            <div class="status-div" id="">ACTIVATED</div>
-                            <div class="img-div"><img src="<?php echo $website_url?>/uploaded_files/blog_pix/blog1.webp" alt="Blog Name"></div>
-                            <div class="text-div">
-                                <div class="text-in">
-                                    <div class="text"><span>ANNOUNCEMENT</span> </div>
-                                </div>
-                                <h2>Group Of Students Sharing Their Ideas</h2>
-                                <div class="text-in">
-                                    <div class="text">UPDATED ON: <span>24 Apr 2023</span> </div>
-                                    <div class="text"><span>486</span> VIEWS</div>
-                                </div>
-                            <br>
-                            </div>
+                        <br>
                     </div>
-
-
-
-
-
+                </div> -->
             </div>
             <br clear="all" />
         </div>
@@ -784,58 +592,25 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <?php if ($page=='faqs'){ ?>
     <div class="search-div">
         <!--------------------------------network search select------------------------->
-        <select id="status_id"  class="text_field select" onchange="_fetch_users_list()">
+        <select id="status_id"  class="text_field select" onchange=" _get_fetch_faq('');">
             <option value="" selected="selected">ALL FAQ STATUS</option>   
             <script>_get_select_status('status_id','1,2');</script>
         </select>
         <!--------------------------------all search select------------------------->
-        <input id="search_txt" onkeyup="_fetch_users_list()" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
+        <input id="search_txt" onkeyup=" _get_fetch_faq('');" type="text" class="text_field utext" placeholder="Type here to search..." title="Type here to search" />
     </div>
-         <div class="alert alert-success"> <span><i class="bi-newspaper"></i></span> FAQ's LIST <button class="btn" onClick="_get_form('faqs_reg')"><i class="bi-plus-square"></i> ADD NEW FAQ</button></div>
-        <div class="animated fadeIn" id="search-content">
+        <div class="alert alert-success"> <span><i class="bi-newspaper"></i></span> FAQ's LIST <button class="btn" onClick="_get_form('faqs_reg')"><i class="bi-plus-square"></i> ADD NEW FAQ</button></div>
                     
                 <div class="faq-back-div faqs-back" >
                     <div class="faq-text-div ">
 
-                        <div class="quest-faq-div main-faqs active-faq">
-                            <div class="faq-title-text main-faqs-title-div" id="faq12">
-                               <span>1</span>
-                            </div>
-
-                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('faq243')" style="cursor:pointer;">
-                               <i class="bi-pencil-square"></i> <span>Who we are</span>
-                               <div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>	
-                            </div>
-                            
-                            <div class="faq-answer-div faq-answer-div2" id="faq243answer" style="display: none;">  
-                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                            </div>
-                            
+                        <div class="fetch animated fadeIn" id="fetch_faq">
+                            <script> _get_fetch_faq('');</script>
                         </div>
-
-                        <div class="quest-faq-div main-faqs">
+                        <!-- <div class="quest-faq-div main-faqs">
                             <div class="faq-title-text main-faqs-title-div">
                                <span>2</span>
                             </div>
@@ -850,36 +625,10 @@
                                 <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
                             </div>
                             
-                        </div>
-
-
-                        <div class="quest-faq-div main-faqs">
-                            <div class="faq-title-text main-faqs-title-div">
-                               <span>3</span>
-                            </div>
-
-                            <div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('faq245')" style="cursor:pointer;">
-                            <i class="bi-pencil-square"></i> <span>Who we are</span>
-                            <div class="expand-div" id="faq245num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
-                            </div>
-                            
-                            <div class="faq-answer-div faq-answer-div2" id="faq245answer" style="display: none;">  
-                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                                <p>Euclidean geometry is a study of geometric properties and relationships in two and three-dimensional space.</p>
-                            </div>
-                            
-                        </div>
-
+                        </div>  -->
 
                     </div>
                 </div>
-    
-                <!-- <div class="fetch animated fadeIn" id="fetch">
-                <script> _get_fetch_all_users('','','');</script>
-                </div> -->
-
-            
-                 <br clear="all" />
         </div>
      <script>
         superplaceholder({el: search_txt,

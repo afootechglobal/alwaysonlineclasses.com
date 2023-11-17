@@ -15,13 +15,8 @@
 <meta name="twitter:card" content="<?php echo $thename?>"/> 
 <meta name="twitter:image"  content="<?php echo $website_url?>/all-images/plugin-pix/alwaysonlineclasses.jpg"/> 
 <meta name="twitter:description" content="Access high-quality education from anywhere, at any time. Explore a wide range of subjects and courses delivered through virtual platforms on SSCE, GCE, NABTEB Exams and more."/>
-
-<link rel="stylesheet" type="text/css" href="<?php echo $website_url?>/slide-property/engine/style.css" />
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="Loading..."/> 
-</div>
 <?php include 'header.php'?>
 
 <div class="other-pages-title faq-other-pages-title" data-aos="fade-down" data-aos-duration="1200">
@@ -46,35 +41,30 @@
 
 <div class="faq-content-div">
 
-    <section class="body-div main-faq-div">
+    <section class="body-div">
 		<div class="body-div-in"> 
-		<div class="search-text-div" data-aos="zoom-in" data-aos-duration="800">
+			<div class="search-text-div" data-aos="zoom-in" data-aos-duration="800">
                 <div class="search-segment-div">
-                    <select id="cat_id" class="text_field">
+                    <select id="cat_id" onchange=" _get_fetch_faq('');" class="text_field">
                         <option value="" selected="selected">All FAQ Categories</option>
-                        <option value="">WAEC EXAM</option>
-                        <option value="">NECO EXAM</option>
-                        <option value="">JAMB EXAM</option>
-                        <option value="">PUTME EXAM</option>
-                        <option value="">UTME EXAM </option>
-                        <option value="">JUPEB EXAM</option>
-                        <option value="">IJMB EXAM</option>
-
+							<script> _get_cat('cat_id');</script>
                     </select>     
                 </div>
             
                 <div class="search-segment-div">
-                    <input id="all_search_txt" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
+                    <input id="search_txt" onkeyup="_get_fetch_faq('');" class="text_field" placeholder="Type Here To Search..." title="Type to Search Here">
                 </div>
-				<br clear="all"/>      
+				
             </div>
-            <br clear="all"/>
-            <br clear="all"/>
-						
-            <div class="faq-back-div" data-aos="fade-up" data-aos-duration="900">
+			<br clear="all"/>
+			<br clear="all"/> 
+
+            <div class="faq-back-div">
 				<div class="faq-text-div main-faq-text-div">
-					<div class="faq-inner-div ">
-						<div class="quest-faq-div active-faq" id="faq10">
+					<div class="faq-inner-div" id="fetch_faq">
+                            <script> _get_fetch_faq();</script>
+						
+						<!-- <div class="quest-faq-div active-faq" id="faq10">
 							<div class="faq-title-text" onclick="_collapse('faq243')">
 							 	<h2>Who We Are</h2>
 								<div class="expand-div" id="faq243num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>					
@@ -83,118 +73,20 @@
 									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                           
 								</div>
 							</div>
-						</div>	
-
-						<div class="quest-faq-div active-faq" id="faq244">
-							<div class="faq-title-text" onclick="_collapse('faq244')">
-							 	<h2>How Do I Subcribe For A Video?</h2>
-								<div class="expand-div" id="faq244num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>
-							
-							
-								<div class="faq-answer-div faq-answer-display" id="faq244answer"style="display: none;" >
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p> 
-								</div>
-							</div>
-						</div>
-
-						<div class="quest-faq-div active-faq" id="faq246">
-							<div class="faq-title-text" onclick="_collapse('faq246')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq246num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>												
-
-								<div class="faq-answer-div faq-answer-display" id="faq246answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-                        <div class="quest-faq-div active-faq" id="faq247">
-							<div class="faq-title-text" onclick="_collapse('faq247')">
-                                <h2>How much is video per series?</h2>
-								<div class="expand-div" id="faq247num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>													
-
-								<div class="faq-answer-div faq-answer-display" id="faq247answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-                        <div class="quest-faq-div active-faq" id="faq248">
-							<div class="faq-title-text" onclick="_collapse('faq248')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq248num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-							
-								<div class="faq-answer-div faq-answer-display" id="faq248answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-						<div class="quest-faq-div active-faq" id="faq249">
-							<div class="faq-title-text" onclick="_collapse('faq249')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq249num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-
-								<div class="faq-answer-div faq-answer-display" id="faq249answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-						<div class="quest-faq-div active-faq" id="faq250">
-							<div class="faq-title-text" onclick="_collapse('faq250')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq250num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-						
-								<div class="faq-answer-div faq-answer-display" id="faq250answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-						<div class="quest-faq-div active-faq" id="faq251">
-							<div class="faq-title-text" onclick="_collapse('faq251')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq251num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-
-								<div class="faq-answer-div faq-answer-display" id="faq251answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
-
-						<div class="quest-faq-div active-faq" id="faq252">
-							<div class="faq-title-text" onclick="_collapse('faq252')">
-							 	<h2>Are we affordable for your courses?</h2>
-								<div class="expand-div" id="faq252num">&nbsp;<i class="bi-plus"></i>&nbsp;</div>							
-
-								<div class="faq-answer-div faq-answer-display" id="faq252answer" style="display: none;">
-									<p>We are a dedicated online service provider with a reliable outstanding online class service.</p>                          
-								</div>
-							</div>
-						</div>
+						</div>	 -->
 					</div>
 				</div>	
 			</div>
-		</div>
-        <br clear="all"/>
-		<br clear="all"/>
-		<br clear="all"/>
-		<br clear="all"/>
-	</section>
 
+		</div>
+	</section>
+		<br clear="all"/>
+		<br clear="all"/>
+		<br clear="all"/>
+		<br clear="all"/>
 	<?php include 'footer.php'?>
 </div>
-<script>
-  $(window).on('load', function (){
-    $('#loading').hide();
-  }) 
-</script>
-
 <?php include 'bottom-scripts.php'?>
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/wowslider.js"></script> 
-<script type="text/javascript" src="<?php echo $website_url?>/slide-property/engine/script.js"></script>
-
 </body>
 </html>
 

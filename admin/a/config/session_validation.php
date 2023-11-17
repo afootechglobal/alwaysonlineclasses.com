@@ -1,15 +1,29 @@
-<?php require_once '../../config/config.php';?>
-<?php
 
-	//$role_id=$_SESSION['role_id'];
-?>
 <?php if(empty($login_staff_id)){
     session_destroy();
-    ?>
+?>
 <script>
-window.parent(location="../../admin/");
+    window.parent(location="<?php echo $admin_login_url?>");
 </script>
 <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php
 class allClass{
@@ -23,10 +37,6 @@ class allClass{
         </div>
     </div>
 <?php }
-
-
-
-
 
 }//end of class
 $callclass=new allClass();

@@ -11,7 +11,6 @@
 <link href="<?php echo $website_url?>/style/aos.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/style/paramount.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo $website_url?>/style/main-style.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo $website_url?>/style/scrollbar.css" type="text/css" rel="stylesheet" />
 
 <link href="<?php echo $website_url?>/slide-property/carousel/product-slide.css" type="text/css" rel="stylesheet"/>
 <script src="<?php echo $website_url?>/slide-property/carousel/product-slide.js" type="text/javascript" ></script>
@@ -20,8 +19,8 @@
 <script src="<?php echo $website_url?>/js/superplaceholder.js"></script>
 <script src="<?php echo $website_url?>/js/jquery-v3.6.1.min.js"></script>
 <script src="<?php echo $website_url?>/js/scripts.js"></script>   
-<script src="<?php echo $website_url?>/js/aos.js"></script>
+
 
 <meta property="og:type" content="Website" />
 <meta property="og:site_name" content="<?php echo $thename?>">
-<meta property="og:url" content="<?php echo $website_url?>" />
+<meta property="og:url" content="<?php echo $website_auto_url?>" />

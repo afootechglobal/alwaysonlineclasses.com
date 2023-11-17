@@ -147,7 +147,7 @@ cursor:pointer;
 }
 
 .ajax-loader{
-	top: 35%;
+	top: 48%;
 	left: 30%;
 	width:40%;
 	min-width: 250px;
@@ -160,6 +160,12 @@ cursor:pointer;
 	display: flex;
     align-items: center;
 }
+
+.details-ajax{
+	top: 80%;
+	background:none;
+}
+
 .ajax-loader img{
 	width:100%;
 }
@@ -493,6 +499,7 @@ transition:all 0.2s ease-in 0.2s;
 	cursor:pointer;
 	display:none;
 }
+
 .success-div div, #not-success-div div, #warning-div div{
 	background:rgba(255,255,255,.8);
 	text-align:center;
@@ -504,6 +511,8 @@ transition:all 0.2s ease-in 0.2s;
 	margin-right:5px;
 	margin-top:-10px;
 }
+
+
 .success-div span, #not-success-div span, #warning-div span{
 	font-size:12px;
 	font-family: body-font;
@@ -528,6 +537,23 @@ transition:all 0.2s ease-in 0.2s;
 }
 
 /*--------------------------------------------------------------------------------------------------*/
+.trans-statistics{
+	padding:10px;
+	border-bottom:#CACFD2 1px dashed;
+	text-align:left;
+	font-size:12px;
+	min-height:18px;
+	line-height:18px;
+}
+ .value{
+	float:right;
+	color:#29BA00;
+}
+
+.trans-statistics .text_details{
+	color:var(--subactive-color);
+}
+
 .alert{
 	border:rgba(231,107,46,.4) 1px solid;
 	background:rgba(231,107,46,.05);
@@ -572,27 +598,29 @@ transition:all 0.2s ease-in 0.2s;
 	background:#444;
 }
 /*--------------------------------------------------------------------------------------------------*/
+
 .false-notification-div{
 	padding:50px;
-	background:#EFEFEF;
+	background:#f7f7f7;
 	border-radius:5px;
-	text-align:center
+	text-align:center;
+	color: var(--subactive-color);
 }
 
 .false-notification-div .btn{
 	height:40px;
 	border:none;
-	background:#2f4c00;
+	background:var(--main-color);
 	cursor:pointer;
 	color:#FFF;
 	font-family:title-font;
 	padding:0px 10px;
 	border-radius:4px;
 	-moz-transition:all 0.2s ease-in 02s;
-transition:all 0.2s ease-in 0.2s;
--webkit-transition:all 0.2s ease-in 0.2s;
--ms-transition:all 0.2s ease-in 0.2s;
--o-transition:all 0.2s ease-in 0.2s;
+	transition:all 0.2s ease-in 0.2s;
+	-webkit-transition:all 0.2s ease-in 0.2s;
+	-ms-transition:all 0.2s ease-in 0.2s;
+	-o-transition:all 0.2s ease-in 0.2s;
 }
 .false-notification-div .btn:hover{
 	background:#444;

@@ -1,4 +1,7 @@
 <?php  include 'alert.php'?>
+<div id="loading">
+    <img id="loading-image" src="<?php echo $website_url?>/all-images/images/loader.gif" alt="animated zoomIn"/> 
+</div>
 
 <header class="fadeInDown animated"> 
     <div class="header-top-div">
@@ -18,113 +21,39 @@
                 <a href="#" title="Call Customer Care">
                 <li><i class="bi-telephone"></i></li></a>
             </ul>
-            <a href="<?php echo $website_url ?>/login" title="SIGN UP / LOGIN">
+            <a href="<?php echo $website_url ?>/user/login/" title="SIGN UP / LOGIN">
             <button class="btn" title="JOIN US NOW">JOIN US NOW</button></a>
+            <br clear="all" />
         </div>   
     </div>  
     
     <div class="header-div-in">
-        <div class="inner-div">
-            <div class="logo-div">
-                <a href="<?php echo $website_url ?>"><img src="<?php echo $website_url?>/all-images/images/logo.png" alt="<?php echo $thename?> Logo"  class="animated zoomIn"/></a>   
-            </div>
+        <div class="logo-div">
+            <a href="<?php echo $website_url ?>"><img src="<?php echo $website_url?>/all-images/images/logo.png" alt="<?php echo $thename?> Logo"  class="animated zoomIn"/></a>   
+        </div>
 
-            <ul>                          
-                <a href="<?php echo $website_url ?>/" title="Home Page"><li <?php if ($page=="index.php") { ?>class="active" <?php }?>> HOME</li></a>        
-                <a href="<?php echo $website_url ?>/about" title="About Us"><li <?php if ($page=="about.php") { ?>class="active" <?php }?>>ABOUT US</li></a>        
-                <a href="<?php echo $website_url ?>/exams" title="Our Exams"><li id="expand" <?php if ($page=="exams/index.php") { ?>class="active" <?php }?>><i class="bi-chevron-down"></i>EXAMS          
-                    <div class="sub-nav-div animated fadeIn">
-                        <a href="#" title="Exams Categories">
-                    	<div class="li" id="li"><strong>Available Exams</strong></div></a>
+        <ul>                          
+            <a href="<?php echo $website_url ?>/" title="Home Page"><li <?php if (($website_auto_url=="$website_url/index")||($website_auto_url=="$website_url/")||($website_auto_url=="$website_url")) {?> class="active" <?php }?>> HOME</li></a>        
+            <a href="<?php echo $website_url ?>/about" title="About Us"><li <?php if (($website_auto_url=="$website_url/about")) {?> class="active" <?php }?>>ABOUT US</li></a>        
+            <a href="<?php echo $website_url ?>/exams/" title="Our Exams"><li id="expand"  <?php if (strstr($website_auto_url, "$website_url/exams/")) {?> class="active" <?php }?>><i class="bi-plus"></i>EXAMS          
+                <div class="sub-nav-div animated fadeIn">
+                    <a href="<?php echo $website_url ?>/exams/" title="Exams Categories">
+                    <div class="li" id="li"><strong>Available Exams</strong></div></a>
 
-                        <a href="<?php echo $website_url ?>/exams/waec" title="WAEC">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/ssce.png" alt="topics"/>
-                            </div>
+                        <div class="fetch" id="fetch_header_exam">
+                            <script> _get_fetch_header_exam();</script>
+                        </div>
+                </div>
+            </li></a> 
 
-                            <div class="text">
-                                <h3>WAEC</h3>
-                            </div>
-                        </div></a>
-
-                        <a href="<?php echo $website_url ?>/exams/neco" title="NECO">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/neco.png" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>NECO</h3>
-                            </div>
-                        </div></a>                     
-
-                        <a href="<?php echo $website_url ?>/exams/jamb" title="JAMB">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>JAMB</h3>
-                            </div>
-                        </div></a>
-
-                        <a href="<?php echo $website_url ?>/exams/putme" title="PUTME">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>PUTME</h3>
-                            </div>
-                        </div></a> 
-                       
-                        <a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/jupeb.webp" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>JUPEB</h3>
-                            </div>
-                        </div></a>                                   
-                                    
-                        <a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/ijmb.png" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>IJMB</h3>
-                            </div>
-                        </div></a>                     
-
-                        <a href="<?php echo $website_url ?>/exams/utme" title="UTME">
-                        <div class="cat-div">
-                            <div class="image-div">
-                                <img src="<?php echo $website_url?>/all-images/images/utme.png" alt="topics"/>
-                            </div>
-
-                            <div class="text">
-                                <h3>UTME</h3>
-                            </div>
-                        </div></a>
-
-                    </div>
-                </li></a> 
-
-                <a href="<?php echo $website_url ?>/blog" title="Our Blog"><li <?php if ($page=="blog/index.php") { ?>class="active" <?php }?>>BLOG</li></a>
-                <a href="<?php echo $website_url ?>/faq" title="Frequently Ask Question"><li <?php if ($page=="faq.php") { ?>class="active" <?php }?>>FAQ</li></a>   
-                <a href="<?php echo $website_url ?>/contact" title="Contact Us"><li <?php if ($page=="contact.php") { ?>class="active" <?php }?>>CONTACT US</li></a> 
-            </ul>
-            <br>
-            <button class="mobile-btn" onclick="_open_menu()"><i class="bi-list"></i></button>
-            <a href="<?php echo $website_url ?>/login" title="SIGN UP / LOGIN">
-            <button class="sign-up" title="SIGN UP / LOGIN">SIGN UP / LOGIN</button></a>
-        </div>     
+            <a href="<?php echo $website_url ?>/blog/" title="Our Blog"><li <?php if (strstr($website_auto_url, "$website_url/blog/")) {?> class="active" <?php }?>>BLOG</li></a>
+            <a href="<?php echo $website_url ?>/faq" title="Frequently Ask Question"><li <?php if (($website_auto_url=="$website_url/faq")) {?> class="active" <?php }?>>FAQ</li></a>   
+            <a href="<?php echo $website_url ?>/contact" title="Contact Us"><li <?php if (($website_auto_url=="$website_url/contact")) {?> class="active" <?php }?>>CONTACT US</li></a>
+            <br clear="all" />
+        </ul>
+        <button class="mobile-btn" onclick="_open_menu()"><i class="bi-list"></i></button>
+        <a href="<?php echo $website_url ?>/user/login/" title="SIGN UP / LOGIN">
+        <button class="sign-up" title="SIGN UP / LOGIN">SIGN UP / LOGIN</button></a>
+        <br clear="all" />
     </div>
 </header>

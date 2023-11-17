@@ -21,7 +21,7 @@
 
 
 <div class="success-div animated fadeInRight" id="warning-div">
-    <div><i class="bi-exclamation-circle"></i></div> 
+    <div><i class="bi-exclamation-octagon-fill"></i></div> 
     USER ERROR!<br /> 
     <span>Fill The Fields To Continue</span>
 </div>
@@ -109,20 +109,8 @@
     <div class="div">
         <li onclick="_open_li('exams')"><i class="bi-activity"></i> Exams Categories <i class="bi-plus" id="side-expand"></i></li>
         <div class="sub-li" id="exams-sub-li">
-            <a href="<?php echo $website_url ?>/exams/waec" title="WAEC">
-            <li>WAEC</li></a>
-            <a href="<?php echo $website_url ?>/exams/neco" title="NECO">
-            <li>NECO</li></a>
-            <a href="<?php echo $website_url ?>/exams/jamb" title="JAMB">
-            <li>JAMB</li></a>
-            <a href="<?php echo $website_url ?>/exams/utme" title="UTME">
-            <li>UTME</li></a>
-            <a href="<?php echo $website_url ?>/exams/putme" title="PUTME">
-            <li>PUTME</li></a>
-            <a href="<?php echo $website_url ?>/exams/ijmb" title="IJMB">
-            <li>IJMB</li></a>
-            <a href="<?php echo $website_url ?>/exams/jupeb" title="JUPEB">
-            <li>JUPEB</li></a>
+            <div id="fetch_index_menu_exam"></div>
+            <script> _get_index_menu_exam();</script>
         </div>
     </div>
 
@@ -142,7 +130,7 @@
     </div>
 
     <div class="div">
-        <a href="<?php echo $website_url;?>/login" title="Sign Up/Login">
+        <a href="<?php echo $website_url;?>/user/login" title="Sign Up/Login">
         <li <?php if ($page=='login.php') {?> id="active-li"<?php }?>><i class="bi-box-arrow-in-right"></i> Sign Up/Login</li></a>
     </div>
     

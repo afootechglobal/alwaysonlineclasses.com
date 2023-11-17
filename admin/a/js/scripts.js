@@ -1,3 +1,8 @@
+function _logout(){
+  document.getElementById('logoutform').submit();
+}
+
+
 function _toggle_profile_pix_div() {
   $(".toggle-profile-div").toggle("slow");
 }
@@ -5,15 +10,18 @@ function _toggle_profile_pix_div() {
 function select_search() {
   $(".srch-select").toggle("fast");
 }
+
 function srch_custom(text) {
   $("#srch-text").html(text);
   $(".custom-srch-div").fadeIn(500);
 }
+
 function _next_page(next_id, icon, divid) {
   $("#account_settings_id,#account_detail,#channge_password").hide();
   $("#" + next_id).fadeIn(1000);
   $("#panel-title").html($("#" + icon).html() + $("#" + divid).html());
 }
+
 function _prev_page(next_id) {
   $("#account_settings_id,#account_detail,#channge_password").hide();
   $("#" + next_id).fadeIn(1000);
@@ -26,6 +34,12 @@ function _alert_close() {
   $("#get-more-div").fadeOut(300);
 }
 
+function _alert_close2() {
+  $("#get-more-div").fadeOut(300);
+  closeVideo(); // Call the closeVideo function to stop the video and mute the audio
+  // Add any additional code to close the div or perform other actions here
+}
+
 function _collapse(div_id,div_id1,div_id2) {
   var x = document.getElementById(div_id + "num");
   if (x.innerHTML === '&nbsp;<i class="bi-plus"></i>&nbsp;') {
@@ -36,7 +50,7 @@ function _collapse(div_id,div_id1,div_id2) {
     x.innerHTML = '&nbsp;<i class="bi-plus"></i>&nbsp;';
     //  $('#'+div_id).removeClass('active-faq');
   }
-  $("#" + div_id + "answer").slideToggle("slow");
+	$('#'+div_id+'answer').slideToggle('slow');
 }
 
 ///// accept number ////
@@ -69,8 +83,25 @@ function _get_active_link(divid) {
   $("#page-title").html($("#_" + divid).html());
 }
 
-function _get_page(page, ids, divid, other_ids, other_ids1) {
+
+function _get_page(page, divid) {
   _get_active_link(divid);
+  $("#page-content").html('<div class="ajax-loader"><img src="' +website_url +'/all-images/images/ajax-loader.gif"/></div>').fadeIn("fast");
+  var action = "get_page";
+  var dataString = "action=" + action + "&page=" + page;
+  $.ajax({
+    type: "POST",
+    url: admin_local_portal_url,
+    data: dataString,
+    cache: false,
+    success: function (html) {
+      $("#page-content").html(html);
+    },
+  });
+}
+
+
+function _get_page_with_id(page, ids, other_ids, other_ids1) {
   $("#page-content")
     .html(
       '<div class="ajax-loader"><img src="' +
@@ -78,7 +109,7 @@ function _get_page(page, ids, divid, other_ids, other_ids1) {
         '/all-images/images/ajax-loader.gif"/></div>'
     )
     .fadeIn("fast");
-  var action = "get_page";
+  var action = "_get_page_with_id";
   var dataString = "action=" + action + "&page=" + page + "&ids=" + ids + "&other_ids=" + other_ids + "&other_ids1=" + other_ids1;
   $.ajax({
     type: "POST",
@@ -91,14 +122,10 @@ function _get_page(page, ids, divid, other_ids, other_ids1) {
   });
 }
 
+
+
 function _get_form(page) {
-  $("#get-more-div")
-    .html(
-      '<div class="ajax-loader"><img src="' +
-        website_url +
-        '/all-images/images/ajax-loader.gif"/></div>'
-    )
-    .fadeIn("fast");
+  $("#get-more-div").html('<div class="ajax-loader"><img src="' +website_url +'/all-images/images/ajax-loader.gif"/></div>').fadeIn("fast");
   var action = "get_form";
   var dataString = "action=" + action + "&page=" + page;
   $.ajax({
@@ -111,6 +138,7 @@ function _get_form(page) {
     },
   });
 }
+
 
 function _get_form_with_id(page, ids, other_ids, other_ids1) {
   $("#get-more-div").html('<div class="ajax-loader"><img src="'+website_url+'/all-images/images/ajax-loader.gif"/></div>').fadeIn(500);
@@ -127,6 +155,9 @@ function _get_form_with_id(page, ids, other_ids, other_ids1) {
   });
 }
 
+
+
+
 $(function () {
   exam_pix = {
     UpdatePreview: function (obj) {
@@ -140,6 +171,27 @@ $(function () {
         reader.onload = function (e) {
           target = e.target || e.srcElement;
           $("#exam-pix").prop("src", target.result);
+        };
+        reader.readAsDataURL(obj.files[0]);
+      }
+    },
+  };
+});
+
+
+$(function () {
+  blog_pics = {
+    UpdatePreview: function (obj) {
+      // if IE < 10 doesn't support FileReader
+      if (!window.FileReader) {
+        // don't know how to proceed to assign src to image tag
+      } else {
+        var reader = new FileReader();
+        var target = null;
+
+        reader.onload = function (e) {
+          target = e.target || e.srcElement;
+          $("#blog_pics").prop("src", target.result);
         };
         reader.readAsDataURL(obj.files[0]);
       }
@@ -179,20 +231,24 @@ function _get_staff_login(staff_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
-      var fetch = info.data;
-      var fullname = fetch.fullname.toUpperCase();
-      var mobile = fetch.mobile;
-      var role_name = fetch.role_name;
-      var updated_time = fetch.updated_time;
-      var passport = fetch.passport;
-      $("#login_user_fullname,#profile_name,#header_profile_name").html(
-        fullname
-      );
-      $("#user_id").html(staff_id);
-      $("#header_role_name").html(role_name);
-      $("#user_mobile").html(mobile);
-      $("#login_user_login_time").html(updated_time);
-      _get_header_pix(passport);
+      var login_check = info.check;
+      if(login_check>0){
+        var fetch = info.data;
+        var fullname = info.fullname;
+        var mobile = fetch.mobile;
+        var role_name = fetch.role_name;
+        var updated_time = fetch.updated_time;
+        var passport = fetch.passport;
+        $("#login_user_fullname,#profile_name,#header_profile_name").html(fullname);
+        $("#user_id").html(staff_id);
+        $("#header_role_name").html(role_name);
+        $("#user_mobile").html(mobile);
+        $("#login_user_login_time").html(updated_time);
+        _get_header_pix(passport);
+      }else{
+      _logout();
+      }
+      
     },
   });
 }
@@ -227,41 +283,37 @@ function _get_header_pix(passport) {
 
 
 
-function _get_select_status(select_id, status_id) {
-  var action = "fetch_status_api";
-  var dataString = "action=" + action + "&status_id=" + status_id;
-  $.ajax({
-    type: "POST",
-    url: api,
-    data: dataString,
-    dataType: "json",
-    cache: false,
-    success: function (info) {
+function _get_select_status(select_id,status_id){
+	var action='fetch_status_api';
+	var dataString ='action='+ action+'&status_id='+ status_id;
+	$.ajax({
+		type: "POST",   
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function(info){
+			var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
-      var fetch = info.data;
-      var text = "";
-
+      var fetch=info.data
       if (result == true) {
-        for (var i = 0; i < fetch.length; i++) {
-          var status_id = fetch[i].status_id;
-          var status_name = fetch[i].status_name;
-          /// for status update profile loop option ////
-          text +=
-            '<option value="' +
-            status_id +
-            '" >' +
-            status_name.toUpperCase() +
-            "</option>";
-        }
-      } else {
-        text = "<option>" + message + "</option>";
+      
+				for (var i = 0; i < fetch.length; i++) {
+				  var status_id = fetch[i].status_id;
+				  var status_name = fetch[i].status_name;
+					$('#'+select_id).append('<option value="'+status_id+'">'+status_name+'</option>');
+				}
+      }else{
+				$('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> CAUTION ALERT!<br /><span>'+message+'</span>').fadeIn(500).delay(5000).fadeOut(100);
       }
-      $("#" + select_id).append(text);
-    },
-  });
+			}else{
+        _logout();
+      }
+		}
+	});
 }
-
 
 
 function _get_select_video_pricing(select_id) {
@@ -274,23 +326,25 @@ function _get_select_video_pricing(select_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
       var fetch = info.data;
-      var text = "";
 
       if (result == true) {
         for (var i = 0; i < fetch.length; i++) {
           var subscription_pricing_id = fetch[i].subscription_pricing_id;
           var subscription_pricing_name = fetch[i].subscription_pricing_name;
           /// for subscription duration update profile loop option ////
-          text +=
-            '<option value="' + subscription_pricing_id +'" >' + subscription_pricing_name.toUpperCase() + "</option>";
+          $('#'+select_id).append('<option value="'+subscription_pricing_id+'">'+subscription_pricing_name+'</option>');
         }
       } else {
-        text = "<option>" + message + "</option>";
+        $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> CAUTION ALERT!<br /><span>'+message+'</span>').fadeIn(500).delay(5000).fadeOut(100);
       }
-      $("#" + select_id).append(text);
+    }else{
+    _logout();
+    }
     },
   });
 }
@@ -309,6 +363,8 @@ function _get_select_role(select_id, role_id) {
     data: dataString,
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
       var fetch = info.data;
@@ -330,6 +386,9 @@ function _get_select_role(select_id, role_id) {
         text = '<option value="" >' + message + " </option>";
       }
       $("#" + select_id).append(text);
+    }else{
+    _logout();
+    }
     },
   });
 }
@@ -347,26 +406,24 @@ function _get_select_duration(select_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
       var fetch = info.data;
-      var text = "";
 
       if (result == true) {
         for (var i = 0; i < fetch.length; i++) {
           var subscription_duration_id = fetch[i].subscription_duration_id;
           /// for status update profile loop option ////
-          text +=
-            '<option value="' +
-            subscription_duration_id +
-            '" >' +
-            subscription_duration_id +
-            "</option>";
+        	$('#'+select_id).append('<option value="'+subscription_duration_id+'">'+subscription_duration_id +'</option>');
         }
       } else {
-        text = "<option>" + message + "</option>";
+        $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> CAUTION ALERT!<br /><span>'+message+'</span>').fadeIn(500).delay(5000).fadeOut(100);
       }
-      $("#" + select_id).append(text);
+    }else{
+    _logout();
+    }
     },
   });
 }
@@ -385,27 +442,25 @@ function _get_select_video_volume(select_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
       var fetch = info.data;
-      var text = "";
 
       if (result == true) {
         for (var i = 0; i < fetch.length; i++) {
           var video_volume_id = fetch[i].video_volume_id;
           var video_volume_name = fetch[i].video_volume_name;
           /// for status update profile loop option ////
-          text +=
-            '<option value="' +
-            video_volume_id +
-            '" >' +
-            video_volume_name +
-            "</option>";
+          $('#'+select_id).append('<option value="'+video_volume_id+'">'+video_volume_name +'</option>');
         }
       } else {
-        text = "<option>" + message + "</option>";
+        $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> CAUTION ALERT!<br /><span>'+message+'</span>').fadeIn(500).delay(5000).fadeOut(100);
       }
-      $("#" + select_id).append(text);
+    }else{
+    _logout();
+    }
     },
   });
 }
@@ -413,8 +468,8 @@ function _get_select_video_volume(select_id) {
 
 
 
-function _get_faq_cat(select_id) {
-  var action = "fetch_faq_cat_api";
+function _get_cat(select_id) {
+  var action = "fetch_cat_api";
   var dataString = "action=" + action;
   $.ajax({
     type: "POST",
@@ -423,6 +478,8 @@ function _get_faq_cat(select_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var result = info.result;
       var message = info.message;
       var fetch = info.data;
@@ -444,11 +501,12 @@ function _get_faq_cat(select_id) {
         text += "<option>" + message + "</option>";
       }
       $("#" + select_id).append(text);
+    }else{
+    _logout();
+    }
     },
   });
 }
-
-
 
 
 
@@ -470,7 +528,7 @@ function _add_staff(staff_id) {
     $("#reg_fullname").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> FULLNAME ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> FULLNAME ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -479,7 +537,7 @@ function _add_staff(staff_id) {
     $("#reg_email").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> EMAIL ERROR!<br /><span>Fill Correct Email To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> EMAIL ERROR!<br /><span>Fill Correct Email To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -488,7 +546,7 @@ function _add_staff(staff_id) {
     $("#reg_mobile").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> MOBILE ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> MOBILE ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -497,7 +555,7 @@ function _add_staff(staff_id) {
     $("#reg_address").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> ADDRESS ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> ADDRESS ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -506,7 +564,7 @@ function _add_staff(staff_id) {
     $("#reg_role_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> ROLE NAME ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> ROLE NAME ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -515,7 +573,7 @@ function _add_staff(staff_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS NAME ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS NAME ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -555,6 +613,8 @@ function _add_staff(staff_id) {
       data: dataString,
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var result = info.result;
         var message1 = info.message1;
         var message2 = info.message2;
@@ -571,7 +631,7 @@ function _add_staff(staff_id) {
             .delay(5000)
             .fadeOut(100);
           _alert_close();
-          _get_page('view_staff', '', 'admin', '','');
+          _get_page('view_staff', 'admin');
         } else {
           $("#reg_email").addClass("complain");
           $("#warning-div")
@@ -585,9 +645,12 @@ function _add_staff(staff_id) {
             .fadeIn(500)
             .delay(3000)
             .fadeOut(100);
-        }
-        $("#submit_btn").html(btn_text);
-        document.getElementById("submit_btn").disabled = false;
+          $("#submit_btn").html(btn_text);
+          document.getElementById("submit_btn").disabled = false;
+        }  
+      }else{
+      _logout();
+      }
       },
     });
   }
@@ -617,6 +680,8 @@ function _get_fetch_all_staff() {
       dataType: "json",
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
@@ -660,9 +725,8 @@ function _get_fetch_all_staff() {
               "</div>" +
               '<br clear="all"/>' +
               "</div>";
-
-            $("#fetch").html(text);
           }
+          $("#fetch").html(text);
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -675,6 +739,9 @@ function _get_fetch_all_staff() {
             "</div>";
           $("#fetch").html(text);
         }
+      }else{
+      _logout();
+      }
       },
     });
   } else {
@@ -695,6 +762,98 @@ function _get_fetch_all_staff() {
 
 
 
+function _get_fetch_all_user() {
+  var action = "fetch_user_api";
+  var search_txt = $("#search_txt").val();
+  var status_id = $("#status_id").val();
+  if (search_txt.length > 2 || search_txt == "") {
+    var dataString =
+      "action=" +
+      action +
+      "&status_id=" +
+      status_id +
+      "&search_txt=" +
+      search_txt;
+    $.ajax({
+      type: "POST",
+      url: api,
+      data: dataString,
+      dataType: "json",
+      cache: false,
+      success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
+        var fetch = info.data;
+        var result = info.result;
+        var message = info.message;
+
+        var text = "";
+
+        if (result == true) {
+          for (var i = 0; i < fetch.length; i++) {
+            var user_id = fetch[i].user_id;
+            var fullname = fetch[i].fullname;
+            var mobile = fetch[i].mobile;
+            var status_name = fetch[i].status_name;
+            var passport = fetch[i].passport;
+              if(passport==''){
+                passport= 'friends.png';
+              }
+              
+            text +=
+              '<div class="user-div animated fadeIn" title="View Profile" onclick="_get_form_with_id(' +
+              "'user_details'" +
+              "," +
+              "'" +
+              user_id +
+              "'" +
+              ')">' +'<div class="pix-div"><img src="' + website_url +'/uploaded_files/user_pix/' + passport +'"/></div>' +
+              '<div class="detail">' +
+              '<div class="name-div"><div class="name">' +
+              fullname.toUpperCase() +
+              "</div><hr /><br/></div>" +
+              '<div class="text">ID:' +
+              user_id +
+              "</div>" +
+              '<div class="text"> ' +
+              mobile +
+              " </div>" +
+              '<div class="status-div '+status_name +'"> ' +status_name +
+              " </div>" +
+              "</div>" +
+              '<br clear="all"/>' +
+              "</div>";
+          }
+          $("#fetch_user").html(text);
+        } else {
+          text +=
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            "</div>";
+          $("#fetch_user").html(text);
+        }
+      }else{
+        _logout();
+        }
+      },
+    });
+  } else {
+    text +=
+      '<div class="false-notification-div">' +
+      "<p> " +
+      message1 +
+      " </p>" +
+      "</div>";
+    $("#fetch_user").html(text);
+  }
+}
+
+
+
+
+
 function _get_staff_profile(staff_id) {
   var action = "fetch_staff_api";
   var dataString = "action=" + action + "&staff_id=" + staff_id;
@@ -706,6 +865,8 @@ function _get_staff_profile(staff_id) {
     cache: false,
     success: function (info) {
       var result = info.result;
+      var login_check = info.check;
+      if(login_check>0){
 
       if (result == true) {
         var data = info.data;
@@ -747,24 +908,15 @@ function _get_staff_profile(staff_id) {
         $("#updt_mobile").val(mobile);
         $("#updt_email").val(email);
         $("#updt_address").val(address);
-        $("#updt_status_id").append(
-          '<option value="' +
-            status_id +
-            '" selected="selected">' +
-            status_name +
-            "</option>"
-        );
-        $("#updt_role_id").append(
-          '<option value="' +
-            role_id +
-            '" selected="selected">' +
-            role_name +
-            "</option>"
-        );
+        $("#updt_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+        $("#updt_role_id").append('<option value="' + role_id + '" selected="selected">' + role_name +"</option>");
         $("#staff_id").val(staff_id);
         $("#created_time").val(created_time);
         $("#last_login").val(last_login);
       }
+    }else{
+    _logout();
+    }
     },
   });
 }
@@ -789,7 +941,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_fullname").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> FULLNAME ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> FULLNAME ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -798,7 +950,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_email").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -807,7 +959,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_mobile").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> MOBILE ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> MOBILE ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -816,7 +968,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_address").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> ADDRESS ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> ADDRESS ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -825,7 +977,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_role_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> ROLE ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> ROLE ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -834,7 +986,7 @@ function _update_staff_profile(staff_id) {
     $("#updt_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Fill Fields To Continue</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Fill Fields To Continue</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -869,6 +1021,8 @@ function _update_staff_profile(staff_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
@@ -884,19 +1038,22 @@ function _update_staff_profile(staff_id) {
               .fadeIn(500)
               .delay(5000)
               .fadeOut(100);
-              _get_page('view_staff', '', 'admin', '','');
+              _get_page('view_staff', 'admin');
           } else {
             $("#updt_email").addClass("complain");
             $("#warning-div")
               .html(
-                '<div><i class="bi-exclamation-triangle"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
               )
               .fadeIn(500)
               .delay(3000)
               .fadeOut(100);
-          }
-          $("#update_btn").html(btn_text);
-          document.getElementById("update_btn").disabled = false;
+            }
+              $("#update_btn").html(btn_text);
+              document.getElementById("update_btn").disabled = false;
+        }else{
+        _logout();
+        }
         },
       });
     }
@@ -986,7 +1143,7 @@ function _upload_profile_pix(staff_id) {
         success: function (data) {
           var db_passport = data.db_passport;
           _unlink_pix_file(staff_id, db_passport);
-          //  move_file(db_passport);
+           //  move_file(db_passport);
         },
       });
     }
@@ -1073,165 +1230,11 @@ function _get_pix(message1, message2, passport) {
         .fadeIn(500)
         .delay(5000)
         .fadeOut(100);
-        _get_page('view_staff', '', 'admin', '','');
+        _get_page('view_staff', 'admin');
     },
   });
 }
 
-
-
-function _get_fetch_all_user() {
-  var action = "fetch_user_api";
-  var search_txt = $("#search_txt").val();
-  var status_id = $("#status_id").val();
-  if (search_txt.length > 2 || search_txt == "") {
-    var dataString =
-      "action=" +
-      action +
-      "&status_id=" +
-      status_id +
-      "&search_txt=" +
-      search_txt;
-    $.ajax({
-      type: "POST",
-      url: api,
-      data: dataString,
-      dataType: "json",
-      cache: false,
-      success: function (info) {
-        var fetch = info.data;
-        var result = info.result;
-        var message = info.message;
-
-        var text = "";
-
-        if (result == true) {
-          for (var i = 0; i < fetch.length; i++) {
-            var user_id = fetch[i].user_id;
-            var fullname = fetch[i].fullname;
-            var mobile = fetch[i].mobile;
-            var status_name = fetch[i].status_name;
-            var passport = fetch[i].passport;
-
-            text +=
-              '<div class="user-div animated fadeIn" title="View Profile" onclick="_get_form_with_id(' +
-              "'user_profile'" +
-              "," +
-              "'" +
-              user_id +
-              "'" +
-              ')">' +
-              '<div class="pix-div"><img src="' +
-              website_url +
-              "/uploaded_files/staff_pix/" +
-              passport +
-              '"/></div>' +
-              '<div class="detail">' +
-              '<div class="name-div"><div class="name">' +
-              fullname.toUpperCase() +
-              "</div><hr /><br/></div>" +
-              '<div class="text">ID:' +
-              user_id +
-              "</div>" +
-              '<div class="text"> ' +
-              mobile +
-              " </div>" +
-              '<div class="active"> ' +
-              status_name +
-              " </div>" +
-              "</div>" +
-              '<br clear="all"/>' +
-              "</div>";
-
-            $("#fetch_user").html(text);
-          }
-        } else {
-          text +=
-            '<div class="false-notification-div">' +
-            "<p> " +
-            message +
-            " </p>" +
-            "</div>";
-          $("#fetch_user").html(text);
-        }
-      },
-    });
-  } else {
-    text +=
-      '<div class="false-notification-div">' +
-      "<p> " +
-      message1 +
-      " </p>" +
-      '<button class="btn" onclick="_get_form(' +
-      "'user_reg'" +
-      ')"><i class="bi-person-plus"></i>ADD NEW USER</button>' +
-      "</div>";
-    $("#fetch_user").html(text);
-  }
-}
-
-
-
-
-
-function _get_user_profile(user_id) {
-  var action = "fetch_user_api";
-  var dataString = "action=" + action + "&user_id=" + user_id;
-  $.ajax({
-    type: "POST",
-    url: api,
-    data: dataString,
-    dataType: "json",
-    cache: false,
-    success: function (info) {
-      var result = info.result;
-
-      if (result == true) {
-        var data = info.data;
-        var user_id = data.user_id;
-        var fullname = data.fullname.toUpperCase();
-        var mobile = data.mobile;
-        var email = data.email;
-        var address = data.address;
-        var passport = data.passport;
-        if (passport == "") {
-          passport = "friends.png";
-        }
-
-        var status_id = data.status_id;
-        var status_name = data.status_name;
-        var created_time = data.created_time;
-        var last_login = data.last_login;
-
-        $("#user_login_fullname").html(fullname);
-        $("#user_last_login").html(last_login);
-        $("#user_status_name").html(status_name);
-        $("#current_user_passport1").html(
-          '<img src="' +
-            website_url +
-            "/uploaded_files/staff_pix/" +
-            passport +
-            '" id="passportimg4" alt="profile picture"/>'
-        );
-
-        $("#updt_fullname").val(fullname);
-        $("#updt_mobile").val(mobile);
-        $("#updt_email").val(email);
-        $("#updt_address").val(address);
-        $("#updt_status_id").append(
-          '<option value="' +
-            status_id +
-            '" selected="selected">' +
-            status_name +
-            "</option>"
-        );
-        $("#users_id").val(user_id);
-        $("#created_time").val(created_time);
-        $("#last_login").val(last_login);
-      }
-    },
-  });
-}
 
 
 
@@ -1252,7 +1255,7 @@ function _add_and_update_subject(page, subject_id) {
     $("#subject_name").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SUBJECT NAME ERROR!<br /><span>Check Subject Name And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SUBJECT NAME ERROR!<br /><span>Check Subject Name And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1261,7 +1264,7 @@ function _add_and_update_subject(page, subject_id) {
     $("#subject_url").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SUBJECT URL ERROR!<br /><span>Check Url And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SUBJECT URL ERROR!<br /><span>Check Url And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1270,7 +1273,7 @@ function _add_and_update_subject(page, subject_id) {
     $("#seo_keywords").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1279,7 +1282,7 @@ function _add_and_update_subject(page, subject_id) {
     $("#seo_description").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SEO DESCRPITION ERROR!<br /><span>Check Seo Description And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO DESCRPITION ERROR!<br /><span>Check Seo Description And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1288,7 +1291,7 @@ function _add_and_update_subject(page, subject_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1325,6 +1328,8 @@ function _add_and_update_subject(page, subject_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
@@ -1355,12 +1360,12 @@ function _add_and_update_subject(page, subject_id) {
                 .delay(5000)
                 .fadeOut(100);
               _alert_close();
-              _get_page('all_subject', '', 'subject', '','');
+              _get_page('all_subject', 'subject');
             }
           } else {
             $("#warning-div")
               .html(
-                '<div><i class="bi-exclamation-triangle"></i></div> ' +
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> ' +
                   message1 +
                   " <br /><span> " +
                   message2 +
@@ -1369,9 +1374,13 @@ function _add_and_update_subject(page, subject_id) {
               .fadeIn(500)
               .delay(5000)
               .fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
           }
-          $("#submit_btn").html(btn_text);
-          document.getElementById("submit_btn").disabled = false;
+        
+        }else{
+          _logout();
+          }
         },
       });
     }
@@ -1427,9 +1436,9 @@ function _upload_pix(
         .delay(5000)
         .fadeOut(100);
       if (page == "add_and_update_subject") {
-        _get_page('all_subject', '', 'subject', '','');
+        _get_page('all_subject', 'subject');
       } else if (page == "add_and_update_exam") {
-         _get_page('exam_category', '', 'exam', '','');
+         _get_page('exam_category', 'exam');
       }
       _alert_close();
     },
@@ -1458,6 +1467,8 @@ function _get_fetch_all_subject(div_id) {
       dataType: "json",
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
@@ -1468,13 +1479,14 @@ function _get_fetch_all_subject(div_id) {
           for (var i = 0; i < fetch.length; i++) {
             var subject_id = fetch[i].subject_id;
             var subject_name = fetch[i].subject_name.toUpperCase();
-            var status_id = fetch[i].status_id;
             var status_name = fetch[i].status_name;
-
+            var total_topic_count = fetch[i].total_topic_count;
             var subject_passport = fetch[i].subject_passport;
+
             if (subject_passport == "") {
               subject_passport = "default_pix.jpg";
             }
+            
             if (div_id == "fetch_subject") {
               text +=
                 '<div class="grid-div animated fadeIn">' +
@@ -1495,7 +1507,7 @@ function _get_fetch_all_subject(div_id) {
                 subject_name +
                 "</h2>" +
                 "<hr></hr>" +
-                '<div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>' +
+                '<div class="count-div"><i class="bi-book"></i> TOPICS: <span>'+total_topic_count +'</span> </div>' +
                 '<button class="btn" title="EDIT" onclick="_get_form_with_id(' +
                 "'add_and_update_subject'" +
                 "," +
@@ -1519,9 +1531,8 @@ function _get_fetch_all_subject(div_id) {
                 "</span>" +
                 "</label>";
             }
-
-            $("#" + div_id).html(text);
           }
+          $("#" + div_id).html(text);
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -1531,6 +1542,9 @@ function _get_fetch_all_subject(div_id) {
             '<button class="btn" onclick="_get_form(' +"'add_and_update_subject'" +')"><i class="bi-person-plus"></i>ADD NEW SUBJECT</button>' +
             "</div>";
           $("#" + div_id).html(text);
+        }
+      }else{
+        _logout();
         }
       },
     });
@@ -1559,20 +1573,26 @@ function _fetch_each_subject(subject_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var fetch = info.data;
       var subject_name = fetch.subject_name.toUpperCase();
       var subject_url = fetch.subject_url;
       var seo_keywords = fetch.seo_keywords;
       var seo_description = fetch.seo_description;
       var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
       var subject_passport = fetch.subject_passport;
 
       $("#subject_name").val(subject_name);
       $("#subject_url").val(subject_url);
       $("#seo_keywords").val(seo_keywords);
       $("#seo_description").val(seo_description);
-      $("#reg_status_id").val(status_id);
+      $("#reg_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
       _get_viewpix(subject_passport);
+    }else{
+      _logout();
+      }
     },
   });
 }
@@ -1625,7 +1645,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#abbreviation").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> ABBREVIATION ERROR!<br /><span>Check And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> ABBREVIATION ERROR!<br /><span>Check And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1634,7 +1654,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#exam_name").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> EXAM NAME ERROR!<br /><span>Check Exam Name And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> EXAM NAME ERROR!<br /><span>Check Exam Name And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1643,7 +1663,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#exam_url").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> EXAM URL ERROR!<br /><span>Check Exam URL And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> EXAM URL ERROR!<br /><span>Check Exam URL And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1652,7 +1672,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#seo_keywords").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1661,7 +1681,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#seo_description").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SEO DESCRIPTION ERROR!<br /><span>Check Seo Description And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO DESCRIPTION ERROR!<br /><span>Check Seo Description And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1670,7 +1690,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#subject_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SUBJECT ERROR!<br /><span>Pick at least 1 Subject And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SUBJECT ERROR!<br /><span>Pick at least 1 Subject And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1679,7 +1699,7 @@ function _add_and_update_exam(page, exam_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -1718,6 +1738,8 @@ function _add_and_update_exam(page, exam_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
@@ -1732,41 +1754,22 @@ function _add_and_update_exam(page, exam_id) {
             var db_exam_url = info.db_exam_url;
   
              if (check_exam_id != exam_id) {
-            _create_exam_folder(check_exam_id, exam_id, exam_url, all_subject_id, all_subject_urls);
+            _create_exam_folder(check_exam_id, exam_id, exam_url, all_subject_id, all_subject_urls, message1, message2);
              }else {
-            _update_exam_folder(exam_id, exam_url, db_exam_url, all_subject_id, all_subject_urls);
+            _update_exam_folder(exam_id, exam_url, db_exam_url, all_subject_id, all_subject_urls, message1, message2);
              }  
-            if (exam_logo != "") {
-              _upload_pix(
-                page,
-                message1,
-                message2,
-                "",
-                exam_logo,
-                old_passport
-              );
-            } else {
-           
-              $("#success-div")
-                .html(
-                  '<div><i class="bi-check"></i></div> ' +
-                    message1 +
-                    " <br> " +
-                    message2 +
-                    " "
-                )
-                .fadeIn(500)
-                .delay(5000)
-                .fadeOut(100);
-              _alert_close();
-              exam_category
-              _get_page('exam_category', '', 'exam', '','');
+            if (exam_logo != '') {
+              _upload_pix(page,message1,message2,'',exam_logo,old_passport);
             }
           } else {
-            $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
+            $("#warning-div").html('<div><i class="bi-exclamation-octagon-fill"></i></div> ' + message1 + " <br /><span> " + message2 + " </span>").fadeIn(500).delay(5000).fadeOut(100);
+            $("#submit_btn").html(btn_text);
+            document.getElementById("submit_btn").disabled = false;
           }
-          $("#submit_btn").html(btn_text);
-          document.getElementById("submit_btn").disabled = false;
+          
+        }else{
+          _logout();
+          }
         },
       });
     }
@@ -1775,7 +1778,7 @@ function _add_and_update_exam(page, exam_id) {
 
 
 
-function _create_exam_folder(check_exam_id, exam_id, exam_url, all_subject_id, all_subject_urls) {
+function _create_exam_folder(check_exam_id, exam_id, exam_url, all_subject_id, all_subject_urls, message1, message2) {
   var action = "create_exam_folder";
 
   var form_data = new FormData();
@@ -1795,13 +1798,26 @@ function _create_exam_folder(check_exam_id, exam_id, exam_url, all_subject_id, a
     cache: false,
     processData: false,
     success: function (html) {
-      _get_page('exam_category', '', 'exam', '','');
-      _alert_close();
+       $("#success-div")
+                .html(
+                  '<div><i class="bi-check"></i></div> ' +
+                    message1 +
+                    " <br> " +
+                    message2 +
+                    " "
+                )
+                .fadeIn(500)
+                .delay(5000)
+                .fadeOut(100);
+              _alert_close();
+              _get_page('exam_category', 'exam');
     },
   });
 }
 
-function _update_exam_folder(exam_id, exam_url, db_exam_url, all_subject_id, all_subject_urls, db_subject_url) {
+
+
+function _update_exam_folder(exam_id, exam_url, db_exam_url, all_subject_id, all_subject_urls, db_subject_url, message1, message2) {
   var action = "update_exam_folder";
 
   var form_data = new FormData();
@@ -1822,8 +1838,19 @@ function _update_exam_folder(exam_id, exam_url, db_exam_url, all_subject_id, all
     cache: false,
     processData: false,
     success: function (html) {
-      _get_page('exam_category', '', 'exam', '','');
-      _alert_close();
+       $("#success-div")
+                .html(
+                  '<div><i class="bi-check"></i></div> ' +
+                    message1 +
+                    " <br> " +
+                    message2 +
+                    " "
+                )
+                .fadeIn(500)
+                .delay(5000)
+                .fadeOut(100);
+              _alert_close();
+              _get_page('exam_category', 'exam');
     },
   });
 }
@@ -1853,6 +1880,8 @@ function _get_fetch_all_exam() {
       dataType: "json",
       cache: false,
       success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
@@ -1863,14 +1892,14 @@ function _get_fetch_all_exam() {
           for (var i = 0; i < fetch.length; i++) {
             var exam_id = fetch[i].exam_id;
             var abbreviation = fetch[i].abbreviation.toUpperCase();
-            var exam_name = fetch[i].exam_name;
             var seo_description = fetch[i].seo_description;
             var status_name = fetch[i].status_name;
             var exam_passport = fetch[i].exam_passport;
+			      var total_exam_subject_count =  fetch[i].total_exam_subject_count;
             if (exam_passport == "") {
               exam_passport = "default_pix.jpg";
             }
-
+           
             text +=
               '<div class="record-content-div animated fadeIn">' +
               '<div class="div-in">' +
@@ -1885,7 +1914,7 @@ function _get_fetch_all_exam() {
               seo_description +
               "</p>" +
               '<div class="count-div">' +
-              '<div class="count-in"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> STATUS: <span class="ACTIVE '+status_name +'">' +status_name +
+              '<div class="count-in"><i class="bi-book"></i> SUBJECTS: <span>'+ total_exam_subject_count +'</span> &nbsp;|&nbsp; STATUS: <span class="ACTIVE '+ status_name +'">' + status_name +
               "</span></div>" +
               '<button class="btn" title="EDIT" onClick="_get_form_with_id(' +
               "'add_and_update_exam'" +
@@ -1894,14 +1923,15 @@ function _get_fetch_all_exam() {
               exam_id +
               "'" +
               ');"><i class="bi-pencil-square"></i> EDIT</button>' +
-              '<button class="btn btn2" title="EDIT" onClick="_get_page(' +"'subject'" +"," +"'" +exam_id + "'" +"," +"'exam'" +');"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>' +
+              '<button class="btn btn2" title="EDIT" onClick="_get_page_with_id(' +"'subject'" +"," +"'" +exam_id + "'" +');"><i class="bi-pencil-square"></i> VIEW SUBJECT</button>' +
               "</div>" +
               "</div>" +
               "</div>" +
               "</div>";
           }
-
+         
           $("#fetch_exam").html(text);
+           
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -1913,6 +1943,10 @@ function _get_fetch_all_exam() {
             ')"><i class="bi-plus-square"></i>ADD NEW EXAM</button>' +
             "</div>";
           $("#fetch_exam").html(text);
+        }
+       
+      }else{
+        _logout();
         }
       },
     });
@@ -1943,6 +1977,8 @@ function _fetch_each_exam(exam_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var fetch = info.data;
       var abbreviation = fetch.abbreviation;
       var exam_name = fetch.exam_name;
@@ -1951,6 +1987,7 @@ function _fetch_each_exam(exam_id) {
       var seo_description = fetch.seo_description;
       var subject_id = fetch.subject_id;
       var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
       var exam_passport = fetch.exam_passport;
 
       $("#abbreviation").val(abbreviation);
@@ -1959,7 +1996,7 @@ function _fetch_each_exam(exam_id) {
       $("#seo_keywords").val(seo_keywords);
       $("#seo_description").val(seo_description);
       $("#subject_id").val(subject_id);
-      $("#reg_status_id").val(status_id);
+      $("#reg_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
       _get_view(exam_passport);
 
       var fetch2 = info.data2;
@@ -1984,6 +2021,9 @@ function _fetch_each_exam(exam_id) {
           "</label>";
       }
       $("#subject_name_with_check").html(text);
+    }else{
+      _logout();
+      }
     },
   });
 }
@@ -2031,9 +2071,12 @@ function _get_fetch_exam_subject(exam_id) {
       dataType: "json",
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
+        var abbreviation = info.abbreviation.toUpperCase();
 
         var text = "";
 
@@ -2044,6 +2087,7 @@ function _get_fetch_exam_subject(exam_id) {
             var subject_name = fetch[i].subject_name.toUpperCase();
             var status_name = fetch[i].status_name;
             var subject_passport = fetch[i].subject_passport;
+			      var total_topic_count = fetch[i].total_topic_count;
             if (subject_passport == "") {
               subject_passport = "default_pix.jpg";
             }
@@ -2068,14 +2112,15 @@ function _get_fetch_exam_subject(exam_id) {
               subject_name +
               "</h2>" +
               "<hr></hr>" +
-              '<div class="count-div"><i class="bi-book"></i> TOPICS: <span id="">100</span> &nbsp;|&nbsp; <i class="bi-book"></i> SUB-TOPICS: <span id="">100</span> </div>' +
-              '<button class="btn btn2" title="EDIT" onClick="_get_page(' + "'topics'" + "," + "'" + '' +"'"  + "," +"'exam'" + "," +"'" +exam_id +"'"  + "," +"'" +subject_id +"'" +');"><i class="bi-pencil-square"></i> VIEW TOPICS</button>' +
+              '<div class="count-div"><i class="bi-book"></i> TOPICS: <span>' +total_topic_count +'</span></div>' +
+              '<button class="btn btn2" title="EDIT" onClick="_get_page_with_id(' + "'topics'" + "," + "'" + '' +"'"  + "," +"'" +exam_id +"'"  + "," +"'" +subject_id +"'" +');"><i class="bi-pencil-square"></i> VIEW TOPICS</button>' +
               "</div>" +
               "</div>" +
               "</div>";
-
-            $("#fetch_exam_subject").html(text);
+             
           }
+            $("#fetch_exam_subject").html(text);
+          $('#exam_abbreviation').html(abbreviation);
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -2084,6 +2129,9 @@ function _get_fetch_exam_subject(exam_id) {
             " </p>" +
             "</div>";
           $("#fetch_exam_subject").html(text);
+        }
+      }else{
+        _logout();
         }
       },
     });
@@ -2102,6 +2150,7 @@ function _get_fetch_exam_subject(exam_id) {
 
 
 
+
 function _add_and_update_topic(topic_id, exam_id, subject_id) {
   var topic_name = $("#topic_name").val();
   var status_id = $("#reg_status_id").val();
@@ -2111,7 +2160,7 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
     $("#topic_name").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> TOPIC NAME ERROR!<br /><span>Check Topic Name And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> TOPIC NAME ERROR!<br /><span>Check Topic Name And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2120,7 +2169,7 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2152,6 +2201,8 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
@@ -2169,12 +2220,12 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
                 .delay(5000)
                 .fadeOut(100);
               _alert_close();
-              _get_page('topics', '', 'exam', exam_id, subject_id);
+              _get_page_with_id('topics', topic_id, exam_id, subject_id);
             
           } else {
             $("#warning-div")
               .html(
-                '<div><i class="bi-exclamation-triangle"></i></div> ' +
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> ' +
                   message1 +
                   " <br /><span> " +
                   message2 +
@@ -2183,9 +2234,13 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
               .fadeIn(500)
               .delay(5000)
               .fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
           }
-          $("#submit_btn").html(btn_text);
-          document.getElementById("submit_btn").disabled = false;
+        
+        }else{
+          _logout();
+          }
         },
       });
     }
@@ -2195,7 +2250,7 @@ function _add_and_update_topic(topic_id, exam_id, subject_id) {
 
 
 
-function _get_fetch_topic(topic_id,subject_id,exam_id) {
+function _get_fetch_topic(topic_id, subject_id, exam_id) {
   var action = "fetch_topic_api";
   var search_txt = $("#search_txt").val();
   var status_id = $("#status_id").val();
@@ -2210,9 +2265,18 @@ function _get_fetch_topic(topic_id,subject_id,exam_id) {
       dataType: "json",
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
+
+        var abbreviation = info.abbreviation.toUpperCase();
+        var subject_name = info.subject_name.toUpperCase();
+       
+        $('#exam_abbreviation').html(abbreviation);
+				$('#subject_name').html(subject_name);
+        $('#db_subject_name').html(subject_name);
         var no=0;
         var text = "";
 
@@ -2222,32 +2286,32 @@ function _get_fetch_topic(topic_id,subject_id,exam_id) {
             var exam_id = fetch[i].exam_id;
             var subject_id = fetch[i].subject_id;
             var topic_id = fetch[i].topic_id;
-            var topic_name= fetch[i].topic_name.toUpperCase();
+            var topic_name= fetch[i].topic_name.substr(0, 63);
             var status_name = fetch[i].status_name;
-        
+            var total_sub_topic_count = fetch[i].total_sub_topic_count;
+
             text +=
             '<div class="quest-faq-div animated fadeIn">'+
-            '<div class="faq-title-text">'+
-             '<h3>'+ topic_name +' <button class="btn" title="ADD NEW SUB TOPIC" onClick="_get_form_with_id(' + "'sub_topics_reg'" + "," + "'" + '' +"'" + ", " + "'" + subject_id +"'" + "," +"'" + topic_id +"'" +');"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button> <button class="btn btn-2" title="EDIT TOPIC" onClick="_get_form_with_id(' + "'topics_reg'" + "," +"'" + topic_id +"'" + "," +"'" + exam_id +"'" + "," +"'" + subject_id +"'" +');"><i class="bi-pencil-square"></i> EDIT</button></h3>'+
-            '</div>'+
-            
-            '<div class="faq-answer-div" onclick="_collapse('+"'"+'view'+no+"'"+ "," + "'" + '' +"'"  +"," +"'" +topic_id +"'" +')">'+
-                '<span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">83443</span> &nbsp;&nbsp;| &nbsp;'+
-                '<span>Status: </span>&nbsp;&nbsp;<span class="count-div status '+ status_name +'">'+ status_name +'</span>'+
-                '<div class="expand-div" id="'+"view"+no+"num"+'" onClick="_get_fetch_sub_topic('+"'"+'view'+no+"'"+ "," + "'" + '' +"'" + ", "  +"'" +topic_id +"'" +');">&nbsp;<i class="bi-plus"></i>&nbsp;</div>'+                         
-            '</div>'+
-            
-            '<div class="faq-answer-div" id="'+"view"+no+"answer"+'" style="display: none;">'+
-              '<div class="" id="sub_topic_view'+no+'">'+
-              
-                //// fetch all sub topic under each topic
-                
+              '<div class="faq-title-text">'+
+              '<h3>'+ topic_name +' <button class="btn" title="ADD NEW SUB TOPIC" onClick="_get_form_with_id(' + "'sub_topics_reg'" + "," + "'" + '' +"'" + ", " + "'" + subject_id +"'" + "," +"'" + topic_id +"'" +');"><i class="bi-plus-square"></i> ADD NEW SUB-TOPIC</button> <button class="btn btn-2" title="EDIT TOPIC" onClick="_get_form_with_id(' + "'topics_reg'" + "," +"'" + topic_id +"'" + "," +"'" + exam_id +"'" + "," +"'" + subject_id +"'" +');"><i class="bi-pencil-square"></i> EDIT</button></h3>'+
               '</div>'+
-            '</div>'+
-        '</div>';
-
-            $("#fetch_topic").html(text);
+              
+              '<div class="faq-answer-div" onclick="_collapse('+"'"+'view'+no+"'"+ "," + "'" + '' +"'"  +"," +"'" +topic_id +"'" +')">'+
+                  '<span>Sub Topics: </span>&nbsp;&nbsp;<span class="count-div">'+ total_sub_topic_count +'</span> &nbsp;&nbsp;| &nbsp;'+
+                  '<span>Status: </span>&nbsp;&nbsp;<span class="count-div status '+ status_name +'">'+ status_name +'</span>'+
+                  '<div class="expand-div" id="'+"view"+no+"num"+'" onClick="_get_fetch_sub_topic('+"'"+'view'+no+"'"+ "," + "'" + '' +"'" + ", "  +"'" +topic_id +"'" +');">&nbsp;<i class="bi-plus"></i>&nbsp;</div>'+                         
+              '</div>'+
+  
+              '<div class="faq-answer-div" id="'+"view"+no+"answer"+'" style="display: none;">'+
+                '<div class="" id="sub_topic_view'+no+'">'+
+                
+                  //// fetch all sub topic under each topic
+                  
+                '</div>'+
+              '</div>'+
+          '</div>';
           }
+          $("#fetch_topic").html(text);
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -2257,6 +2321,9 @@ function _get_fetch_topic(topic_id,subject_id,exam_id) {
             "</div>";
           $("#fetch_topic").html(text);
         }
+         }else{
+          _logout();
+          }
       },
     });
   } else {
@@ -2273,110 +2340,6 @@ function _get_fetch_topic(topic_id,subject_id,exam_id) {
 
 
 
-function _get_fetch_sub_topic(div_id,sub_topic_id,topic_id) {
-  var action = "fetch_sub_topic_api";
-    var dataString ="action=" + action +"&sub_topic_id=" + sub_topic_id + "&topic_id=" + topic_id;
-    $.ajax({
-      type: "POST",
-      url: api,
-      data: dataString,
-      dataType: "json",
-      cache: false,
-      success: function (info) {
-        var fetch = info.data;
-        var result = info.result;
-        var message = info.message;
-        var no=0;
-        var text = "";
-
-        if (result == true) {
-          for (var i = 0; i < fetch.length; i++) {
-             no++;
-            var sub_topic_id = fetch[i].sub_topic_id;
-            var sub_topic_name= fetch[i].sub_topic_name.toUpperCase();
-            var subject_id= fetch[i].subject_id;
-            var seo_description = fetch[i].seo_description;
-            var sub_topic_passport = fetch[i].sub_topic_passport;
-            if (sub_topic_passport == "") {
-              sub_topic_passport = "default_pix.jpg";
-            }
-            text +=
-            '<div class="topics-content-div">'+
-              '<div class="image-div">'+
-                  '<img src="'+ website_url + "/uploaded_files/sub_topic_pix/" + sub_topic_passport + '" alt="'+ sub_topic_name +'"/>'+
-              '</div>'+
-              '<div class="text">'+
-                '<h4>'+ sub_topic_name +'</h4>'+
-                '<p>'+ seo_description +'</p>'+
-                '<div class="bottom-div"><button class="btn edit" title="EDIT SUB-TOPIC" onClick="_get_form_with_id(' +"'sub_topics_reg'" + "," +"'" + sub_topic_id +"'" + "," +"'" + subject_id +"'" + "," +"'" +topic_id +"'" + "," + "'" + '' +"'" +');"><i class="bi-pencil-square"></i> EDIT</button>'+
-                '<div class="numbs"><button class="btn" title="VIEW VIDEOS" onClick="_get_page(' + "'videos'" + "," + "''" + "," +"'exam'" + "," +"'" + topic_id +"'" + "," +"'" + sub_topic_id +"'"  +');">NUMBER OF VIDEOS <span class="count">10</span> </button></div></div>'+
-              '</div>'+
-            '</div>';
-
-          }
-           $('#'+"sub_topic_"+div_id).html(text);
-        }
-      }
-    });
-}
-
-
-
-  function _get_fetch_each_sub_topic(sub_topic_id,subject_id,topic_id) {
-  var action = "fetch_sub_topic_api";
-
-  var dataString = "action=" + action + "&sub_topic_id=" + sub_topic_id+ "&subject_id=" + subject_id+ "&topic_id=" + topic_id;
-
-  $.ajax({
-    type: "POST",
-    url: api,
-    data: dataString,
-    dataType: "json",
-    cache: false,
-    success: function (info) {
-      var fetch = info.data;
-    
-      var sub_topic_name = fetch.sub_topic_name.toUpperCase();
-      var sub_topic_url = fetch.sub_topic_url;
-      var subscription_price = fetch.subscription_price;
-      var seo_keywords = fetch.seo_keywords;
-      var seo_description = fetch.seo_description;
-      var subscription_duration_id = fetch.subscription_duration_id;
-      var sub_topic_passport = fetch.sub_topic_passport;
-      var status_id = fetch.status_id;
-
-      $("#sub_topic_name").val(sub_topic_name);
-      $("#sub_topic_url").val(sub_topic_url);
-      $("#subscription_price").val(subscription_price);
-      $("#seo_keywords").val(seo_keywords);
-      $("#seo_description").val(seo_description);
-      $("#subscription_duration_id").val(subscription_duration_id);
-      $("#reg_status_id").val(status_id);
-   
-      _get_sub_view(sub_topic_passport);
-    }
-  });
-}
-
-
-
-
-function _get_sub_view(sub_topic_passport) {
-  var view_sub_topic = "";
-  if (sub_topic_passport == "") {
-    view_sub_topic =
-    '<img src="'+ website_url + '"/uploaded_files/sub_topic_pix/default.png" alt="default"/>';
-  } else {
-    view_sub_topic ='<img src="' +website_url +
-      "/uploaded_files/sub_topic_pix/" +
-      sub_topic_passport +
-      '" id="exam-pix" alt="profile picture" />';
-  }
-  $("#view_sub_topic").html(view_sub_topic);
-}
-
-
-
 function _get_fetch_each_topic(topic_id,subject_id) {
   var action = "fetch_topic_api";
   var dataString = "action=" + action + "&topic_id=" + topic_id + "&subject_id=" + subject_id;
@@ -2387,15 +2350,22 @@ function _get_fetch_each_topic(topic_id,subject_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var fetch = info.data;
       var topic_name = fetch.topic_name.toUpperCase();
       var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
 
-      $("#topic_name").val(topic_name);
-      $("#reg_status_id").val(status_id);
+      $('#topic_name').val(topic_name);
+      $("#reg_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+    }else{
+      _logout();
+    }
     },
   });
 }
+
 
 
 function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
@@ -2416,7 +2386,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
     $("#sub_topic_name").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div>SUB TOPIC NAME ERROR!<br /><span>Check Sub Topic Name And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>SUB TOPIC NAME ERROR!<br /><span>Check Sub Topic Name And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2426,7 +2396,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
     $("#sub_topic_url").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div>SUB TOPIC URL ERROR!<br /><span>Check Sub Topic Url And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>SUB TOPIC URL ERROR!<br /><span>Check Sub Topic Url And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2436,7 +2406,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
       $("#subscription_price").addClass("complain");
       $("#warning-div")
         .html(
-          '<div><i class="bi-exclamation-triangle"></i></div>SUBSCRIPTION PRICE ERROR!<br /><span>Check Sub Price And Try Again</span>'
+          '<div><i class="bi-exclamation-octagon-fill"></i></div>SUBSCRIPTION PRICE ERROR!<br /><span>Check Sub Price And Try Again</span>'
         )
         .fadeIn(500)
         .delay(3000)
@@ -2446,7 +2416,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
     $("#seo_keywords").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2456,7 +2426,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
       $("#seo_description").addClass("complain");
       $("#warning-div")
         .html(
-          '<div><i class="bi-exclamation-triangle"></i></div> SEO DESCRIPTION ERROR!<br /><span>Check Seo Description And Try Again</span>'
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> SEO DESCRIPTION ERROR!<br /><span>Check Seo Description And Try Again</span>'
         )
         .fadeIn(500)
         .delay(3000)
@@ -2466,7 +2436,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
       $("#subscription_duration_id").addClass("complain");
       $("#warning-div")
         .html(
-          '<div><i class="bi-exclamation-triangle"></i></div> SUBSCRIPTION DURATION ERROR!<br /><span>Check Sub Duration And Try Again</span>'
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> SUBSCRIPTION DURATION ERROR!<br /><span>Check Sub Duration And Try Again</span>'
         )
         .fadeIn(500)
         .delay(3000)
@@ -2476,7 +2446,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2517,47 +2487,39 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
         cache: false,
         processData: false,
         success: function (info) {
-          var result = info.result;
-          var message1 = info.message1;
-          var message2 = info.message2;
+          var login_check = info.check;
+          if(login_check>0){
+            var result = info.result;
+            var message1 = info.message1;
+            var message2 = info.message2;
 
-          if (result == true) {
-            var sub_topic_logo = info.sub_topic_logo;
-            var old_sub_topic_passport = info.old_sub_topic_passport;
-            var sub_topic_id = info.sub_topic_id;
-            var exam_url = info.exam_url;
-            var subject_url = info.subject_url;
-            var sub_topic_url = info.sub_topic_url;
-            var db_sub_topic_url = info.db_sub_topic_url;
-            var exam_id = info.exam_id;
+            if (result == true) {    
+              var sub_topic_logo = info.sub_topic_logo;
+              var old_sub_topic_passport = info.old_sub_topic_passport;
+              var sub_topic_id = info.sub_topic_id;
+              var exam_url = info.exam_url;
+              var subject_url = info.subject_url;
+              var sub_topic_url = info.sub_topic_url;
+              var db_sub_topic_url = info.db_sub_topic_url;
+              var exam_id = info.exam_id;
+              var topic_id = info.topic_id;
 
-            if (check_sub_topic_id != sub_topic_id) {
-              _create_sub_topic_folder(check_sub_topic_id, sub_topic_id, sub_topic_url, exam_url, subject_url, exam_id, subject_id);
-               }else {
-              _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject_url, db_sub_topic_url, exam_id, subject_id);
+              if (check_sub_topic_id != sub_topic_id) {
+                _create_sub_topic_folder(check_sub_topic_id, sub_topic_id, sub_topic_url, exam_url, subject_url, exam_id, subject_id, topic_id);
+              }else {
+                _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject_url, db_sub_topic_url, exam_id, subject_id, topic_id);
               }
-            if (sub_topic_logo != "") {
-              _upload_sub_topic_pix(message1, message2, sub_topic_logo, old_sub_topic_passport, exam_id, subject_id);           
-     
-              $("#success-div")
-                .html(
-                  '<div><i class="bi-check"></i></div> ' +
-                    message1 +
-                    " <br> " +
-                    message2 +
-                    " "
-                )
-                .fadeIn(500)
-                .delay(5000)
-                .fadeOut(100);
-              _alert_close();
-              _get_page('topics', '', 'exam', exam_id, subject_id);
+              if (sub_topic_logo != '') {
+                _upload_sub_topic_pix(message1, message2, sub_topic_logo, old_sub_topic_passport, topic_id, exam_id, subject_id); 
+              }
+            }else{
+              $("#warning-div").html('<div><i class="bi-exclamation-octagon-fill"></i></div> ' +message1 +" <br /><span> " +message2 + " </span>").fadeIn(500) .delay(5000).fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
             }
-          } else {
-            $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' +message1 +" <br /><span> " +message2 + " </span>").fadeIn(500) .delay(5000).fadeOut(100);
+          }else{
+            _logout();
           }
-          $("#submit_btn").html(btn_text);
-          document.getElementById("submit_btn").disabled = false;
         },
       });
     }
@@ -2566,7 +2528,7 @@ function _add_and_update_sub_topic(sub_topic_id,subject_id,topic_id) {
 
 
 
-function _upload_sub_topic_pix(message1, message2, sub_topic_logo, old_sub_topic_passport, exam_id, subject_id) {
+function _upload_sub_topic_pix(message1, message2, sub_topic_logo, old_sub_topic_passport, topic_id, exam_id, subject_id) {
   var action = "upload_sub_topic_pix";
   var new_sub_topic_pix = $("#sub_topic_passport").prop("files")[0];
 
@@ -2586,19 +2548,21 @@ function _upload_sub_topic_pix(message1, message2, sub_topic_logo, old_sub_topic
     processData: false,
     success: function (html) {
       $("#success-div").html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
-        _get_page('topics', '', 'exam', exam_id, subject_id);
       _alert_close();
+      _get_page_with_id('topics', topic_id, exam_id, subject_id); 
+     
     },
   });
 }
 
 
-function _create_sub_topic_folder(check_sub_topic_id, sub_topic_id, sub_topic_url, exam_url, subject_url, exam_id, subject_id) {
+function _create_sub_topic_folder(check_sub_topic_id, sub_topic_id, sub_topic_url, exam_url, subject_url, exam_id, subject_id ,topic_id) {
   var action = "create_sub_topic_folder";
 
   var form_data = new FormData();
   form_data.append("action", action);
    form_data.append("check_sub_topic_id", check_sub_topic_id);
+   form_data.append("topic_id", topic_id);
   form_data.append("sub_topic_id", sub_topic_id);
   form_data.append("sub_topic_url", sub_topic_url);
   form_data.append("exam_url", exam_url);
@@ -2613,20 +2577,22 @@ function _create_sub_topic_folder(check_sub_topic_id, sub_topic_id, sub_topic_ur
     cache: false,
     processData: false,
     success: function (html) {
-      _get_page('topics', '', 'exam', exam_id, subject_id);
       _alert_close();
+      _get_page_with_id('topics', topic_id, exam_id, subject_id); 
+    
     },
   });
 }
 
 
 
-function _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject_url, db_sub_topic_url, exam_id, subject_id) {
+function _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject_url, db_sub_topic_url, exam_id, subject_id, topic_id) {
   var action = "update_sub_topic_folder";
 
   var form_data = new FormData();
   form_data.append("action", action);
   form_data.append("sub_topic_id", sub_topic_id);
+  form_data.append("topic_id", topic_id);
   form_data.append("sub_topic_url", sub_topic_url);
   form_data.append("exam_url", exam_url);
   form_data.append("subject_url", subject_url);
@@ -2641,8 +2607,8 @@ function _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject
     cache: false,
     processData: false,
     success: function (html) {
-      _get_page('topics', '', 'exam', exam_id, subject_id);
       _alert_close();
+      _get_page_with_id('topics', topic_id, exam_id, subject_id); 
     },
   });
 }
@@ -2651,10 +2617,144 @@ function _update_sub_topic_folder(sub_topic_id, sub_topic_url, exam_url, subject
 
 
 
+function _get_fetch_sub_topic(div_id,sub_topic_id,topic_id) {
+  var action = "fetch_sub_topic_api";
+    var dataString ="action=" + action +"&sub_topic_id=" + sub_topic_id + "&topic_id=" + topic_id;
+    $.ajax({
+      type: "POST",
+      url: api,
+      data: dataString,
+      dataType: "json",
+      cache: false,
+      success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
+        var fetch = info.data;
+        var result = info.result;
+        var message = info.message
+        var topic_name = info.topic_name.toUpperCase();
+
+        $('#db_topic_name').html(topic_name);
+
+        var text = "";
+
+        if (result == true) {
+          for (var i = 0; i < fetch.length; i++) {
+
+            var sub_topic_id = fetch[i].sub_topic_id;
+            var sub_topic_name= fetch[i].sub_topic_name.toUpperCase();
+            var subject_id= fetch[i].subject_id;
+            var subscription_price = fetch[i].subscription_price;
+            var subscription_duration_id = fetch[i].subscription_duration_id;
+            var seo_description = fetch[i].seo_description;
+            var sub_topic_passport = fetch[i].sub_topic_passport;
+            var status_name = fetch[i].status_name;
+            var total_sub_topic_video_count = fetch[i].total_sub_topic_video_count;
+
+            if (sub_topic_passport == "") {
+              sub_topic_passport = "default_pix.jpg";
+            }
+            text +=
+            '<div class="topics-content-div">'+
+              '<div class="image-div"><img src="'+ website_url + "/uploaded_files/sub_topic_pix/" + sub_topic_passport + '" alt="'+ sub_topic_name +'"/>'+
+              '</div>'+
+
+              '<div class="text">'+
+                '<h4>'+ sub_topic_name +'</h4>'+
+                '<p>'+ seo_description +'</p>'+
+                '<div class="bottom-div">'+
+                  '<button class="btn edit" title="EDIT SUB-TOPIC" onClick="_get_form_with_id(' +"'sub_topics_reg'" + "," +"'" + sub_topic_id +"'" + "," +"'" + subject_id +"'" + "," +"'" +topic_id +"'" + "," + "'" + '' +"'" +');"><i class="bi-pencil-square"></i> EDIT</button>'+
+                  '<div class="numbs"><button class="btn" title="VIEW VIDEOS" onClick="_get_page_with_id(' + "'videos'" + "," + "''" + "," +"'" + topic_id +"'" + "," +"'" + sub_topic_id +"'"  +');">NUMBER OF VIDEOS <span class="count">'+total_sub_topic_video_count+'</span> </button> <span class="status '+ status_name +'">'+ status_name +'</span></div>'+
+                  '<div class="amount">Subcription Price (N):&nbsp; ₦ <span>'+ subscription_price +'</span>&nbsp;|&nbsp;Subcription Duration:&nbsp; ₦ <span>'+ subscription_duration_id +' Days</span></div>'+
+                '</div>'+
+              '</div>'+
+            '</div>';
+          }
+          $('#'+"sub_topic_"+div_id).html(text);
+        } else {
+          text =
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            "</div>";
+            $('#'+"sub_topic_"+div_id).html(text);
+        }
+        }else{
+          _logout();
+        }
+      }
+    });
+}
+
+
+  function _get_fetch_each_sub_topic(sub_topic_id,subject_id,topic_id) {
+  var action = "fetch_sub_topic_api";
+
+  var dataString = "action=" + action + "&sub_topic_id=" + sub_topic_id+ "&subject_id=" + subject_id+ "&topic_id=" + topic_id;
+
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var login_check = info.check;
+        if(login_check>0){
+      var fetch = info.data;
+    
+      var sub_topic_name = fetch.sub_topic_name.toUpperCase();
+      var sub_topic_url = fetch.sub_topic_url;
+      var subscription_price = fetch.subscription_price;
+      var seo_keywords = fetch.seo_keywords;
+      var seo_description = fetch.seo_description;
+      var subscription_duration_id = fetch.subscription_duration_id;
+      var sub_topic_passport = fetch.sub_topic_passport;
+      var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
+
+      $('#sub_topic_name').val(sub_topic_name);
+      $('#sub_topic_url').val(sub_topic_url);
+      $('#subscription_price').val(subscription_price);
+      $('#seo_keywords').val(seo_keywords);
+      $('#seo_description').val(seo_description);
+      $('#subscription_duration_id').append('<option value="' + subscription_duration_id +'" selected="selected">' + subscription_duration_id +"</option>");
+      $('#reg_status_id').append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+      _get_sub_view(sub_topic_passport);
+       }else{
+          _logout();
+        }
+    }
+  });
+}
+
+
+
+
+function _get_sub_view(sub_topic_passport) {
+  var view_sub_topic = "";
+  if (sub_topic_passport == "") {
+    view_sub_topic =
+    '<img src="'+ website_url + '"/uploaded_files/sub_topic_pix/default.png" alt="default"/>';
+  } else {
+    view_sub_topic ='<img src="' +website_url +
+      "/uploaded_files/sub_topic_pix/" +
+      sub_topic_passport +
+      '" id="exam-pix" alt="profile picture" />';
+  }
+  $('#view_sub_topic').html(view_sub_topic);
+}
+
+
+
+
+
 function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
+  tinyMCE.triggerSave();
   var video_title = $("#video_title").val();
   var video_objective = $("#video_objective").val();
-  var video_duration_id = $("#video_duration_id").val();
+  var video_duration = $("#video_duration").val();
   var video_volume_id = $("#video_volume_id").val();
   var subscription_pricing_id  = $("#subscription_pricing_id").val();
   var new_video = $("#video").prop("files")[0];
@@ -2662,13 +2762,13 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
   var new_video_pix = $("#video_passport").prop("files")[0];
   var status_id = $("#reg_status_id").val();
 
-  $("#video_title, #video_objective, #video_duration_id, #subscription_pricing_id, #new_video, #status_id").removeClass("complain");
+  $("#video_title, #video_objective, #video_duration, #subscription_pricing_id, #new_video, #status_id").removeClass("complain");
 
   if (video_title == "") {
     $("#video_title").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div>VIDEO TITLE ERROR!<br /><span>Check  Video Title And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>VIDEO TITLE ERROR!<br /><span>Check  Video Title And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2677,17 +2777,17 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
   } else if (video_objective == "") {
     $("#video_objective").addClass("complain");
     $("#warning-div")
-      .html('<div><i class="bi-exclamation-triangle"></i></div> VIDEO OBJECTIVE ERROR!<br /><span>Check Video Objective And Try Again</span>'
+      .html('<div><i class="bi-exclamation-octagon-fill"></i></div> VIDEO OBJECTIVE ERROR!<br /><span>Check Video Objective And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
       .fadeOut(100);
 
-  } else if (video_duration_id == "") {
-    $("#video_duration_id").addClass("complain");
+  } else if (video_duration == "") {
+    $("#video_duration").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div>VIDEO DURATION ERROR!<br /><span>Check Video Duration And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>VIDEO DURATION ERROR!<br /><span>Check Video Duration And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2697,7 +2797,7 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
     $("#video_volume_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div>VIDEO VOLUME ERROR!<br /><span>Check Video Volume And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>VIDEO VOLUME ERROR!<br /><span>Check Video Volume And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2707,7 +2807,7 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
     $("#video").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> VIDEO ERROR!<br /><span>Upload Video And Try Again</span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> VIDEO ERROR!<br /><span>Upload Video And Try Again</span>'
       )
       .fadeIn(500)
       .delay(3000)
@@ -2717,7 +2817,7 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
       $("#subscription_pricing_id").addClass("complain");
       $("#warning-div")
         .html(
-          '<div><i class="bi-exclamation-triangle"></i></div> SUB PRICING ERROR!<br /><span>Check Sub Pricing And Try Again <span>'
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> SUB PRICING ERROR!<br /><span>Check Sub Pricing And Try Again <span>'
         )
         .fadeIn(500)
         .delay(3000)
@@ -2727,14 +2827,14 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
     $("#reg_status_id").addClass("complain");
     $("#warning-div")
       .html(
-        '<div><i class="bi-exclamation-triangle"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
       )
       .fadeIn(500)
       .delay(3000)
       .fadeOut(100);
 
   } else {
-    $("#video_title, #video_objective, #video_duration_id, #subscription_pricing_id, #new_video, #status_id").removeClass("complain");
+    $("#video_title, #video_objective, #video_duration, #subscription_pricing_id, #new_video, #status_id").removeClass("complain");
 
     if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
       var btn_text = $("#submit_btn").html();
@@ -2750,7 +2850,7 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
       form_data.append("video_id", video_id);
       form_data.append("video_title", video_title);
       form_data.append("video_objective", video_objective);
-      form_data.append("video_duration_id", video_duration_id);
+      form_data.append("video_duration", video_duration);
       form_data.append("video_volume_id", video_volume_id);
       form_data.append("subscription_pricing_id", subscription_pricing_id);
       form_data.append("status_id", status_id);
@@ -2767,6 +2867,8 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
@@ -2780,18 +2882,19 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
             var video = info.video;
             var old_video = info.old_video;
 
-            _upload_sub_video(message1, message2, video, old_video, video_id, topic_id, sub_topic_id);
-            _upload_video_pix(message1, message2, video_logo, old_video_passport, video_id, topic_id, sub_topic_id);
-            $("#success-div").html('<div><i class="bi-check"></i></div> ' + message1 +" <br> " + message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
-            _alert_close();
-            _get_page('videos', '', 'exam', topic_id, sub_topic_id);
- 
+            _upload_sub_video(video, old_video, video_id, topic_id, sub_topic_id);
+            if (video_logo !='') {
+              _upload_video_pix(message1, message2, video_logo, old_video_passport, video_id, topic_id, sub_topic_id);
+            }
           } else {
             $("#warning-div")
-              .html('<div><i class="bi-exclamation-triangle"></i></div> ' + message1 + " <br /><span> " +message2 +" </span>").fadeIn(500).delay(5000).fadeOut(100);
-          }
-          $("#submit_btn").html(btn_text);
-          document.getElementById("submit_btn").disabled = false;
+              .html('<div><i class="bi-exclamation-octagon-fill"></i></div> ' + message1 + " <br /><span> " +message2 +" </span>").fadeIn(500).delay(5000).fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
+            }
+        }else{
+          _logout();
+        }
         },
       });
     }
@@ -2799,7 +2902,7 @@ function _add_and_update_sub_topic_video(video_id,topic_id,sub_topic_id) {
 }
 
 
-function _upload_sub_video(message1, message2, video, old_video, video_id, topic_id, sub_topic_id){
+function _upload_sub_video(video, old_video, video_id, topic_id, sub_topic_id){
   var action = "upload_sub_topic_video";
   var new_video = $("#video").prop("files")[0];
 
@@ -2818,10 +2921,8 @@ function _upload_sub_video(message1, message2, video, old_video, video_id, topic
     cache: false,
     processData: false,
     success: function (html) {
-      $("#success-div")
-        .html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
-        _get_page('videos', '', 'exam', topic_id, sub_topic_id);
-      _alert_close();
+        _alert_close2();
+        _get_page_with_id('videos', '', topic_id, sub_topic_id);
     },
   });
 }
@@ -2849,8 +2950,8 @@ function _upload_video_pix(message1, message2, video_logo, old_video_passport, v
     success: function (html) {
       $("#success-div")
         .html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
-        _get_page('videos', '', 'exam', topic_id, sub_topic_id);
-      _alert_close();
+        _alert_close();
+        _get_page_with_id('videos', '', topic_id, sub_topic_id);
     },
   });
 }
@@ -2874,9 +2975,23 @@ function _get_fetch_sub_topic_video(video_id,topic_id,sub_topic_id) {
       dataType: "json",
       cache: false,
       success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
         var fetch = info.data;
         var result = info.result;
         var message = info.message;
+
+        var sub_topic_name = info.sub_topic_name.toUpperCase();
+        var topic_name = info.topic_name.toUpperCase();
+        var subject_name = info.subject_name.toUpperCase();
+        var abbreviation = info.abbreviation.toUpperCase();
+
+        $('#sub_topic_video_name').html(sub_topic_name);
+        $('#sub_topic_name').html(sub_topic_name);
+        $('#v_sub_topic_name').html(sub_topic_name);
+        $('#v_topic_name').html(topic_name);
+        $('#v_subject_name').html(subject_name);
+        $('#exam_abbreviation').html(abbreviation);
         var text = "";
 
         if (result == true) {
@@ -2885,31 +3000,29 @@ function _get_fetch_sub_topic_video(video_id,topic_id,sub_topic_id) {
             var topic_id = fetch[i].topic_id;
             var sub_topic_id = fetch[i].sub_topic_id;
             var video_title= fetch[i].video_title.toUpperCase();
-            var video_objective = fetch[i].video_objective;
-            var video_duration_id  = fetch[i].video_duration_id;
+            var video_objective = fetch[i].video_objective.substr(0, 120);
+            var video_duration  = fetch[i].video_duration;
             var video_passport = fetch[i].video_passport;
             var video_volume_name = fetch[i].video_volume_name;
             var subscription_pricing_name  = fetch[i].subscription_pricing_name;
+            var status_name = fetch[i].status_name;
 
-            text +=
+            text +=  
+                  '<div class="sub-video-content-div">'+
+                    '<div class="div-in">'+
+                      '<div class="video-img">'+
+                          '<img src="'+ website_url +'/uploaded_files/sub_topic_video_pix/'+ video_passport +'" alt="'+ video_title +'"/>'+
+                      '</div>'+
 
-                '<div class="faq-answer-div" id="faq1answer">'+  
-                    '<div class="topics-content-div">'+
-                        '<div class="image-div video-img">'+
-                            '<img src="'+ website_url +'/uploaded_files/sub_topic_video_pix/'+ video_passport +'" alt="'+ video_title +'"/>'+
-                        '</div>'+
-
-                        '<div class="text video-text">'+
-                            '<h4>'+ video_title +'</h4>'+
-                            '<p>'+ video_objective +'</p>'+
-                            '<div class="bottom-div"><button class="btn" title="EDIT SUB-TOPIC VIDEO" onClick="_get_form_with_id(' + "'video_reg'" + "," +"'" + video_id +"'" + "," +"'" + topic_id +"'" + "," +"'" + sub_topic_id +"'" + ');"><i class="bi-pencil-square"></i> EDIT</button>&nbsp;<span class="volume">'+ video_volume_name +'</span> &nbsp;|<span class="volume">'+ subscription_pricing_name +'</span> &nbsp;|<span class="volume">'+ video_duration_id +'</span></div>'+
-                        '</div>'+
+                      '<div class="video-text">'+
+                          '<h2>'+ video_title +'</h2>'+
+                          '<div class="text">'+ video_objective +'...</div>'+
+                          '<div class="bottom-div"><button class="btn" title="EDIT SUB-TOPIC VIDEO" onClick="_get_form_with_id(' + "'video_reg'" + "," +"'" + video_id +"'" + "," +"'" + topic_id +"'" + "," +"'" + sub_topic_id +"'" + ');"><i class="bi-pencil-square"></i> EDIT</button>&nbsp;<span class="volume">'+ video_volume_name +'&nbsp; |</span><span class="volume">'+ subscription_pricing_name +'&nbsp; |</span><span class="volume">'+ video_duration +'&nbsp; | &nbsp;</span><span class="status '+ status_name +'">'+ status_name +'</span></div>'+
+                      '</div>'+
                     '</div>'+
-                '</div>';
-            
-
-            $("#fetch_sub_topic_video").html(text);
+                  '</div>';
           }
+          $("#fetch_sub_topic_video").html(text);
         } else {
           text +=
             '<div class="false-notification-div">' +
@@ -2919,13 +3032,16 @@ function _get_fetch_sub_topic_video(video_id,topic_id,sub_topic_id) {
             "</div>";
           $("#fetch_sub_topic_video").html(text);
         }
+        }else{
+          _logout();
+        }
       },
     });
   } else {
     text +=
       '<div class="false-notification-div">' +
       "<p> " +
-      message1 +
+      message +
       " </p>" +
       "</div>";
     $("#fetch_sub_topic_video").html(text);
@@ -2948,26 +3064,36 @@ function _get_fetch_each_sub_video_topic(video_id,topic_id,sub_topic_id) {
     dataType: "json",
     cache: false,
     success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
       var fetch = info.data;
+      var sub_topic_name = info.sub_topic_name;
     
       var video_title = fetch.video_title.toUpperCase();
       var video_objective = fetch.video_objective;
-      var video_duration_id = fetch.video_duration_id
+      var video_duration = fetch.video_duration
       var video_volume_id = fetch.video_volume_id;
+      var video_volume_name = fetch.video_volume_name;
       var subscription_pricing_id = fetch.subscription_pricing_id;
+      var subscription_pricing_name = fetch.subscription_pricing_name;
       var video_passport = fetch.video_passport;
       var video = fetch.video;
       var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
 
       $("#video_title").val(video_title);
       $("#video_objective").val(video_objective);
-      $("#video_duration_id").val(video_duration_id);
-      $("#video_volume_id").val(video_volume_id);
-      $("#subscription_pricing_id").val(subscription_pricing_id);
-      $("#reg_status_id").val(status_id);
+      $("#video_duration").val(video_duration);
+      $('#video_volume_id').append('<option value="' + video_volume_id +'" selected="selected">' + video_volume_name +"</option>");
+      $('#subscription_pricing_id').append('<option value="' + subscription_pricing_id +'" selected="selected">' + subscription_pricing_name +"</option>");
+      $('#reg_status_id').append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+      $("#sub_topic_name").html(sub_topic_name);
    
       _get_sub_video_pix_view(video_passport);
       _get_sub_video_view(video);
+    }else{
+      _logout();
+    }
     }
   });
 }
@@ -2987,63 +3113,37 @@ function _get_sub_video_pix_view(video_passport) {
 
 
 function _get_sub_video_view(video) {
-  var view_sub_topic_video = "";
-  view_sub_topic_video ='<video src="'+ website_url +"/uploaded_files/videos/" + video +'" id="videoDisplay" autoplay="" muted="" loop="" class="video-slide">';
-  
-  $("#view_sub_topic_video").html(view_sub_topic_video);
+  var videoDisplay = document.getElementById('videoDisplay');
+  // Set the source of the video element
+  videoDisplay.src = website_url + "/uploaded_files/videos/" + video;
+  // Hide the default background image
+  var videoBackground = document.getElementById('video-background');
+  videoBackground.style.display = 'none';
+  // Show the video
+  videoDisplay.style.display = 'block';
+}
+
+
+function closeVideo() {
+  var videoDisplay = document.getElementById('videoDisplay');
+  videoDisplay.src = '';  // Set the source to an empty string to stop the video
+  videoDisplay.muted = true;  // Mute the audio
 }
 
 
 
-
-
-
-function _check_password2(){
-  var password = $('#new_password').val();
-  if (password==''){
-   $('#pswd_info').hide();
-   $('.pswd_info').fadeIn(500);
-   document.getElementById('new_password').style.border='rgba(0, 0, 0, .1) 1px solid';
-  }else{
-   $('.pswd_info').hide();
-     if(password.length>=8){
-           if (password.match(/^(?=[^A-Z]*[A-Z])(?=[^!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~]*[!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~])(?=\D*\d).{8,}$/)) {
-           $('.pswd_info').hide();
-           document.getElementById('new_password').style.border='rgba(0, 0, 0, .1) 1px solid';
-
-          } else {
-            $('.pswd_info').fadeIn(500);
-          }
-     }else{
-        $('.pswd_info').fadeIn(500);  
-        document.getElementById('new_password').style.border='#F00 1px solid';
-     }
+    
+  function _check_password_match() {
+  var new_password = $('#new_password').val();
+  var confirmed_password = $('#confirmed_password').val();
+  if (new_password !== confirmed_password && confirmed_password !== '') {
+    $('#message').show();
+  } else {
+    $('#message').hide();
   }
 }
 
-
-
-
-
-
-var _check_password3 = function() {
-     if (document.getElementById('new_password').value == document.getElementById('confirmed_password').value) {
-     document.getElementById('new_password').style.border='rgba(0, 0, 0, .1) 1px solid';
-     document.getElementById('confirmed_password').style.border='rgba(0, 0, 0, .1) 1px solid';
-     document.getElementById('message').style.display = 'none';
-     _check_password2();
-     } else {
-        _check_password2();
-     document.getElementById('new_password').style.border='#F00 1px solid';
-     document.getElementById('confirmed_password').style.border='#F00 1px solid';
-     document.getElementById('message').style.display = 'block';
-     document.getElementById('message').style.color = 'hsla(0, 100%, 40%, 0.678)';
-     document.getElementById('message').style.fontSize = '12px';
-     document.getElementById('message').innerHTML = 'password not match!';
-     }
-  }
-
-
+    
 
 
 function _update_user_password(staff_id) {
@@ -3054,22 +3154,25 @@ function _update_user_password(staff_id) {
 
   if(old_password==''){
   $('#old_password').addClass('complain');
-  $('#warning-div').html('<div><i class="bi-exclamation-triangle"></i></div> Please Fill The Old Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
+  $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Please Fill The Old Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
   } else if(new_password==''){
      $('#new_password').addClass('complain');
-     $('#warning-div').html('<div><i class="bi-exclamation-triangle"></i></div> Please Fill New Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
+     $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Please Fill New Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
 
   }else if(confirmed_password==''){
      $('#confirmed_password').addClass('complain');
-     $('#warning-div').html('<div><i class="bi-exclamation-triangle"></i></div> Please Fill Confirm Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
+     $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Please Fill Confirm Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
   }else if(new_password !=confirmed_password){
      $('#new_password, #confirmed_password').addClass('complain');
-     $('#warning-div').html('<div><i class="bi-exclamation-triangle"></i></div> Please Fill New Confirm Passwords<br /><span>Fields cannot be empty</span>').fadeIn(500).delay(5000).fadeOut(100);
-  }else{
-
+     $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Password Error <br /><span> Password Not Match </span>').fadeIn(500).delay(5000).fadeOut(100);
+    } else if (new_password.length < 8) {
+      $('#new_password,#confirmed_password').addClass("complain");
+      $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Password Not Accepted <br /><span> Please follow the instructon </span>').fadeIn(500).delay(5000).fadeOut(100);
+   
+    }else if (new_password.match(/^(?=[^A-Z]*[A-Z])(?=[^!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~]*[!"#$%&'()*+,-.:;<=>?@[\]^_`{|}~])(?=\D*\d).{8,}$/ )){
     if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
       var btn_text = $("#update_btn").html();
-      $("#update_btn").html('<i class="fa fa-spinner fa-spin"></i> PROCESSING');
+      $('#update_btn').html('<i class="fa fa-spinner fa-spin"></i> PROCESSING');
       document.getElementById("update_btn").disabled = true;
 
       var action = "change_password_api";
@@ -3090,23 +3193,1445 @@ function _update_user_password(staff_id) {
         cache: false,
         processData: false,
         success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
           var result = info.result;
           var message1 = info.message1;
           var message2 = info.message2;
 
      if (result==true){
-      $("#success-div").html('<div><i class="bi-check"></i></div> ' + message1 +" <br> " + message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
+      $('#success-div').html('<div><i class="bi-check"></i></div> ' + message1 +" <br> " + message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
         _alert_close();
       $('#login_user_fullname').html('XXXXX');
       _get_form('access_key_validation_info');
      }else{
-      $("#warning-div").html('<div><i class="bi-exclamation-triangle"></i></div> ' +message1 +" <br /><span> " +message2 + " </span>").fadeIn(500) .delay(5000).fadeOut(100);
+      $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> ' +message1 +" <br /><span> " +message2 + " </span>").fadeIn(500) .delay(5000).fadeOut(100);
      $('#old_password').addClass('complain');
      }
      $('#update_btn').html(btn_text);
      document.getElementById('update_btn').disabled=false;
+    }else{
+      _logout();
+    }
   }
   });
+} else {
+  $('#new_password,#confirmed_password').addClass("complain");
+  $('#warning-div').html('<div><i class="bi-exclamation-octagon-fill"></i></div> Password Not Accepted <br /><span> Please follow the instructon </span>').fadeIn(500).delay(5000).fadeOut(100);
+
   }
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function _add_or_register_faq(faq_id) {
+  tinyMCE.triggerSave();
+  var cat_id = $("#cat_id").val();
+  var faq_question = $("#faq_question").val();
+  var faq_answer = $("#faq_answer").val();
+  var status_id = $("#reg_status_id").val();
+  $("#cat_id, #faq_question, #faq_answer, #status_id").removeClass("complain");
+
+  if (cat_id == "") {
+    $("#cat_id").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>FAQ CATEGORY ERROR!<br /><span>Check Faq Category And Try Again</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+    } else if (faq_question == "") {
+      $("#faq_question").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> FAQ QUESTION ERROR!<br /><span>Check Faq Question Try Again <span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100); 
+    } else if (faq_answer == "") {
+    $("#faq_answer").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> FAQ ANSWER ERROR!<br /><span>Check Faq Answer Try Again <span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+    } else if (status_id == "") {
+      $("#reg_status_id").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100);
+  } else {
+    $("#cat_id, #faq_question, #faq_answer, #status_id").removeClass("complain");
+
+    if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+      var btn_text = $("#submit_btn").html();
+      $("#submit_btn").html('<i class="fa fa-spinner fa-spin"></i> PROCESSING');
+      document.getElementById("submit_btn").disabled = true;
+
+      var action = "add_or_update_faq_api";
+
+      var form_data = new FormData();
+      form_data.append("action", action);
+      form_data.append("cat_id", cat_id);
+      form_data.append("faq_id", faq_id);
+      form_data.append("faq_question", faq_question);
+      form_data.append("faq_answer", faq_answer);
+      form_data.append("status_id", status_id);
+
+      $.ajax({
+        type: "POST",
+        url: api,
+        data: form_data,
+        dataType: "json",
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
+          var result = info.result;
+          var message1 = info.message1;
+          var message2 = info.message2;
+
+          if (result == true) {
+              $("#success-div")
+                .html(
+                  '<div><i class="bi-check"></i></div> ' +
+                    message1 +
+                    " <br> " +
+                    message2 +
+                    " "
+                )
+                .fadeIn(500)
+                .delay(5000)
+                .fadeOut(100);
+              _alert_close();
+              _get_page('faqs', 'faqs');
+            
+          } else {
+            $("#warning-div")
+              .html(
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> ' +
+                  message1 +
+                  " <br /><span> " +
+                  message2 +
+                  " </span>"
+              )
+              .fadeIn(500)
+              .delay(5000)
+              .fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
+          }
+          
+        }else{
+          _logout();
+        }
+        },
+      });
+    }
+  }
+}
+
+
+
+
+
+function _get_fetch_faq(faq_id) {
+  var action = "fetch_faq_api";
+  var search_txt = $("#search_txt").val();
+  var status_id = $("#status_id").val();
+
+  if (search_txt.length > 2 || search_txt == "") {
+
+    var dataString ="action=" + action + "&faq_id=" + faq_id + "&status_id=" + status_id + "&search_txt=" +search_txt;
+
+    $.ajax({
+      type: "POST",
+      url: api,
+      data: dataString,
+      dataType: "json",
+      cache: false,
+      success: function (info) {
+        var login_check = info.check;
+        if(login_check>0){
+        var fetch = info.data;
+        var result = info.result;
+        var message = info.message;
+        var no=0;
+        var text = "";
+
+        if (result == true) {
+          for (var i = 0; i < fetch.length; i++) {
+             no++;
+            var faq_id = fetch[i].faq_id;
+            var faq_question = fetch[i].faq_question;
+            var faq_answer = fetch[i].faq_answer;
+  
+            text +=
+                  '<div class="quest-faq-div main-faqs active-faq animated fadeIn">'+
+                      '<div class="faq-title-text main-faqs-title-div" id="faq12">'+
+                          '<span>'+no+'</span>'+
+                      '</div>'+
+
+                      '<div class="faq-title-text main-faqs-title-div main-faqs-title-div2" onclick="_collapse('+"'"+'view'+no+"'"+')" style="cursor:pointer;">'+
+                          '<i class="bi-pencil-square"></i> <span>'+ faq_question +'</span>'+
+                          '<button class="btn" title="EDIT FAQ" onClick="_get_form_with_id(' + "'faqs_reg'" + "," +"'" + faq_id +"'" +');"><i class="bi-pencil-square"></i> EDIT</button>'+
+                          '<div class="expand-div" id="'+"view"+no+"num"+'">&nbsp;<i class="bi-plus"></i>&nbsp;</div>	'+
+                      '</div>'+
+                      
+                      '<div class="faq-answer-div faq-answer-div2" id="'+"view"+no+"answer"+'" style="display: none;">'+  
+                          '<p>'+ faq_answer +'</p>'+
+                      '</div>'+ 
+                  '</div>';
+          }
+          $("#fetch_faq").html(text);
+        } else {
+          text +=
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            '<button class="btn" onclick="_get_form(' +"'faqs_reg'" +')"><i class="bi-plus-square"></i>ADD NEW FAQ</button>' +
+            "</div>";
+          $("#fetch_faq").html(text);
+        }
+      }else{
+        _logout();
+      }
+      },
+    });
+  } else {
+    text +=
+      '<div class="false-notification-div">' +
+      "<p> " +
+      message1 +
+      " </p>" +
+      "</div>";
+    $("#fetch_faq").html(text);
+  }
+}
+
+
+
+
+
+function _get_fetch_each_faq(faq_id) {
+  var action = "fetch_faq_api";
+
+  var dataString = "action=" + action + "&faq_id=" + faq_id;
+
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
+      var fetch = info.data;
+    
+      var cat_id = fetch.cat_id.toUpperCase();
+      var faq_question = fetch.faq_question;
+      var faq_answer = fetch.faq_answer;
+      var status_id = fetch.status_id;
+      var status_name = fetch.status_name;
+
+      $("#cat_id").val(cat_id);
+      $("#faq_question").val(faq_question);
+      $("#faq_answer").val(faq_answer);
+      $("#reg_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+    }else{
+      _logout();
+    }
+    }
+  });
+}
+
+
+
+
+function _add_and_update_blog(blog_id) {
+  tinyMCE.triggerSave();
+  var cat_id = $("#cat_id").val();
+  var blog_title = $("#blog_title").val();
+  var blog_summary = $("#blog_summary").val();
+  var blog_url = $("#blog_url").val();
+  var seo_keywords = $("#seo_keywords").val();
+  var blog_detail = $("#blog_detail").val();
+  var blog_photo = $("#blog_pix").val();
+  var new_blog_image = $("#blog_pix").prop("files")[0];
+  var status_id = $("#reg_status_id").val();
+  var check_blog_id= blog_id;
+  $("#blog_cat_id, #blog_title, #blog_url, #seo_keywords, #blog_summary, #blog_detail, #reg_status_id").removeClass("complain");
+
+  if (cat_id == "") {
+    $("#blog_cat_id").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div>BLOG CATEGORY ERROR!<br /><span>Check Blog Category And Try Again</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+    } else if (blog_title == "") {
+      $("#blog_title").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> BLOG TITLE ERROR!<br /><span>Check Blog Title And Try Again <span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100); 
+    } else if (blog_summary == "") {
+        $("#blog_summary").addClass("complain");
+        $("#warning-div")
+          .html(
+            '<div><i class="bi-exclamation-octagon-fill"></i></div> BLOG SUMMARY ERROR!<br /><span>Check Blog Summary And Try Again <span>'
+          )
+          .fadeIn(500)
+          .delay(3000)
+          .fadeOut(100); 
+     } else if (blog_url == "") {
+    $("#blog_url").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> BLOG URL ERROR!<br /><span>Check Blog Url And Try Again <span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+      } else if (seo_keywords == "") {
+      $("#seo_keywords").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div>SEO KEYWORDS ERROR!<br /><span>Check Seo Keywords And Try Again <span>'
+        )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);  
+    } else if (blog_detail == "") {
+      $("#blog_detail").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> BLOG DETAIL ERROR!<br /><span>Check Blog Detail And Try Again <span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100); 
+    } else if (status_id == "") {
+      $("#reg_status_id").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Check Status And Try Again <span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100);
+  } else {
+
+    $("#blog_cat_id, #blog_title, #blog_url, #seo_keywords, #blog_summary, #blog_detail, #reg_status_id").removeClass("complain");
+
+    if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+      var btn_text = $("#submit_btn").html();
+      $("#submit_btn").html('<i class="fa fa-spinner fa-spin"></i> PROCESSING');
+      document.getElementById("submit_btn").disabled = true;
+
+      var action = "add_and_update_blog";
+
+      var form_data = new FormData();
+      form_data.append("action", action);
+      form_data.append("blog_id", blog_id);
+      form_data.append("cat_id", cat_id);
+      form_data.append("blog_title", blog_title);
+      form_data.append("blog_url", blog_url);
+      form_data.append("seo_keywords", seo_keywords);
+      form_data.append("blog_summary", blog_summary);
+      form_data.append("blog_detail", blog_detail);
+      form_data.append("blog_photo", blog_photo);
+      form_data.append("blog_photo", new_blog_image);
+      form_data.append("status_id", status_id);
+
+      $.ajax({
+        type: "POST",
+        url: api,
+        data: form_data,
+        dataType: "json",
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
+          var result = info.result;
+          var message1 = info.message1;
+          var message2 = info.message2;
+
+          if (result == true) {
+            var blog_id = info.blog_id;
+            var blog_photo = info.blog_photo;
+            var old_blog_pix = info.old_blog_pix;
+            var blog_url = info.blog_url;
+            var db_blog_url = info.db_blog_url;
+            
+           if (check_blog_id != blog_id) {
+            _create_blog_folder(check_blog_id, blog_id, blog_url);
+             }else {
+            _update_blog_folder(blog_id, blog_url, db_blog_url);
+              }  
+             _upload_blog_pix(message1, message2, blog_photo, old_blog_pix, blog_id);
+          } else {
+            $("#warning-div")
+              .html(
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> ' +
+                  message1 +
+                  " <br /><span> " +
+                  message2 +
+                  " </span>"
+              )
+              .fadeIn(500)
+              .delay(5000)
+              .fadeOut(100);
+              $("#submit_btn").html(btn_text);
+              document.getElementById("submit_btn").disabled = false;
+          }
+        
+           }else{
+        _logout();
+      }
+        },
+      });
+    }
+  }
+}
+
+
+
+function _upload_blog_pix(message1, message2, blog_photo, old_blog_pix, blog_id) {
+  var action = "upload_blog_pix";
+  var new_blog_image = $("#blog_pix").prop("files")[0];
+
+  var form_data = new FormData();
+  form_data.append("action", action);
+  form_data.append("blog_id", blog_id);
+  form_data.append("blog_photo", blog_photo);
+  form_data.append("blog_photo", new_blog_image);
+
+  form_data.append("old_blog_pix", old_blog_pix);
+
+  $.ajax({
+    url: admin_local_portal_url,
+    type: "POST",
+    data: form_data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (html) {
+      $("#success-div")
+        .html('<div><i class="bi-check"></i></div> ' +message1 +" <br> " +message2 +" ").fadeIn(500).delay(5000).fadeOut(100);
+        _get_page('blogs', 'blogs');
+      _alert_close();
+    },
+  });
+}
+
+
+
+function _create_blog_folder(check_blog_id, blog_id, blog_url) {
+  var action = "create_blog_folder";
+
+  var form_data = new FormData();
+  form_data.append("action", action);
+    form_data.append("check_blog_id", check_blog_id);
+  form_data.append("blog_id", blog_id);
+  form_data.append("blog_url", blog_url);
+
+  $.ajax({
+    url: admin_local_portal_url,
+    type: "POST",
+    data: form_data,
+    dataType: "json",
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (html) {
+      _get_page('blogs', 'blogs');
+      _alert_close();
+    },
+  });
+}
+
+
+
+function _update_blog_folder(blog_id, blog_url, db_blog_url) {
+  var action = "update_blog_folder";
+
+  var form_data = new FormData();
+  form_data.append("action", action);
+  form_data.append("blog_id", blog_id);
+  form_data.append("blog_url", blog_url);
+  form_data.append("db_blog_url", db_blog_url);
+
+  $.ajax({
+    url: admin_local_portal_url,
+    type: "POST",
+    data: form_data,
+    dataType: "json",
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (html) {
+      _get_page('blogs', 'blogs');
+      _alert_close();
+    },
+  });
+}
+
+
+
+
+
+
+function _get_fetch_blog(blog_id) {
+  var action = "fetch_blog_api";
+  var search_txt = $("#search_txt").val();
+  var status_id = $("#status_id").val();
+
+  if (search_txt.length > 2 || search_txt == "") {
+
+    var dataString ="action=" + action + "&blog_id=" + blog_id + "&status_id=" + status_id + "&search_txt=" +search_txt;
+
+    $.ajax({
+      type: "POST",
+      url: api,
+      data: dataString,
+      dataType: "json",
+      cache: false,
+      success: function (info) {
+        var fetch = info.data;
+        var result = info.result;
+        var message = info.message;
+
+        var text = "";
+
+        if (result == true) {
+          for (var i = 0; i < fetch.length; i++) {
+            var blog_id = fetch[i].blog_id;
+            var blog_title = fetch[i].blog_title;
+            var status_name = fetch[i].status_name;
+            var blog_pix = fetch[i].blog_pix;
+ 
+            var date = fetch[i].updated_time;
+            var originalDate = new Date(date);
+            var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var day = originalDate.getDate();
+            var month = monthNames[originalDate.getMonth()];
+            var year = originalDate.getFullYear();
+            var formattedDate = day + ' ' + month + ' ' + year;
+            console.log(formattedDate);
+
+            text +=
+              '<div class="blog-div animated fadeIn">'+
+                '<div class="btn-div">'+
+                    '<button class="btn" onclick="_get_form_with_id(' + "'blog_reg'" + "," +"'" + blog_id +"'" +')">EDIT BLOG DETAILS</button>'+                    '<br clear="all">'+
+                '</div>'+
+
+                '<div class="ACTIVE '+ status_name +'">'+ status_name +'</div>'+
+                '<div class="img-div"><img src="'+ website_url +'/uploaded_files/blog_pix/'+ blog_pix +'" alt="'+ blog_title +'"></div>'+
+                '<div class="text-div">'+
+                  '<div class="text-in">'+
+                    '<div class="text"><span>ANNOUNCEMENT</span> </div>'+
+                  '</div>'+
+                  '<h2>'+ blog_title +'</h2>'+
+                  '<div class="text-in">'+
+                      '<div class="text">UPDATED ON: <span>'+ formattedDate +'</span> </div>'+
+                      '<div class="text"><span>10</span> VIEWS</div>'+
+                  '</div>'+
+                '</div>'+
+                '<br>'+
+              '</div>';
+            }
+            $("#fetch_blog").html(text);
+        } else {
+          text +=
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            '<button class="btn" onclick="_get_form(' +"'blog_reg'" +')"><i class="bi-plus-square"></i>ADD NEW BLOG</button>' +
+            "</div>";
+          $("#fetch_blog").html(text);
+        }
+      },
+    });
+  } else {
+    text +=
+      '<div class="false-notification-div">' +
+      "<p> " +
+      message1 +
+      " </p>" +
+      "</div>";
+    $("#fetch_blog").html(text);
+  }
+}
+
+
+
+
+function _get_fetch_each_blog(blog_id) {
+  var action = "fetch_blog_api";
+
+  var dataString = "action=" + action + "&blog_id=" + blog_id;
+
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var fetch = info.data;
+    
+      var cat_id = fetch.cat_id.toUpperCase();
+      var blog_title = fetch.blog_title;
+      var blog_summary = fetch.blog_summary;
+      var blog_url = fetch.blog_url;
+      var seo_keywords = fetch.seo_keywords;
+      var blog_detail = fetch.blog_detail;
+      var blog_pix = fetch.blog_pix;
+      var status_id = fetch.status_id;
+
+      $("#cat_id").val(cat_id);
+      $("#blog_title").val(blog_title);
+      $("#blog_summary").val(blog_summary);
+      $("#blog_url").val(blog_url);
+      $("#seo_keywords").val(seo_keywords);
+      $("#blog_detail").val(blog_detail);
+      $("#reg_status_id").val(status_id);
+      _get_blog_pix_view(blog_pix);
+    }
+  });
+}
+
+
+function _get_blog_pix_view(blog_pix) {
+  var view_blog_pix_view = "";
+  if (blog_pix == "") {
+    view_blog_pix_view =
+    '<img src="'+ website_url + '"/uploaded_files/blog_pix/default.png" alt="default"/>';
+  } else {
+    view_blog_pix_view =
+    '<img src="'+ website_url +'/uploaded_files/blog_pix/'+ blog_pix +'" id="blog_pics" alt="' + blog_title +'" />';
+  }
+  $("#view_blog_pix_view").html(view_blog_pix_view);
+}
+
+
+
+function _get_dashboard_count() {
+  var action = "fetch_dashboard_count_api";
+  var dataString = "action=" + action;
+
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
+      var fetch = info.data;
+
+      var total_active_staff = fetch.total_active_staff;
+      var total_active_user = fetch.total_active_user;
+      var total_active_subject = fetch.total_active_subject;
+      var total_active_exam = fetch.total_active_exam;
+      var total_active_blog = fetch.total_active_blog;
+      var total_active_faq = fetch.total_active_faq;
+
+      $("#total_active_staff").html(total_active_staff);
+      $("#total_active_user").html(total_active_user);
+      $("#total_active_subject").html(total_active_subject);
+      $("#total_active_exam").html(total_active_exam);
+      $("#total_active_blog").html(total_active_blog);
+      $("#total_active_faq").html(total_active_faq);
+    }else{
+      _logout();
+    }
+  },
+  });
+}
+
+
+
+
+
+
+
+function _get_active_details(ids,text){
+	$('#next-all, #next-sub, #next-trans, #next-wallet').removeClass('active-btn');
+	$('#next-'+text).addClass('active-btn');
+	$('#order-title').html('<span id="prev"><i class="fa fa-arrow-left" onClick="_get_details('+"'get_order_items1'"+','+"'"+ids+"'"+','+"'get_order_items'"+')"></i></span>');	 
+}
+
+
+function _get_details(page,ids,text,status_name,name){
+	_get_active_details(ids,text);
+	var action='get_details';
+	$('#get_details').html('<div class="ajax-loader details-ajax"><img src="' +website_url +'/all-images/images/ajax-loader.gif"/></div>').fadeIn("fast");
+	var dataString ='action='+ action+'&page='+ page+'&ids='+ ids+'&status_name='+ status_name+'&name='+ name;
+	$.ajax({
+	type: "POST",
+	url: admin_local_portal_url,
+	data: dataString,
+	cache: false,
+	success: function(html){
+		$('#get_details').html(html);
+	}
+	});
+}
+
+
+function _get_user_info(page, user_id) {
+  var action = "fetch_user_api";
+  var dataString = "action=" + action + "&user_id=" + user_id;
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var result = info.result;
+      var login_check = info.check;
+      if(login_check>0){
+
+      if (result == true) {
+        if (page == 'user_details') {
+        var data = info.data;
+        var fullname = data.fullname;
+        var mobile = data.mobile;
+        var email = data.email;
+        var passport = data.passport;
+        if (passport == "") {
+          passport = "friends.png";
+        }
+
+        var status_id = data.status_id;
+        var status_name = data.status_name;
+        var last_login = data.last_login;
+
+        $("#user_login_fullname").html(fullname);
+        $("#user_last_login").html(last_login);
+        $("#user_status_name").html(status_name);
+        $("#current_user_pass").html('<img src="' + website_url +"/uploaded_files/user_pix/" +passport +'" id="pass" alt="'+passport +'"/>');
+
+        $("#updt_fullname").val(fullname);
+        $("#updt_mobile").val(mobile);
+        $("#updt_email").val(email);
+        $("#updt_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+      
+    }else if (page == 'user_profile_details') {
+        var data = info.data;
+        var fullname = data.fullname;
+        var mobile = data.mobile;
+        var email = data.email;
+        var passport = data.passport;
+        if (passport == "") {
+          passport = "friends.png";
+        }
+
+        var status_id = data.status_id;
+        var status_name = data.status_name;
+        var last_login = data.last_login;
+
+        $("#user_login_fullname").html(fullname);
+        $("#user_last_login").html(last_login);
+        $("#user_status_name").html(status_name);
+        $("#current_user_pass").html('<img src="' + website_url +"/uploaded_files/user_pix/" +passport +'" id="pass" alt="'+passport +'"/>');
+
+        $("#updt_fullname").val(fullname);
+        $("#updt_mobile").val(mobile);
+        $("#updt_email").val(email);
+        $("#updt_status_id").append('<option value="' + status_id +'" selected="selected">' + status_name +"</option>");
+      }
+      
+    }else{
+     // do nothing
+    }
+    }else{
+    _logout();
+    }
+    },
+  });
+}
+
+
+
+
+
+
+
+function _update_user_profile(user_id) {
+  var fullname = $("#updt_fullname").val();
+  var email = $("#updt_email").val();
+  var mobile = $("#updt_mobile").val();
+  var status_id = $("#updt_status_id").val();
+
+  $(
+    "#updt_fullname, #updt_email, #updt_mobile, #updt_status_id"
+  ).removeClass("complain");
+
+  if (fullname == "") {
+    $("#updt_fullname").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> FULLNAME ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (email == "" || $("#updt_email").val().indexOf("@") <= 0) {
+    $("#updt_email").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (mobile == "") {
+    $("#updt_mobile").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> MOBILE ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (status_id == "") {
+    $("#updt_status_id").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> STATUS ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else {
+    $(
+      "#updt_fullname, #updt_email, #updt_mobile, #updt_status_id"
+    ).removeClass("complain");
+
+    if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+      var btn_text = $("#update_btn").html();
+      $("#update_btn").html('<i class="fa fa-spinner fa-spin"></i> UPDATING');
+      document.getElementById("update_btn").disabled = true;
+
+      var action = "update_user_api";
+      var form_data = new FormData();
+      form_data.append("action", action);
+      form_data.append("user_id", user_id);
+      form_data.append("fullname", fullname);
+      form_data.append("email", email);
+      form_data.append("mobile", mobile);
+      form_data.append("status_id", status_id);
+
+      $.ajax({
+        type: "POST",
+        url: api,
+        data: form_data,
+        dataType: "json",
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
+          var result = info.result;
+          var message1 = info.message1;
+          var message2 = info.message2;
+
+          if (result == true) {
+            $("#success-div")
+              .html(
+                '<div><i class="bi-check"></i></div> ' +
+                  message1 +
+                  " <br> " +
+                  message2 +
+                  " "
+              )
+              .fadeIn(500)
+              .delay(5000)
+              .fadeOut(100);
+              _get_page('active_users', 'user');
+          } else {
+            $("#updt_email").addClass("complain");
+            $("#warning-div")
+              .html(
+                '<div><i class="bi-exclamation-octagon-fill"></i></div> EMAIL ERROR!<br /><span>Fill Fields To Continue</span>'
+              )
+              .fadeIn(500)
+              .delay(3000)
+              .fadeOut(100);
+            }
+              $("#update_btn").html(btn_text);
+              document.getElementById("update_btn").disabled = false;
+        }else{
+        _logout();
+        }
+        },
+      });
+    }
+  }
+}
+
+
+
+
+
+
+function _fetch_custom_report(page, user_id, view_report) {
+	var datefrom = $('#datepicker-from').val();
+	var dateto = $('#datepicker-to').val();
+
+	if ((datefrom == '') || (dateto == '')) {
+		$('#datepicker-from,#datepicker-to').addClass('complain');
+		$('#warning-div').html('<div><i class="bi-exclamation-circle"></i></div>DATE ERROR<br /> <span>Select date to continue</span>').fadeIn(500).delay(3000).fadeOut(100);
+	} else {
+
+		$('#datepicker-from,#datepicker-to').removeClass('complain');
+		if (page == 'wallet_history_details') {		
+      $('#fetch_all_wallet_history').html('<div class="ajax-loader details-ajax"><img src="' + website_url + '/all-images/images/ajax-loader.gif"/></div>').fadeIn('fast');
+      _get_user_wallet_history_details(page, user_id, view_report, datefrom, dateto);
+
+		} else if (page == 'subscription_history_details') {	
+      $('#fetch_all_subscription_history').html('<div class="ajax-loader details-ajax"><img src="' + website_url + '/all-images/images/ajax-loader.gif"/></div>').fadeIn('fast');
+      _get_user_subscription_history(page, user_id, view_report, datefrom, dateto);
+
+		} else if (page == 'transaction_history_detail') {
+			$('#fetch_all_transaction_history').html('<div class="ajax-loader details-ajax"><img src="' + website_url + '/all-images/images/ajax-loader.gif"/></div>').fadeIn('fast');
+      _get_user_transaction(page, user_id, '', view_report, datefrom, dateto);
+
+		} else {
+			/// do nothing
+		}
+  }
+
+}
+
+
+
+
+function _get_user_wallet_history_details(page, user_id, view_report, datefrom, dateto) {
+	var action = 'fetch_wallet_history_api';
+	var dataString = 'action=' + action + '&user_id=' + user_id + '&view_report=' + view_report + '&datefrom=' + datefrom + '&dateto=' + dateto;
+	$.ajax({
+		type: "POST",
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function (info) {
+				var fetch = info.data;
+				var result = info.result;
+				var message = info.message;
+        var wallet_balance = info.wallet_balance;
+        var amount_received = info.amount_received;
+        var amount_withdraw = info.amount_withdraw;
+
+				var no = 0;
+				var text = '';
+
+				text =
+					'<tr class="tuple">' +
+					'<td>SN</td>' +
+					'<td>DATE</td>' +
+					'<td>TRANSACTION ID</td>' +
+					'<td>BALANCE BEFORE</td>' +
+					'<td>AMOUNT LOADED</td>' +
+					'<td>BALANCE AFTER</td>' +
+					'<td>TRANSACTION TYPE</td>' +
+					'<td>STATUS</td>' +
+					'</tr>';
+
+				if (result == true) {
+          if (page == 'wallet_history_details') {
+          for (var i = 0; i < fetch.length; i++) {
+							no++;
+
+							var date = fetch[i].date;
+							var payment_id = fetch[i].payment_id;
+							var balance_before = fetch[i].balance_before;
+							var amount = fetch[i].amount;
+							var balance_after = fetch[i].balance_after;
+							var transaction_type_name = fetch[i].transaction_type_name;
+							var status_name = fetch[i].status_name;
+							var count_all = fetch[i].count_all;
+							text +=
+								'<tr>' +
+								'<td>' + no + '</td>' +
+								'<td>' + date + '</td>' +
+								'<td>' + payment_id + '</td>' +
+								'<td><span>₦</span> ' + balance_before + '</td>' +
+								'<td class="amount_load"><span>₦</span> ' + amount + '</td>' +
+								'<td><span>₦</span> ' + balance_after+ '</td>' +
+								'<td>' + transaction_type_name + '</td>' +
+								'<td><div class="status-div ' + status_name + '">' + status_name + '</div></td>' +
+								'</tr>';
+
+						}
+            $('#wallet_balance').html(wallet_balance);
+            $('#amount_received').html(amount_received);
+            $('#amount_withdraw').html(amount_withdraw);
+						$('#current_count').html(no);
+						$('#total_count').html(count_all);
+						$('#fetch_all_wallet_history').html(text);
+          } else if(page=='user_details'){
+            $('#wallet_balance').html(wallet_balance);
+            $('#amount_received').html(amount_received);
+            $('#amount_withdraw').html(amount_withdraw);
+          }else{
+            //do nothing
+          }
+				} else {
+          $('#current_count,#total_count').html(no);
+					text =
+          '<div class="false-notification-div">' +
+          "<p> " +
+          message +
+          " </p>" +
+          "</div>";
+					$('#fetch_all_wallet_history').html(text);
+				}
+		}
+	});
+}
+
+
+
+
+
+
+function _get_user_subscription_history(page, user_id, view_report, datefrom, dateto) {
+	var action = 'fetch_subscription_api';
+	var dataString = 'action=' + action + '&user_id=' + user_id + '&view_report=' + view_report+ '&datefrom=' + datefrom + '&dateto=' + dateto;
+	$.ajax({
+		type: "POST",
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function (info) {
+				var fetch = info.data;
+				var result = info.result;
+				var message = info.message;
+				var no = 0;
+				var text = '';
+
+				text =
+					'<tr class="tuple">' +
+					'<td>SN</td>' +
+					'<td>EXAM</td>' +
+					'<td>SUBJECT</td>' +
+					'<td>TOPIC</td>' +
+					'<td>SUB-TOPIC</td>' +
+					'<td>DATE</td>' +
+					'<td>DUE DATE</td>' +
+					'<td>STATUS</td>' +
+					'</tr>';
+
+				if (result == true) {
+          if (page == 'subscription_history_details') {
+						for (var i = 0; i < fetch.length; i++) {
+							no++;
+							var abbreviation = fetch[i].abbreviation.toUpperCase();
+							var exam_passport = fetch[i].exam_passport;
+							var subject_name = fetch[i].subject_name.toUpperCase();
+							var topic_name = fetch[i].topic_name.toUpperCase();
+							var sub_topic_name = fetch[i].sub_topic_name.toUpperCase();
+							var start_date = fetch[i].start_date;
+							var due_date = fetch[i].due_date;
+							var status_name = fetch[i].status_name.toUpperCase();
+							var count_all = fetch[i].count_all;
+
+
+							text +=
+								'<tr>' +
+								'<td>' + no + '</td>' +
+								'<td class="logo-tb"><div class="logo-div"><img src="' + website_url + '/uploaded_files/exam_pix/' + exam_passport + '" alt="' + abbreviation + ' LOGO"/> </div><span id="">' + abbreviation + '</span>  </td>' +
+								'<td>' + subject_name + '</td>' +
+								'<td>' + topic_name + '</td>' +
+								'<td>' + sub_topic_name + '</td>' +
+								'<td>' + start_date + '</td>' +
+								'<td>' + due_date + '</td>' +
+								'<td><div class="status-div ' + status_name + '">' + status_name + '</div></td>' +
+								'</tr>';
+						}
+						$('#sub_count').html(no);
+						$('#sub_total_count').html(count_all);
+						$('#fetch_all_subscription_history').html(text);
+          } else {
+						/// do nothing
+					}
+				} else {
+					$('#sub_count,#sub_total_count').html(no);
+					text =
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            "</div>";
+					$('#fetch_all_subscription_history').html(text);
+				}
+		}
+	});
+}
+
+
+
+
+
+function _get_user_transaction(page, user_id, payment_id, view_report, datefrom, dateto) {
+	var action = 'fetch_transaction_history_api';
+	var dataString = 'action=' + action + '&user_id=' + user_id + '&payment_id=' + payment_id+ '&view_report=' + view_report+ '&datefrom=' + datefrom+ '&dateto=' + dateto;
+	$.ajax({
+		type: "POST",
+		url: api,
+		data: dataString,
+		dataType: 'json',
+		cache: false,
+		success: function (info) {
+				var fetch = info.data;
+				var fetch2 = info.data2;
+				var result = info.result;
+				var message = info.message;
+				var db_payment_status_id = info.db_payment_status_id;
+
+				var no = 0;
+				var text = '';
+
+				text =
+					'<tr class="tuple">' +
+					'<td>SN</td>' +
+					'<td>DATE</td>' +
+					'<td>TRANSACTION ID</td>' +
+					'<td>TRANSACTION TYPE</td>' +
+					'<td>TRANSACTION METHOD</td>' +
+					'<td>AMOUNT</td>' +
+					'<td>STATUS</td>' +
+					'<td>ACTION</td>' +
+					'</tr>';
+
+				if (result == true) {
+          if (page == 'transaction_history_detail') {
+						for (var i = 0; i < fetch.length; i++) {
+							no++;
+							
+							var date = fetch[i].date;
+							var payment_id = fetch[i].payment_id;
+							var transaction_type_name = fetch[i].transaction_type_name;
+							var fund_method_name = fetch[i].fund_method_name;
+							var amount = fetch[i].amount;
+							var status_name = fetch[i].status_name;
+							var count_all = fetch[i].count_all;
+
+							text +=
+								'<tr>' +
+								'<td>' + no + '</td>' +
+								'<td>' + date + '</td>' +
+								'<td>' + payment_id + '</td>' +
+								'<td>' + transaction_type_name + '</td>' +
+								'<td>' + fund_method_name + '</td>' +
+								'<td><span>₦</span> ' + amount + '</td>' +
+								'<td><div class="status-div ' + status_name + '">' + status_name + '</div></td>' +
+								'<td><button class="btn" onclick="_get_form_with_id(' + "'transaction_details'" + "," +"'" + user_id +"'" + "," +"'" + payment_id +"'" + "," + "'" + ' ' +"'" +');"><i class="bi bi-eye"></i> DETAILS</button></td>' +
+								'</tr>';
+						}
+
+						$('#trans_count').html(no);
+						$('#trans_total_count').html(count_all);
+						$('#fetch_all_transaction_history').html(text);
+
+          } else if (page == 'transaction_details') {
+						//// TRANSACTION DETAILS
+						var payment_id = fetch.payment_id;
+						var payment_status_id = fetch.status_id;
+						var transaction_type_name = fetch.transaction_type_name;
+						var fund_method_name = fetch.fund_method_name;
+						var amount = fetch.amount;
+						var date = fetch.date;
+						var payment_status_name = fetch.status_name;
+						
+						
+						//// EXAM SUBCRIPTION DETAILS
+						var abbreviation = fetch2.abbreviation.toUpperCase();
+						var subject_name = fetch2.subject_name.toUpperCase();
+						var topic_name = fetch2.topic_name.toUpperCase();
+						var sub_topic_name = fetch2.sub_topic_name.toUpperCase();
+					
+						if(payment_status_id==db_payment_status_id){
+							var subscription = fetch2.subscription;
+						
+							if((subscription=='yes')){
+								var start_date = fetch2.start_date;
+								var due_date = fetch2.due_date;
+								var subscription_status_name = fetch2.status_name.toUpperCase();
+	
+							text= '<div class="alert alert-success">'+
+								'<span>TRANSACTION DETAILS</span>'+
+								'<div class="trans-statistics">Transaction ID: <div class="value" id="transaction_id">'+payment_id+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Transaction Type: <div class="value" id="transaction_type">'+transaction_type_name+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Transaction Method: <div class="value" id="transaction_method">'+fund_method_name+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Amount: <div class="value" id="amount"> '+amount+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Date: <div class="value" id="date">'+date+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Status: <div class="value" id="status">'+payment_status_name+'</div><br clear="all" /></div>'+
+							'</div>'+
+
+								
+
+							'<div class="alert alert-success">'+
+								'<span>EXAM SUBSCRIPTION DETAILS</span>'+
+								'<div class="trans-statistics">Exam Name: <div class="value" id="view_abbreviation">'+abbreviation+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Subject Name: <div class="value" id="view_subject_name">'+subject_name+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Topic Name: <div class="value" id="view_topic_name">'+topic_name+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Sub-Topic Name: <div class="value" id="view_sub_topic_name">'+sub_topic_name+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Start Date: <div class="value" id="view_start_date"> '+start_date+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Due Date: <div class="value" id="view_due_date">'+due_date+'</div><br clear="all" /></div>'+
+								'<div class="trans-statistics">Status: <div class="value" id="view_subcription_status_name">'+subscription_status_name+'</div><br clear="all" /></div>'+
+							'</div>';
+
+							}else{
+								text= '<div class="alert">'+
+									'<span>TRANSACTION DETAILS</span>'+
+									'<div class="trans-statistics">Transaction ID: <div class="value text_details" id="transaction_id">'+payment_id+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Transaction Type: <div class="value text_details" id="transaction_type">'+transaction_type_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Transaction Method: <div class="value text_details" id="transaction_method">'+fund_method_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Amount: <div class="value text_details" id="amount"> '+amount+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Date: <div class="value text_details" id="date">'+date+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Status: <div class="value text_details" id="status">'+payment_status_name+'</div><br clear="all" /></div>'+
+								'</div>'+
+
+								'<div class="alert ">'+
+									'<span>EXAM SUBSCRIPTION DETAILS</span>'+
+									'<div class="trans-statistics">Exam Name: <div class="value text_details" id="view_abbreviation">'+abbreviation+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Subject Name: <div class="value text_details" id="view_subject_name">'+subject_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Topic Name: <div class="value text_details" id="view_topic_name">'+topic_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Sub-Topic Name: <div class="value text_details" id="view_sub_topic_name">'+sub_topic_name+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Start Date: <div class="value" id="view_start_date"> '+start_date+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Due Date: <div class="value" id="view_due_date">'+due_date+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Status: <div class="value" id="view_subcription_status_name">'+subscription_status_name+'</div><br clear="all" /></div>'+
+								'</div>';
+							}
+						}else{
+							
+							text= '<div class="alert">'+
+									'<span>TRANSACTION DETAILS</span>'+
+									'<div class="trans-statistics">Transaction ID: <div class="value text_details" id="transaction_id">'+payment_id+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Transaction Type: <div class="value text_details" id="transaction_type">'+transaction_type_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Transaction Method: <div class="value text_details" id="transaction_method">'+fund_method_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Amount: <div class="value text_details" id="amount"> '+amount+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Date: <div class="value text_details" id="date">'+date+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Status: <div class="value text_details" id="status">'+payment_status_name+'</div><br clear="all" /></div>'+
+								'</div>'+
+
+								'<div class="alert ">'+
+									'<span>EXAM SUBSCRIPTION DETAILS</span>'+
+									'<div class="trans-statistics">Exam Name: <div class="value text_details" id="view_abbreviation">'+abbreviation+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Subject Name: <div class="value text_details" id="view_subject_name">'+subject_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Topic Name: <div class="value text_details" id="view_topic_name">'+topic_name+'</div><br clear="all" /></div>'+
+									'<div class="trans-statistics">Sub-Topic Name: <div class="value text_details" id="view_sub_topic_name">'+sub_topic_name+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Start Date: <div class="value" id="view_start_date"> '+start_date+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Due Date: <div class="value" id="view_due_date">'+due_date+'</div><br clear="all" /></div>'+
+									// '<div class="trans-statistics">Status: <div class="value" id="view_subcription_status_name">'+subscription_status_name+'</div><br clear="all" /></div>'+
+								'</div>';
+						}
+						
+						$('#View_transaction_details').html(text);
+						////////////////
+          } else {
+						/// do nothing
+					}
+				} else {
+					$('#trans_count,#trans_total_count').html(no);
+					text =
+            '<div class="false-notification-div">' +
+            "<p> " +
+            message +
+            " </p>" +
+            "</div>";
+					$('#fetch_all_transaction_history').html(text);
+				}
+		}
+	});
+}
+
+
+function _get_fetch_setup_backend_settings(backend_setting_id) {
+  var action = "fetch_setup_backend_settings_api";
+  var dataString = "action=" + action + "&backend_setting_id=" + backend_setting_id;
+  $.ajax({
+    type: "POST",
+    url: api,
+    data: dataString,
+    dataType: "json",
+    cache: false,
+    success: function (info) {
+      var login_check = info.check;
+      if(login_check>0){
+        var fetch = info.data;
+
+        var sender_name = fetch.sender_name;
+        var smtp_host = fetch.smtp_host;
+        var smtp_username = fetch.smtp_username;
+        var smtp_password = fetch.smtp_password;
+        var smtp_port = fetch.smtp_port;
+
+        $("#sender_name").val(sender_name);
+        $("#smtp_host").val(smtp_host);
+        $("#smtp_username").val(smtp_username);
+        $("#smtp_password").val(smtp_password);
+        $("#smtp_port").val(smtp_port);
+      }else{
+      _logout();
+      }
+    },
+  });
+}
+
+
+
+
+function _update_backend_settings(backend_setting_id) {
+  var sender_name = $("#sender_name").val();
+  var smtp_host = $("#smtp_host").val();
+  var smtp_username = $("#smtp_username").val();
+  var smtp_password = $("#smtp_password").val();
+  var smtp_port = $("#smtp_port").val();
+
+  $("#sender_name, #smtp_host, #smtp_username, #smtp_password, #smtp_port").removeClass("complain");
+
+  if (sender_name == "") {
+    $("#v").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SENDER NAME ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (smtp_host == "") {
+    $("#smtp_host").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SMTP HOST ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (smtp_username == "") {
+    $("#smtp_username").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SMTP USERNAME ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+  } else if (smtp_password == "") {
+    $("#smtp_password").addClass("complain");
+    $("#warning-div")
+      .html(
+        '<div><i class="bi-exclamation-octagon-fill"></i></div> SMTP PASSWORD ERROR!<br /><span>Fill Fields To Continue</span>'
+      )
+      .fadeIn(500)
+      .delay(3000)
+      .fadeOut(100);
+    } else if (smtp_port == "") {
+      $("#smtp_port").addClass("complain");
+      $("#warning-div")
+        .html(
+          '<div><i class="bi-exclamation-octagon-fill"></i></div> SMTP PORT ERROR!<br /><span>Fill Fields To Continue</span>'
+        )
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(100);
+  } else {
+    $("#sender_name, #smtp_host, #smtp_username, #smtp_password, #smtp_port").removeClass("complain");
+
+    if (confirm("Confirm!!\n\n Are you sure to PERFORM THIS ACTION?")) {
+      var btn_text = $("#update_btn").html();
+      $("#update_btn").html('<i class="fa fa-spinner fa-spin"></i> UPDATING');
+      document.getElementById("update_btn").disabled = true;
+ 
+      var action = "update_backend_settings_api";
+      var form_data = new FormData();
+      form_data.append("action", action);
+      form_data.append("backend_setting_id", backend_setting_id);
+      form_data.append("sender_name", sender_name);
+      form_data.append("smtp_host", smtp_host);
+      form_data.append("smtp_username", smtp_username);
+      form_data.append("smtp_password", smtp_password);
+      form_data.append("smtp_port", smtp_port);
+
+      $.ajax({
+        type: "POST",
+        url: api,
+        data: form_data,
+        dataType: "json",
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (info) {
+          var login_check = info.check;
+          if(login_check>0){
+          var result = info.result;
+          var message1 = info.message1;
+          var message2 = info.message2;
+
+          if (result == true) {
+            $("#success-div")
+              .html(
+                '<div><i class="bi-check"></i></div> ' +
+                  message1 +
+                  " <br> " +
+                  message2 +
+                  " "
+              )
+              .fadeIn(500)
+              .delay(5000)
+              .fadeOut(100);
+              _get_form('app_settings');
+          } else {
+              $("#update_btn").html(btn_text);
+              document.getElementById("update_btn").disabled = false;
+            }
+        }else{
+        _logout();
+        }
+        },
+      });
+    }
+  }
 }
